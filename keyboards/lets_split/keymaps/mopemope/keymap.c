@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MOUSE] = KEYMAP( \
     KC_ESC,  KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_END,  KC_PGDN, KC_PGUP, KC_HOME,  KC_PSCR,  KC_DEL,  \
-    RESET,   _______, _______, _______, _______, WRKSP1,  _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RIGHT,  RESET,   \
+    RESET,   _______, _______, _______, _______, WRKSP1,  _______, KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  RESET,   \
     _______, _______, _______, _______, _______, WRKSP2,  _______, _______, _______, KC_WH_U,  KC_WH_D,  _______, \
     _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______, _______, KC_MS_L, KC_MS_D,  KC_MS_U,  KC_MS_R  \
   )
