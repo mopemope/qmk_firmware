@@ -15,13 +15,14 @@ extern keymap_config_t keymap_config;
 
 #define WRKSP1 LALT(LCTL(KC_UP))
 #define WRKSP2 LALT(LCTL(KC_DOWN))
+#define GTAB   LGUI(KC_TAB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
    * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   |  BS  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |"/Ctl | A/Mo |  S   |  D   | F/Mo |G/Ctl | |H/Ctl | J/Mo |  K   |   L  | @/Mo |:/Ctl |
+   * |  "   | A/Mo |  S   |  D   | F/Mo |  G   | |H/Alt |J/Ctl |  K   |   L  |  @   |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -=  |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -30,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [QWERTY] = KEYMAP( \
     KC_TAB,        KC_Q,           KC_W,    KC_E,      KC_R,              KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             KC_BSPC, \
-    CTL_T(JP_DQT), LT(MOUSE,KC_A), KC_S,    KC_D,      LT(MOUSE,KC_F),    CTL_T(KC_G),   CTL_T(KC_H),   LT(MOUSE,KC_J),    KC_K,    KC_L,    LT(MOUSE, JP_AT), CTL_T(JP_COLN), \
+    JP_DQT,        LT(MOUSE,KC_A), KC_S,    KC_D,      LT(MOUSE,KC_F),    KC_G,          ALT_T(KC_H),   CTL_T(KC_J),       KC_K,    KC_L,    JP_AT,            JP_COLN, \
     JP_MINS,       KC_Z,           KC_X,    KC_C,      KC_V,              KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
     CTL_T(KC_F12), KC_LGUI,        KC_LALT, MO(RAISE), LT(LOWER,JP_MHEN), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,JP_HENK), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
   ),
@@ -41,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |   !  |   "  |   #  |   $  |   %  | |   &  |   '  |   (  |   )  |   @  |  ;   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |   ~  |   `  |   |  |   \  |  -=  | |  \   |   [  |   ]  |   {  |   }  |  :   |
+   * |      |   ~  |   `  |   |  |   \  |  Yen | |  \   |   [  |   ]  |   {  |   }  |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -76,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * | Esc  | Mute |VolDn |VolUp |      |      | |  End | PgDn | PgUp | Home |PrtScr| Del  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |      |      |      |      |WRKSP1| |      | Left | Down |  Up  |Right |Reset |
+   * |Reset |      |      | GTAB |      |WRKSP1| |      |      |      |      |      |Reset |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |WRKSP2| |      |      |      |WhUp  |WhDn  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -86,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MOUSE] = KEYMAP( \
     KC_ESC,  KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_END,  KC_PGDN, KC_PGUP, KC_HOME,  KC_PSCR,  KC_DEL,  \
-    RESET,   _______, _______, _______, _______, WRKSP1,  _______, KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  RESET,   \
+    RESET,   _______, _______, GTAB,    _______, WRKSP1,  _______, _______, _______, _______,  _______,  RESET,   \
     _______, _______, _______, _______, _______, WRKSP2,  _______, _______, _______, KC_WH_U,  KC_WH_D,  _______, \
     _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______, _______, KC_MS_L, KC_MS_D,  KC_MS_U,  KC_MS_R  \
   )
