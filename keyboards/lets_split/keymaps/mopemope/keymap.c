@@ -2,6 +2,7 @@
 #include "action_layer.h"
 #include "eeconfig.h"
 #include "keymap_jp.h"
+#include "pro_micro.h"
 
 extern keymap_config_t keymap_config;
 
@@ -15,25 +16,34 @@ extern keymap_config_t keymap_config;
 
 #define WRKSP1 LALT(LCTL(KC_UP))
 #define WRKSP2 LALT(LCTL(KC_DOWN))
-#define GTAB   LGUI(KC_TAB)
+
+void matrix_init_user(void) {
+  TXLED0;
+  RXLED0;
+}
+
+void matrix_scan_user(void) {
+  TXLED0;
+  RXLED0;
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
    * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   |  BS  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  "   | A/Mo |  S   |  D   | F/Mo |  G   | |H/Alt |J/Ctl |  K   |   L  |  @   |  :   |
+   * |  "   | A/Mo |  S   | D/Mo |F/Ctl |G/Alt | |H/Alt |J/Ctl |  K   |   L  |  @   |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -=  |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |F12/Ct| GUI  | Alt  |Raise |Mu/Low|Sp/Sft| |En/Sft|He/Low| Left | Down |  Up  |Right |
+   * |F12/Ra| Ctl  | GUI  | Alt  |Mu/Low|Sp/Sft| |En/Sft|He/Low| Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [QWERTY] = KEYMAP( \
-    KC_TAB,        KC_Q,           KC_W,    KC_E,      KC_R,              KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             KC_BSPC, \
-    JP_DQT,        LT(MOUSE,KC_A), KC_S,    KC_D,      LT(MOUSE,KC_F),    KC_G,          ALT_T(KC_H),   CTL_T(KC_J),       KC_K,    KC_L,    JP_AT,            JP_COLN, \
-    JP_MINS,       KC_Z,           KC_X,    KC_C,      KC_V,              KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
-    CTL_T(KC_F12), KC_LGUI,        KC_LALT, MO(RAISE), LT(LOWER,JP_MHEN), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,JP_HENK), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
+    KC_TAB,           KC_Q,           KC_W,    KC_E,           KC_R,              KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             KC_BSPC, \
+    JP_DQT,           LT(MOUSE,KC_A), KC_S,    LT(MOUSE,KC_D), CTL_T(KC_F),       ALT_T(KC_G),   ALT_T(KC_H),   CTL_T(KC_J),       KC_K,    KC_L,    JP_AT,            JP_COLN, \
+    JP_MINS,          KC_Z,           KC_X,    KC_C,           KC_V,              KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
+    LT(RAISE,KC_F12), KC_LCTL,        KC_LGUI, KC_LALT,        LT(LOWER,JP_MHEN), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,JP_HENK), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
   ),
 
   /* Lower
@@ -77,19 +87,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * | Esc  | Mute |VolDn |VolUp |      |      | |  End | PgDn | PgUp | Home |PrtScr| Del  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |      |      | GTAB |      |WRKSP1| |      |      |      |      |      |Reset |
+   * |Reset |      |      |      |      |      | |      |      |      |      |      |Reset |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |WRKSP2| |      |      |      |WhUp  |WhDn  |      |
+   * |      |      |      |      |WRKSP1|WRKSP2| | Copy |Paste |      |WhUp  |WhDn  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |Click2|Click1| |      |      | MsLf | MsDn | MsUp | MsRg |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MOUSE] = KEYMAP( \
-    KC_ESC,  KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_END,  KC_PGDN, KC_PGUP, KC_HOME,  KC_PSCR,  KC_DEL,  \
-    RESET,   _______, _______, GTAB,    _______, WRKSP1,  _______, _______, _______, _______,  _______,  RESET,   \
-    _______, _______, _______, _______, _______, WRKSP2,  _______, _______, _______, KC_WH_U,  KC_WH_D,  _______, \
-    _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______, _______, KC_MS_L, KC_MS_D,  KC_MS_U,  KC_MS_R  \
+    KC_ESC,  KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_END,     KC_PGDN,    KC_PGUP, KC_HOME,  KC_PSCR,  KC_DEL,  \
+    RESET,   _______, _______, _______, _______, _______, _______,    _______,    _______, _______,  _______,  RESET, \
+    _______, _______, _______, _______, WRKSP1,  WRKSP2,  LCTL(KC_C), LCTL(KC_V), _______, KC_WH_U,  KC_WH_D,  _______, \
+    _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______,    _______,    KC_MS_L, KC_MS_D,  KC_MS_U,  KC_MS_R  \
   )
 };
 
