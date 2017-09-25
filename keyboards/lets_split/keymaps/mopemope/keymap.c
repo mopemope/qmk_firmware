@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |Reset |      |      |      |      |      | |      |      |      |      |      |Reset |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |WRKSP1|WRKSP2| | Copy |Paste |      |WhUp  |WhDn  |      |
+   * |      |      |      |      |WRKSP2|WRKSP1| | Copy |Paste |      |WhUp  |WhDn  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |Click2|Click1| |      |      | MsLf | MsDn | MsUp | MsRg |
    * `-----------------------------------------' `-----------------------------------------'
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MOUSE] = KEYMAP( \
     KC_ESC,  KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_END,     KC_PGDN,    KC_PGUP, KC_HOME,  KC_PSCR,  KC_DEL,  \
     RESET,   _______, _______, _______, _______, _______, _______,    _______,    _______, _______,  _______,  RESET, \
-    _______, _______, _______, _______, WRKSP1,  WRKSP2,  LCTL(KC_C), LCTL(KC_V), _______, KC_WH_U,  KC_WH_D,  _______, \
+    _______, _______, _______, _______, WRKSP2,  WRKSP1,  LCTL(KC_C), LCTL(KC_V), _______, KC_WH_U,  KC_WH_D,  _______, \
     _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______,    _______,    KC_MS_L, KC_MS_D,  KC_MS_U,  KC_MS_R  \
   )
 };
