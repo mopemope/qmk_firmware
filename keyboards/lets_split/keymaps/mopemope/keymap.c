@@ -2,14 +2,13 @@
 #include "action_layer.h"
 #include "eeconfig.h"
 #include "keymap_jp.h"
-#include "pro_micro.h"
 
 extern keymap_config_t keymap_config;
 
 #define QWERTY 0
 #define LOWER  1
 #define RAISE  2
-#define MOUSE  3
+#define MOVE   3
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
@@ -17,51 +16,116 @@ extern keymap_config_t keymap_config;
 #define WRKSP1 LALT(LCTL(KC_UP))
 #define WRKSP2 LALT(LCTL(KC_DOWN))
 
-void matrix_init_user(void) {
-  TXLED0;
-  RXLED0;
+enum {
+    QM = 0,
+    LR,
+    HE,
+};
+
+void qm_each(qk_tap_dance_state_t *state, void *user_data) {
+    switch(state->count){
+    default:
+        break;
+    }
 }
 
-void matrix_scan_user(void) {
-  TXLED0;
-  RXLED0;
+void qm_finished(qk_tap_dance_state_t *state, void *user_data) {
+    switch(state->count){
+    case 2:
+        layer_on(MOVE);
+        break;
+    default:
+        break;
+    }
 }
+
+void qm_reset(qk_tap_dance_state_t *state, void *user_data) {
+    switch(state->count){
+    case 1:
+        layer_off(MOVE);
+        layer_off(LOWER);
+        layer_off(RAISE);
+        break;
+    default:
+        break;
+    }
+
+}
+
+void lr_each(qk_tap_dance_state_t *state, void *user_data) {
+    switch(state->count){
+    default:
+        break;
+    }
+}
+
+void lr_finished(qk_tap_dance_state_t *state, void *user_data) {
+    switch(state->count){
+    case 2:
+        layer_on(LOWER);
+        break;
+    case 3:
+        layer_on(RAISE);
+        break;
+    default:
+        break;
+    }
+}
+
+void lr_reset(qk_tap_dance_state_t *state, void *user_data) {
+    switch(state->count){
+    case 1:
+        layer_off(MOVE);
+        layer_off(LOWER);
+        layer_off(RAISE);
+        break;
+    default:
+        break;
+    }
+}
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [QM] = ACTION_TAP_DANCE_FN_ADVANCED (qm_each, qm_finished, qm_reset),
+    [LR] = ACTION_TAP_DANCE_FN_ADVANCED (lr_each, lr_finished, lr_reset),
+    [HE] = ACTION_TAP_DANCE_DOUBLE (JP_MHEN, JP_HENK),
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
    * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   |  BS  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  "   | A/Mo |  S   | D/Mo |F/Ctl |G/Alt | |H/Alt |J/Ctl |  K   |   L  |  @   |  :   |
+   * |  "   | A/Mo |  S   |  D   |F/Ctl |G/Alt | |H/Alt |J/Ctl |  K   |   L  | @/Mo |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -=  |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |F12/Ra| Ctl  | GUI  | Alt  |Mu/Low|Sp/Sft| |En/Sft|He/Low| Left | Down |  Up  |Right |
+   * |TD/QM |F12/Ct| GUI  | Alt  |Low/Ra|Sp/Sft| |En/Sft|TD/HE | Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [QWERTY] = KEYMAP( \
-    KC_TAB,           KC_Q,           KC_W,    KC_E,           KC_R,              KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             KC_BSPC, \
-    JP_DQT,           LT(MOUSE,KC_A), KC_S,    LT(MOUSE,KC_D), CTL_T(KC_F),       ALT_T(KC_G),   ALT_T(KC_H),   CTL_T(KC_J),       KC_K,    KC_L,    JP_AT,            JP_COLN, \
-    JP_MINS,          KC_Z,           KC_X,    KC_C,           KC_V,              KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
-    LT(RAISE,KC_F12), KC_LCTL,        KC_LGUI, KC_LALT,        LT(LOWER,JP_MHEN), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,JP_HENK), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
+    KC_TAB,  KC_Q,          KC_W,    KC_E,    KC_R,        KC_T,          KC_Y,          KC_U,        KC_I,    KC_O,    KC_P,           KC_BSPC, \
+    JP_DQT,  LT(MOVE,KC_A), KC_S,    KC_D,    CTL_T(KC_F), ALT_T(KC_G),   ALT_T(KC_H),   CTL_T(KC_J), KC_K,    KC_L,    LT(MOVE,JP_AT), JP_COLN, \
+    JP_MINS, KC_Z,          KC_X,    KC_C,    KC_V,        KC_B,          KC_N,          KC_M,        KC_COMM, KC_DOT,  JP_SLSH,        JP_BSLS, \
+    TD(QM),  CTL_T(KC_F12), KC_LGUI, KC_LALT, TD(LR),      SFT_T(KC_SPC), SFT_T(KC_ENT), TD(HE),      KC_LEFT, KC_DOWN, KC_UP,          KC_RIGHT \
   ),
 
   /* Lower
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | ESC  |   1  |   2  |   3  |   4  |   5  | |   6  |   7  |   8  |   9  |   0  |  ^   |
+   * |      |   1  |   2  |   3  |   4  |   5  | |   6  |   7  |   8  |   9  |   0  |  BS  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |   !  |   "  |   #  |   $  |   %  | |   &  |   '  |   (  |   )  |   @  |  ;   |
+   * | ESC  |   !  |   "  |   #  |   $  |   %  | |   &  |   '  |   (  |   )  |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |   ~  |   `  |   |  |   \  |  Yen | |  \   |   [  |   ]  |   {  |   }  |  :   |
+   * |      |   ~  |   `  |   |  |   \  |  Yen | |  ^   |   [  |   ]  |   {  |   }  |  ;   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [LOWER] = KEYMAP( \
-    KC_ESC,   KC_1,     KC_2,    KC_3,    KC_4,     KC_5,    KC_6,    KC_7,     KC_8,    KC_9,    KC_0,    JP_CIRC, \
-    _______,  JP_EXLM,  JP_DQT,  JP_HASH, JP_DLR,   JP_PERC, JP_AMPR, JP_QUOT,  JP_LPRN, JP_RPRN, JP_AT,   JP_SCLN, \
-    _______,  JP_TILD,  JP_GRV,  JP_PIPE, JP_BSLS,  JP_YEN,  JP_SLSH, JP_LBRC,  JP_RBRC, JP_LCBR, JP_RCBR, JP_COLN, \
-    _______,  _______,  _______, _______, _______,  _______, _______, _______,  _______, _______, _______, _______  \
+    _______, KC_1,    KC_2,    KC_3,    KC_4,     KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, \
+    KC_ESC,  JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,   JP_PERC, JP_AMPR, JP_QUOT, JP_LPRN, JP_RPRN, _______, _______, \
+    _______, JP_TILD, JP_GRV,  JP_PIPE, JP_BSLS,  JP_YEN,  JP_CIRC, JP_LBRC, JP_RBRC, JP_LCBR, JP_RCBR, JP_SCLN, \
+    _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______  \
   ),
 
   /* Raise
@@ -95,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [MOUSE] = KEYMAP( \
+  [MOVE] = KEYMAP( \
     KC_ESC,  KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_END,     KC_PGDN,    KC_PGUP, KC_HOME,  KC_PSCR,  KC_DEL,  \
     RESET,   _______, _______, _______, _______, _______, _______,    _______,    _______, _______,  _______,  RESET, \
     _______, _______, _______, _______, WRKSP2,  WRKSP1,  LCTL(KC_C), LCTL(KC_V), _______, KC_WH_U,  KC_WH_D,  _______, \
