@@ -23,64 +23,52 @@ enum {
 };
 
 void qm_each(qk_tap_dance_state_t *state, void *user_data) {
-    switch(state->count){
-    default:
-        break;
-    }
 }
 
 void qm_finished(qk_tap_dance_state_t *state, void *user_data) {
-    switch(state->count){
-    case 2:
+    if (state->count == 2) {
         layer_on(MOVE);
-        break;
-    default:
-        break;
+    } else {
+        reset_tap_dance(state);
     }
 }
 
 void qm_reset(qk_tap_dance_state_t *state, void *user_data) {
-    switch(state->count){
-    case 1:
+    if (state->count == 1) {
         layer_off(MOVE);
         layer_off(LOWER);
         layer_off(RAISE);
-        break;
-    default:
-        break;
+    } else if (state->count > 2){
+        layer_off(MOVE);
+        layer_off(LOWER);
+        layer_off(RAISE);
+        reset_tap_dance(state);
     }
-
 }
 
 void lr_each(qk_tap_dance_state_t *state, void *user_data) {
-    switch(state->count){
-    default:
-        break;
-    }
 }
 
 void lr_finished(qk_tap_dance_state_t *state, void *user_data) {
-    switch(state->count){
-    case 2:
+    if (state->count == 2) {
         layer_on(LOWER);
-        break;
-    case 3:
+    } else if (state->count == 3){
         layer_on(RAISE);
-        break;
-    default:
-        break;
+    } else {
+        reset_tap_dance(state);
     }
 }
 
 void lr_reset(qk_tap_dance_state_t *state, void *user_data) {
-    switch(state->count){
-    case 1:
+    if (state->count == 1) {
         layer_off(MOVE);
         layer_off(LOWER);
         layer_off(RAISE);
-        break;
-    default:
-        break;
+    } else if (state->count > 3){
+        layer_off(MOVE);
+        layer_off(LOWER);
+        layer_off(RAISE);
+        reset_tap_dance(state);
     }
 }
 
