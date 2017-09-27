@@ -34,10 +34,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PREVENT_STUCK_MODIFIERS
 
 #undef MOUSEKEY_INTERVAL
-#define MOUSEKEY_INTERVAL 10
+#define MOUSEKEY_INTERVAL 0
 
 #undef MOUSEKEY_TIME_TO_MAX
-#define MOUSEKEY_TIME_TO_MAX 20
+#define MOUSEKEY_TIME_TO_MAX 80
 
 #undef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED 3
@@ -46,9 +46,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_MOVE_DELTA 5
 
 #undef MOUSEKEY_DELAY
-#define MOUSEKEY_DELAY 10
+#define MOUSEKEY_DELAY 0
 
 #undef TAPPING_TERM
-#define TAPPING_TERM 100
+#define TAPPING_TERM 150
 
 #endif
