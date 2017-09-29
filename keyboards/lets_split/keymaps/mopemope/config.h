@@ -34,10 +34,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PREVENT_STUCK_MODIFIERS
 
 #undef MOUSEKEY_INTERVAL
-#define MOUSEKEY_INTERVAL 0
+#define MOUSEKEY_INTERVAL 10
 
 #undef MOUSEKEY_TIME_TO_MAX
-#define MOUSEKEY_TIME_TO_MAX 80
+#define MOUSEKEY_TIME_TO_MAX 20
 
 #undef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED 3
