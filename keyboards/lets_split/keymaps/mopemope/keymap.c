@@ -230,20 +230,20 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | Bksp |
+   * | Esc  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | Bksp |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | Esc  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  |  @`  |  :*  |
+   * | Tab  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AD |  :*  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | RL   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Ct/F12|Adjust| Alt  | GUI  |  LR  |Sp/Sft| |En/Sft|Bk/Ra | Left | Down |  Up  |Right |
+   * |Adjust|Ct/F12| Alt  | GUI  |  LR  |Sp/Sft| |En/Sft|Bk/Ra | Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_TAB, KC_Q,             KC_W,    KC_E,    KC_R,   KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,    KC_BSPC, \
-    KC_ESC, LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,   KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    JP_AT,   JP_COLN, \
-    TD(RL), KC_Z,             KC_X,    KC_C,    KC_V,   KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH, JP_BSLS, \
-    TD(CA), TD(AD),           KC_LALT, KC_LGUI, TD(LR), SFT_T(KC_SPC), RSFT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT \
+    KC_ESC, KC_Q,             KC_W,    KC_E,    KC_R,   KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              KC_BSPC, \
+    KC_TAB, LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,   KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), JP_COLN, \
+    TD(RL), KC_Z,             KC_X,    KC_C,    KC_V,   KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           JP_BSLS, \
+    TD(AD), TD(CA),           KC_LALT, KC_LGUI, TD(LR), SFT_T(KC_SPC), RSFT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
   ),
 
   /* Lower
@@ -285,21 +285,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Adjust
    * ,-----------------------------------------, ,-----------------------------------------.
-   * | Esc  |      | WhUp | MsUp | WhDn |Click2| |Click2| PgDn |      | PgUp |      | Del  |
+   * | Esc  |      | WhUp | MsUp | WhDn |WRKSP1| |      | PgDn |      | PgUp |      | Del  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |      | MsLf | MsDn | MsRg |Click1| |Click1|      |      |      |      |Reset |
+   * |Reset |      | MsLf | MsDn | MsRg |WRKSP2| |      |      |      |      |      |Reset |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |WRKSP2|WRKSP1| | Copy |Paste |      | Mute |VolDn |VolUp |
+   * |      |      |      |      |      |      | | Copy |Paste |      | Mute |VolDn |VolUp |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      |      |Click2|Click1| |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [_ADJUST] = KEYMAP( \
-    KC_ESC,  _______, KC_WH_U, KC_MS_U, KC_WH_D, KC_BTN2, KC_BTN2,    KC_PGDN,    _______, KC_PGUP, _______, KC_DEL,  \
-    RESET,   _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, KC_BTN1,    _______,    _______, _______, _______, RESET,   \
-    _______, _______, _______, _______, WRKSP2,  WRKSP1,  LCTL(KC_C), LCTL(KC_V), _______, KC_MUTE, KC_VOLD, KC_VOLU, \
-    _______, _______, _______, _______, _______, _______, _______,    _______,    _______, _______, _______, _______  \
+    KC_ESC,  _______, KC_WH_U, KC_MS_U, KC_WH_D, WRKSP1,  _______,    KC_PGDN,    _______, KC_PGUP, _______, KC_DEL,  \
+    RESET,   _______, KC_MS_L, KC_MS_D, KC_MS_R, WRKSP2,  _______,    _______,    _______, _______, _______, RESET,   \
+    _______, _______, _______, _______, _______, _______, LCTL(KC_C), LCTL(KC_V), _______, KC_MUTE, KC_VOLD, KC_VOLU, \
+    _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______,    _______,    _______, _______, _______, _______  \
   )
 };
 
