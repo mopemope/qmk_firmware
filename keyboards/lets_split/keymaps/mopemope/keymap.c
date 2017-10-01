@@ -234,16 +234,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | Tab  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AD |  :*  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | RL   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
+   * | R/L  |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Adjust|Ct/F12| Alt  | GUI  |  LR  |Sp/Sft| |En/Sft|Bk/Ra | Left | Down |  Up  |Right |
+   * |Ct/F12|Adjust| Alt  | GUI  |  L/R |Sp/Sft| |En/Sft|Bksp/R| Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
     KC_ESC, KC_Q,             KC_W,    KC_E,    KC_R,   KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              KC_BSPC, \
     KC_TAB, LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,   KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), JP_COLN, \
     TD(RL), KC_Z,             KC_X,    KC_C,    KC_V,   KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           JP_BSLS, \
-    TD(AD), TD(CA),           KC_LALT, KC_LGUI, TD(LR), SFT_T(KC_SPC), RSFT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
+    TD(CA), TD(AD),           KC_LALT, KC_LGUI, TD(LR), SFT_T(KC_SPC), RSFT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
   ),
 
   /* Lower
