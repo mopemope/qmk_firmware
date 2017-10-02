@@ -40,28 +40,24 @@ void ca_each(qk_tap_dance_state_t *state, void *user_data) {
 void ca_finished(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         if (state->pressed) {
+            register_code(KC_LALT);
+        } else {
+            unregister_code(KC_LALT);
+        }
+    } else if (state->count == 2) {
+        if (state->pressed) {
             register_code(KC_LCTL);
         } else {
             unregister_code(KC_LCTL);
-            unregister_code(KC_LALT);
-            register_code(KC_F12);
-            unregister_code(KC_F12);
         }
-    } else if (state->count == 2 && state->pressed) {
-        register_code(KC_LALT);
-    } else {
-        unregister_code(KC_LCTL);
-        unregister_code(KC_LALT);
     }
 }
 
 void ca_reset(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1 && !state->pressed) {
-        unregister_code(KC_LCTL);
         unregister_code(KC_LALT);
     } else if (state->count == 2 && !state->pressed) {
         unregister_code(KC_LCTL);
-        unregister_code(KC_LALT);
     }
 }
 
@@ -224,21 +220,21 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | Esc  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | ;/+  |
+   * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | ;/+  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Tab/Al| A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AD |:/Alt |
+   * |Esc/Ct| A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AD |:/Ctl |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |-/Ctl |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Ctl |
+   * |-/Sft |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Sft |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  AD  | GUI  | Alt  |  HE  |Del/L |Sp/Sft| |En/Sft|Bksp/R| Left | Down |  Up  |Right |
+   * |  AD  | GUI  |Alt/Ct|  HE  |Del/L |Sp/Ctl| |En/Alt|Bksp/R| Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              JP_SCLN,         \
-    ALT_T(KC_TAB),  LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), RALT_T(JP_COLN), \
-    CTL_T(KC_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           RCTL_T(JP_BSLS), \
-    TD(AD),         KC_LGUI,          KC_LALT, TD(HE),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), RSFT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
-  ),
+    KC_TAB,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              JP_SCLN,         \
+    CTL_T(KC_ESC),  LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), CTL_T(JP_COLN), \
+    SFT_T(KC_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           SFT_T(JP_BSLS), \
+    TD(AD),         KC_LGUI,          TD(CA),  TD(HE),  LT(_LOWER,KC_DEL), CTL_T(KC_SPC), ALT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
+ ),
 
   /* Lower
    * ,-----------------------------------------, ,-----------------------------------------,
