@@ -173,27 +173,21 @@ void ad_each(qk_tap_dance_state_t *state, void *user_data) {
 void ad_finished(qk_tap_dance_state_t *state, void *user_data) {
     long_tap = false;
     if (state->count == 1) {
-        if (!state->pressed) {
-            layer_tgl = !layer_tgl;
-            layer_off(_LOWER);
-            layer_off(_RAISE);
-            layer_on(_ADJUST);
-        } else {
-            long_tap = true;
-            layer_off(_LOWER);
-            layer_off(_RAISE);
-            layer_on(_ADJUST);
-        }
+        layer_off(_LOWER);
+        layer_off(_RAISE);
+        layer_off(_ADJUST);
+        register_code(KC_F12);
+        unregister_code(KC_F12);
     } else if (state->count == 2) {
         if (!state->pressed) {
             layer_tgl = !layer_tgl;
-            layer_off(_RAISE);
             layer_off(_LOWER);
+            layer_off(_RAISE);
             layer_on(_ADJUST);
         } else {
             long_tap = true;
-            layer_off(_RAISE);
             layer_off(_LOWER);
+            layer_off(_RAISE);
             layer_on(_ADJUST);
         }
     }
@@ -230,27 +224,27 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | Esc  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | Bksp |
+   * | Esc  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | ;/+  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | Tab  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AD |  :*  |
+   * |Tab/Al| A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AD |:/Alt |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | R/L  |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
+   * |-/Ctl |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Ctl |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Ct/F12|Adjust| Alt  | GUI  |  L/R |Sp/Sft| |En/Sft|Bksp/R| Left | Down |  Up  |Right |
+   * |  AD  | GUI  | Alt  |  HE  |Del/L |Sp/Sft| |En/Sft|Bksp/R| Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_ESC, KC_Q,             KC_W,    KC_E,    KC_R,   KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              KC_BSPC, \
-    KC_TAB, LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,   KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), JP_COLN, \
-    TD(RL), KC_Z,             KC_X,    KC_C,    KC_V,   KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           JP_BSLS, \
-    TD(CA), TD(AD),           KC_LALT, KC_LGUI, TD(LR), SFT_T(KC_SPC), RSFT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
+    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              JP_SCLN,         \
+    ALT_T(KC_TAB),  LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), RALT_T(JP_COLN), \
+    CTL_T(KC_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           RCTL_T(JP_BSLS), \
+    TD(AD),         KC_LGUI,          KC_LALT, TD(HE),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), RSFT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
   ),
 
   /* Lower
    * ,-----------------------------------------, ,-----------------------------------------,
    * | Zen  |   !  |   "  |   #  |   $  |   %  | |   &  |  '   |  -   |   (  |   )  | Del  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |   1  |   2  |   3  |   4  |   5  | |      |  ^   |  =   |   ;  |   :  |      |
+   * |      |   1  |   2  |   3  |   4  |   5  | |      |  ^   |  =   |   ;  |   :  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |   6  |   7  |   8  |   9  |   0  | |      |  ~   |      |   +  |   *  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -259,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_LOWER] = KEYMAP( \
     JP_ZHTG, JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC, JP_AMPR, JP_QUOT, JP_MINS, JP_LPRN, JP_RPRN, KC_DEL,  \
-    RESET,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    _______, JP_CIRC, JP_EQL,  JP_SCLN, JP_COLN, JP_BSLS, \
+    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    _______, JP_CIRC, JP_EQL,  JP_SCLN, JP_COLN, JP_BSLS, \
     _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, JP_TILD, _______, JP_PLUS, JP_ASTR, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
   ),
@@ -268,7 +262,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * | Zen  |   1  |   2  |   3  |   4  |   5  | |   6  |   7  |   8  |   9  |   0  | Del  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |  F1  |  F2  |  F3  |  F4  |  F5  | |  F6  |   (  |   )  |   [  |   ]  | yen  |
+   * |      |  F1  |  F2  |  F3  |  F4  |  F5  | |  F6  |   (  |   )  |   [  |   ]  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  F7  |  F8  |  F9  |  F10 |  F11 | |  F12 |      |      |   {  |   }  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -278,28 +272,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = KEYMAP( \
     JP_ZHTG, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
-    RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   JP_LPRN, JP_RPRN, JP_LBRC, JP_RBRC, JP_YEN,  \
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   JP_LPRN, JP_RPRN, JP_LBRC, JP_RBRC, JP_YEN,  \
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12 , _______, _______, JP_LCBR, JP_RCBR, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
   ),
 
   /* Adjust
    * ,-----------------------------------------, ,-----------------------------------------.
-   * | Esc  |      | WhUp | MsUp | WhDn |WRKSP1| |      | PgDn |      | PgUp |      | Del  |
+   * | Esc  | PgDN | WhDn | MsUp | WhUp |WRKSP1| |WRKSP1| WhDn | MsUp | WhUp | PgUP | Del  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |      | MsLf | MsDn | MsRg |WRKSP2| |      |      |      |      |      |Reset |
+   * |Reset |      | MsLf | MsDn | MsRg |WRKSP2| |WRKSP2| MsLf | MsDn | MsRg |      |Reset |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | | Copy |Paste |      | Mute |VolDn |VolUp |
+   * |      |      |      |      | Copy |Paste | |Paste | Copy |      | Mute |VolDn |VolUp |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |Click2|Click1| |      |      |      |      |      |      |
+   * |      |      |      |      |Click2|Click1| |Click1|Click2|      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [_ADJUST] = KEYMAP( \
-    KC_ESC,  _______, KC_WH_U, KC_MS_U, KC_WH_D, WRKSP1,  _______,    KC_PGDN,    _______, KC_PGUP, _______, KC_DEL,  \
-    RESET,   _______, KC_MS_L, KC_MS_D, KC_MS_R, WRKSP2,  _______,    _______,    _______, _______, _______, RESET,   \
-    _______, _______, _______, _______, _______, _______, LCTL(KC_C), LCTL(KC_V), _______, KC_MUTE, KC_VOLD, KC_VOLU, \
-    _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______,    _______,    _______, _______, _______, _______  \
+    KC_ESC,  KC_PGDN, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     WRKSP1,     KC_WH_D,    KC_MS_U, KC_WH_U, KC_PGUP, KC_DEL,  \
+    RESET,   _______, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     WRKSP2,     KC_MS_L,    KC_MS_D, KC_MS_R, _______, RESET,   \
+    _______, _______, _______, _______, LCTL(KC_C), LCTL(KC_V), LCTL(KC_V), LCTL(KC_C), _______, KC_MUTE, KC_VOLD, KC_VOLU, \
+    _______, _______, _______, _______, KC_BTN2,    KC_BTN1,    KC_BTN1,    KC_BTN2,    _______, _______, _______, _______  \
   )
 };
 
