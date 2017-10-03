@@ -176,8 +176,11 @@ void ad_finished(qk_tap_dance_state_t *state, void *user_data) {
     layer_off(_LOWER);
     layer_off(_RAISE);
     layer_off(_ADJUST);
-    register_code(KC_F12);
-    unregister_code(KC_F12);
+    if (layer_tgl) {
+      layer_tgl = !layer_tgl;
+    } else {
+      TAP(KC_F12);
+    }
   } else if (state->count == 2) {
     if (!state->pressed) {
       layer_tgl = !layer_tgl;
