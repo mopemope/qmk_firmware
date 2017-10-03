@@ -28,11 +28,11 @@ enum custom_keycodes {
 };
 
 enum double_taps {
-    CA = 0,
-    RL,
-    LR,
-    AD,
-    HE,
+  CA = 0,
+  RL,
+  LR,
+  AD,
+  HE,
 };
 
 bool layer_tgl = false;
@@ -42,203 +42,203 @@ void ca_each(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void ca_finished(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        if (state->pressed) {
-            register_code(KC_LALT);
-        } else {
-            unregister_code(KC_LALT);
-        }
-    } else if (state->count == 2) {
-        if (state->pressed) {
-            register_code(KC_LCTL);
-        } else {
-            unregister_code(KC_LCTL);
-        }
+  if (state->count == 1) {
+    if (state->pressed) {
+      register_code(KC_LALT);
+    } else {
+      unregister_code(KC_LALT);
     }
+  } else if (state->count == 2) {
+    if (state->pressed) {
+      register_code(KC_LCTL);
+    } else {
+      unregister_code(KC_LCTL);
+    }
+  }
 }
 
 void ca_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1 && !state->pressed) {
-        unregister_code(KC_LALT);
-    } else if (state->count == 2 && !state->pressed) {
-        unregister_code(KC_LCTL);
-    }
+  if (state->count == 1 && !state->pressed) {
+    unregister_code(KC_LALT);
+  } else if (state->count == 2 && !state->pressed) {
+    unregister_code(KC_LCTL);
+  }
 }
 
 void lr_each(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void lr_finished(qk_tap_dance_state_t *state, void *user_data) {
-    long_tap = false;
-    if (state->count == 1) {
-        if (!state->pressed) {
-            layer_tgl = !layer_tgl;
-            layer_off(_ADJUST);
-            layer_off(_RAISE);
-            layer_on(_LOWER);
-        } else {
-            long_tap = true;
-            layer_off(_ADJUST);
-            layer_off(_RAISE);
-            layer_on(_LOWER);
-        }
-    } else if (state->count == 2) {
-        if (!state->pressed) {
-            layer_tgl = !layer_tgl;
-            layer_off(_ADJUST);
-            layer_off(_LOWER);
-            layer_on(_RAISE);
-        } else {
-            long_tap = true;
-            layer_off(_ADJUST);
-            layer_off(_LOWER);
-            layer_on(_RAISE);
-        }
+  long_tap = false;
+  if (state->count == 1) {
+    if (!state->pressed) {
+      layer_tgl = !layer_tgl;
+      layer_off(_ADJUST);
+      layer_off(_RAISE);
+      layer_on(_LOWER);
+    } else {
+      long_tap = true;
+      layer_off(_ADJUST);
+      layer_off(_RAISE);
+      layer_on(_LOWER);
     }
+  } else if (state->count == 2) {
+    if (!state->pressed) {
+      layer_tgl = !layer_tgl;
+      layer_off(_ADJUST);
+      layer_off(_LOWER);
+      layer_on(_RAISE);
+    } else {
+      long_tap = true;
+      layer_off(_ADJUST);
+      layer_off(_LOWER);
+      layer_on(_RAISE);
+    }
+  }
 }
 
 void lr_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (long_tap && !state->pressed) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-        return;
-    }
-    if (!layer_tgl) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-    }
-    if (state->count > 2) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-    }
+  if (long_tap && !state->pressed) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+    return;
+  }
+  if (!layer_tgl) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+  }
+  if (state->count > 2) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+  }
 }
 
 void rl_each(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void rl_finished(qk_tap_dance_state_t *state, void *user_data) {
-    long_tap = false;
-    if (state->count == 1) {
-        if (!state->pressed) {
-            layer_tgl = !layer_tgl;
-            layer_off(_ADJUST);
-            layer_off(_LOWER);
-            layer_on(_RAISE);
-        } else {
-            long_tap = true;
-            layer_off(_ADJUST);
-            layer_off(_LOWER);
-            layer_on(_RAISE);
-        }
-    } else if (state->count == 2) {
-        if (!state->pressed) {
-            layer_tgl = !layer_tgl;
-            layer_off(_ADJUST);
-            layer_off(_RAISE);
-            layer_on(_LOWER);
-        } else {
-            long_tap = true;
-            layer_off(_ADJUST);
-            layer_off(_RAISE);
-            layer_on(_LOWER);
-        }
+  long_tap = false;
+  if (state->count == 1) {
+    if (!state->pressed) {
+      layer_tgl = !layer_tgl;
+      layer_off(_ADJUST);
+      layer_off(_LOWER);
+      layer_on(_RAISE);
+    } else {
+      long_tap = true;
+      layer_off(_ADJUST);
+      layer_off(_LOWER);
+      layer_on(_RAISE);
     }
+  } else if (state->count == 2) {
+    if (!state->pressed) {
+      layer_tgl = !layer_tgl;
+      layer_off(_ADJUST);
+      layer_off(_RAISE);
+      layer_on(_LOWER);
+    } else {
+      long_tap = true;
+      layer_off(_ADJUST);
+      layer_off(_RAISE);
+      layer_on(_LOWER);
+    }
+  }
 }
 
 void rl_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (long_tap && !state->pressed) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-        return;
-    }
-    if (!layer_tgl) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-    }
-    if (state->count > 2) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-    }
+  if (long_tap && !state->pressed) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+    return;
+  }
+  if (!layer_tgl) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+  }
+  if (state->count > 2) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+  }
 }
 
 void ad_each(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void ad_finished(qk_tap_dance_state_t *state, void *user_data) {
-    long_tap = false;
-    if (state->count == 1) {
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-        layer_off(_ADJUST);
-        register_code(KC_F12);
-        unregister_code(KC_F12);
-    } else if (state->count == 2) {
-        if (!state->pressed) {
-            layer_tgl = !layer_tgl;
-            layer_off(_LOWER);
-            layer_off(_RAISE);
-            layer_on(_ADJUST);
-        } else {
-            long_tap = true;
-            layer_off(_LOWER);
-            layer_off(_RAISE);
-            layer_on(_ADJUST);
-        }
+  long_tap = false;
+  if (state->count == 1) {
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+    layer_off(_ADJUST);
+    register_code(KC_F12);
+    unregister_code(KC_F12);
+  } else if (state->count == 2) {
+    if (!state->pressed) {
+      layer_tgl = !layer_tgl;
+      layer_off(_LOWER);
+      layer_off(_RAISE);
+      layer_on(_ADJUST);
+    } else {
+      long_tap = true;
+      layer_off(_LOWER);
+      layer_off(_RAISE);
+      layer_on(_ADJUST);
     }
+  }
 }
 
 void ad_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (long_tap && !state->pressed) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-        return;
-    }
-    if (!layer_tgl) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-    }
-    if (state->count > 2) {
-        layer_off(_ADJUST);
-        layer_off(_LOWER);
-        layer_off(_RAISE);
-    }
+  if (long_tap && !state->pressed) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+    return;
+  }
+  if (!layer_tgl) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+  }
+  if (state->count > 2) {
+    layer_off(_ADJUST);
+    layer_off(_LOWER);
+    layer_off(_RAISE);
+  }
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [CA] = ACTION_TAP_DANCE_FN_ADVANCED (ca_each, ca_finished, ca_reset),
-    [LR] = ACTION_TAP_DANCE_FN_ADVANCED (lr_each, lr_finished, lr_reset),
-    [RL] = ACTION_TAP_DANCE_FN_ADVANCED (rl_each, rl_finished, rl_reset),
-    [AD] = ACTION_TAP_DANCE_FN_ADVANCED (ad_each, ad_finished, ad_reset),
-    [HE] = ACTION_TAP_DANCE_DOUBLE (JP_MHEN, JP_HENK),
+  [CA] = ACTION_TAP_DANCE_FN_ADVANCED (ca_each, ca_finished, ca_reset),
+  [LR] = ACTION_TAP_DANCE_FN_ADVANCED (lr_each, lr_finished, lr_reset),
+  [RL] = ACTION_TAP_DANCE_FN_ADVANCED (rl_each, rl_finished, rl_reset),
+  [AD] = ACTION_TAP_DANCE_FN_ADVANCED (ad_each, ad_finished, ad_reset),
+  [HE] = ACTION_TAP_DANCE_DOUBLE (JP_MHEN, JP_HENK),
 };
 
 
 LEADER_EXTERNS();
 void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-        leading = false;
-        leader_end();
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
 
-        SEQ_ONE_KEY(KC_SPC){
-            register_code(KC_LCTL);
-            TAP(KC_SPC);
-            unregister_code(KC_LCTL);
-        }
-        SEQ_ONE_KEY(KC_Z){
-            register_code(KC_LCTL);
-            TAP(KC_Z);
-            unregister_code(KC_LCTL);
-        }
-
+    SEQ_ONE_KEY(KC_SPC){
+      register_code(KC_LCTL);
+      TAP(KC_SPC);
+      unregister_code(KC_LCTL);
     }
+    SEQ_ONE_KEY(KC_Z){
+      register_code(KC_LCTL);
+      TAP(KC_Z);
+      unregister_code(KC_LCTL);
+    }
+
+  }
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
