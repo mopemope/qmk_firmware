@@ -16,6 +16,10 @@ extern keymap_config_t keymap_config;
 #define WRKSP1 LALT(LCTL(KC_UP))
 #define WRKSP2 LALT(LCTL(KC_DOWN))
 
+#define TAP(code)  \
+  register_code (code); \
+  unregister_code (code)
+
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
@@ -217,6 +221,26 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 };
 
 
+LEADER_EXTERNS();
+void matrix_scan_user(void) {
+    LEADER_DICTIONARY() {
+        leading = false;
+        leader_end();
+
+        SEQ_ONE_KEY(KC_SPC){
+            register_code(KC_LCTL);
+            TAP(KC_SPC);
+            unregister_code(KC_LCTL);
+        }
+        SEQ_ONE_KEY(KC_Z){
+            register_code(KC_LCTL);
+            TAP(KC_Z);
+            unregister_code(KC_LCTL);
+        }
+
+    }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
@@ -226,14 +250,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |-/Sft |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Sft |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  AD  | GUI  |Alt/Ct|  HE  |Del/L |Sp/Ctl| |En/Alt|Bksp/R| Left | Down |  Up  |Right |
+   * |  AD  | GUI  | LEAD |  HE  |Del/L |Sp/Ctl| |En/Alt|Bksp/R| Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
     KC_TAB,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              JP_SCLN,         \
     CTL_T(KC_ESC),  LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), CTL_T(JP_COLN), \
     SFT_T(KC_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           SFT_T(JP_BSLS), \
-    TD(AD),         KC_LGUI,          TD(CA),  TD(HE),  LT(_LOWER,KC_DEL), CTL_T(KC_SPC), ALT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
+    TD(AD),         KC_LGUI,          KC_LEAD, TD(HE),  LT(_LOWER,KC_DEL), CTL_T(KC_SPC), ALT_T(KC_ENT), LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,             KC_RIGHT \
  ),
 
   /* Lower
