@@ -314,18 +314,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | ;/+  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | Esc  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AR |  :   |
+   * |Esc/Al| A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AR |:/Alt |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  -   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \_  |
+   * |-/Ctl |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Ctl |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | LEAD | Ctl  | Alt  | GUI  |Del/L |Sp/Sft| |En/Sft|Bksp/R| Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN,  \
-    KC_ESC,  LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ARROW,JP_AT), JP_COLN,  \
-    KC_MINS, KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS,  \
-    KC_LEAD, KC_LCTL,          KC_LALT, KC_LGUI, LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT  \
+    KC_TAB,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN,        \
+    ALT_T(KC_ESC),  LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ARROW,JP_AT), ALT_T(JP_COLN), \
+    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          CTL_T(JP_BSLS), \
+    KC_LEAD,        KC_LCTL,          KC_LALT, KC_LGUI, LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT        \
  ),
 
   /* Lower
@@ -352,7 +352,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  F1  |  F2  |  F3  |  F4  |  F5  | |  F6  |   (  |   )  |   [  |   ]  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 | |  F12 |      |      |   {  |   }  |      |
+   * |      |  F7  |  F8  |  F9  |  F10 |  F11 | |  F12 |  F12 |      |   {  |   }  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -361,7 +361,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = KEYMAP( \
     JP_ZHTG, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    JP_PIPE, \
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   JP_LPRN, JP_RPRN, JP_LBRC, JP_RBRC, JP_YEN,  \
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12 , _______, _______, JP_LCBR, JP_RCBR, _______, \
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  _______, KC_F12,  _______, JP_LCBR, JP_RCBR, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
   ),
 
