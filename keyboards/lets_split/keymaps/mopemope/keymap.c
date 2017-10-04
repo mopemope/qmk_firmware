@@ -237,6 +237,11 @@ void matrix_scan_user(void) {
       TAP(KC_F12);
     }
 
+    // guake
+    SEQ_ONE_KEY(KC_LGUI){
+      TAP(KC_F12);
+    }
+
     // tmux prefix
     SEQ_ONE_KEY(KC_Z){
       register_code(KC_LCTL);
@@ -289,35 +294,6 @@ void matrix_scan_user(void) {
       register_code(KC_LGUI);
       TAP(KC_DOWN);
       unregister_code(KC_LGUI);
-    }
-
-    // layer
-    // LOWER
-    SEQ_ONE_KEY(KC_L){
-      if (layer_tgl) {
-        layer_off(_LOWER);
-      } else {
-        layer_on(_LOWER);
-      }
-      layer_tgl = !layer_tgl;
-    }
-    // RAISE
-    SEQ_ONE_KEY(KC_R){
-      if (layer_tgl) {
-        layer_off(_RAISE);
-      } else {
-        layer_on(_RAISE);
-      }
-      layer_tgl = !layer_tgl;
-    }
-    // ADJUST
-    SEQ_ONE_KEY(KC_A){
-      if (layer_tgl) {
-        layer_off(_ADJUST);
-      } else {
-        layer_on(_ADJUST);
-      }
-      layer_tgl = !layer_tgl;
     }
 
     // henkan
