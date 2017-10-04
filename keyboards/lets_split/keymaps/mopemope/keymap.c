@@ -9,13 +9,45 @@ extern keymap_config_t keymap_config;
 #define _LOWER  1
 #define _RAISE  2
 #define _ADJUST 3
-#define _ARROW  4
+#define _EMACS  4
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
 #define WRKSP1 LALT(LCTL(KC_UP))
 #define WRKSP2 LALT(LCTL(KC_DOWN))
+
+// Emacs shortcut
+// C-z
+#define CA LCTL(KC_A)
+// C-z
+#define CZ LCTL(KC_Z)
+// C-g
+#define CG LCTL(KC_G)
+// C-x
+#define CX LCTL(KC_X)
+// C-s
+#define CS LCTL(KC_S)
+// C-:
+#define CCOLN LCTL(JP_COLN)
+// C-;
+#define CSCLN LCTL(JP_SCLN)
+// C-<
+#define C_LT LCTL(JP_LT)
+// C->
+#define C_GT LCTL(JP_GT)
+
+// highlight symbol mode
+// C-M-n
+#define CMN LCTL(LALT(KC_N))
+// C-M-s
+#define CMP LCTL(LALT(KC_P))
+
+// M-.
+#define MDOT  LALT(KC_DOT)
+// C-M-.
+#define CMDOT LCTL(LALT(KC_DOT))
+
 
 #define TAP(code)  \
   register_code (code); \
@@ -26,12 +58,11 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   ADJUST,
-  ARROW,
+  EMACS,
 };
 
 enum double_taps {
-  CA = 0,
-  RL,
+  RL = 0,
   LR,
   AD,
   HE,
@@ -219,7 +250,6 @@ void ad_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [CA] = ACTION_TAP_DANCE_FN_ADVANCED (ca_each, ca_finished, ca_reset),
   [LR] = ACTION_TAP_DANCE_FN_ADVANCED (lr_each, lr_finished, lr_reset),
   [RL] = ACTION_TAP_DANCE_FN_ADVANCED (rl_each, rl_finished, rl_reset),
   [AD] = ACTION_TAP_DANCE_FN_ADVANCED (ad_each, ad_finished, ad_reset),
@@ -325,9 +355,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_QWERTY] = KEYMAP( \
     KC_TAB,         KC_Q,             KC_W,       KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN,        \
-    ALT_T(KC_ESC),  LT(_ADJUST,KC_A), KC_S,       KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ARROW,JP_AT), ALT_T(JP_COLN), \
+    ALT_T(KC_ESC),  LT(_ADJUST,KC_A), KC_S,       KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS,JP_AT), ALT_T(JP_COLN), \
     CTL_T(JP_MINS), KC_Z,             KC_X,       KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          CTL_T(JP_BSLS), \
-    KC_LEAD,        RESET,            MO(_RAISE), TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
+    KC_LEAD,        RESET,            MO(_RAISE), TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT        \
  ),
 
   /* Lower
@@ -386,22 +416,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RESET,   _______, _______, _______, KC_BTN2,    KC_BTN1,    _______, _______, _______, _______, _______, RESET    \
   ),
 
-  /* Arrow
+  /* Emacs
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |      |      |      |      |      |      | |      | PgDN |  Up  | PgUp |      |      |
+   * |      |      |      |      |      | CMP  | |      | PgDN |  Up  | PgUp |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      | Left | Down |Right |      |      |
+   * |      |  CA  |  CS  |CSCLN |CCOLN | CMN  | |      | Left | Down |Right |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |  CZ  |  CX  |      |      |      | |      | C-LT | C-GT |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |Reset |      |      |      |      |      | |      |      |      |      |      |Reset |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [_ARROW] = KEYMAP( \
-    _______, _______, _______, _______, _______, _______, _______, KC_PGDN, KC_UP,   KC_PGUP,  _______, _______, \
-    _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______, \
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, \
+  [_EMACS] = KEYMAP( \
+    _______, _______, _______, _______, _______, CMP,     _______, KC_PGDN, KC_UP,   KC_PGUP,  _______, _______, \
+    _______, CA,      CS,      CSCLN,   CCOLN,   CMN,     _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______, \
+    _______, CZ,      CX,      _______, _______, _______, _______, C_LT,    C_GT,    _______,  _______, _______, \
     RESET,   _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, RESET    \
   )
 };
