@@ -302,30 +302,19 @@ void matrix_scan_user(void) {
       unregister_code(KC_LALT);
     }
 
-    // HYPER
-    // HYPER + ↑
     SEQ_ONE_KEY(KC_UP){
-      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_LALT);
       TAP(KC_UP);
-      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
+      unregister_code(KC_LALT);
     }
-    // HYPER + ←
-    SEQ_ONE_KEY(KC_LEFT){
-      register_code(KC_LGUI);
-      TAP(KC_LEFT);
-      unregister_code(KC_LGUI);
-    }
-    // HYPER + →
-    SEQ_ONE_KEY(KC_RIGHT){
-      register_code(KC_LGUI);
-      TAP(KC_RIGHT);
-      unregister_code(KC_LGUI);
-    }
-    // HYPER + ↓
     SEQ_ONE_KEY(KC_DOWN){
-      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_LALT);
       TAP(KC_DOWN);
-      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
+      unregister_code(KC_LALT);
     }
 
     // henkan
@@ -338,26 +327,48 @@ void matrix_scan_user(void) {
       TAP(JP_MHEN);
     }
 
+
+    // Ctrl + Shift + Alt + ↑
+    SEQ_TWO_KEYS(KC_Z, KC_UP){
+      register_code(KC_LCTL);
+      register_code(KC_LALT);
+      register_code(KC_LSFT);
+      TAP(KC_UP);
+      unregister_code(KC_LCTL);
+      unregister_code(KC_LALT);
+      unregister_code(KC_LSFT);
+    }
+
+    // Ctrl + Shift + Alt + ↓
+    SEQ_TWO_KEYS(KC_Z, KC_DOWN){
+      register_code(KC_LCTL);
+      register_code(KC_LALT);
+      register_code(KC_LSFT);
+      TAP(KC_DOWN);
+      unregister_code(KC_LCTL);
+      unregister_code(KC_LALT);
+      unregister_code(KC_LSFT);
+    }
   }
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Qwerty
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   | ;/+  |
+   * | Esc  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   |  ;   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Esc/Ct| A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AR |:/Ctl |
+   * | Tab  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/Ema|  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  -=  |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \   |
+   * |-=/Ctl|  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | LEAD |Reset |  Alt | GUI  |Del/L |Sp/Sft| |En/Sft|Bksp/R| Left | Down |  Up  |Right |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_TAB,        KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN,        \
-    CTL_T(KC_ESC), LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS,JP_AT), CTL_T(JP_COLN), \
-    JP_MINS,       KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS,        \
-    KC_LEAD,       RESET,            KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT        \
+    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN, \
+    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS,JP_AT), JP_COLN, \
+    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
+    KC_LEAD,        RESET,            KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
  ),
 
   /* Lower
@@ -418,20 +429,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Emacs
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |      |      |      |      |CSCLN | CMP  | |      | PgDN |  Up  | PgUp |      |      |
+   * |      |      |      |      |CSCLN | CMP  | | C-LT | PgDN |  Up  | PgUp |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CA  |  CS  |      |CCOLN | CMN  | |      | Left | Down |Right |      |      |
+   * |      |  CA  |  CS  |      |CCOLN | CMN  | | C-GT | Left | Down |Right |      | Ctrl |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CZ  |  CX  |      |      |      | |      | C-LT | C-GT |      |      |      |
+   * |      |  CZ  |  CX  |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |Reset |      |      |      |      |      | |      |      |      |      |      |Reset |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [_EMACS] = KEYMAP( \
-    _______, _______, _______, _______, CSCLN,   CMP,     _______, KC_PGDN, KC_UP,   KC_PGUP,  _______, _______, \
-    _______, CA,      CS,      _______, CCOLN,   CMN,     _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______, \
-    _______, CZ,      CX,      _______, _______, _______, _______, C_LT,    C_GT,    _______,  _______, _______, \
+    _______, _______, _______, _______, CSCLN,   CMP,     C_LT,    KC_PGDN, KC_UP,   KC_PGUP,  _______, _______, \
+    _______, CA,      CS,      _______, CCOLN,   CMN,     C_GT,    KC_LEFT, KC_DOWN, KC_RIGHT, _______, KC_LCTL, \
+    _______, CZ,      CX,      _______, _______, _______, _______, _______, _______, _______,  _______, _______, \
     RESET,   _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, RESET    \
   )
 };
