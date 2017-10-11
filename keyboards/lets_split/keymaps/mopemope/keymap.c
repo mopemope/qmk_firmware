@@ -365,14 +365,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |-=/Ctl|  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Alt |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | LEAD |Reset |  Alt | GUI  |Del/L |Sp/Sft| |En/Sft|Bksp/R| GUI  | Alt  |Reset |  |   |
+   * | LEAD |Reset |  Alt | GUI  |Del/L |Sp/Sft| |En/Sft|Bksp/R|Emacs | Alt  |Reset |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN,        \
-    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS,JP_AT), JP_COLN,        \
-    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
-    KC_LEAD,        RESET,            KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), TD(GF),  KC_RALT, RESET,            JP_PIPE         \
+    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,       KC_O,    KC_P,             JP_SCLN,        \
+    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,       KC_L,    LT(_EMACS,JP_AT), JP_COLN,        \
+    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM,    KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
+    KC_LEAD,        RESET,            KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), MO(_EMACS), KC_RALT, RESET,            JP_PIPE \
  ),
 
   /* Lower
