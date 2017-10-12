@@ -16,9 +16,11 @@ extern keymap_config_t keymap_config;
 
 #define WRKSP1 LALT(LCTL(KC_UP))
 #define WRKSP2 LALT(LCTL(KC_DOWN))
+#define UWRKSP LSFT(LALT(LCTL(KC_UP)))
+#define DWRKSP LSFT(LALT(LCTL(KC_DOWN)))
 
 // Emacs shortcut
-// C-z
+// C-a
 #define CA LCTL(KC_A)
 // C-z
 #define CZ LCTL(KC_Z)
@@ -28,6 +30,8 @@ extern keymap_config_t keymap_config;
 #define CX LCTL(KC_X)
 // C-s
 #define CS LCTL(KC_S)
+// C-c
+#define CC LCTL(KC_C)
 // C-:
 #define CCOLN LCTL(JP_COLN)
 // C-;
@@ -299,60 +303,6 @@ void matrix_scan_user(void) {
       unregister_code(KC_LCTL);
     }
 
-    // Alt + W
-    SEQ_ONE_KEY(KC_W){
-      register_code(KC_LALT);
-      TAP(KC_W);
-      unregister_code(KC_LALT);
-    }
-
-    SEQ_ONE_KEY(KC_UP){
-      register_code(KC_LCTL);
-      register_code(KC_LALT);
-      TAP(KC_UP);
-      unregister_code(KC_LCTL);
-      unregister_code(KC_LALT);
-    }
-    SEQ_ONE_KEY(KC_DOWN){
-      register_code(KC_LCTL);
-      register_code(KC_LALT);
-      TAP(KC_DOWN);
-      unregister_code(KC_LCTL);
-      unregister_code(KC_LALT);
-    }
-
-    // henkan
-    SEQ_ONE_KEY(KC_H){
-      TAP(JP_HENK);
-    }
-
-    // muhenkan
-    SEQ_ONE_KEY(KC_M){
-      TAP(JP_MHEN);
-    }
-
-
-    // Ctrl + Shift + Alt + ↑
-    SEQ_TWO_KEYS(KC_Z, KC_UP){
-      register_code(KC_LCTL);
-      register_code(KC_LALT);
-      register_code(KC_LSFT);
-      TAP(KC_UP);
-      unregister_code(KC_LCTL);
-      unregister_code(KC_LALT);
-      unregister_code(KC_LSFT);
-    }
-
-    // Ctrl + Shift + Alt + ↓
-    SEQ_TWO_KEYS(KC_Z, KC_DOWN){
-      register_code(KC_LCTL);
-      register_code(KC_LALT);
-      register_code(KC_LSFT);
-      TAP(KC_DOWN);
-      unregister_code(KC_LCTL);
-      unregister_code(KC_LALT);
-      unregister_code(KC_LSFT);
-    }
   }
 }
 
@@ -414,9 +364,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Adjust
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |      |      | WhDn | MsUp | WhUp |WRKSP1| |      |      |  Up  |      |      |      |
+   * |      |      | WhDn | MsUp | WhUp |WRKSP1| |UWRKSP|      |  Up  |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | MsLf | MsDn | MsRg |WRKSP2| |      | Left | Down | Right|      |      |
+   * |      |      | MsLf | MsDn | MsRg |WRKSP2| |DWRKSP| Left | Down | Right|      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      | Copy |Paste | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -425,8 +375,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [_ADJUST] = KEYMAP( \
-    _______, _______, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     _______, _______, KC_UP,   _______,  _______, _______, \
-    _______, _______, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     _______, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, _______, \
+    _______, _______, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     UWRKSP,  _______, KC_UP,   _______,  _______, _______, \
+    _______, _______, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,  KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, _______, \
     _______, _______, _______, _______, LCTL(KC_C), LCTL(KC_V), _______, _______, _______, _______,  _______, _______, \
     RESET,   _______, _______, _______, KC_BTN2,    KC_BTN1,    _______, _______, _______, _______,  _______, RESET    \
   ),
@@ -435,9 +385,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |      |      |      |      |CSCLN | CMP  | | C-LT | PgDN |  Up  | PgUp |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |  CS  |      |CCOLN | CMN  | | C-GT | Left | Down |Right |      | Ctrl |
+   * |      |  CA  |  CS  |      |CCOLN | CMN  | | C-GT | Left | Down |Right |      | Ctrl |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CZ  |  CX  |      |      |      | |      |      |      |      |      |      |
+   * |      |  CZ  |  CX  |  CC  |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |Reset |      |      |      |      |      | |      |      |      |      |      |Reset |
    * `-----------------------------------------' `-----------------------------------------'
@@ -445,8 +395,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_EMACS] = KEYMAP( \
     _______, _______, _______, _______, CSCLN,   CMP,     C_LT,    KC_PGDN, KC_UP,   KC_PGUP,  _______, _______, \
-    _______, _______, CS,      _______, CCOLN,   CMN,     C_GT,    KC_LEFT, KC_DOWN, KC_RIGHT, _______, KC_LCTL, \
-    _______, CZ,      CX,      _______, _______, _______, _______, _______, _______, _______,  _______, _______, \
+    _______, CA,      CS,      _______, CCOLN,   CMN,     C_GT,    KC_LEFT, KC_DOWN, KC_RIGHT, _______, KC_LCTL, \
+    _______, CZ,      CX,      CC,       _______, _______, _______, _______, _______, _______,  _______, _______, \
     RESET,   _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, RESET    \
   )
 };
