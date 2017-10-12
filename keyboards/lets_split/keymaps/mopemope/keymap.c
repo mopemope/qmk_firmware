@@ -73,199 +73,16 @@ enum custom_keycodes {
 };
 
 enum double_taps {
-  RL = 0,
-  LR,
-  AD,
-  HE,
-  GF,
+  GF = 0,
+  E_LT,
+  E_GT,
 };
 
-bool layer_tgl = false;
-bool long_tap = false;
-
-void ca_each(qk_tap_dance_state_t *state, void *user_data) {
-}
-
-void ca_finished(qk_tap_dance_state_t *state, void *user_data) {
-  if (state->count == 1) {
-    if (state->pressed) {
-      register_code(KC_LALT);
-    } else {
-      unregister_code(KC_LALT);
-    }
-  } else if (state->count == 2) {
-    if (state->pressed) {
-      register_code(KC_LCTL);
-    } else {
-      unregister_code(KC_LCTL);
-    }
-  }
-}
-
-void ca_reset(qk_tap_dance_state_t *state, void *user_data) {
-  if (state->count == 1 && !state->pressed) {
-    unregister_code(KC_LALT);
-  } else if (state->count == 2 && !state->pressed) {
-    unregister_code(KC_LCTL);
-  }
-}
-
-void lr_each(qk_tap_dance_state_t *state, void *user_data) {
-}
-
-void lr_finished(qk_tap_dance_state_t *state, void *user_data) {
-  long_tap = false;
-  if (state->count == 1) {
-    if (!state->pressed) {
-      layer_tgl = !layer_tgl;
-      layer_off(_ADJUST);
-      layer_off(_RAISE);
-      layer_on(_LOWER);
-    } else {
-      long_tap = true;
-      layer_off(_ADJUST);
-      layer_off(_RAISE);
-      layer_on(_LOWER);
-    }
-  } else if (state->count == 2) {
-    if (!state->pressed) {
-      layer_tgl = !layer_tgl;
-      layer_off(_ADJUST);
-      layer_off(_LOWER);
-      layer_on(_RAISE);
-    } else {
-      long_tap = true;
-      layer_off(_ADJUST);
-      layer_off(_LOWER);
-      layer_on(_RAISE);
-    }
-  }
-}
-
-void lr_reset(qk_tap_dance_state_t *state, void *user_data) {
-  if (long_tap && !state->pressed) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-    return;
-  }
-  if (!layer_tgl) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-  }
-  if (state->count > 2) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-  }
-}
-
-void rl_each(qk_tap_dance_state_t *state, void *user_data) {
-}
-
-void rl_finished(qk_tap_dance_state_t *state, void *user_data) {
-  long_tap = false;
-  if (state->count == 1) {
-    if (!state->pressed) {
-      layer_tgl = !layer_tgl;
-      layer_off(_ADJUST);
-      layer_off(_LOWER);
-      layer_on(_RAISE);
-    } else {
-      long_tap = true;
-      layer_off(_ADJUST);
-      layer_off(_LOWER);
-      layer_on(_RAISE);
-    }
-  } else if (state->count == 2) {
-    if (!state->pressed) {
-      layer_tgl = !layer_tgl;
-      layer_off(_ADJUST);
-      layer_off(_RAISE);
-      layer_on(_LOWER);
-    } else {
-      long_tap = true;
-      layer_off(_ADJUST);
-      layer_off(_RAISE);
-      layer_on(_LOWER);
-    }
-  }
-}
-
-void rl_reset(qk_tap_dance_state_t *state, void *user_data) {
-  if (long_tap && !state->pressed) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-    return;
-  }
-  if (!layer_tgl) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-  }
-  if (state->count > 2) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-  }
-}
-
-void ad_each(qk_tap_dance_state_t *state, void *user_data) {
-}
-
-void ad_finished(qk_tap_dance_state_t *state, void *user_data) {
-  long_tap = false;
-  if (state->count == 1) {
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-    layer_off(_ADJUST);
-    if (layer_tgl) {
-      layer_tgl = !layer_tgl;
-    } else {
-      TAP(KC_F12);
-    }
-  } else if (state->count == 2) {
-    if (!state->pressed) {
-      layer_tgl = !layer_tgl;
-      layer_off(_LOWER);
-      layer_off(_RAISE);
-      layer_on(_ADJUST);
-    } else {
-      long_tap = true;
-      layer_off(_LOWER);
-      layer_off(_RAISE);
-      layer_on(_ADJUST);
-    }
-  }
-}
-
-void ad_reset(qk_tap_dance_state_t *state, void *user_data) {
-  if (long_tap && !state->pressed) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-    return;
-  }
-  if (!layer_tgl) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-  }
-  if (state->count > 2) {
-    layer_off(_ADJUST);
-    layer_off(_LOWER);
-    layer_off(_RAISE);
-  }
-}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  /* [LR] = ACTION_TAP_DANCE_FN_ADVANCED (lr_each, lr_finished, lr_reset), */
-  /* [RL] = ACTION_TAP_DANCE_FN_ADVANCED (rl_each, rl_finished, rl_reset), */
-  /* [AD] = ACTION_TAP_DANCE_FN_ADVANCED (ad_each, ad_finished, ad_reset), */
-  /* [HE] = ACTION_TAP_DANCE_DOUBLE (JP_MHEN, JP_HENK), */
   [GF] = ACTION_TAP_DANCE_DOUBLE (KC_LGUI, KC_F12),
+  [E_LT] = ACTION_TAP_DANCE_DOUBLE (C_LT, A_LT),
+  [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_GT, A_GT),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -277,15 +94,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |-=/Ctl|  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   |EMACS |  ALT | GUI  |DEL/L |SP/SFT| |EN/SFT| BS/R | GUI  | ALT  |LOWER |  |   |
+   * |  ^   |RAISE |  ALT | GUI  |DEL/L |SP/SFT| |EN/CTL| BS/R | GUI  | ALT  |LOWER |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
     KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN, \
     KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS,JP_AT), JP_COLN, \
     CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
-    JP_CIRC,        MO(_EMACS),       KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), TD(GF),  KC_RALT, MO(_LOWER),       JP_PIPE  \
- ),
+    JP_CIRC,        MO(_RAISE),       KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), CTL_T(KC_ENT),  LT(_RAISE,KC_BSPC), TD(GF),  KC_RALT, MO(_LOWER),       JP_PIPE  \
+  ),
 
   /* Lower
    * ,-----------------------------------------, ,-----------------------------------------,
@@ -345,21 +162,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Emacs
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |      |      |      |      |      |      | |      |      |  Up  |      |      |      |
+   * |      |      |      |      |      |      | |      | E_LT |  Up  | E_GT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CA  |  CS  |      |      |      | |      | Left | Down |Right |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |  CX  |  CC  |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |RESET |      |      | C_SL |DE/ALT|SP/CTL| |EN/CTL|BS/ALT|      |      |      |RESET |
+   * |      |      |      | C_SL |DE/ALT|SP/CTL| |EN/CTL|BS/ALT|      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [_EMACS] = KEYMAP( \
-    _______, _______, _______, _______, _______,       _______,       _______,       _______,        KC_UP,   _______,  _______, _______, \
+    _______, _______, _______, _______, _______,       _______,       _______,       TD(E_LT),       KC_UP,   TD(E_GT), _______, _______, \
     _______, CA,      CS,      _______, _______,       _______,       _______,       KC_LEFT,        KC_DOWN, KC_RIGHT, _______, _______, \
-    _______, CZ,      CX,      CC,      _______,       _______,       _______,       _______,        _______, _______,  _______, _______, \
-    RESET,   _______, _______, C_SL,    ALT_T(KC_DEL), CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, RESET    \
+    _______, CZ,      CX,      CC,      _______,       _______,       _______,       _______,        _______, MDOT,     _______, _______, \
+    _______, _______, _______, C_SL,    ALT_T(KC_DEL), CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, _______  \
   )
 };
 
