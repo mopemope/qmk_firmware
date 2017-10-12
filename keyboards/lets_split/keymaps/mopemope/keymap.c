@@ -272,16 +272,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | Tab  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/EM |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |-=/Ctl|  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Alt |
+   * |-=/Ctl|  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | Alt  |Reset |  Alt | GUI  |Del/L |Sp/Sft| |EN/Sft| BS/R |EMACS | Alt  |Reset |  |   |
+   * |  ^   |RAISE |  Alt | GUI  |Del/L |SP/SFT| |EN/SFT| BS/R | GUI  | Alt  |LOWER |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,       KC_O,    KC_P,             JP_SCLN,        \
-    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,       KC_L,    LT(_EMACS,JP_AT), JP_COLN,        \
-    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM,    KC_DOT,  JP_SLSH,          JP_BSLS, \
-    KC_LALT,        RESET,            KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), MO(_EMACS), KC_RALT, RESET,            JP_PIPE \
+    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN,        \
+    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS,JP_AT), JP_COLN,        \
+    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
+    JP_CIRC,        MO(_RAISE),       KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), TD(GF),  KC_RALT, MO(_LOWER),       JP_PIPE \
  ),
 
   /* Lower
@@ -325,30 +325,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |      |      | WhDn | MsUp | WhUp |WRKSP1| |UWRKSP|      |  Up  |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | MsLf | MsDn | MsRg |WRKSP2| |DWRKSP| Left | Down | Right|      |      |
+   * |RESET |      | MsLf | MsDn | MsRg |WRKSP2| |DWRKSP| Left | Down | Right|      |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      | Copy |Paste | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |      |      |      |Click2|Click1| |      |      |      |      |      |Reset |
+   * |      |      |      |      |Click2|Click1| |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [_ADJUST] = KEYMAP( \
     _______, _______, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     UWRKSP,  _______, KC_UP,   _______,  _______, _______, \
-    _______, _______, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,  KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, _______, \
+    RESET,   _______, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,  KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, RESET,   \
     _______, _______, _______, _______, LCTL(KC_C), LCTL(KC_V), _______, _______, _______, _______,  _______, _______, \
-    RESET,   _______, _______, _______, KC_BTN2,    KC_BTN1,    _______, _______, _______, _______,  _______, RESET    \
+    _______, _______, _______, _______, KC_BTN2,    KC_BTN1,    _______, _______, _______, _______,  _______, _______  \
   ),
 
   /* Emacs
    * ,-----------------------------------------, ,-----------------------------------------.
    * |      |      |      |      |      |      | |      | PgDN |  Up  | PgUp |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CA  |  CS  |      |      |      | |      | Left | Down |Right |      | Ctrl |
+   * |      |  CA  |  CS  |      |      |      | |      | Left | Down |Right |      | CTRL |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |  CX  |  CC  |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |      |      |      |DE/Alt|SP/Ctl| |EN/Ctl|BS/Alt|      |      |      |Reset |
+   * |RESET |      |      |      |DE/ALT|SP/CTL| |EN/CTL|BS/ALT|      |      |      |RESET |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
