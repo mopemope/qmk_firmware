@@ -283,14 +283,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |-=/Ctl|  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/Alt |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | GUI  |Reset |  Alt | Ctrl |Del/L |Sp/Sft| |EN/Sft| BS/R | Ctrl | Alt  |Reset |  |   |
+   * | Alt  |Reset |  Alt | GUI  |Del/L |Sp/Sft| |EN/Sft| BS/R |EMACS | Alt  |Reset |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [_QWERTY] = KEYMAP( \
-    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,             JP_SCLN,        \
-    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS,JP_AT), JP_COLN,        \
-    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
-    TD(GF),         RESET,            KC_LALT, KC_LCTL, LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), KC_RCTL, KC_RALT, RESET,            JP_PIPE \
+    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,       KC_O,    KC_P,             JP_SCLN,        \
+    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,       KC_L,    LT(_EMACS,JP_AT), JP_COLN,        \
+    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM,    KC_DOT,  JP_SLSH,          JP_BSLS, \
+    KC_LALT,        RESET,            KC_LALT, TD(GF),  LT(_LOWER,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT),  LT(_RAISE,KC_BSPC), MO(_EMACS), KC_RALT, RESET,            JP_PIPE \
  ),
 
   /* Lower
@@ -357,15 +357,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |  CX  |  CC  |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |Reset |      |      |      |      |      | |EN/Ctl|BS/Alt|      |      |      |Reset |
+   * |Reset |      |      |      |DE/Alt|SP/Ctl| |EN/Ctl|BS/Alt|      |      |      |Reset |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [_EMACS] = KEYMAP( \
-    _______, _______, _______, _______, _______, _______, _______,       KC_PGDN,       KC_UP,   KC_PGUP,  _______, _______, \
-    _______, CA,      CS,      _______, _______, _______, _______,       KC_LEFT,       KC_DOWN, KC_RIGHT, _______, KC_LCTL, \
-    _______, CZ,      CX,      CC,      _______, _______, _______,       _______,       _______, _______,  _______, _______, \
-    RESET,   _______, _______, _______, _______, _______, CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, RESET \
+    _______, _______, _______, _______, _______,       _______,       _______,       KC_PGDN,        KC_UP,   KC_PGUP,  _______, _______, \
+    _______, CA,      CS,      _______, _______,       _______,       _______,       KC_LEFT,        KC_DOWN, KC_RIGHT, _______, KC_LCTL, \
+    _______, CZ,      CX,      CC,      _______,       _______,       _______,       _______,        _______, _______,  _______, _______, \
+    RESET,   _______, _______, _______, ALT_T(KC_DEL), CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, RESET    \
   )
 };
 
