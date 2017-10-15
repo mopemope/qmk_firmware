@@ -5,23 +5,16 @@
 
 extern keymap_config_t keymap_config;
 
-#define _QWERTY 0
-#define _EMACS  1
-#define _EMACS2 2
-#define _LOWER  3
-#define _RAISE  4
-#define _ADJUST 5
-#define _NONE 6
-
-enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  EMACS,
-  EMACS2,
-  LOWER,
-  RAISE,
-  ADJUST,
-  NONE,
-};
+#define QWERTY  0
+#define EMACS   1
+#define EMACS2  2
+#define COLEMAK 3
+#define CEMACS  4
+#define CEMACS2 5
+#define LOWER   6
+#define RAISE   7
+#define ADJUST  8
+#define NONE    9
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
@@ -107,6 +100,10 @@ enum custom_keycodes {
 
 enum double_taps {
   GF = 0,
+  FF12,
+  JF12,
+  TF12,
+  NF12,
   E_LT,
   E_GT,
 };
@@ -114,6 +111,10 @@ enum double_taps {
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [GF] = ACTION_TAP_DANCE_DOUBLE (KC_LGUI, KC_F12),
+  [FF12] = ACTION_TAP_DANCE_DOUBLE (KC_F, KC_F12),
+  [JF12] = ACTION_TAP_DANCE_DOUBLE (KC_J, KC_F12),
+  [TF12] = ACTION_TAP_DANCE_DOUBLE (KC_T, KC_F12),
+  [NF12] = ACTION_TAP_DANCE_DOUBLE (KC_N, KC_F12),
   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
 };
@@ -123,52 +124,108 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * | Esc  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   |  ;   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | Tab  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  | @/AD |  :   |
+   * | Tab  |  A   |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  |  @   |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |-/CTL |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/ALT |
+   * |  -   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,   |   .  |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/CTL| BS/L | GUI  | ALT  |EMACS |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
-  [_QWERTY] = KEYMAP( \
-    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              JP_SCLN,        \
-    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_ADJUST,JP_AT), JP_COLN,        \
-    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           ALT_T(JP_BSLS), \
-    JP_CIRC,        DF(_NONE),        KC_LALT, TD(GF),  LT(_RAISE,KC_DEL), SFT_T(KC_SPC), CTL_T(KC_ENT),  LT(_LOWER,KC_BSPC), TD(GF),  KC_RALT, DF(_EMACS),        JP_PIPE \
+  [QWERTY] = KEYMAP( \
+    KC_ESC,         KC_Q,            KC_W,    KC_E,    KC_R,             KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             JP_SCLN,        \
+    KC_TAB,         LT(ADJUST,KC_A), KC_S,    KC_D,    TD(FF12),         KC_G,          KC_H,          TD(JF12),          KC_K,    KC_L,    LT(ADJUST,JP_AT), JP_COLN, \
+    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
+    JP_CIRC,        DF(NONE),        KC_LALT, KC_LGUI, LT(RAISE,KC_DEL), SFT_T(KC_SPC), CTL_T(KC_ENT), LT(LOWER,KC_BSPC), KC_LGUI, KC_RALT, DF(EMACS),        JP_PIPE         \
   ),
+
   /* EMACS
    * ,-----------------------------------------, ,-----------------------------------------,
    * | Esc  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |   O  |  P   |  ;   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | Tab  | A/AD |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  |@/EM2 |  :   |
+   * | Tab  |  A   |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |   L  |  @   |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |-/CTL |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,<  |  .>  |  /?  |\/ALT |
+   * |  -   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,   |   .  |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/CTL| BS/L | C-M  | ALT  |QWERTY|  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
-  [_EMACS] = KEYMAP( \
-    KC_ESC,         KC_Q,             KC_W,    KC_E,    KC_R,              KC_T,          KC_Y,           KC_U,               KC_I,    KC_O,    KC_P,              JP_SCLN,        \
-    KC_TAB,         LT(_ADJUST,KC_A), KC_S,    KC_D,    KC_F,              KC_G,          KC_H,           KC_J,               KC_K,    KC_L,    LT(_EMACS2,JP_AT), JP_COLN,        \
-    CTL_T(JP_MINS), KC_Z,             KC_X,    KC_C,    KC_V,              KC_B,          KC_N,           KC_M,               KC_COMM, KC_DOT,  JP_SLSH,           ALT_T(JP_BSLS), \
-    JP_CIRC,        DF(_NONE),        KC_LALT, TD(GF),  LT(_RAISE,KC_DEL), SFT_T(KC_SPC), CTL_T(KC_ENT),  LT(_LOWER,KC_BSPC), C_M,     KC_RALT, DF(_QWERTY),             JP_PIPE \
+  [EMACS] = KEYMAP( \
+    KC_ESC,         KC_Q,            KC_W,    KC_E,    KC_R,             KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             JP_SCLN,        \
+    KC_TAB,         LT(ADJUST,KC_A), KC_S,    KC_D,    TD(FF12),         KC_G,          KC_H,          TD(JF12),          KC_K,    KC_L,    LT(EMACS2,JP_AT), JP_COLN, \
+    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
+    JP_CIRC,        DF(NONE),        KC_LALT, KC_LGUI, LT(RAISE,KC_DEL), SFT_T(KC_SPC), CTL_T(KC_ENT), LT(LOWER,KC_BSPC), C_M,     KC_RALT, DF(QWERTY),       JP_PIPE         \
   ),
+
   /* EMACS2
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      |      |      |  CR  |      | |      | E-LT | UP   | E-GT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |RESET |  CA  |  CS  |      |  CF  |  CG  | |      | RIGHT| DOWN | LEFT |      |RESET |
+   * |      |  CA  |  CS  |      |  CF  |  CG  | |      | RIGHT| DOWN | LEFT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|C_BSLS|      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
-  [_EMACS2] = KEYMAP( \
+  [EMACS2] = KEYMAP( \
     _______, _______, _______, _______, CR,      _______,       _______,       TD(E_LT),       C_P,     TD(E_GT), _______, _______, \
-    RESET,   CA,      CS,      _______, CF,      CG,            _______,       C_L,            C_N,     C_R,      _______, RESET,   \
+    _______, CA,      CS,      _______, CF,      CG,            _______,       C_L,            C_N,     C_R,      _______, _______,   \
     _______, CZ,      CX,      CC,      _______, CB,            M_PER,         _______,        _______, _______,  _______, _______, \
     _______, _______, _______, C_SL,    M_D,     CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), C_BSL,   _______,  _______, _______  \
+  ),
+
+  /* COLEMAK
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * | Esc  |  Q   |  W   |  F   |  P   |  G   | |  J   |  L   |  U   |   Y  |  ;   |  :   |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * | Tab  |  A   |  R   |  S   |  T   |  D   | |  H   |  N   |  E   |   I  |   O  |  @   |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |  -   |  Z   |  X   |  C   |  V   |  B   | |  K   |  M   |  ,   |  .   |   /  |  \   |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/CTL| BS/L | GUI  | ALT  |EMACS |  |   |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+  [COLEMAK] = KEYMAP( \
+    KC_ESC,         KC_Q,            KC_W,    KC_F,    KC_P,             KC_G,          KC_J,          KC_L,              KC_U,    KC_Y,    JP_SCLN,         JP_COLN,        \
+    KC_TAB,         LT(ADJUST,KC_A), KC_R,    KC_S,    TD(TF12),         KC_D,          KC_H,          TD(NF12),          KC_E,    KC_I,    LT(ADJUST,KC_O), JP_AT, \
+    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_K,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,         ALT_T(JP_BSLS), \
+    JP_CIRC,        DF(NONE),        KC_LALT, KC_LGUI, LT(RAISE,KC_DEL), SFT_T(KC_SPC), CTL_T(KC_ENT), LT(LOWER,KC_BSPC), KC_LGUI,  KC_RALT, DF(CEMACS),      JP_PIPE         \
+  ),
+
+  /* EMACS(COLEMAK)
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * | Esc  |  Q   |  W   |  F   |  P   |  G   | |  J   |  L   |  U   |   Y  |  ;   |  :   |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * | Tab  |  A   |  R   |  S   |  T   |  D   | |  H   |  N   |  E   |   I  |  O   |  @   |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |  -   |  Z   |  X   |  C   |  V   |  B   | |  K   |  M   |  ,   |  .   |  /   |  \   |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/CTL| BS/L | C-M  | ALT  |COLEMA|  |   |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+  [CEMACS] = KEYMAP( \
+    KC_ESC,         KC_Q,            KC_W,    KC_F,    KC_P,             KC_G,          KC_J,          KC_L,              KC_U,    KC_Y,    JP_SCLN,          JP_COLN,        \
+    KC_TAB,         LT(ADJUST,KC_A), KC_R,    KC_S,    TD(TF12),         KC_D,          KC_H,          TD(NF12),          KC_E,    KC_I,    LT(CEMACS2,KC_O), JP_AT, \
+    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_K,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
+    JP_CIRC,        DF(NONE),        KC_LALT, KC_LGUI, LT(RAISE,KC_DEL), SFT_T(KC_SPC), CTL_T(KC_ENT), LT(LOWER,KC_BSPC), C_M,     KC_RALT, DF(COLEMAK),      JP_PIPE         \
+  ),
+
+  /* EMACS2(COLEMAK)
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |      |      |      |  CF  |      |  CG  | |      | E-LT | UP   | E-GT |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |  CA  |  CR  |  CS  |      |      | |      | RIGHT| DOWN | LEFT |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|C_BSLS|      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+  [CEMACS2] = KEYMAP( \
+    _______, _______, _______, CF,   CR,      CG,            _______,       TD(E_LT),       C_P,     TD(E_GT), _______, _______, \
+    _______, CA,      CR,      CS,   CF,      _______,       _______,       C_L,            C_N,     C_R,      _______, _______, \
+    _______, CZ,      CX,      CC,   _______, CB,            M_PER,         _______,        _______, _______,  _______, _______, \
+    _______, _______, _______, C_SL, M_D,     CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), C_BSL,   _______,  _______, _______  \
   ),
 
   /* LOWER
@@ -182,7 +239,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      | HENK |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
-  [_LOWER] = KEYMAP( \
+  [LOWER] = KEYMAP( \
     JP_ZHTG, JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC, JP_AMPR, JP_QUOT, JP_MINS, JP_LPRN, JP_RPRN, JP_PIPE, \
     RESET,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    _______, JP_CIRC, JP_EQL,  JP_SCLN, JP_COLN, JP_YEN,  \
     _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, JP_TILD, _______, JP_PLUS, JP_ASTR, _______, \
@@ -201,7 +258,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [_RAISE] = KEYMAP( \
+  [RAISE] = KEYMAP( \
     JP_ZHTG, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    JP_PIPE, \
     RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   JP_LPRN, JP_RPRN, JP_LBRC, JP_RBRC, JP_YEN,  \
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, JP_LCBR, JP_RCBR, _______, \
@@ -214,17 +271,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |RESET |      | MsLf | MsDn | MsRg |WRKSP2| |DWRKSP| Left | Down | Right|      |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CZ  |      |      | Copy |Paste | |      |      |      |      |      |      |
+   * |      |  CZ  |      |      | Copy |Paste | |QWERTY|COLEMA|      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |Click2|Click1| |EN/CTL|BS/ALT|      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [_ADJUST] = KEYMAP( \
+  [ADJUST] = KEYMAP( \
     _______, _______, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     UWRKSP,        KC_PGDN,        KC_UP,   KC_PGUP,  _______, _______, \
     RESET,   _______, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,        KC_LEFT,        KC_DOWN, KC_RIGHT, _______, RESET,   \
-    _______, CZ,      _______, _______, LCTL(KC_C), LCTL(KC_V), _______,       _______,        _______, _______,  _______, _______, \
-    _______, _______, _______, _______, KC_BTN2,    KC_BTN1,    CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, _______ \
+    _______, CZ,      _______, _______, LCTL(KC_C), LCTL(KC_V), DF(QWERTY),    DF(COLEMAK),    _______, _______,  _______, _______, \
+    _______, _______, _______, _______, KC_BTN2,    KC_BTN1,    CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, _______  \
   ),
   /* NONE
    * ,-----------------------------------------, ,-----------------------------------------,
@@ -234,14 +291,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |QWERTY|      |      |      |      | |      |      |      |      |EMACS |      |
+   * |CEMACS|COLEMA|      |      |      |      | |      |      |      |      |QWERTY|EMACS |
    * `-----------------------------------------' `-----------------------------------------'
    */
-  [_NONE] = KEYMAP( \
-    XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, \
-    XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, \
-    XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, \
-    XXXXXXX, DF(_QWERTY), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DF(_EMACS), XXXXXXX  \
+  [NONE] = KEYMAP( \
+    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  \
+    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  \
+    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  \
+    DF(CEMACS), DF(COLEMAK), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DF(QWERTY), DF(EMACS) \
   ),
 
 };
