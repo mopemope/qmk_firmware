@@ -160,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      |      |      |  CR  |      | |      | E-LT | UP   | E-GT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CA  |  CS  |      |  CF  |  CG  | |      | RIGHT| DOWN | LEFT |      |      |
+   * |      |  CA  |  CS  |      |  CF  |  CG  | |M-DOT | RIGHT| DOWN | LEFT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -169,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [EMACS2] = KEYMAP( \
     _______, _______, _______, _______, CR,      _______,       _______,       TD(E_LT),       C_P,     TD(E_GT), _______, _______, \
-    _______, CA,      CS,      _______, CF,      CG,            _______,       C_L,            C_N,     C_R,      _______, _______,   \
+    _______, CA,      CS,      _______, CF,      CG,            M_DOT,         C_L,            C_N,     C_R,      _______, _______,   \
     _______, CZ,      CX,      CC,      _______, CB,            M_PER,         _______,        _______, _______,  _______, _______, \
     _______, _______, _______, C_SL,    M_D,     CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), C_BSL,   _______,  _______, _______  \
   ),
@@ -214,7 +214,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      |      |  CF  |      |  CG  | |      | E-LT | UP   | E-GT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CA  |  CR  |  CS  |      |      | |      | RIGHT| DOWN | LEFT |      |      |
+   * |      |  CA  |  CR  |  CS  |      |      | |M-DOT | RIGHT| DOWN | LEFT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [CEMACS2] = KEYMAP( \
     _______, _______, _______, CF,   CR,      CG,            _______,       TD(E_LT),       C_P,     TD(E_GT), _______, _______, \
-    _______, CA,      CR,      CS,   CF,      _______,       _______,       C_L,            C_N,     C_R,      _______, _______, \
+    _______, CA,      CR,      CS,   CF,      _______,       M_DOT,         C_L,            C_N,     C_R,      _______, _______, \
     _______, CZ,      CX,      CC,   _______, CB,            M_PER,         _______,        _______, _______,  _______, _______, \
     _______, _______, _______, C_SL, M_D,     CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), C_BSL,   _______,  _______, _______  \
   ),
@@ -269,7 +269,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |      |      | WhDn | MsUp | WhUp |WRKSP1| |UWRKSP| PgDn |  Up  | PgUP |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |RESET |      | MsLf | MsDn | MsRg |WRKSP2| |DWRKSP| Left | Down | Right|      |RESET |
+   * |RESET | CTRL | MsLf | MsDn | MsRg |WRKSP2| |DWRKSP| Left | Down | Right| CTRL |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |      |      | Copy |Paste | |QWERTY|COLEMA|      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -279,7 +279,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [ADJUST] = KEYMAP( \
     _______, _______, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     UWRKSP,        KC_PGDN,        KC_UP,   KC_PGUP,  _______, _______, \
-    RESET,   _______, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,        KC_LEFT,        KC_DOWN, KC_RIGHT, _______, RESET,   \
+    RESET,   KC_LCTL, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,        KC_LEFT,        KC_DOWN, KC_RIGHT, KC_RCTL, RESET,   \
     _______, CZ,      _______, _______, LCTL(KC_C), LCTL(KC_V), DF(QWERTY),    DF(COLEMAK),    _______, _______,  _______, _______, \
     _______, _______, _______, _______, KC_BTN2,    KC_BTN1,    CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, _______  \
   ),
