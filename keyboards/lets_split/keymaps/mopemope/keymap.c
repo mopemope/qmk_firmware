@@ -13,7 +13,7 @@ extern keymap_config_t keymap_config;
 #define CEMACS2 5
 #define LOWER   6
 #define RAISE   7
-#define ADJUST  8
+#define MISC    8
 #define NONE    9
 
 #define _______ KC_TRNS
@@ -93,6 +93,24 @@ extern keymap_config_t keymap_config;
 // M-D
 #define M_D LALT(KC_D)
 
+// MOD Shortcut
+
+#define COLN  ALT_T(JP_COLN)
+#define TAB   CTL_T(KC_TAB)
+#define MINS  CTL_T(JP_MINS)
+#define DEL   LT(RAISE,KC_DEL)
+#define SPC   SFT_T(KC_SPC)
+#define CSPC  CTL_T(KC_SPC)
+#define ENT   SFT_T(KC_ENT)
+#define CENT  CTL_T(KC_ENT)
+#define BSPC  LT(LOWER,KC_BSPC)
+#define ABSPC ALT_T(KC_BSPC)
+#define GUI   LT(MISC,KC_LGUI)
+#define A_M   LT(MISC,KC_A)
+#define O_M   LT(MISC,KC_O)
+#define AT_M  LT(MISC,JP_AT)
+#define AT_A  ALT_T(JP_AT)
+
 #define TAP(code)  \
   register_code (code); \
   unregister_code (code)
@@ -132,10 +150,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [QWERTY] = KEYMAP( \
-    KC_ESC,         KC_Q,            KC_W,    KC_E,    KC_R,             KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             JP_SCLN,        \
-    KC_TAB,         LT(ADJUST,KC_A), KC_S,    KC_D,    KC_F,             KC_G,          KC_H,          KC_J,              KC_K,    KC_L,    LT(ADJUST,JP_AT), JP_COLN, \
-    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
-    JP_CIRC,        DF(NONE),        KC_LALT, TD(GF),  LT(RAISE,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,KC_BSPC), TD(GF),  KC_RALT, DF(EMACS),        JP_PIPE \
+    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,      JP_SCLN, \
+    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    AT_M,      COLN,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  JP_SLSH,   JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, GUI,     KC_RALT, DF(EMACS), JP_PIPE  \
   ),
 
   /* EMACS
@@ -150,10 +168,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS] = KEYMAP( \
-    KC_ESC,         KC_Q,            KC_W,    KC_E,    KC_R,             KC_T,          KC_Y,          KC_U,              KC_I,    KC_O,    KC_P,             JP_SCLN,        \
-    KC_TAB,         LT(ADJUST,KC_A), KC_S,    KC_D,    KC_F,             KC_G,          KC_H,          KC_J,              KC_K,    KC_L,    LT(EMACS2,JP_AT), JP_COLN, \
-    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_N,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
-    JP_CIRC,        DF(NONE),        KC_LALT, TD(GF),  LT(RAISE,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,KC_BSPC), C_M,     KC_RALT, DF(QWERTY),       JP_PIPE \
+    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,             JP_SCLN, \
+    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    LT(EMACS2,JP_AT), COLN,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, C_M,     KC_RALT, DF(QWERTY),       JP_PIPE  \
   ),
 
   /* EMACS2
@@ -168,10 +186,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
-    _______, _______, _______, _______, CR,      _______,       _______,       TD(E_LT),       C_P,     TD(E_GT), _______, _______, \
-    _______, CA,      CS,      _______, CF,      CG,            M_DOT,         C_L,            C_N,     C_R,      _______, _______,   \
-    _______, CZ,      CX,      CC,      _______, CB,            M_PER,         _______,        _______, _______,  _______, _______, \
-    _______, _______, _______, C_SL,    M_D,     CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), C_BSL,   _______,  _______, _______  \
+    _______, _______, _______, _______, CR,      _______, _______, TD(E_LT), C_P,     TD(E_GT), _______, _______, \
+    _______, CA,      CS,      _______, CF,      CG,      M_DOT,   C_L,      C_N,     C_R,      _______, _______,   \
+    _______, CZ,      CX,      CC,      _______, CB,      M_PER,   _______,  _______, _______,  _______, _______, \
+    _______, _______, _______, C_SL,    M_D,     CSPC,    CENT,    ABSPC,    C_BSL,   _______,  _______, _______  \
   ),
 
   /* COLEMAK
@@ -186,10 +204,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [COLEMAK] = KEYMAP( \
-    KC_ESC,         KC_Q,            KC_W,    KC_F,    KC_P,             KC_G,          KC_J,          KC_L,              KC_U,    KC_Y,    JP_SCLN,         JP_COLN,        \
-    KC_TAB,         LT(ADJUST,KC_A), KC_R,    KC_S,    KC_T,             KC_D,          KC_H,          KC_N,              KC_E,    KC_I,    LT(ADJUST,KC_O), JP_AT, \
-    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_K,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,         ALT_T(JP_BSLS), \
-    JP_CIRC,        DF(NONE),        KC_LALT, TD(GF),  LT(RAISE,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,KC_BSPC), TD(GF),  KC_RALT, DF(CEMACS),      JP_PIPE \
+    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,    KC_Y,    JP_SCLN,    JP_COLN, \
+    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,    KC_I,    O_M,        AT_A,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM, KC_DOT,  JP_SLSH,    JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, GUI,     KC_RALT, DF(CEMACS), JP_PIPE  \
   ),
 
   /* EMACS(COLEMAK)
@@ -204,10 +222,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [CEMACS] = KEYMAP( \
-    KC_ESC,         KC_Q,            KC_W,    KC_F,    KC_P,             KC_G,          KC_J,          KC_L,              KC_U,    KC_Y,    JP_SCLN,          JP_COLN,        \
-    KC_TAB,         LT(ADJUST,KC_A), KC_R,    KC_S,    KC_T,             KC_D,          KC_H,          KC_N,              KC_E,    KC_I,    LT(CEMACS2,KC_O), JP_AT, \
-    CTL_T(JP_MINS), KC_Z,            KC_X,    KC_C,    KC_V,             KC_B,          KC_K,          KC_M,              KC_COMM, KC_DOT,  JP_SLSH,          ALT_T(JP_BSLS), \
-    JP_CIRC,        DF(NONE),        KC_LALT, KC_LGUI, LT(RAISE,KC_DEL), SFT_T(KC_SPC), SFT_T(KC_ENT), LT(LOWER,KC_BSPC), C_M,     KC_RALT, DF(COLEMAK),      JP_PIPE         \
+    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,    KC_Y,    JP_SCLN,          JP_COLN, \
+    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,    KC_I,    LT(CEMACS2,KC_O), AT_A,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, C_M,     KC_RALT, DF(COLEMAK),      JP_PIPE  \
   ),
 
   /* EMACS2(COLEMAK)
@@ -222,10 +240,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [CEMACS2] = KEYMAP( \
-    _______, _______, _______, CF,   CR,      CG,            _______,       TD(E_LT),       C_P,     TD(E_GT), _______, _______, \
-    _______, CA,      CR,      CS,   CF,      _______,       M_DOT,         C_L,            C_N,     C_R,      _______, _______, \
-    _______, CZ,      CX,      CC,   _______, CB,            M_PER,         _______,        _______, _______,  _______, _______, \
-    _______, _______, _______, C_SL, M_D,     CTL_T(KC_SPC), CTL_T(KC_ENT), ALT_T(KC_BSPC), C_BSL,   _______,  _______, _______  \
+    _______, _______, _______, CF,   CR,      CG,      _______, TD(E_LT), C_P,     TD(E_GT), _______, _______, \
+    _______, CA,      CR,      CS,   CF,      _______, M_DOT,   C_L,      C_N,     C_R,      _______, _______, \
+    _______, CZ,      CX,      CC,   _______, CB,      M_PER,   _______,  _______, _______,  _______, _______, \
+    _______, _______, _______, C_SL, M_D,     CSPC,    CENT,    ABSPC,    C_BSL,   _______,  _______, _______  \
   ),
 
   /* LOWER
@@ -265,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, JP_MHEN, _______, _______, _______, _______  \
   ),
 
-  /* ADJUST
+  /* MISC
    * ,-----------------------------------------, ,-----------------------------------------.
    * |      |      | WhDn | MsUp | WhUp |WRKSP1| |UWRKSP| PgDn |  Up  | PgUP |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -277,11 +295,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [ADJUST] = KEYMAP( \
-    _______, _______, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     UWRKSP,        KC_PGDN,        KC_UP,   KC_PGUP,  _______, _______, \
-    RESET,   KC_LCTL, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,        KC_LEFT,        KC_DOWN, KC_RIGHT, KC_RCTL, RESET,   \
-    _______, CZ,      _______, _______, LCTL(KC_C), LCTL(KC_V), DF(QWERTY),    DF(COLEMAK),    _______, _______,  _______, _______, \
-    _______, _______, _______, _______, KC_BTN2,    KC_BTN1,    CTL_T(KC_ENT), ALT_T(KC_BSPC), _______, _______,  _______, _______  \
+  [MISC] = KEYMAP( \
+    _______, _______, KC_WH_D, KC_MS_U, KC_WH_U,    WRKSP1,     UWRKSP,     KC_PGDN,     KC_UP,   KC_PGUP,  _______, _______, \
+    RESET,   KC_LCTL, KC_MS_L, KC_MS_D, KC_MS_R,    WRKSP2,     DWRKSP,     KC_LEFT,     KC_DOWN, KC_RIGHT, KC_RCTL, RESET,   \
+    _______, CZ,      _______, _______, LCTL(KC_C), LCTL(KC_V), DF(QWERTY), DF(COLEMAK), _______, _______,  _______, _______, \
+    _______, _______, _______, _______, KC_BTN2,    KC_BTN1,    CENT,       ABSPC,       _______, _______,  _______, _______  \
   ),
   /* NONE
    * ,-----------------------------------------, ,-----------------------------------------,
