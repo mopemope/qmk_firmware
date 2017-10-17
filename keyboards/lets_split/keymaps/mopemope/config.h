@@ -52,7 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 200
 
 #undef TAPPING_TERM
-#define TAPPING_TERM 100
+#define TAPPING_TERM 120
 
 
 #endif

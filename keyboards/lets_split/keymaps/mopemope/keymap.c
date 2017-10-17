@@ -146,14 +146,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,   |   .  |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | GUI  | ALT  |EMACS |  |   |
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC  | ALT  |EMACS |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [QWERTY] = KEYMAP( \
-    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,      JP_SCLN, \
-    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    AT_M,      COLN,    \
-    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  JP_SLSH,   JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, GUI,     KC_RALT, DF(EMACS), JP_PIPE  \
+    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,     KC_O,    KC_P,      JP_SCLN, \
+    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,     KC_L,    AT_M,      COLN,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM,  KC_DOT,  JP_SLSH,   JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), KC_RALT, DF(EMACS), JP_PIPE \
   ),
 
   /* EMACS
@@ -189,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, CR,      _______, _______, TD(E_LT), C_P,     TD(E_GT), _______, _______, \
     _______, CA,      CS,      _______, CF,      CG,      M_DOT,   C_L,      C_N,     C_R,      _______, _______,   \
     _______, CZ,      CX,      CC,      _______, CB,      M_PER,   _______,  _______, _______,  _______, _______, \
-    _______, _______, _______, C_SL,    M_D,     CSPC,    CENT,    ABSPC,    C_BSL,   _______,  _______, _______  \
+    _______, _______, _______, C_SL,    M_D,     CSPC,    CENT,    ABSPC,    _______, _______,  _______, _______  \
   ),
 
   /* COLEMAK
@@ -200,14 +200,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -   |  Z   |  X   |  C   |  V   |  B   | |  K   |  M   |  ,   |  .   |   /  |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | GUI  | ALT  |EMACS |  |   |
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC | ALT  |EMACS |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [COLEMAK] = KEYMAP( \
-    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,    KC_Y,    JP_SCLN,    JP_COLN, \
-    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,    KC_I,    O_M,        AT_A,    \
-    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM, KC_DOT,  JP_SLSH,    JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, GUI,     KC_RALT, DF(CEMACS), JP_PIPE  \
+    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,     KC_Y,    JP_SCLN,    JP_COLN, \
+    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,     KC_I,    O_M,        AT_A,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM,  KC_DOT,  JP_SLSH,    JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), KC_RALT, DF(CEMACS), JP_PIPE \
   ),
 
   /* EMACS(COLEMAK)
@@ -243,7 +243,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, CF,   CR,      CG,      _______, TD(E_LT), C_P,     TD(E_GT), _______, _______, \
     _______, CA,      CR,      CS,   CF,      _______, M_DOT,   C_L,      C_N,     C_R,      _______, _______, \
     _______, CZ,      CX,      CC,   _______, CB,      M_PER,   _______,  _______, _______,  _______, _______, \
-    _______, _______, _______, C_SL, M_D,     CSPC,    CENT,    ABSPC,    C_BSL,   _______,  _______, _______  \
+    _______, _______, _______, C_SL, M_D,     CSPC,    CENT,    ABSPC,    _______, _______,  _______, _______  \
   ),
 
   /* LOWER
