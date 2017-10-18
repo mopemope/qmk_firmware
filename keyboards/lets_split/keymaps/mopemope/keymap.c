@@ -103,6 +103,8 @@ extern keymap_config_t keymap_config;
 #define CSPC  CTL_T(KC_SPC)
 #define ENT   SFT_T(KC_ENT)
 #define CENT  CTL_T(KC_ENT)
+#define EENT  LT(EMACS2,KC_ENT)
+#define CEENT LT(CEMACS2,KC_ENT)
 #define BSPC  LT(LOWER,KC_BSPC)
 #define ABSPC ALT_T(KC_BSPC)
 #define GUI   LT(MISC,KC_LGUI)
@@ -116,7 +118,6 @@ extern keymap_config_t keymap_config;
   register_code (code); \
   unregister_code (code)
 
-
 enum double_taps {
   GF = 0,
   FF12,
@@ -126,7 +127,6 @@ enum double_taps {
   E_LT,
   E_GT,
 };
-
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [GF] = ACTION_TAP_DANCE_DOUBLE (KC_LGUI, KC_F12),
@@ -147,14 +147,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,   |   .  |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC  | ALT  |EMACS |  |   |
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC | ALT  |EMACS |  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [QWERTY] = KEYMAP( \
     KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,     KC_O,    KC_P,      JP_SCLN, \
     TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,     KC_L,    AT_M,      COLN,    \
     JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM,  KC_DOT,  JP_SLSH,   JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), KC_RALT, DF(EMACS), JP_PIPE \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), KC_RALT, DF(EMACS), JP_PIPE  \
   ),
 
   /* EMACS
@@ -165,14 +165,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,   |   .  |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC | C-M  |QWERTY|  |   |
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/EM2| BS/L | C-M  | ALT  |QWERTY|  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS] = KEYMAP( \
-    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,     KC_O,   KC_P,             JP_SCLN, \
-    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,     KC_L,   LT(EMACS2,JP_AT), COLN,    \
-    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM,  KC_DOT, JP_SLSH,          JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), C_M,    DF(QWERTY),       JP_PIPE \
+    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,             JP_SCLN, \
+    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    LT(EMACS2,JP_AT), COLN,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  EENT, BSPC, C_M,     KC_RALT, DF(QWERTY),       JP_PIPE \
   ),
 
   /* EMACS2
@@ -181,14 +181,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CA  |  CS  |      |  CF  |  CG  | |M-DOT | RIGHT| DOWN | LEFT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  |      |      |      |      |      |
+   * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  | TODO | TODO |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|C_BSLS|      |      |      |
+   * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
-    _______, _______, _______, _______, CR,      _______, _______, TD(E_LT), C_P,     TD(E_GT), _______, _______, \
-    _______, CA,      CS,      _______, CF,      CG,      M_DOT,   C_L,      C_N,     C_R,      _______, _______,   \
+    _______, _______, _______, _______, CR,      _______, _______, TD(E_LT), KC_UP,   TD(E_GT), _______, _______, \
+    _______, CA,      CS,      _______, CF,      CG,      M_DOT,   KC_LEFT,  KC_DOWN, KC_RIGHT, _______, _______, \
     _______, CZ,      CX,      CC,      _______, CB,      M_PER,   _______,  _______, _______,  _______, _______, \
     _______, _______, _______, C_SL,    M_D,     CSPC,    CENT,    ABSPC,    _______, _______,  _______, _______  \
   ),
@@ -208,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,     KC_Y,    JP_SCLN,    JP_COLN, \
     TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,     KC_I,    O_M,        AT_C,    \
     JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM,  KC_DOT,  JP_SLSH,    JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), KC_RALT, DF(CEMACS), JP_PIPE \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), KC_RALT, DF(CEMACS), JP_PIPE  \
   ),
 
   /* EMACS(COLEMAK)
@@ -219,14 +219,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -   |  Z   |  X   |  C   |  V   |  B   | |  K   |  M   |  ,   |  .   |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC | C-M  |COLEMA|  |   |
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/EM2| BS/L | C-M  | ALT  |COLEMA|  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [CEMACS] = KEYMAP( \
-    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,     KC_Y,   JP_SCLN,          JP_COLN, \
-    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,     KC_I,   LT(CEMACS2,KC_O), AT_C,    \
-    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM,  KC_DOT, JP_SLSH,          JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), C_M,    DF(COLEMAK),      JP_PIPE \
+    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J,  KC_L, KC_U,    KC_Y,    JP_SCLN,          JP_COLN, \
+    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H,  KC_N, KC_E,    KC_I,    LT(CEMACS2,KC_O), AT_C,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K,  KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  CEENT, BSPC, C_M,     KC_RALT, DF(COLEMAK),      JP_PIPE  \
   ),
 
   /* EMACS2(COLEMAK)
@@ -237,12 +237,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|C_BSLS|      |      |      |
+   * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [CEMACS2] = KEYMAP( \
-    _______, _______, _______, CF,   CR,      CG,      _______, TD(E_LT), C_P,     TD(E_GT), _______, _______, \
-    _______, CA,      CR,      CS,   CF,      _______, M_DOT,   C_L,      C_N,     C_R,      _______, _______, \
+    _______, _______, _______, CF,   CR,      CG,      _______, TD(E_LT), KC_UP,   TD(E_GT), _______, _______, \
+    _______, CA,      CR,      CS,   CF,      _______, M_DOT,   KC_LEFT,  KC_DOWN, KC_RIGHT, _______, _______, \
     _______, CZ,      CX,      CC,   _______, CB,      M_PER,   _______,  _______, _______,  _______, _______, \
     _______, _______, _______, C_SL, M_D,     CSPC,    CENT,    ABSPC,    _______, _______,  _______, _______  \
   ),
@@ -310,14 +310,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |CEMACS|COLEMA|      |      |      |      | |      |      |      |      |QWERTY|EMACS |
+   * |      |QWERTY|      |      |      |      | |      |      |      |      |QWERTY|      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [NONE] = KEYMAP( \
-    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  \
-    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  \
-    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  \
-    DF(CEMACS), DF(COLEMAK), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DF(QWERTY), DF(EMACS) \
+    XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, \
+    XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, \
+    XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, \
+    XXXXXXX, DF(QWERTY), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DF(QWERTY), XXXXXXX  \
   ),
 
 };
