@@ -95,7 +95,7 @@ extern keymap_config_t keymap_config;
 
 // MOD Shortcut
 
-#define COLN  ALT_T(JP_COLN)
+#define COLN  CTL_T(JP_COLN)
 #define TAB   CTL_T(KC_TAB)
 #define MINS  CTL_T(JP_MINS)
 #define DEL   LT(RAISE,KC_DEL)
@@ -110,6 +110,7 @@ extern keymap_config_t keymap_config;
 #define O_M   LT(MISC,KC_O)
 #define AT_M  LT(MISC,JP_AT)
 #define AT_A  ALT_T(JP_AT)
+#define AT_C  CTL_T(JP_AT)
 
 #define TAP(code)  \
   register_code (code); \
@@ -164,14 +165,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -   |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  ,   |   .  |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | C-M  | ALT  |QWERTY|  |   |
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC | C-M  |QWERTY|  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS] = KEYMAP( \
-    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,             JP_SCLN, \
-    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    LT(EMACS2,JP_AT), COLN,    \
-    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, C_M,     KC_RALT, DF(QWERTY),       JP_PIPE  \
+    KC_ESC,  KC_Q,     KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,     KC_O,   KC_P,             JP_SCLN, \
+    TAB,     A_M,      KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,     KC_L,   LT(EMACS2,JP_AT), COLN,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM,  KC_DOT, JP_SLSH,          JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), C_M,    DF(QWERTY),       JP_PIPE \
   ),
 
   /* EMACS2
@@ -205,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [COLEMAK] = KEYMAP( \
     KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,     KC_Y,    JP_SCLN,    JP_COLN, \
-    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,     KC_I,    O_M,        AT_A,    \
+    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,     KC_I,    O_M,        AT_C,    \
     JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM,  KC_DOT,  JP_SLSH,    JP_BSLS, \
     JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), KC_RALT, DF(CEMACS), JP_PIPE \
   ),
@@ -218,14 +219,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  -   |  Z   |  X   |  C   |  V   |  B   | |  K   |  M   |  ,   |  .   |  /   |  \   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | C-M  | ALT  |COLEMA|  |   |
+   * |  ^   | NONE |  ALT | GUI  |DEL/R |SP/SFT| |EN/SFT| BS/L | MISC | C-M  |COLEMA|  |   |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [CEMACS] = KEYMAP( \
-    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,    KC_Y,    JP_SCLN,          JP_COLN, \
-    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,    KC_I,    LT(CEMACS2,KC_O), AT_A,    \
-    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
-    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, C_M,     KC_RALT, DF(COLEMAK),      JP_PIPE  \
+    KC_ESC,  KC_Q,     KC_W,    KC_F,   KC_P, KC_G, KC_J, KC_L, KC_U,     KC_Y,   JP_SCLN,          JP_COLN, \
+    TAB,     A_M,      KC_R,    KC_S,   KC_T, KC_D, KC_H, KC_N, KC_E,     KC_I,   LT(CEMACS2,KC_O), AT_C,    \
+    JP_MINS, KC_Z,     KC_X,    KC_C,   KC_V, KC_B, KC_K, KC_M, KC_COMM,  KC_DOT, JP_SLSH,          JP_BSLS, \
+    JP_CIRC, DF(NONE), KC_LALT, TD(GF), DEL,  SPC,  ENT,  BSPC, MO(MISC), C_M,    DF(COLEMAK),      JP_PIPE \
   ),
 
   /* EMACS2(COLEMAK)
