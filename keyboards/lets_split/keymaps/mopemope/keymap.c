@@ -49,11 +49,11 @@ extern keymap_config_t keymap_config;
 #define C_BSL LCTL(JP_BSLS)
 
 // C-:
-#define CCOLN LCTL(JP_COLN)
+#define C_COLN LCTL(JP_COLN)
 // C-;
-#define CSCLN LCTL(JP_SCLN)
+#define C_SCLN LCTL(JP_SCLN)
 // C-|
-#define CPIPE LCTL(JP_PIPE)
+#define C_PIPE LCTL(JP_PIPE)
 
 // C-V
 #define C_V LCTL(KC_V)
@@ -186,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CA  |  CS  |      |  CF  |  CG  | |M-DOT | LEFT | DOWN |RIGHT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  | M-x  | C-:  | C-|  |      |      |
+   * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  | M-x  | C-;  | C-:  | C-|  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [EMACS2] = KEYMAP( \
     _______, _______, _______, _______, CR,      _______, _______, TD(E_LT), KC_UP,   TD(E_GT), _______, _______, \
     _______, CA,      CS,      _______, CF,      CG,      M_DOT,   C_L,      KC_DOWN, C_R,      _______, _______, \
-    _______, CZ,      CX,      CC,      _______, CB,      M_PER,   M_X,      CCOLN,   CPIPE,    _______, _______, \
+    _______, CZ,      CX,      CC,      _______, CB,      M_PER,   M_X,      C_SCLN,  C_COLN,   C_PIPE,  _______, \
     _______, _______, _______, C_SL,    M_D,     CSPC,    CENT,    ABSPC,    _______, _______,  _______, _______  \
   ),
 
@@ -240,7 +240,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |  CA  |  CR  |  CS  |      |      | |M-DOT | LEFT | DOWN |RIGHT |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  | M-x  | C-:  | C-|  |      |      |
+   * |      |  CZ  |  CX  |  CC  |      |  CB  | | M-%  | M-x  | C-;  | C-:  | C-|  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      | C_SL | M-D  |SP/CTL| |EN/CTL|BS/ALT|      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -248,7 +248,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [CEMACS2] = KEYMAP( \
     _______, _______, _______, CF,   CR,      CG,      _______, TD(E_LT), KC_UP,   TD(E_GT), _______, _______, \
     _______, CA,      CR,      CS,   CF,      _______, M_DOT,   C_L,      KC_DOWN, C_R,      _______, _______, \
-    _______, CZ,      CX,      CC,   _______, CB,      M_PER,   M_X,      CCOLN,   CPIPE,    _______, _______, \
+    _______, CZ,      CX,      CC,   _______, CB,      M_PER,   M_X,      C_SCLN,  C_COLN,   C_PIPE,  _______, \
     _______, _______, _______, C_SL, M_D,     CSPC,    CENT,    ABSPC,    _______, _______,  _______, _______  \
   ),
 
