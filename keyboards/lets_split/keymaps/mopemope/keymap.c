@@ -169,10 +169,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS] = KEYMAP( \
-    KC_ESC,  KC_Q,       KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,             JP_SCLN, \
-    TAB,     A_M,        KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    LT(EMACS2,JP_AT), COLN,    \
-    JP_MINS, KC_Z,       KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
-    C_M,     DF(QWERTY), KC_LALT, TD(GF), DEL,  SPC,  EENT, BSPC, KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
+    KC_ESC,  KC_Q,       KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,    JP_SCLN, \
+    TAB,     A_M,        KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    AT_M,    COLN,    \
+    JP_MINS, KC_Z,       KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  JP_SLSH, JP_BSLS, \
+    C_M,     DF(QWERTY), KC_LALT, TD(GF), DEL,  SPC,  EENT, BSPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT \
   ),
 
   /* EMACS2 (Shortcut Layer)
@@ -224,10 +224,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [CEMACS] = KEYMAP( \
-    KC_ESC,  KC_Q,        KC_W,    KC_F,   KC_P, KC_G, KC_J,  KC_L, KC_U,    KC_Y,    JP_SCLN,          JP_COLN, \
-    TAB,     A_M,         KC_R,    KC_S,   KC_T, KC_D, KC_H,  KC_N, KC_E,    KC_I,    LT(CEMACS2,KC_O), AT_C,    \
-    JP_MINS, KC_Z,        KC_X,    KC_C,   KC_V, KC_B, KC_K,  KC_M, KC_COMM, KC_DOT,  JP_SLSH,          JP_BSLS, \
-    C_M,     DF(COLEMAK), KC_LALT, TD(GF), DEL,  SPC,  CEENT, BSPC, KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT \
+    KC_ESC,  KC_Q,        KC_W,    KC_F,   KC_P, KC_G, KC_J,  KC_L, KC_U,    KC_Y,    JP_SCLN, JP_COLN, \
+    TAB,     A_M,         KC_R,    KC_S,   KC_T, KC_D, KC_H,  KC_N, KC_E,    KC_I,    O_M,     AT_C,    \
+    JP_MINS, KC_Z,        KC_X,    KC_C,   KC_V, KC_B, KC_K,  KC_M, KC_COMM, KC_DOT,  JP_SLSH, JP_BSLS, \
+    C_M,     DF(COLEMAK), KC_LALT, TD(GF), DEL,  SPC,  CEENT, BSPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT \
   ),
 
   /* EMACS2(COLEMAK Shortcut Layer)
