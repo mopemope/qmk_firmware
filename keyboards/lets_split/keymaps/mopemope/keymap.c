@@ -5,10 +5,10 @@
 
 extern keymap_config_t keymap_config;
 
-#define QWERTY  0
+#define QWERTY  3
 #define EMACS   1
 #define EMACS2  2
-#define COLEMAK 3
+#define COLEMAK 0
 #define CEMACS  4
 #define CEMACS2 5
 #define LOWER   6
