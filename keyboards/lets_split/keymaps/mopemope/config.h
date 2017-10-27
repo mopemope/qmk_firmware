@@ -34,28 +34,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PREVENT_STUCK_MODIFIERS
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
+
 //#define TAPPING_FORCE_HOLD
 
-#undef MOUSEKEY_INTERVAL
 #define MOUSEKEY_INTERVAL 5
-
-#undef MOUSEKEY_TIME_TO_MAX
 #define MOUSEKEY_TIME_TO_MAX 50
-
-#undef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED 2
-
-#undef MOUSEKEY_MOVE_DELTA
 #define MOUSEKEY_MOVE_DELTA 5
-
-#undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY 0
 
 #define MOUSEKEY_WHEEL_MAX_SPEED 2
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 200
-
-#undef TAPPING_TERM
-#define TAPPING_TERM 150
-
 
 #endif
