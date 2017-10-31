@@ -190,16 +190,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | C-A  | C-R  | C-S  | C-T  |      |      | | M-.  |      | LEFT |DOWN  |RIGHT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | C-Z  | C-X  | C-C  |      | C-B  |C-SPC | | M-%  | M-x  | C-;  | C-:  | C-|  |      |
+   * | C-Z  | C-X  | C-C  |      | C-B  |      | | M-%  | M-x  | C-;  | C-:  | C-|  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      | C-SL | M-D  |SP/CTL| |      |      |      |      |      |      |
+   * |      |      |      | C-SL | M-D  |C-SPC | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
     RESET,   M_W,     C_F,     C_Y,     C_G,     XXXXXXX, XXXXXXX, XXXXXXX, TD(E_LT), KC_UP,   TD(E_GT), XXXXXXX, \
     C_A,     C_R,     C_S,     C_T,     XXXXXXX, XXXXXXX, M_DOT,   XXXXXXX, C_LE,     KC_DOWN, C_RI,     XXXXXXX, \
-    C_Z,     C_X,     C_C,     XXXXXXX, C_B,     C_SPC,   M_PER,   M_X,     C_SCLN,   C_COLN,  C_PIPE,   XXXXXXX, \
-    XXXXXXX, XXXXXXX, XXXXXXX, C_SL,    M_D,     CSPC,    _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX  \
+    C_Z,     C_X,     C_C,     XXXXXXX, C_B,     XXXXXXX, M_PER,   M_X,     C_SCLN,   C_COLN,  C_PIPE,   XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX, C_SL,    M_D,     C_SPC,   _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX  \
   ),
 
   /* LOWER
