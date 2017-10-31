@@ -179,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [EMACS] = KEYMAP( \
     KC_Q,        KC_W,   KC_F,   KC_P,    KC_G, JP_MINS, JP_UNDS, KC_J, KC_L,    KC_U,    KC_Y,   JP_COLN,    \
-    A_C,         KC_R,   KC_S,   KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,   O_M,        \
+    A_M,         KC_R,   KC_S,   KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,   O_M,        \
     KC_Z,        KC_X,   KC_C,   KC_V,    KC_B, KC_LGUI, C_Z,     KC_K, KC_M,    KC_COMM, KC_DOT, JP_SLSH,    \
     DF(COLEMAK), KC_ESC, KC_F12, KC_LCTL, DEL,  SPC,     EENT,    BSPC, KC_RALT, XXXXXXX, C_M,    DF(COLEMAK) \
   ),
