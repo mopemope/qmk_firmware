@@ -171,7 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  A   |  R   |  S   |  T   |  D   | TAB  | |  @   |  H   |  N   |  E   |  I   |  O   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  Z   |  X   |  C   |  V   |  B   | GUI  | | F12  |  K   |  M   |  ,   |  .   |  /   |
+   * |  Z   |  X   |  C   |  V   |  B   | C-M  | | C-Z  |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |COLEMA|      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L | ALT  |      |      |COLEMA|
    * `-----------------------------------------' `-----------------------------------------'
@@ -180,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [EMACS] = KEYMAP( \
     KC_Q,        KC_W,    KC_F,    KC_P,    KC_G, JP_MINS, JP_UNDS, KC_J, KC_L,    KC_U,    KC_Y,    JP_COLN,    \
     A_M,         KC_R,    KC_S,    KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,    O_M,        \
-    KC_Z,        KC_X,    KC_C,    KC_V,    KC_B, KC_LGUI, KC_F12,  KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH,    \
+    KC_Z,        KC_X,    KC_C,    KC_V,    KC_B, C_M,     C_Z,     KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH,    \
     DF(COLEMAK), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     EENT,    BSPC, KC_RALT, XXXXXXX, XXXXXXX, DF(COLEMAK) \
   ),
 
