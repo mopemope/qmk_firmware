@@ -152,17 +152,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  A   |  R   |  S   |  T   |  D   | TAB  | |  @   |  H   |  N   |  E   |  I   |  O   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  Z   |  X   |  C   |  V   |  B   | GUI  | | MISC |  K   |  M   |  ,   |  .   |  /   |
+   * |  Z   |  X   |  C   |  V   |  B   | GUI  | | F12  |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |EMACS | Esc  | F12  | CTRL |DEL/R |SP/SFT| |EN/SFT| BS/L | ALT  |      |      |EMACS |
+   * |EMACS |      |      | CTRL |DEL/R |SP/SFT| |EN/SFT| BS/L | ALT  |      |      |EMACS |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COLEMAK] = KEYMAP( \
-    KC_Q,      KC_W,   KC_F,   KC_P,    KC_G, JP_MINS, JP_UNDS,  KC_J, KC_L,    KC_U,    KC_Y,    JP_COLN,  \
-    A_M,       KC_R,   KC_S,   KC_T,    KC_D, KC_TAB,  JP_AT,    KC_H, KC_N,    KC_E,    KC_I,    O_M,      \
-    KC_Z,      KC_X,   KC_C,   KC_V,    KC_B, KC_LGUI, DF(MISC), KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH,  \
-    DF(EMACS), KC_ESC, KC_F12, KC_LCTL, DEL,  SPC,     ENT,      BSPC, KC_RALT, XXXXXXX, XXXXXXX, DF(EMACS) \
+    KC_Q,      KC_W,    KC_F,    KC_P,    KC_G, JP_MINS, JP_UNDS, KC_J, KC_L,    KC_U,    KC_Y,    JP_COLN,  \
+    A_M,       KC_R,    KC_S,    KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,    O_M,      \
+    KC_Z,      KC_X,    KC_C,    KC_V,    KC_B, KC_LGUI, KC_F12,  KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH,  \
+    DF(EMACS), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     ENT,     BSPC, KC_RALT, XXXXXXX, XXXXXXX, DF(EMACS) \
   ),
 
   /* EMACS(COLEMAK)
@@ -171,17 +171,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  A   |  R   |  S   |  T   |  D   | TAB  | |  @   |  H   |  N   |  E   |  I   |  O   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  Z   |  X   |  C   |  V   |  B   | GUI  | | C-Z  |  K   |  M   |  ,   |  .   |  /   |
+   * |  Z   |  X   |  C   |  V   |  B   | GUI  | | F12  |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |COLEMA| Esc  | F12  | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L | ALT  |      | C-M  |COLEMA|
+   * |COLEMA|      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L | ALT  |      |      |COLEMA|
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [EMACS] = KEYMAP( \
-    KC_Q,        KC_W,   KC_F,   KC_P,    KC_G, JP_MINS, JP_UNDS, KC_J, KC_L,    KC_U,    KC_Y,   JP_COLN,    \
-    A_M,         KC_R,   KC_S,   KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,   O_M,        \
-    KC_Z,        KC_X,   KC_C,   KC_V,    KC_B, KC_LGUI, C_Z,     KC_K, KC_M,    KC_COMM, KC_DOT, JP_SLSH,    \
-    DF(COLEMAK), KC_ESC, KC_F12, KC_LCTL, DEL,  SPC,     EENT,    BSPC, KC_RALT, XXXXXXX, C_M,    DF(COLEMAK) \
+    KC_Q,        KC_W,    KC_F,    KC_P,    KC_G, JP_MINS, JP_UNDS, KC_J, KC_L,    KC_U,    KC_Y,    JP_COLN,    \
+    A_M,         KC_R,    KC_S,    KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,    O_M,        \
+    KC_Z,        KC_X,    KC_C,    KC_V,    KC_B, KC_LGUI, KC_F12,  KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH,    \
+    DF(COLEMAK), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     EENT,    BSPC, KC_RALT, XXXXXXX, XXXXXXX, DF(COLEMAK) \
   ),
 
   /* EMACS2(COLEMAK Shortcut Layer)
@@ -204,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* LOWER
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |   |  | yen  |
+   * |  !   |   "  |   #  |   $  |   %  | Esc  | | Esc  |   &  |  '   |  `   |   |  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  1   |   2  |   3  |   4  |   5  |      | |  _   |   ~  |  =   |  :   |   /  |   *  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -215,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [LOWER] = KEYMAP( \
-    JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC, XXXXXXX, XXXXXXX, JP_AMPR, JP_QUOT, JP_GRV,  JP_PIPE, JP_YEN,  \
+    JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC, KC_ESC,  KC_ESC,  JP_AMPR, JP_QUOT, JP_GRV,  JP_PIPE, JP_YEN,  \
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, JP_UNDS, JP_TILD, JP_EQL,  JP_COLN, JP_SLSH, JP_ASTR, \
     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX, JP_BSLS, JP_CIRC, JP_MINS, JP_SCLN, JP_DOT,  JP_PLUS, \
     XXXXXXX, XXXXXXX, XXXXXXX, _______, JP_HENK, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX  \
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* RAISE
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |  1   |  2   |   3  |  4   |  5   |      | |      |   6  |   7  |   8  |   9  |   0  |
+   * |  1   |  2   |   3  |  4   |  5   | Esc  | | Esc  |   6  |   7  |   8  |   9  |   0  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | TAB  |  F1  |  F2  |  F3  |  F4  |  F5  | |  F6  |   (  |   )  |   [  |   ]  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -234,7 +234,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [RAISE] = KEYMAP( \
-    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    \
+    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_ESC,  KC_ESC,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    \
     KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   JP_LPRN, JP_RPRN, JP_LBRC, JP_RBRC, JP_YEN,  \
     JP_UNDS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  JP_LCBR, JP_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, \
     XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, JP_MHEN, _______, XXXXXXX, XXXXXXX, XXXXXXX  \
