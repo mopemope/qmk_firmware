@@ -45,5 +45,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MOUSEKEY_WHEEL_MAX_SPEED 2
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 200
-#define TAPPING_TERM 100
 #endif
