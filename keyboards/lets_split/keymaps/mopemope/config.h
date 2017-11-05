@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 
-//#define TAPPING_FORCE_HOLD
+#define TAPPING_FORCE_HOLD
 
 #define MOUSEKEY_INTERVAL 5
 #define MOUSEKEY_TIME_TO_MAX 50
@@ -45,5 +45,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MOUSEKEY_WHEEL_MAX_SPEED 2
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 200
-
+#define TAPPING_TERM 100
 #endif
