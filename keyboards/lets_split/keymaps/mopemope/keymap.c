@@ -11,7 +11,8 @@ extern keymap_config_t keymap_config;
 #define LOWER   3
 #define RAISE   4
 #define MISC    5
-#define NONE    6
+#define MISC2   6
+#define NONE    7
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
@@ -116,7 +117,7 @@ extern keymap_config_t keymap_config;
 #define DEL   LT(RAISE,KC_DEL)
 #define SPC   SFT_T(KC_SPC)
 #define CSPC  CTL_T(KC_SPC)
-#define ENT   SFT_T(KC_ENT)
+#define ENT   LT(MISC2,KC_ENT)
 #define CENT  CTL_T(KC_ENT)
 #define EENT  LT(EMACS2,KC_ENT)
 #define BSPC  LT(LOWER,KC_BSPC)
@@ -206,9 +207,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  | Esc  | | Esc  |   &  |  '   |  `   |   |  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  1   |   2  |   3  |   4  |   5  |      | |  _   |   ~  |  =   |  :   |   /  |   *  |
+   * |  1   |   2  |   3  |   4  |   5  |      | |  _   |   ~  |  =   |  :   |   /  |  *   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  6   |   7  |   8  |   9  |   0  |      | |  \   |   ^  |  -   |  ;   |   .  |   +  |
+   * |  6   |   7  |   8  |   9  |   0  |      | |  \   |   ^  |  -   |  ;   |   .  |  +   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      | HENK |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -246,17 +247,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      | MsLf | MsDn | MsRg |WRKSP2|      | |      |DWRKSP| Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | Copy |Paste |EMACS |      | |      |COLEMA|      |      |      |      |
+   * |      |      | Copy |Paste |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |LClick|RClick|      | |      |EN/CTL|BS/ALT|      |      | NONE |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISC] = KEYMAP( \
-    RESET,   KC_WH_D, KC_MS_U,    KC_WH_U,    WRKSP1,    XXXXXXX, XXXXXXX, UWRKSP,      KC_PGDN, KC_UP,   KC_PGUP,  RESET,   \
-    _______, KC_MS_L, KC_MS_D,    KC_MS_R,    WRKSP2,    XXXXXXX, XXXXXXX, DWRKSP,      KC_LEFT, KC_DOWN, KC_RIGHT, _______, \
-    XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), DF(EMACS), XXXXXXX, XXXXXXX, DF(COLEMAK), XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, \
-    XXXXXXX, XXXXXXX, XXXXXXX,    KC_BTN2,    KC_BTN1,   XXXXXXX, XXXXXXX, CENT,        ABSPC,   XXXXXXX, XXXXXXX,  DF(NONE) \
+    RESET,   KC_WH_D, KC_MS_U,    KC_WH_U,    WRKSP1,  XXXXXXX, XXXXXXX, UWRKSP,  KC_PGDN, KC_UP,   KC_PGUP,  RESET,   \
+    _______, KC_MS_L, KC_MS_D,    KC_MS_R,    WRKSP2,  XXXXXXX, XXXXXXX, DWRKSP,  KC_LEFT, KC_DOWN, KC_RIGHT, _______, \
+    XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX,    KC_BTN2,    KC_BTN1, XXXXXXX, XXXXXXX, CENT,    ABSPC,   XXXXXXX, XXXXXXX,  DF(NONE) \
+  ),
+
+  /* MISC2
+   * ,-----------------------------------------, ,-----------------------------------------.
+   * |RESET |      |      |      |      |      | |WRKSP1|RClick| WhDn | MsUp | WhUp |RESET |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |WRKSP2|LClick| MsDn | MsDn | MsRg |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      | Copy |Paste |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      | NONE |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [MISC2] = KEYMAP( \
+    RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WRKSP1,  KC_BTN2,    KC_WH_D,    KC_MS_U, KC_WH_U, RESET,   \
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WRKSP2,  KC_BTN1,    KC_MS_L,    KC_MS_D, KC_MS_R, _______, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX, DF(NONE) \
   ),
 
   /* NONE
