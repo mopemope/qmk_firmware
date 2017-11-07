@@ -247,7 +247,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      | MsLf | MsDn | MsRg |WRKSP2|      | |      |DWRKSP| Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | Copy |Paste |      |      | |      |      |      |      |      |      |
+   * |      |      | Copy |Paste |      |      | | Prev | Play | Next | Mute |VolDn |VolUp |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |LClick|RClick|      | |      |EN/CTL|BS/ALT|      |      | NONE |
    * `-----------------------------------------' `-----------------------------------------'
@@ -256,7 +256,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISC] = KEYMAP( \
     RESET,   KC_WH_D, KC_MS_U,    KC_WH_U,    WRKSP1,  XXXXXXX, XXXXXXX, UWRKSP,  KC_PGDN, KC_UP,   KC_PGUP,  RESET,   \
     _______, KC_MS_L, KC_MS_D,    KC_MS_R,    WRKSP2,  XXXXXXX, XXXXXXX, DWRKSP,  KC_LEFT, KC_DOWN, KC_RIGHT, _______, \
-    XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, \
+    XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD,  KC_VOLU, \
     XXXXXXX, XXXXXXX, XXXXXXX,    KC_BTN2,    KC_BTN1, XXXXXXX, XXXXXXX, CENT,    ABSPC,   XXXXXXX, XXXXXXX,  DF(NONE) \
   ),
 
@@ -266,7 +266,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |WRKSP2|LClick| MsDn | MsDn | MsRg |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      | Copy |Paste |      |      |      |
+   * |      |      |      |      |      |      | |      | Copy |Paste | Mute |VolDn |VolUp |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      | NONE |
    * `-----------------------------------------' `-----------------------------------------'
@@ -275,7 +275,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISC2] = KEYMAP( \
     RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WRKSP1,  KC_BTN2,    KC_WH_D,    KC_MS_U, KC_WH_U, RESET,   \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WRKSP2,  KC_BTN1,    KC_MS_L,    KC_MS_D, KC_MS_R, _______, \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), KC_MUTE, KC_VOLD, KC_VOLU, \
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX, DF(NONE) \
   ),
 
