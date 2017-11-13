@@ -117,7 +117,7 @@ extern keymap_config_t keymap_config;
 #define DEL   LT(RAISE,KC_DEL)
 #define SPC   SFT_T(KC_SPC)
 #define CSPC  CTL_T(KC_SPC)
-#define ENT   LT(MISC2,KC_ENT)
+#define ENT   SFT_T(KC_ENT)
 #define CENT  CTL_T(KC_ENT)
 #define EENT  LT(EMACS2,KC_ENT)
 #define BSPC  LT(LOWER,KC_BSPC)
@@ -130,6 +130,11 @@ extern keymap_config_t keymap_config;
 #define AT_M  LT(MISC,JP_AT)
 #define AT_A  ALT_T(JP_AT)
 #define AT_C  CTL_T(JP_AT)
+#define M2    MO(MISC2)
+#define GL    LGUI(KC_LEFT)
+#define GU    LGUI(KC_UP)
+#define GD    LGUI(KC_DOWN)
+#define GR    LGUI(KC_RIGHT)
 
 #define TAP(code)  \
   register_code (code); \
@@ -149,134 +154,134 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COLEMAK
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  Q   |  W   |  F   |  P   |  G   |  -   | |  _   |  J   |  L   |  U   |  Y   |  :   |
+   * |  Q   |  W   |  F   |  P   |  G   |      | |      |  J   |  L   |  U   |  Y   |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  A   |  R   |  S   |  T   |  D   | TAB  | |  @   |  H   |  N   |  E   |  I   |  O   |
+   * |  A   |  R   |  S   |  T   |  D   |      | |      |  H   |  N   |  E   |  I   |  O   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  Z   |  X   |  C   |  V   |  B   | GUI  | | F12  |  K   |  M   |  ,   |  .   |  /   |
+   * |  Z   |  X   |  C   |  V   |  B   |      | |      |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |EMACS |      |      | CTRL |DEL/R |SP/SFT| |EN/SFT| BS/L | ALT  |      |      |EMACS |
+   * |EMACS |      |      | CTRL |DEL/R |SP/SFT| |EN/SFT| BS/L |MISC2 |      |      | MISC |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COLEMAK] = KEYMAP( \
-    KC_Q,      KC_W,    KC_F,    KC_P,    KC_G, JP_MINS, JP_UNDS, KC_J, KC_L,    KC_U,    KC_Y,    JP_COLN,  \
-    A_M,       KC_R,    KC_S,    KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,    O_M,      \
-    KC_Z,      KC_X,    KC_C,    KC_V,    KC_B, KC_LGUI, KC_F12,  KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH,  \
-    DF(EMACS), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     ENT,     BSPC, KC_RALT, XXXXXXX, XXXXXXX, DF(EMACS) \
+    KC_Q,      KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX, XXXXXXX, KC_J, KC_L, KC_U,    KC_Y,    JP_COLN, \
+    A_M,       KC_R,    KC_S,    KC_T,    KC_D, XXXXXXX, XXXXXXX, KC_H, KC_N, KC_E,    KC_I,    O_M,     \
+    KC_Z,      KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX, XXXXXXX, KC_K, KC_M, KC_COMM, KC_DOT,  JP_SLSH, \
+    DF(EMACS), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     ENT,     BSPC, M2,   XXXXXXX, XXXXXXX, DF(MISC) \
   ),
 
   /* EMACS(COLEMAK)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  Q   |  W   |  F   |  P   |  G   |  -   | |  _   |  J   |  L   |  U   |  Y   |  :   |
+   * |  Q   |  W   |  F   |  P   |  G   |      | |      |  J   |  L   |  U   |  Y   |  :   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  A   |  R   |  S   |  T   |  D   | TAB  | |  @   |  H   |  N   |  E   |  I   |  O   |
+   * |  A   |  R   |  S   |  T   |  D   |      | |      |  H   |  N   |  E   |  I   |  O   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  Z   |  X   |  C   |  V   |  B   | C-M  | | C-Z  |  K   |  M   |  ,   |  .   |  /   |
+   * |  Z   |  X   |  C   |  V   |  B   |      | |      |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |COLEMA|      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L | ALT  |      |      |COLEMA|
+   * |COLEMA|      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L |MISC2 |      |      | MISC |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [EMACS] = KEYMAP( \
-    KC_Q,        KC_W,    KC_F,    KC_P,    KC_G, JP_MINS, JP_UNDS, KC_J, KC_L,    KC_U,    KC_Y,    JP_COLN,    \
-    A_M,         KC_R,    KC_S,    KC_T,    KC_D, KC_TAB,  JP_AT,   KC_H, KC_N,    KC_E,    KC_I,    O_M,        \
-    KC_Z,        KC_X,    KC_C,    KC_V,    KC_B, C_M,     C_Z,     KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH,    \
-    DF(COLEMAK), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     EENT,    BSPC, KC_RALT, XXXXXXX, XXXXXXX, DF(COLEMAK) \
+    KC_Q,        KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX, XXXXXXX, KC_J, KC_L, KC_U,    KC_Y,    JP_COLN, \
+    A_M,         KC_R,    KC_S,    KC_T,    KC_D, XXXXXXX, XXXXXXX, KC_H, KC_N, KC_E,    KC_I,    O_M,     \
+    KC_Z,        KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX, XXXXXXX, KC_K, KC_M, KC_COMM, KC_DOT,  JP_SLSH, \
+    DF(COLEMAK), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     EENT,    BSPC, M2,   XXXXXXX, XXXXXXX, DF(MISC) \
   ),
 
   /* EMACS2(COLEMAK Shortcut Layer)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |RESET | M-W  | C-F  | C-Y  | C-G  |      | |      |      | E-LT |  UP  | E-GT |      |
+   * |RESET | M-W  | C-F  | C-Y  | C-G  |      | |      | M-.  | E-LT |  UP  | E-GT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | C-A  | C-R  | C-S  | C-T  |      |      | | M-.  |      | LEFT |DOWN  |RIGHT |      |
+   * | C-A  | C-R  | C-S  | C-T  |      |      | |      | M-%  | LEFT |DOWN  |RIGHT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | C-Z  | C-X  | C-C  |      | C-B  |      | | M-%  | M-x  | C-;  | C-:  | C-|  |      |
+   * | C-Z  | C-X  | C-C  |      | C-B  |      | |      | M-x  | C-;  | C-:  | C-|  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      | C-SL | M-D  |C-SPC | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
-    RESET,   M_W,     C_F,     C_Y,     C_G,     XXXXXXX, XXXXXXX, XXXXXXX, TD(E_LT), KC_UP,   TD(E_GT), XXXXXXX, \
-    C_A,     C_R,     C_S,     C_T,     XXXXXXX, XXXXXXX, M_DOT,   XXXXXXX, C_LE,     KC_DOWN, C_RI,     XXXXXXX, \
-    C_Z,     C_X,     C_C,     XXXXXXX, C_B,     XXXXXXX, M_PER,   M_X,     C_SCLN,   C_COLN,  C_PIPE,   XXXXXXX, \
+    RESET,   M_W,     C_F,     C_Y,     C_G,     XXXXXXX, XXXXXXX, M_DOT,   TD(E_LT), KC_UP,   TD(E_GT), XXXXXXX, \
+    C_A,     C_R,     C_S,     C_T,     XXXXXXX, XXXXXXX, XXXXXXX, M_PER,   C_LE,     KC_DOWN, C_RI,     XXXXXXX, \
+    C_Z,     C_X,     C_C,     XXXXXXX, C_B,     XXXXXXX, XXXXXXX, M_X,     C_SCLN,   C_COLN,  C_PIPE,   XXXXXXX, \
     XXXXXXX, XXXXXXX, XXXXXXX, C_SL,    M_D,     C_SPC,   _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX  \
   ),
 
-  /* LOWER
+  /* LOWER (Symbol)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  !   |   "  |   #  |   $  |   %  | Esc  | | Esc  |   &  |  '   |  `   |   |  | yen  |
+   * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |   |  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  1   |   2  |   3  |   4  |   5  |      | |  _   |   ~  |  =   |  :   |   /  |  *   |
+   * | ESC  |   @  |  {   |   }  |  _   |      | |      |   ~  |  =   |  :   |   /  |  *   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  6   |   7  |   8  |   9  |   0  |      | |  \   |   ^  |  -   |  ;   |   .  |  +   |
+   * |      |      |  (   |   )  |  \   |      | |      |   ^  |  -   |  ;   |   .  |  +   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      | HENK |      | |      |      |      |      |      |      |
+   * |      |      |      |      | HENK | GUI  | |      |      | ALT  |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [LOWER] = KEYMAP( \
-    JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC, KC_ESC,  KC_ESC,  JP_AMPR, JP_QUOT, JP_GRV,  JP_PIPE, JP_YEN,  \
-    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, JP_UNDS, JP_TILD, JP_EQL,  JP_COLN, JP_SLSH, JP_ASTR, \
-    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX, JP_BSLS, JP_CIRC, JP_MINS, JP_SCLN, JP_DOT,  JP_PLUS, \
-    XXXXXXX, XXXXXXX, XXXXXXX, _______, JP_HENK, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX  \
+    JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC, XXXXXXX, XXXXXXX, JP_AMPR, JP_QUOT, JP_GRV,  JP_PIPE, JP_YEN,  \
+    KC_ESC,  JP_AT,   JP_LCBR, JP_RCBR, JP_UNDS, XXXXXXX, XXXXXXX, JP_TILD, JP_EQL,  JP_COLN, JP_SLSH, JP_ASTR, \
+    XXXXXXX, XXXXXXX, JP_LPRN, JP_RPRN, JP_BSLS, XXXXXXX, XXXXXXX, JP_CIRC, JP_MINS, JP_SCLN, JP_DOT,  JP_PLUS, \
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, JP_HENK, KC_LGUI, _______, _______, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX  \
   ),
 
-  /* RAISE
+  /* RAISE (Num + Fn + Others)
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |  1   |  2   |   3  |  4   |  5   | Esc  | | Esc  |   6  |   7  |   8  |   9  |   0  |
+   * |  1   |  2   |   3  |  4   |  5   |      | |      |   6  |   7  |   8  |   9  |   0  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |  F1  |  F2  |  F3  |  F4  |  F5  | |  F6  |   (  |   )  |   [  |   ]  | yen  |
+   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  F5  |  F6  |   [  |   ]  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  _   |  F7  |  F8  |  F9  |  F10 |  F11 | |  F12 |   {  |   }  |      |      |      |
+   * |  _   |  F7  |  F8  |  F9  |  F10 |      | |      |  F11 |  F12 |   (  |   )  |   -  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      | MHEN |      |      |      |      |
+   * |      |      |      |      |      |      | | GUI  | MHEN | ALT  |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [RAISE] = KEYMAP( \
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_ESC,  KC_ESC,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    \
-    KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   JP_LPRN, JP_RPRN, JP_LBRC, JP_RBRC, JP_YEN,  \
-    JP_UNDS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  JP_LCBR, JP_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, \
-    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, JP_MHEN, _______, XXXXXXX, XXXXXXX, XXXXXXX  \
+    KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   JP_LBRC, JP_RBRC, JP_AT,   \
+    JP_UNDS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, KC_F11,  KC_F12,  JP_LPRN, JP_RPRN, JP_MINS, \
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, KC_LGUI, JP_MHEN, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX  \
   ),
 
-  /* MISC
+  /* MISC (GUI)
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET | WhDn | MsUp | WhUp |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      | MsLf | MsDn | MsRg |WRKSP2|      | |      |DWRKSP| Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | Copy |Paste |      |      | | Prev | Play | Next | Mute |VolDn |VolUp |
+   * |      |      | Copy |Paste | GUI  |      | |      |COLEMA|EMACS | Mute |VolDn |VolUp |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |LClick|RClick|      | |      |EN/CTL|BS/ALT|      |      | NONE |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISC] = KEYMAP( \
-    RESET,   KC_WH_D, KC_MS_U,    KC_WH_U,    WRKSP1,  XXXXXXX, XXXXXXX, UWRKSP,  KC_PGDN, KC_UP,   KC_PGUP,  RESET,   \
-    _______, KC_MS_L, KC_MS_D,    KC_MS_R,    WRKSP2,  XXXXXXX, XXXXXXX, DWRKSP,  KC_LEFT, KC_DOWN, KC_RIGHT, _______, \
-    XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD,  KC_VOLU, \
-    XXXXXXX, XXXXXXX, XXXXXXX,    KC_BTN2,    KC_BTN1, XXXXXXX, XXXXXXX, CENT,    ABSPC,   XXXXXXX, XXXXXXX,  DF(NONE) \
+    RESET,   KC_WH_D, KC_MS_U,    KC_WH_U,    WRKSP1,  XXXXXXX, XXXXXXX, UWRKSP,      KC_PGDN,   KC_UP,   KC_PGUP,  RESET,   \
+    _______, KC_MS_L, KC_MS_D,    KC_MS_R,    WRKSP2,  XXXXXXX, XXXXXXX, DWRKSP,      KC_LEFT,   KC_DOWN, KC_RIGHT, _______, \
+    XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), KC_LGUI, XXXXXXX, XXXXXXX, DF(COLEMAK), DF(EMACS), KC_MUTE, KC_VOLD,  KC_VOLU, \
+    _______, XXXXXXX, XXXXXXX,    KC_BTN2,    KC_BTN1, XXXXXXX, XXXXXXX, CENT,        ABSPC,     XXXXXXX, XXXXXXX,  DF(NONE) \
   ),
 
-  /* MISC2
+  /* MISC2 (GUI2)
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |      |      |      |      |      | |WRKSP1|RClick| WhDn | MsUp | WhUp |RESET |
+   * |RESET |      |      |      |      |      | |      |      | ALT  |  Up  | Tab  |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |WRKSP2|LClick| MsDn | MsDn | MsRg |      |
+   * |      |      |      |      |      |      | |      |      | Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      | Copy |Paste | Mute |VolDn |VolUp |
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      | NONE |
+   * |      |      |      |      | GUI  |      | |      |      |      |      |      | NONE |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISC2] = KEYMAP( \
-    RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WRKSP1,  KC_BTN2,    KC_WH_D,    KC_MS_U, KC_WH_U, RESET,   \
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WRKSP2,  KC_BTN1,    KC_MS_L,    KC_MS_D, KC_MS_R, _______, \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), KC_MUTE, KC_VOLD, KC_VOLU, \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX, DF(NONE) \
+    RESET,   _______, _______, _______, _______, _______, _______, _______, KC_LALT, GU,      KC_TAB,  RESET,   \
+    _______, _______, _______, _______, _______, _______, _______, _______, GL,      GD,      GR,      _______, \
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, KC_LGUI, _______, _______, _______, _______, _______, _______, DF(NONE) \
   ),
 
   /* NONE
