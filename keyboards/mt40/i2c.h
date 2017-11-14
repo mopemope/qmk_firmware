@@ -1,5 +1,5 @@
 /*
-Copyright 2017 James Morgan <ja.morgan1@outlook.com>
+Copyright 2016 Luiz Ribeiro <luizribeiro@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,15 +15,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef __I2C_H__
+#define __I2C_H__
 
-#define TAPPING_TERM 150 //reduce time required to register a held key
+void i2c_init(void);
+void i2c_set_bitrate(uint16_t bitrate_khz);
+uint8_t i2c_send(uint8_t address, uint8_t *data, uint16_t length);
 
-#define USE_SERIAL
-
-// #define MASTER_LEFT
-// #define MASTER_RIGHT
-#define EE_HANDS
-
-#ifdef SUBPROJECT_rev1
-    #include "../../rev1/config.h"
 #endif
