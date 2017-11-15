@@ -179,15 +179,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  Z   |  X   |  C   |  V   |  B   |      | |      |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |COLEMA|      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L |MISC2 |      |      | MISC |
+   * |COLEMA|      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L | ALT  |      |      | MISC |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [EMACS] = KEYMAP( \
-    KC_Q,        KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX, XXXXXXX, KC_J, KC_L, KC_U,    KC_Y,    JP_COLN, \
-    A_M,         KC_R,    KC_S,    KC_T,    KC_D, XXXXXXX, XXXXXXX, KC_H, KC_N, KC_E,    KC_I,    O_M,     \
-    KC_Z,        KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX, XXXXXXX, KC_K, KC_M, KC_COMM, KC_DOT,  JP_SLSH, \
-    DF(COLEMAK), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     EENT,    BSPC, M2,   XXXXXXX, XXXXXXX, DF(MISC) \
+    KC_Q,        KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX, XXXXXXX, KC_J, KC_L,    KC_U,    KC_Y,    JP_COLN, \
+    A_M,         KC_R,    KC_S,    KC_T,    KC_D, XXXXXXX, XXXXXXX, KC_H, KC_N,    KC_E,    KC_I,    O_M,     \
+    KC_Z,        KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX, XXXXXXX, KC_K, KC_M,    KC_COMM, KC_DOT,  JP_SLSH, \
+    DF(COLEMAK), XXXXXXX, XXXXXXX, KC_LCTL, DEL,  SPC,     EENT,    BSPC, KC_LALT, XXXXXXX, XXXXXXX, DF(MISC) \
   ),
 
   /* EMACS2(COLEMAK Shortcut Layer)
