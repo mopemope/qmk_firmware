@@ -198,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |RESET | M-W  | C-F  | C-Y  | C-G  |      | |      | M-.  | E-LT |  UP  | E-GT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | C-A  | C-R  | C-S  | C-T  |      |      | |      | M-%  | LEFT |DOWN  |RIGHT |      |
+   * | C-A  | C-R  | C-S  | C-T  |      |      | |      | M-%  | LEFT | DOWN |RIGHT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | C-Z  | C-X  | C-C  |      | C-B  |      | |      | M-x  | C-;  | C-:  | C-|  | M-;  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -206,8 +206,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
-    RESET,   M_W,     C_F,     C_Y,     C_G,     XXXXXXX, XXXXXXX, M_DOT,   TD(E_LT), KC_UP,   TD(E_GT), XXXXXXX, \
-    C_A,     C_R,     C_S,     C_T,     XXXXXXX, XXXXXXX, XXXXXXX, M_PER,   C_LE,     KC_DOWN, C_RI,     XXXXXXX, \
+    RESET,   M_W,     C_F,     C_Y,     C_G,     XXXXXXX, XXXXXXX, M_DOT,   TD(E_LT), C_P,     TD(E_GT), XXXXXXX, \
+    C_A,     C_R,     C_S,     C_T,     XXXXXXX, XXXXXXX, XXXXXXX, M_PER,   C_LE,     C_N,     C_RI,     XXXXXXX, \
     C_Z,     C_X,     C_C,     XXXXXXX, C_B,     XXXXXXX, XXXXXXX, M_X,     C_SCLN,   C_COLN,  C_PIPE,   M_SCLN,  \
     XXXXXXX, XXXXXXX, XXXXXXX, C_SL,    M_D,     C_SPC,   _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX  \
   ),
