@@ -31,11 +31,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MASTER_LEFT
 
-/* #define PREVENT_STUCK_MODIFIERS */
-/* #define PERMISSIVE_HOLD */
-/* #define IGNORE_MOD_TAP_INTERRUPT */
+#define PREVENT_STUCK_MODIFIERS
+#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
 /* #define TAPPING_FORCE_HOLD */
 #define TAPPING_TERM 150
+#define QMK_KEYS_PER_SCAN 4
 
 #define MOUSEKEY_INTERVAL 5
 #define MOUSEKEY_TIME_TO_MAX 50
