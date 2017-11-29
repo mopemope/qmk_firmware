@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |  (   |   )  |  \   |      | |      |   ^  |  -   |  ;   |   .  |  +   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      | HENK | GUI  | |      |      | ALT  |      |      |      |
+   * |      |      |      |      | ZHTG | GUI  | |      |      | ALT  |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
@@ -231,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC, XXXXXXX, XXXXXXX, JP_AMPR, JP_QUOT, JP_GRV,  JP_PIPE, JP_YEN,  \
     KC_ESC,  JP_AT,   JP_LCBR, JP_RCBR, JP_UNDS, XXXXXXX, XXXXXXX, JP_TILD, JP_EQL,  JP_COLN, JP_SLSH, JP_ASTR, \
     XXXXXXX, XXXXXXX, JP_LPRN, JP_RPRN, JP_BSLS, XXXXXXX, XXXXXXX, JP_CIRC, JP_MINS, JP_SCLN, JP_DOT,  JP_PLUS, \
-    XXXXXXX, XXXXXXX, XXXXXXX, _______, JP_HENK, KC_LGUI, _______, _______, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX  \
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, JP_ZHTG, KC_LGUI, _______, _______, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX  \
   ),
 
   /* RAISE (Num + Fn + Others)
@@ -242,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  _   |  F7  |  F8  |  F9  |  F10 |      | |      |  F11 |  F12 |   (  |   )  |   -  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | | GUI  | MHEN | ALT  |      |      |      |
+   * |      |      |      |      |      |      | | GUI  | ZHTG | ALT  |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
@@ -250,7 +250,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_ESC,  KC_ESC,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    \
     KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   JP_LBRC, JP_RBRC, JP_AT,   \
     JP_UNDS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, KC_F11,  KC_F12,  JP_LPRN, JP_RPRN, JP_MINS, \
-    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, KC_LGUI, JP_MHEN, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX  \
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, KC_LGUI, JP_ZHTG, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX  \
   ),
 
   /* MISC (GUI)
