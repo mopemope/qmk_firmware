@@ -113,35 +113,95 @@ extern keymap_config_t keymap_config;
 
 // MOD Shortcut
 
-#define COLN  CTL_T(JP_COLN)
-#define TAB   CTL_T(KC_TAB)
-#define MINS  CTL_T(JP_MINS)
-#define SMINS SFT_T(JP_MINS)
-#define SBSLS SFT_T(JP_BSLS)
-#define DEL   LT(RAISE,KC_DEL)
-#define SPC   SFT_T(KC_SPC)
-#define CSPC  CTL_T(KC_SPC)
-#define ENT   SFT_T(KC_ENT)
-#define CENT  CTL_T(KC_ENT)
-#define EENT  LT(EMACS2,KC_ENT)
-#define BSPC  LT(LOWER,KC_BSPC)
-#define ABSPC ALT_T(KC_BSPC)
-#define GUI   LT(MISC,KC_LGUI)
-#define A_M   LT(MISC,KC_A)
-#define Z_M   LT(MISC2,KC_Z)
-#define A_C   CTL_T(KC_A)
-#define O_M   LT(MISC,KC_O)
-#define S_M   LT(MISC2,JP_SLSH)
-#define O_C   CTL_T(KC_O)
-#define AT_M  LT(MISC,JP_AT)
-#define AT_A  ALT_T(JP_AT)
-#define AT_C  CTL_T(JP_AT)
-#define M2    MO(MISC2)
-#define GL    LGUI(KC_LEFT)
-#define GU    LGUI(KC_UP)
-#define GD    LGUI(KC_DOWN)
-#define GR    LGUI(KC_RIGHT)
-#define GH    LGUI(KC_H)
+//#define COLN  CTL_T(JP_COLN)
+#define TAB    CTL_T(KC_TAB)
+//#define MINS  CTL_T(JP_MINS)
+#define SMINS  SFT_T(JP_MINS)
+#define SBSLS  SFT_T(JP_BSLS)
+#define DEL    LT(RAISE,KC_DEL)
+#define RAI    MO(RAISE)
+#define SPC    SFT_T(KC_SPC)
+#define CSPC   CTL_T(KC_SPC)
+#define ENT    SFT_T(KC_ENT)
+#define CENT   CTL_T(KC_ENT)
+#define EENT   LT(EMACS2,KC_ENT)
+#define BSPC   LT(LOWER,KC_BSPC)
+#define LOW    MO(LOWER)
+#define ABSPC  ALT_T(KC_BSPC)
+//#define GUI   LT(MISC,KC_LGUI)
+#define A_M    LT(MISC,KC_A)
+#define Z_M    LT(MISC2,KC_Z)
+#define A_C    CTL_T(KC_A)
+#define O_M    LT(MISC,KC_O)
+#define S_M    LT(MISC2,JP_SLSH)
+#define O_C    CTL_T(KC_O)
+#define AT_M   LT(MISC,JP_AT)
+#define AT_A   ALT_T(JP_AT)
+#define AT_C   CTL_T(JP_AT)
+#define M2     MO(MISC2)
+#define GL     LGUI(KC_LEFT)
+#define GU     LGUI(KC_UP)
+#define GD     LGUI(KC_DOWN)
+#define GR     LGUI(KC_RIGHT)
+#define GH     LGUI(KC_H)
+#define ELT    TD(E_LT)
+#define EGT    TD(E_GT)
+#define EXLM   JP_EXLM
+#define DQT    JP_DQT
+#define HASH   JP_HASH
+#define DLR    JP_DLR
+#define PERC   JP_PERC
+#define AMPR   JP_AMPR
+#define QUOT   JP_QUOT
+#define GRV    JP_GRV
+#define PIPE   JP_PIPE
+#define YEN    JP_YEN
+#define AT     JP_AT
+#define LCBR   JP_LCBR
+#define RCBR   JP_RCBR
+#define UNDS   JP_UNDS
+#define TILD   JP_TILD
+#define EQL    JP_EQL
+#define COLN   JP_COLN
+#define SLSH   JP_SLSH
+#define ASTR   JP_ASTR
+#define LPRN   JP_LPRN
+#define RPRN   JP_RPRN
+#define BSLS   JP_BSLS
+#define CIRC   JP_CIRC
+#define MINS   JP_MINS
+#define SCLN   JP_SCLN
+#define COMM   JP_COMM
+#define DOT    JP_DOT
+#define PLUS   JP_PLUS
+#define LBRC   JP_LBRC
+#define RBRC   JP_RBRC
+#define GUI    KC_LGUI
+#define ZHTG   JP_ZHTG
+#define ALT    KC_LALT
+#define CTL    KC_LCTL
+#define ESC    KC_ESC
+#define DC     DF(COLEMAK)
+#define DE     DF(EMACS)
+#define COPY   LCTL(KC_C)
+#define PASTE  LCTL(KC_V)
+#define WH_D   KC_WH_D
+#define MS_U   KC_MS_U
+#define WH_U   KC_WH_U
+#define PGDN   KC_PGDN
+#define PGUP   KC_PGUP
+#define MS_L   KC_MS_L
+#define MS_D   KC_MS_D
+#define MS_R   KC_MS_R
+#define KLEFT  KC_LEFT
+#define KUP    KC_UP
+#define KDOWN  KC_DOWN
+#define KRIGHT KC_RIGHT
+#define MUTE   KC_MUTE
+#define VOLD   KC_VOLD
+#define VOLU   KC_VOLU
+#define BTN2   KC_BTN2
+#define BTN1   KC_BTN1
 
 #define TAP(code)  \
   register_code (code); \
@@ -177,10 +237,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [COLEMAK] = KEYMAP( \
-  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,         KC_J,    KC_L,    KC_U,    KC_Y,    JP_COLN, \
-  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,         KC_H,    KC_N,    KC_E,    KC_I,    O_M,     \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,         KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, \
-                    KC_LCTL, DEL,     SPC,          ENT,     BSPC,    KC_LALT                    \
+  KC_Q,    KC_W,    KC_F,   KC_P,    KC_G,        KC_J,    KC_L,    KC_U,   KC_Y,   COLN, \
+  KC_A,    KC_R,    KC_S,   KC_T,    KC_D,        KC_H,    KC_N,    KC_E,   KC_I,   O_M,  \
+  KC_Z,    KC_X,    KC_C,   KC_V,    KC_B,        KC_K,    KC_M,    COMM,   DOT,    SLSH, \
+                    CTL,    DEL,     SPC,         ENT,     BSPC,    ALT                   \
 ),
 
 /* EMACS(COLEMAK)
@@ -199,10 +259,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [EMACS] = KEYMAP( \
-  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,         KC_J,    KC_L,    KC_U,    KC_Y,    JP_COLN, \
-  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,         KC_H,    KC_N,    KC_E,    KC_I,    O_M,     \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,         KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, \
-                    KC_LCTL, DEL,     SPC,          EENT,    BSPC,    KC_LALT                    \
+  KC_Q,    KC_W,    KC_F,  KC_P,    KC_G,         KC_J,    KC_L,    KC_U,   KC_Y,  COLN, \
+  KC_A,    KC_R,    KC_S,  KC_T,    KC_D,         KC_H,    KC_N,    KC_E,   KC_I,  O_M,  \
+  KC_Z,    KC_X,    KC_C,  KC_V,    KC_B,         KC_K,    KC_M,    COMM,   DOT,   SLSH, \
+                    CTL,   DEL,     SPC,          EENT,    BSPC,    ALT                  \
 ),
 
 /* EMACS2(COLEMAK Shortcut Layer)
@@ -221,10 +281,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [EMACS] = KEYMAP( \
-  RESET,   M_W,     C_F,     C_P,     C_G,         M_DOT,    TD(E_LT),    C_P,    TD(E_GT),  XXXXXXX, \
-  C_A,     C_R,     C_S,     C_T,     C_AT,        M_PER,    C_LE,        C_N,    C_RI,      XXXXXXX, \
-  C_Z,    C_X,      C_C,     XXXXXXX, C_B,         M_X,      C_SCLN,      C_COLN, C_PIPE,    M_SCLN,  \
-                    KC_LCTL, DEL,     SPC,         _______,  _______,     _______                     \
+  RESET,   M_W,     C_F,    C_P,     C_G,         M_DOT,    ELT,        C_P,    EGT,      XXXXXXX, \
+  C_A,     C_R,     C_S,    C_T,     C_AT,        M_PER,    C_LE,       C_N,    C_RI,     XXXXXXX, \
+  C_Z,    C_X,      C_C,    XXXXXXX, C_B,         M_X,      C_SCLN,     C_COLN, C_PIPE,   M_SCLN,  \
+                    CTL,    DEL,     SPC,         _______,  _______,    _______                    \
 ),
 
 /* LOWER (Symbol)
@@ -243,10 +303,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [LOWER] = KEYMAP( \
-  JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC,      JP_AMPR, JP_QUOT, JP_GRV,  JP_PIPE, JP_YEN,  \
-  KC_ESC,  JP_AT,   JP_LCBR, JP_RCBR, JP_UNDS,      JP_TILD, JP_EQL,  JP_COLN, JP_SLSH, JP_ASTR, \
-  XXXXXXX, XXXXXXX, JP_LPRN, JP_RPRN, JP_BSLS,      JP_CIRC, JP_MINS, JP_SCLN, JP_DOT,  JP_PLUS, \
-                    _______, JP_ZHTG, KC_LGUI,      _______,  _______, KC_LALT                   \
+  EXLM,    DQT,     HASH,    DLR,  PERC,      AMPR,    QUOT,    GRV,  PIPE, YEN,  \
+  ESC,     AT,      LCBR,    RCBR, UNDS,      TILD,    EQL,     COLN, SLSH, ASTR, \
+  XXXXXXX, XXXXXXX, LPRN,    RPRN, BSLS,      CIRC,    MINS,    SCLN, DOT,  PLUS, \
+                    _______, ZHTG, GUI,       _______, _______, ALT               \
 ),
 
 /* RAISE (Num + Fn + Others)
@@ -265,10 +325,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [RAISE] = KEYMAP( \
-  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    \
-  KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,        KC_F5,   KC_F6,   JP_LBRC, JP_RBRC, JP_AT,   \
-  JP_UNDS, KC_F7,   KC_F8,   KC_F9,   KC_F10,       KC_F11,  KC_F12,  JP_LPRN, JP_RPRN, JP_MINS, \
-                    _______, _______, _______,      KC_LGUI, JP_ZHTG, KC_LALT                    \
+  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,   KC_9,   KC_0, \
+  TAB,     KC_F1,   KC_F2,   KC_F3,   KC_F4,        KC_F5,   KC_F6,   LBRC,   RBRC,   AT,   \
+  UNDS,    KC_F7,   KC_F8,   KC_F9,   KC_F10,       KC_F11,  KC_F12,  LPRN,   RPRN,   MINS, \
+                    _______, _______, _______,      GUI,     ZHTG,    ALT                   \
 ),
 
 /* MISC (GUI)
@@ -287,10 +347,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [MISC] = KEYMAP( \
-  RESET,   KC_WH_D, KC_MS_U,    KC_WH_U,    WRKSP1,       UWRKSP,      KC_PGDN,   KC_UP,   KC_PGUP,  RESET,   \
-  _______, KC_MS_L, KC_MS_D,    KC_MS_R,    WRKSP2,       DWRKSP,      KC_LEFT,   KC_DOWN, KC_RIGHT, _______, \
-  XXXXXXX, XXXXXXX, LCTL(KC_C), LCTL(KC_V), KC_LGUI,      DF(COLEMAK), DF(EMACS), KC_MUTE, KC_VOLD,  KC_VOLU, \
-                    _______,    KC_BTN2,    KC_BTN1,      CENT,        ABSPC,     _______                     \
+  RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,    KUP,    PGUP,   RESET,   \
+  _______, MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   KLEFT,   KDOWN,  KRIGHT, _______, \
+  XXXXXXX, XXXXXXX, COPY,    PASTE,   GUI,       DC,       DE,      MUTE,   VOLD,   VOLU,    \
+                    _______, BTN2,    BTN1,      CENT,     ABSPC,   _______                  \
 ),
 
 /* MISC2 (GUI)
@@ -312,7 +372,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   RESET,   _______, _______, _______, _______,      _______, _______, GU,      _______, RESET,   \
   _______, _______, _______, _______, _______,      GH,      GL,      GD,      GR,      _______, \
   _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, \
-                    KC_LALT, KC_LGUI, _______,      _______, KC_LGUI, KC_LALT                    \
+                    ALT,     GUI,     _______,      _______, GUI,     ALT                        \
 )
 };
 
