@@ -227,7 +227,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  Z   |  X   |  C   |  V   |  B   |      | |      |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      | CTRL |DEL/R |SP/SFT| |EN/SFT| BS/L | ALT  |      |      |      |
+   * |      |      |      | CTRL |DEL/R |SP/SFT| |EN/SFT| BS/L | ALT  |      |      | ZHTG |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,    KC_W,    KC_F,    KC_P, KC_G, XXXXXXX, XXXXXXX, KC_J, KC_L, KC_U,    KC_Y,    COLN,    \
     A_M,     KC_R,    KC_S,    KC_T, KC_D, XXXXXXX, XXXXXXX, KC_H, KC_N, KC_E,    KC_I,    O_M,     \
     Z_M ,    KC_X,    KC_C,    KC_V, KC_B, XXXXXXX, XXXXXXX, KC_K, KC_M, COMM,    DOT,     S_M,     \
-    XXXXXXX, XXXXXXX, XXXXXXX, CTL,  DEL,  SPC,     ENT,     BSPC, ALT,  XXXXXXX, XXXXXXX, XXXXXXX  \
+    XXXXXXX, XXXXXXX, XXXXXXX, CTL,  DEL,  SPC,     ENT,     BSPC, ALT,  XXXXXXX, XXXXXXX, ZHTG     \
   ),
 
   /* EMACS(COLEMAK)
@@ -246,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  Z   |  X   |  C   |  V   |  B   |      | |      |  K   |  M   |  ,   |  .   |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L | ALT  |      |      |      |
+   * |      |      |      | CTRL |DEL/R |SP/SFT| |EN/EM2| BS/L | ALT  |      |      | ZHTG |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
@@ -254,7 +254,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,    KC_W,    KC_F,    KC_P, KC_G, XXXXXXX, XXXXXXX, KC_J, KC_L, KC_U,    KC_Y,    COLN,    \
     A_M,     KC_R,    KC_S,    KC_T, KC_D, XXXXXXX, XXXXXXX, KC_H, KC_N, KC_E,    KC_I,    O_M,     \
     Z_M,     KC_X,    KC_C,    KC_V, KC_B, XXXXXXX, XXXXXXX, KC_K, KC_M, COMM,    DOT,     S_M,     \
-    XXXXXXX, XXXXXXX, XXXXXXX, CTL,  DEL,  SPC,     EENT,    BSPC, ALT,  XXXXXXX, XXXXXXX, XXXXXXX  \
+    XXXXXXX, XXXXXXX, XXXXXXX, CTL,  DEL,  SPC,     EENT,    BSPC, ALT,  XXXXXXX, XXXXXXX, ZHTG     \
   ),
 
   /* EMACS2(COLEMAK Shortcut Layer)
@@ -283,15 +283,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |  (   |   )  |  \   |      | |      |   ^  |  -   |  ;   |   .  |  +   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      | ZHTG | GUI  | |      |      | ALT  |      |      |      |
+   * |      |      |      | ZHTG |      | GUI  | |      |      | ALT  |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [LOWER] = KEYMAP( \
-    EXLM,    DQT,     HASH,    DLR,     PERC, XXXXXXX, XXXXXXX, AMPR,    QUOT, GRV,     PIPE,    YEN,    \
-    ESC,     AT,      LCBR,    RCBR,    UNDS, XXXXXXX, XXXXXXX, TILD,    EQL,  COLN,    SLSH,    ASTR,   \
-    XXXXXXX, XXXXXXX, LPRN,    RPRN,    BSLS, XXXXXXX, XXXXXXX, CIRC,    MINS, SCLN,    DOT,     PLUS,   \
-    XXXXXXX, XXXXXXX, XXXXXXX, _______, ZHTG, GUI,     _______, _______, ALT,  XXXXXXX, XXXXXXX, XXXXXXX \
+    EXLM,    DQT,     HASH,    DLR,  PERC,    XXXXXXX, XXXXXXX, AMPR,    QUOT, GRV,     PIPE,    YEN,    \
+    ESC,     AT,      LCBR,    RCBR, UNDS,    XXXXXXX, XXXXXXX, TILD,    EQL,  COLN,    SLSH,    ASTR,   \
+    XXXXXXX, XXXXXXX, LPRN,    RPRN, BSLS,    XXXXXXX, XXXXXXX, CIRC,    MINS, SCLN,    DOT,     PLUS,   \
+    XXXXXXX, XXXXXXX, XXXXXXX, ZHTG, XXXXXXX, GUI,     _______, _______, ALT,  XXXXXXX, XXXXXXX, XXXXXXX \
   ),
 
   /* RAISE (Num + Fn + Others)
@@ -302,7 +302,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  _   |  F7  |  F8  |  F9  |  F10 |      | |      |  F11 |  F12 |   (  |   )  |   -  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | | GUI  | ZHTG | ALT  |      |      |      |
+   * |      |      |      |      |      |      | | GUI  |      | ZHTG |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
@@ -310,7 +310,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    ESC,     ESC,     KC_6,    KC_7,   KC_8,    KC_9,    KC_0,    \
     TAB,     KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, KC_F5,   KC_F6,  LBRC,    RBRC,    AT,      \
     UNDS,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, KC_F11,  KC_F12, LPRN,    RPRN,    MINS,    \
-    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, GUI,     ZHTG,    ALT,    XXXXXXX, XXXXXXX, XXXXXXX  \
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, GUI,     XXXXXXX, ZHTG,   XXXXXXX, XXXXXXX, XXXXXXX  \
   ),
 
   /* MISC (GUI)
@@ -321,7 +321,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      | Copy |Paste | GUI  |      | |      |COLEMA|EMACS | Mute |VolDn |VolUp |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |RClick|LClick|      | |      |EN/CTL|BS/ALT|      |      | NONE |
+   * |      |      |      | BTN2 | BTN1 |      | |      |EN/CTL|BS/ALT|      |      | NONE |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
@@ -329,7 +329,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RESET,   WH_D,    MS_U,    WH_U,  WRKSP1, XXXXXXX, XXXXXXX, UWRKSP, PGDN,  KUP,     PGUP,    RESET,   \
     _______, MS_L,    MS_D,    MS_R,  WRKSP2, XXXXXXX, XXXXXXX, DWRKSP, KLEFT, KDOWN,   KRIGHT,  _______, \
     XXXXXXX, XXXXXXX, COPY,    PASTE, GUI,    XXXXXXX, XXXXXXX, DC,     DE,    MUTE,    VOLD,    VOLU,    \
-    _______, XXXXXXX, XXXXXXX, BTN2,  BTN1,   XXXXXXX, XXXXXXX, CENT,   ABSPC, XXXXXXX, XXXXXXX, DF(NONE) \
+    XXXXXXX, XXXXXXX, XXXXXXX, BTN2,  BTN1,   XXXXXXX, XXXXXXX, CENT,   ABSPC, XXXXXXX, XXXXXXX, DF(NONE) \
   ),
 
   /* MISC2 (GUI2)
