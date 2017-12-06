@@ -86,6 +86,8 @@ extern keymap_config_t keymap_config;
 // C-M-s
 #define CMP LCTL(LALT(KC_P))
 
+#define C_M_S LCTL(LALT(JP_BSLS))
+
 // M-.
 #define M_DOT  LALT(KC_DOT)
 // C-M-.
@@ -261,7 +263,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |RESET | M-W  | C-F  | C-Y  | C-G  |      | |      | M-.  | E-LT |  UP  | E-GT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | C-A  | C-R  | C-S  | C-T  | C-@  |      | |      | M-%  | LEFT | DOWN |RIGHT |      |
+   * | C-A  | C-R  | C-S  | C-T  | C-@  |      | |      | M-%  | LEFT | DOWN |RIGHT |C-M-\ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | C-Z  | C-X  | C-C  |      | C-B  |      | |      | M-x  | C-;  | C-:  | C-|  | M-;  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -270,7 +272,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [EMACS2] = KEYMAP( \
     RESET,   M_W,     C_F,     C_Y,     C_G,  XXXXXXX, XXXXXXX, M_DOT,   ELT,     C_P,     EGT,      XXXXXXX, \
-    C_A,     C_R,     C_S,     C_T,     C_AT, XXXXXXX, XXXXXXX, M_PER,   C_LE,    C_N,     C_RI,     XXXXXXX, \
+    C_A,     C_R,     C_S,     C_T,     C_AT, XXXXXXX, XXXXXXX, M_PER,   C_LE,    C_N,     C_RI,     C_M_S,   \
     C_Z,     C_X,     C_C,     XXXXXXX, C_B,  XXXXXXX, XXXXXXX, M_X,     C_SCLN,  C_COLN,  C_PIPE,   M_SCLN,  \
     XXXXXXX, XXXXXXX, XXXXXXX, C_SL,    M_D,  C_SPC,   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX  \
   ),
