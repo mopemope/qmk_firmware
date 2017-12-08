@@ -35,8 +35,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 /* #define TAPPING_FORCE_HOLD */
-#define TAPPING_TERM 150
-#define QMK_KEYS_PER_SCAN 4
+#define TAPPING_TERM 200
+/* #define QMK_KEYS_PER_SCAN 4 */
 
 #define MOUSEKEY_INTERVAL 5
 #define MOUSEKEY_TIME_TO_MAX 50
@@ -46,5 +46,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MOUSEKEY_WHEEL_MAX_SPEED 2
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 200
+
+
+/* #define AUTO_SHIFT_TIMEOUT 200 */
+/* #define NO_AUTO_SHIFT_SPECIAL */
 
 #endif
