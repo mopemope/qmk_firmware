@@ -119,11 +119,16 @@ extern keymap_config_t keymap_config;
 #define TAB    KC_TAB
 //#define MINS  CTL_T(JP_MINS)
 #define SMINS  SFT_T(KC_MINS)
+#define CMINS  CTL_T(KC_MINS)
 #define SBSLS  SFT_T(JP_BSLS)
 #define EBSLS  LT(EMACS2, JP_BSLS)
-//#define DEL    LT(RAISE,KC_DEL)
 #define DEL    KC_DEL
-#define RAI    MO(RAISE)
+#define EDEL   LT(EMACS2,KC_DEL)
+#define SDEL   SFT_T(KC_DEL)
+#define BSPC   KC_BSPC
+#define ABSPC  ALT_T(KC_BSPC)
+#define SBSPC  SFT_T(KC_BSPC)
+#define EBSPC  LT(EMACS2,KC_BSPC)
 //#define SPC    SFT_T(KC_SPC)
 #define SPC    LT(RAISE,KC_SPC)
 #define CSPC   CTL_T(KC_SPC)
@@ -131,10 +136,8 @@ extern keymap_config_t keymap_config;
 #define ENT    LT(LOWER,KC_ENT)
 #define CENT   CTL_T(KC_ENT)
 #define EENT   LT(EMACS2,KC_ENT)
-//#define BSPC   LT(LOWER,KC_BSPC)
-#define BSPC   KC_BSPC
+#define RAI    MO(RAISE)
 #define LOW    MO(LOWER)
-#define ABSPC  ALT_T(KC_BSPC)
 //#define GUI   LT(MISC,KC_LGUI)
 #define A_M    LT(MISC,KC_A)
 #define Z_M    LT(MISC2,KC_Z)
@@ -153,6 +156,7 @@ extern keymap_config_t keymap_config;
 #define GH     LGUI(KC_H)
 #define ELT    TD(E_LT)
 #define EGT    TD(E_GT)
+
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -236,9 +240,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|              |------+------+------+------+------+------|
       UNDS , A_M  , KC_R , KC_S , KC_T , KC_D ,                KC_H , KC_N , KC_E , KC_I , O_M  , MINS ,
   //|------+------+------+------+------+------+------. ,-----|------+------+------+------+------+------|
-      SFT  , Z_M  , KC_X , KC_C , KC_V , KC_B , SPC  ,   ENT , KC_K , KC_M , COMM , DOT  , S_M  ,SBSLS ,
+      CTL  , Z_M  , KC_X , KC_C , KC_V , KC_B , SPC  ,   ENT , KC_K , KC_M , COMM , DOT  , S_M  ,SBSLS ,
   //`------+------+------+------+------+------+------/ \-----+------+------+------+------+------+------'
-                                  CTL  ,  DEL , SPC  ,   ENT , BSPC , ALT
+                                  CTL  , SDEL , SPC  ,   ENT ,SBSPC , ALT
   //                            `------+------+------' `-----+------+------'
   ),
 
@@ -250,9 +254,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|              |------+------+------+------+------+------|
       UNDS , A_M  , KC_R , KC_S , KC_T , KC_D ,                KC_H , KC_N , KC_E , KC_I , O_M  , MINS ,
   //|------+------+------+------+------+------+------. ,-----|------+------+------+------+------+------|
-      SFT  , Z_M  , KC_X , KC_C , KC_V , KC_B , SPC  ,   ENT , KC_K , KC_M , COMM , DOT  , S_M  ,EBSLS ,
+      CTL  , Z_M  , KC_X , KC_C , KC_V , KC_B , SPC  ,   ENT , KC_K , KC_M , COMM , DOT  , S_M  ,SBSLS ,
   //`------+------+------+------+------+------+------/ \-----+------+------+------+------+------+------'
-                                  CTL  , DEL  , SPC  ,   ENT , BSPC , ALT
+                                  CTL  , SDEL , SPC  ,   ENT ,EBSPC , ALT
   //                            `------+------+------' `-----+------+------'
   ),
 
@@ -288,11 +292,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,------+------+------+------+------+------.              ,------+------+------+------+------+------.
      ______,______,______,______,______,______,               ______,______,______,______,______,______,
   //|------+------+------+------+------+------|              |------+------+------+------+------+------|
-     ______,______,______,______,______,______,               ______,______,______,______,______,______,
+     ______, KC_1 , KC_2 , KC_3 , KC_4 , KC_5 ,                KC_6 , KC_7 , KC_8 , KC_9 , KC_0 ,______,
   //|------+------+------+------+------+------|              |------+------+------+------+------+------|
-     ______, TAB  ,KC_F1 ,KC_F2 ,KC_F3 ,KC_F4 ,               KC_F5 ,KC_F6 , LBRC , RBRC ,  AT  ,______,
+     ______,______,KC_F1 ,KC_F2 ,KC_F3 ,KC_F4 ,               KC_F5 ,KC_F6 , LBRC , RBRC , LCBR , RCBR,
   //|------+------+------+------+------+------+------. ,-----|------+------+------+------+------+------|
-     ______, UNDS ,KC_F7 ,KC_F8 ,KC_F9 ,KC_F10,______,  GUI  ,KC_F11,KC_F12, LPRN , RPRN , MINS ,______,
+     ______,______,KC_F7 ,KC_F8 ,KC_F9 ,KC_F10,______,  GUI  ,KC_F11,KC_F12, LPRN , RPRN ,______,______,
   //`------+------+------+------+------+------+------/ \-----+------+------+------+------+------+------'
                                  ______,______,______,  GUI  ,______, ZHTG
   //                            `------+------+------' `-----+------+------'
