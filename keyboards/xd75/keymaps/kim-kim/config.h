@@ -1,4 +1,4 @@
-/* Copyright 2017 Fred Sundvik
+/* Copyright 2017 REPLACE_WITH_YOUR_NAME
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,13 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
+#ifndef CONFIG_USER_H
+#define CONFIG_USER_H
 
-extern "C" {
-#include "quantum.h"
-}
-#include "test_driver.hpp"
-#include "test_matrix.h"
-#include "keyboard_report_util.hpp"
-#include "test_fixture.hpp"
+#include QMK_KEYBOARD_CONFIG_H
+
+// place overrides here
+#undef BACKLIGHT_BREATHING
+
+#endif
