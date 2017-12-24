@@ -267,7 +267,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_W,    KC_F,  KC_P,    KC_G,         KC_J,    KC_L,    KC_U,   KC_Y,  COLN, \
   A_M,    KC_R,    KC_S,  KC_T,    KC_D,         KC_H,    KC_N,    KC_E,   KC_I,  O_M,  \
   Z_M,    KC_X,    KC_C,  KC_V,    KC_B,         KC_K,    KC_M,    COMM,   DOT,   S_M,  \
-                   CTL,   SDEL,    SPC,          ENT,     SBSPC,   ALT                  \
+                   CTL,   SDEL,    SPC,          ENT,     EBSPC,   ALT                  \
 ),
 
 /* EMACS2(COLEMAK Shortcut Layer)
@@ -343,7 +343,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | MsLf | MsDn | MsRg |WRKSP2|           |DWRKSP| Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      | Copy |Paste | GUI  |           |COLEMA|EMACS | Mute |VolDn |VolUp |
+ * |      |      | Copy |Paste | GUI  |           |COLEMA|EMACS |      |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | BTN2 | BTN1 |      |    |      | CTL  | ALT  |
@@ -352,10 +352,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [MISC] = KEYMAP( \
-  RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,    KUP,    PGUP,   RESET,   \
-  _______, MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   KLEFT,   KDOWN,  KRIGHT, _______, \
-  XXXXXXX, XXXXXXX, COPY,    PASTE,   GUI,       DC,       DE,      MUTE,   VOLD,   VOLU,    \
-                    BTN2,    BTN1,    GUI,       GUI,      CTL,     ALT                      \
+  RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,    KUP,     PGUP,    RESET,   \
+  _______, MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   KLEFT,   KDOWN,   KRIGHT,  XXXXXXX, \
+  XXXXXXX, XXXXXXX, COPY,    PASTE,   GUI,       DC,       DE,      XXXXXXX, XXXXXXX, XXXXXXX, \
+                    BTN2,    BTN1,    GUI,       GUI,      CTL,     ALT                        \
 ),
 
 /* MISC2 (GUI)
