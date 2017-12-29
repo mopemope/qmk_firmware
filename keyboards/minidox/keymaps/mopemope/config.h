@@ -33,7 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 /* #define TAPPING_FORCE_HOLD */
-#define TAPPING_TERM 200
+#define TAPPING_TERM 160
 /* #define QMK_KEYS_PER_SCAN 4 */
 
 #define MOUSEKEY_INTERVAL 5

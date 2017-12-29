@@ -273,11 +273,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* EMACS2(COLEMAK Shortcut Layer)
  *
  * ,----------------------------------.           ,----------------------------------.
- * |RESET | M-W  | C-F  | C-P  | C-G  |           | M-.  | E-LT |  UP  | E-GT |      |
+ * |RESET | M-W  | C-F  | C-Y  | C-G  |           | M-.  | E-LT |  UP  | E-GT |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * | C-A  | C-R  | C-S  | C-T  | C-@  |           | M-%  | LEFT | DOWN |RIGHT |C-M-S |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * | C-Z  | C-X  | C-C  |      | C-B  |           | M-x  | C-;  | C-:  | C-|  | M-;  |
+ * | C-Z  | C-X  | C-C  | C-V  | C-B  |           | M-x  | C-;  | C-:  | C-|  | M-;  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | C-SL | M-D  |      |    |      |      |      |
@@ -286,7 +286,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [EMACS2] = KEYMAP( \
-  _______, M_W,     C_F,    C_P,   C_G,         M_DOT,    ELT,        C_P,    EGT,      _______, \
+  _______, M_W,     C_F,    C_Y,   C_G,         M_DOT,    ELT,        C_P,    EGT,      _______, \
   C_A,     C_R,     C_S,    C_T,   C_AT,        M_PER,    C_LE,       C_N,    C_RI,     C_M_S,   \
   C_Z,     C_X,     C_C,    C_V,   C_B,         M_X,      C_SCLN,     C_COLN, C_PIPE,   M_SCLN,  \
                     C_SL,   M_D,   C_SPC,       _______,  _______,    _______                    \
