@@ -35,6 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* #define TAPPING_FORCE_HOLD */
 #define TAPPING_TERM 200
 /* #define QMK_KEYS_PER_SCAN 4 */
+#define AUTO_SHIFT_TIMEOUT 150
 
 #define MOUSEKEY_INTERVAL 5
 #define MOUSEKEY_TIME_TO_MAX 50

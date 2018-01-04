@@ -208,6 +208,8 @@ extern keymap_config_t keymap_config;
 #define VOLU   KC_VOLU
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
+#define ASTG   KC_ASTG
+
 
 #define TAP(code)  \
   register_code (code); \
@@ -344,7 +346,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | MsLf | MsDn | MsRg |WRKSP2|           |DWRKSP| Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      | Copy |Paste | ZHTG |           |COLEMA|EMACS |      |      |      |
+ * |      |      | Copy |Paste | ZHTG |           |COLEMA|EMACS | ASTG |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | BTN2 | BTN1 |      |    |      | CTL  | ALT  |
@@ -355,7 +357,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MISC] = KEYMAP( \
   RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,    KUP,     PGUP,    RESET,   \
   XXXXXXX, MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   KLEFT,   KDOWN,   KRIGHT,  XXXXXXX, \
-  XXXXXXX, XXXXXXX, COPY,    PASTE,   ZHTG,      DC,       DE,      XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, COPY,    PASTE,   ZHTG,      DC,       DE,      ASTG,    XXXXXXX, XXXXXXX, \
                     BTN2,    BTN1,    GUI,       GUI,      CTL,     ALT                        \
 ),
 
