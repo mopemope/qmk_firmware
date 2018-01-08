@@ -183,9 +183,10 @@ extern keymap_config_t keymap_config;
 #define RBRC   JP_RBRC
 #define GUI    KC_LGUI
 #define ZHTG   JP_ZHTG
-#define ALT    ALT_T(JP_ZHTG)
+#define ALT    ALT_T(JP_HENK)
 #define CTL    OSM(MOD_LCTL)
-#define SFT    OSM(MOD_LSFT)
+#define SFT1   SFT_T(JP_MHEN)
+#define SFT2   SFT_T(JP_HENK)
 #define ESC    KC_ESC
 #define DC     DF(COLEMAK)
 #define DE     DF(EMACS)
@@ -209,7 +210,6 @@ extern keymap_config_t keymap_config;
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
 #define ASTG   KC_ASTG
-
 
 #define TAP(code)  \
   register_code (code); \
@@ -239,16 +239,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   Z  |   X  |   C  |   V  |   B  |           |   K  |   M  |   ,  |   .  |   /  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  | SFT  | CTL  |      |    |      |  BS  |  ALT |
+ *                  | SFT  | CTL  |      |    |      |  BS  | SFT  |
  *                  `-------------| SPC  |    | ENT  |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [COLEMAK] = KEYMAP( \
-  KC_Q,   KC_W,    KC_F,   KC_P,    KC_G,        KC_J,    KC_L,    KC_U,   KC_Y,   DEL,  \
+  KC_Q,   KC_W,    KC_F,   KC_P,    KC_G,        KC_J,    KC_L,    KC_U,   KC_Y,   DEL, \
   A_M,    KC_R,    KC_S,   KC_T,    KC_D,        KC_H,    KC_N,    KC_E,   KC_I,   O_M, \
-  Z_A,    KC_X,    KC_C,   KC_V,    KC_B,        KC_K,    KC_M,    COMM,   DOT,    S_M,  \
-                   SFT,    CTL,     SPC,         ENT,     SBSPC,   ALT                   \
+  Z_A,    KC_X,    KC_C,   KC_V,    KC_B,        KC_K,    KC_M,    COMM,   DOT,    S_M, \
+                   SFT1,   CTL,     SPC,         ENT,     ABSPC,   SFT2                 \
 ),
 
 /* EMACS(COLEMAK)
@@ -261,7 +261,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   Z  |   X  |   C  |   V  |   B  |           |   K  |   M  |   ,  |   .  |   /  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  | SFT  | CTL  |      |    |      |  BS  |  ALT |
+ *                  | SFT  | CTL  |      |    |      |  BS  | SFT  |
  *                  `-------------| SPC  |    | ENT  |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
@@ -270,7 +270,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_W,    KC_F,  KC_P,    KC_G,         KC_J,    KC_L,    KC_U,   KC_Y,  DEL,  \
   A_M,    KC_R,    KC_S,  KC_T,    KC_D,         KC_H,    KC_N,    KC_E,   KC_I,  O_M,  \
   Z_A,    KC_X,    KC_C,  KC_V,    KC_B,         KC_K,    KC_M,    COMM,   DOT,   S_M,  \
-                   SFT,   CTL,     SPC,          ENT,     EBSPC,   ALT                  \
+                   SFT1,  CTL,     SPC,          ENT,     EBSPC,   SFT2                  \
 ),
 
 /* EMACS2(COLEMAK Shortcut Layer)
