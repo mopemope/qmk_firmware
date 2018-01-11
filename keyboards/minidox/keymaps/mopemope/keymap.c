@@ -1,4 +1,5 @@
 #include "minidox.h"
+#include "pro_micro.h"
 #include "action_layer.h"
 #include "eeconfig.h"
 #include "keymap_jp.h"
@@ -212,6 +213,16 @@ extern keymap_config_t keymap_config;
 #define BTN1   KC_BTN1
 #define ASTG   KC_ASTG
 
+#define RTOG  RGB_TOG
+#define RMOD  RGB_MOD
+#define RRMOD RGB_RMOD
+#define RHUI  RGB_HUI
+#define RHUD  RGB_HUD
+#define RSAI  RGB_SAI
+#define RSAD  RGB_SAD
+#define RVAI  RGB_VAI
+#define RVAD  RGB_VAD
+
 #define TAP(code)  \
   register_code (code); \
   unregister_code (code)
@@ -367,25 +378,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |RESET |      |      |      |      |           |      |      |  Up  |      |RESET |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |      |      |      |           | Hide | Left | Down |Right |      |
+ * |      |      |      | RSAI | RSAD |           | Hide | Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |      |      |      |           |      |      |      |      |      |
+ * |      | RTOG | RMOD | RHUI | RHUD |           | RVAI | RVAD | RRMOD|      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  | ALT  | GUI  |      |    |      | GUI  | ALT  |
+ *                  |      |      |      |    |      |      |      |
  *                  `-------------|      |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [MISC2] =  KEYMAP( \
   RESET,   _______, _______, _______, _______,      _______, _______, GU,      _______, RESET,   \
-  _______, _______, _______, _______, _______,      GH,      GL,      GD,      GR,      _______, \
-  _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, \
-                    ALT,     GUI,     _______,      _______, GUI,     ALT                        \
+  _______, _______, _______, RSAI,    RSAD,         GH,      GL,      GD,      GR,      _______, \
+  _______, RTOG,    RMOD,    RHUI,    RHUD,         RVAI,    RVAD,    RRMOD,   _______, _______, \
+                    _______, _______, _______,      _______, _______, _______                        \
 )
 };
 
 void persistant_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
+}
+
+void matrix_init_user(void) {
+  TXLED0;
+  RXLED0;
+}
+
+void matrix_scan_user(void) {
+  TXLED0;
+  RXLED0;
 }
