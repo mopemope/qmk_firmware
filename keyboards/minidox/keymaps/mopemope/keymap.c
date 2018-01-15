@@ -135,7 +135,7 @@ extern keymap_config_t keymap_config;
 #define A_M    LT(MISC,KC_A)
 #define Z_A    ALT_T(KC_Z)
 #define A_C    CTL_T(KC_A)
-#define O_M    LT(MISC,KC_O)
+#define O_M    LT(MISC2,KC_O)
 #define S_M    LT(MISC2,JP_SLSH)
 #define S_C    CTL_T(JP_SLSH)
 #define O_C    CTL_T(KC_O)
@@ -257,7 +257,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [COLEMAK] = KEYMAP( \
   KC_Q,   KC_W,    KC_F,   KC_P,    KC_G,        KC_J,    KC_L,    KC_U,   KC_Y,   DEL, \
   A_M,    KC_R,    KC_S,   KC_T,    KC_D,        KC_H,    KC_N,    KC_E,   KC_I,   O_M, \
-  Z_A,    KC_X,    KC_C,   KC_V,    KC_B,        KC_K,    KC_M,    COMM,   DOT,    S_M, \
+  Z_A,    KC_X,    KC_C,   KC_V,    KC_B,        KC_K,    KC_M,    COMM,   DOT,    S_C, \
                    SFT1,   CTL,     SPC,         ENT,     ABSPC,   SFT2                 \
 ),
 
@@ -356,7 +356,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | MsLf | MsDn | MsRg |WRKSP2|           |DWRKSP| Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      | Copy |Paste |      |           |COLEMA|EMACS | ASTG |      |      |
+ * |      |      | Copy |Paste | Hide |           |COLEMA|EMACS | ASTG |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | BTN2 | BTN1 |      |    |      | CTL  | ALT  |
@@ -365,20 +365,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [MISC] = KEYMAP( \
-  RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,    KUP,     PGUP,    RESET,   \
-  XXXXXXX, MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   KLEFT,   KDOWN,   KRIGHT,  XXXXXXX, \
-  XXXXXXX, XXXXXXX, COPY,    PASTE,   XXXXXXX,   DC,       DE,      ASTG,    XXXXXXX, XXXXXXX, \
-                    BTN2,    BTN1,    GUI,       GUI,      CTL,     ALT                        \
+  RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,    GU,     PGUP,    RESET,   \
+  XXXXXXX, MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   GL,      GD,     GR,      XXXXXXX, \
+  XXXXXXX, XXXXXXX, COPY,    PASTE,   GH,        DC,       DE,      ASTG,   XXXXXXX, XXXXXXX, \
+                    BTN2,    BTN1,    GUI,       GUI,      CTL,     ALT                       \
 ),
 
 /* MISC2 (GUI)
  *
  * ,----------------------------------.           ,----------------------------------.
- * |RESET |      |      |      |      |           |      |      |  Up  |      |RESET |
+ * |RESET |      |      |      |      |           |      | PgDn |  Up  | PgUp |RESET |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |      | RSAI | RSAD |           | Hide | Left | Down |Right |      |
+ * |      |      |      |      |      |           |      | Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      | RTOG | RMOD | RHUI | RHUD |           | RVAI | RVAD | RRMOD|      |      |
+ * |      | RTOG | RMOD | RHUI | RHUD |           | RSAI | RSAD | RRMOD|      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  |      |      |      |    |      |      |      |
@@ -387,10 +387,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [MISC2] =  KEYMAP( \
-  RESET,   _______, _______, _______, _______,      _______, _______, GU,      _______, RESET,   \
-  _______, _______, _______, RSAI,    RSAD,         GH,      GL,      GD,      GR,      _______, \
-  _______, RTOG,    RMOD,    RHUI,    RHUD,         RVAI,    RVAD,    RRMOD,   _______, _______, \
-                    _______, _______, _______,      _______, _______, _______                        \
+  RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, PGDN,    KUP,    PGUP,    RESET,   \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, KLEFT,   KDOWN,  KRIGHT,  XXXXXXX, \
+  XXXXXXX, RTOG,    RMOD,    RHUI,    RHUD,        RSAI,    RSAD,    RRMOD,  XXXXXXX, XXXXXXX, \
+                    _______, _______, _______,     _______, _______, _______                   \
 )
 };
 
