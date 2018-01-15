@@ -97,10 +97,7 @@ extern keymap_config_t keymap_config;
 #define M_X    LALT(KC_X)
 // M-w
 #define M_W    LALT(KC_W)
-#define C_M_S LCTL(LALT(JP_BSLS))
-
-// C-M
-#define C_M LCTL(KC_LALT)
+#define C_M_S  LCTL(LALT(JP_BSLS))
 
 // C-RIGHT
 #define C_RI LCTL(KC_RIGHT)
@@ -140,6 +137,7 @@ extern keymap_config_t keymap_config;
 #define A_C    CTL_T(KC_A)
 #define O_M    LT(MISC,KC_O)
 #define S_M    LT(MISC2,JP_SLSH)
+#define S_C    CTL_T(JP_SLSH)
 #define O_C    CTL_T(KC_O)
 #define AT_M   LT(MISC,JP_AT)
 #define AT_A   ALT_T(JP_AT)
@@ -281,8 +279,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [EMACS] = KEYMAP( \
   KC_Q,   KC_W,    KC_F,  KC_P,    KC_G,         KC_J,    KC_L,    KC_U,   KC_Y,  DEL,  \
   A_M,    KC_R,    KC_S,  KC_T,    KC_D,         KC_H,    KC_N,    KC_E,   KC_I,  O_M,  \
-  Z_A,    KC_X,    KC_C,  KC_V,    KC_B,         KC_K,    KC_M,    COMM,   DOT,   S_M,  \
-                   SFT1,  CTL,     SPC,          ENT,     ABSPC,   SFT3                  \
+  Z_A,    KC_X,    KC_C,  KC_V,    KC_B,         KC_K,    KC_M,    COMM,   DOT,   S_C,  \
+                   SFT1,  CTL,     SPC,          ENT,     ABSPC,   SFT3                 \
 ),
 
 /* EMACS2(COLEMAK Shortcut Layer)

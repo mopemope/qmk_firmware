@@ -30,9 +30,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 /* #define TAPPING_FORCE_HOLD */
-#define TAPPING_TERM 150
+#define TAPPING_TERM 140
 /* #define QMK_KEYS_PER_SCAN 4 */
-#define AUTO_SHIFT_TIMEOUT 130
+#define AUTO_SHIFT_TIMEOUT 120
 
 #define MOUSEKEY_INTERVAL 10
 #define MOUSEKEY_TIME_TO_MAX 40
