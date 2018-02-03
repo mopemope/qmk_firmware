@@ -153,6 +153,7 @@ extern keymap_config_t keymap_config;
 #define GH     LGUI(KC_H)
 #define ELT    TD(E_LT)
 #define EGT    TD(E_GT)
+#define CLT    TD(ALT_CTL)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -224,18 +225,103 @@ extern keymap_config_t keymap_config;
 #define RVAI  RGB_VAI
 #define RVAD  RGB_VAD
 
-#define TAP(code)  \
-  register_code (code); \
-  unregister_code (code)
-
 enum double_taps {
   E_LT = 0,
-  E_GT,
+  E_GT = 1,
+  ALT_CTL  = 2,
 };
+
+enum x_taps {
+  SINGLE_TAP = 1,
+  SINGLE_HOLD = 2,
+  DOUBLE_TAP = 3,
+  DOUBLE_HOLD = 4,
+  DOUBLE_SINGLE_TAP = 5,
+  OTHER = 7
+};
+
+typedef struct {
+  bool is_press_action;
+  int state;
+} tap;
+
+int cur_dance (qk_tap_dance_state_t *state) {
+  if (state->count == 1) {
+    if (state->interrupted || state->pressed == 0) {
+      return SINGLE_TAP;
+    } else {
+      return SINGLE_HOLD;
+    }
+  } else if (state->count == 2) {
+    if (state->interrupted) {
+      return DOUBLE_SINGLE_TAP;
+    } else if (state->pressed) {
+      return DOUBLE_HOLD;
+    } else {
+      return DOUBLE_TAP;
+    }
+  } else {
+    return OTHER;
+  }
+}
+
+static tap xtap_state = {
+  .is_press_action = true,
+  .state = 0
+};
+
+void x_finished (qk_tap_dance_state_t *state, void *user_data) {
+  xtap_state.state = cur_dance(state);
+  switch (xtap_state.state) {
+    case SINGLE_TAP:
+      register_code(KC_LALT);
+      break;
+    case SINGLE_HOLD:
+      register_code(KC_LALT);
+      break;
+    case DOUBLE_TAP:
+      register_code(KC_LCTRL);
+      break;
+    case DOUBLE_HOLD:
+      register_code(KC_LCTRL);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      register_code(KC_LALT);
+      break;
+    default:
+      break;
+  }
+}
+
+void x_reset (qk_tap_dance_state_t *state, void *user_data) {
+  switch (xtap_state.state) {
+    case SINGLE_TAP:
+      unregister_code(KC_LALT);
+      break;
+    case SINGLE_HOLD:
+      unregister_code(KC_LALT);
+      break;
+    case DOUBLE_TAP:
+      unregister_code(KC_LCTRL);
+      break;
+    case DOUBLE_HOLD:
+      unregister_code(KC_LCTRL);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      unregister_code(KC_LALT);
+      break;
+    default:
+      unregister_code(KC_LCTRL);
+      unregister_code(KC_LALT);
+      break;
+  }
+  xtap_state.state = 0;
+}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
+  [ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
 };
 
 
@@ -260,7 +346,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_W,    KC_F,   KC_P,    KC_G,        KC_J,    KC_L,    KC_U,   KC_Y,   DEL, \
   A_M,    KC_R,    KC_S,   KC_T,    KC_D,        KC_H,    KC_N,    KC_E,   KC_I,   O_M, \
   Z_C,    KC_X,    KC_C,   KC_V,    KC_B,        KC_K,    KC_M,    COMM,   DOT,    S_A, \
-                   SFT1,   ALT,     SPC,         ENT,     CBSPC,   SFT2                 \
+                   SFT1,   CLT,     SPC,         ENT,     CBSPC,   SFT2                 \
 ),
 
 /* EMACS(COLEMAK)
@@ -282,7 +368,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_W,    KC_F,  KC_P,    KC_G,         KC_J,    KC_L,    KC_U,   KC_Y,  DEL,  \
   A_M,    KC_R,    KC_S,  KC_T,    KC_D,         KC_H,    KC_N,    KC_E,   KC_I,  O_M,  \
   Z_C,    KC_X,    KC_C,  KC_V,    KC_B,         KC_K,    KC_M,    COMM,   DOT,   S_A,  \
-                   SFT1,  ALT,     SPC,          ENT,     CBSPC,   SFT3                 \
+                   SFT1,  CLT,     SPC,          ENT,     CBSPC,   SFT3                 \
 ),
 
 /* EMACS2(COLEMAK Shortcut Layer)
@@ -348,7 +434,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,   KC_9,   KC_0, \
   TAB,     KC_F1,   KC_F2,   KC_F3,   KC_F4,        KC_F5,   KC_F6,   LBRC,   RBRC,   AT,   \
   UNDS,    KC_F7,   KC_F8,   KC_F9,   KC_F10,       KC_F11,  KC_F12,  LPRN,   RPRN,   MINS, \
-                    _______, _______, _______,      _______, ALT,     _______               \
+                    _______, _______, _______,      _______, CLT,     _______               \
 ),
 
 /* MISC (GUI)
@@ -370,7 +456,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,    GU,     PGUP,    RESET,   \
   XXXXXXX, MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   GL,      GD,     GR,      XXXXXXX, \
   XXXXXXX, XXXXXXX, COPY,    PASTE,   GH,        DC,       DE,      ASTG,   XXXXXXX, XXXXXXX, \
-                    BTN2,    BTN1,    GUI,       GUI,      CTL,     ALT                       \
+                    BTN2,    BTN1,    GUI,       GUI,      CTL,     CLT                       \
 ),
 
 /* MISC2 (GUI)
