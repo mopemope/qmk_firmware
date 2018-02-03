@@ -142,6 +142,7 @@ extern uint8_t is_master;
 #define EBSPC  LT(EMACS2,KC_BSPC)
 #define LOW    MO(LOWER)
 #define ABSPC  ALT_T(KC_BSPC)
+#define CBSPC  CTL_T(KC_BSPC)
 //#define GUI   LT(MISC,KC_LGUI)
 #define A_M    LT(MISC,KC_A)
 #define Z_A    ALT_T(KC_Z)
@@ -259,17 +260,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  _   |   A  |   R  |   S  |   T  |   D  |             |   H  |   N  |   E  |   I  |   O  |  -   |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | ALT  |   Z  |   X  |   C  |   V  |   B  | ALT  | CTL  |   K  |   M  |   ,  |   .  |   /  |  \   |
+   * | CTL  |   Z  |   X  |   C  |   V  |   B  | CTL  | ALT  |   K  |   M  |   ,  |   .  |   /  |  \   |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |EMACS |COLEMA|      | GUI  | SFT  | CTL  | SPC  | ENT  |  BS  | SFT  | Left | Down |  Up  |Right |
+   * |EMACS |COLEMA|      | GUI  | SFT  | ALT  | SPC  | ENT  |  BS  | SFT  | Left | Down |  Up  |Right |
    * `-------------------------------------------------------------------------------------------------'
    */
   [COLEMAK] = KEYMAP( \
       ESC,   KC_1,  KC_2,   KC_3,  KC_4,  KC_5,               KC_6,   KC_7,  KC_8,  KC_9,  KC_0,  PIPE,  \
       TAB,   KC_Q,  KC_W,   KC_F,  KC_P,  KC_G,               KC_J,   KC_L,  KC_U,  KC_Y,  COLN,  AT,    \
       UNDS,  A_M,   KC_R,   KC_S,  KC_T,  KC_D,               KC_H,   KC_N,  KC_E,  KC_I,  O_M,   MINS,  \
-      ALT,   KC_Z,  KC_X,   KC_C,  KC_V,  KC_B,  ALT,   CTL,  KC_K,   KC_M,  COMM,  DOT,   S_C,   SBSLS, \
-      DE,    DC,    XXXX,   GUI,   SFT1,  CTL,   SPC,   ENT,  ABSPC,  SFT2,  KLEFT, KDOWN, KUP,   KRIGHT \
+      CTL,   KC_Z,  KC_X,   KC_C,  KC_V,  KC_B,  CTL,   ALT,  KC_K,   KC_M,  COMM,  DOT,   S_C,   SBSLS, \
+      DE,    DC,    XXXX,   GUI,   SFT1,  ALT,   SPC,   ENT,  CBSPC,  SFT2,  KLEFT, KDOWN, KUP,   KRIGHT \
    ),
 
   /* Emacs
@@ -280,17 +281,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  _   |   A  |   R  |   S  |   T  |   D  |             |   H  |   N  |   E  |   I  |   O  |  -   |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | ALT  |   Z  |   X  |   C  |   V  |   B  | EM2  | EM2  |   K  |   M  |   ,  |   .  |   /  |  \   |
+   * | CTL  |   Z  |   X  |   C  |   V  |   B  | CTL  | EM2  |   K  |   M  |   ,  |   .  |   /  |  \   |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |EMACS |COLEMA|      | GUI  | SFT  | CTL  | SPC  | ENT  |  BS  | SFT  | Left | Down |  Up  |Right |
+   * |EMACS |COLEMA|      | GUI  | SFT  | ALT  | SPC  | ENT  |  BS  | SFT  | Left | Down |  Up  |Right |
    * `-------------------------------------------------------------------------------------------------'
    */
   [EMACS] = KEYMAP( \
       ESC,   KC_1,  KC_2,   KC_3,  KC_4,  KC_5,               KC_6,   KC_7,  KC_8,  KC_9,  KC_0,  PIPE,  \
       TAB,   KC_Q,  KC_W,   KC_F,  KC_P,  KC_G,               KC_J,   KC_L,  KC_U,  KC_Y,  COLN,  AT,    \
       UNDS,  A_M,   KC_R,   KC_S,  KC_T,  KC_D,               KC_H,   KC_N,  KC_E,  KC_I,  O_M,   MINS,  \
-      ALT,   KC_Z,  KC_X,   KC_C,  KC_V,  KC_B,  EM2,   EM2,  KC_K,   KC_M,  COMM,  DOT,   S_C,   SBSLS, \
-      DE,    DC,    XXXX,   GUI,   SFT1,  CTL,   SPC,   ENT,  ABSPC,  SFT3,  KLEFT, KDOWN, KUP,   KRIGHT \
+      CTL,   KC_Z,  KC_X,   KC_C,  KC_V,  KC_B,  CTL,   EM2,  KC_K,   KC_M,  COMM,  DOT,   S_C,   SBSLS, \
+      DE,    DC,    XXXX,   GUI,   SFT1,  ALT,   SPC,   ENT,  CBSPC,  SFT3,  KLEFT, KDOWN, KUP,   KRIGHT \
    ),
 
   /* Emacs2
