@@ -31,13 +31,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-// #define MASTER_LEFT
+#define MASTER_LEFT
 // #define MASTER_RIGHT
-#define EE_HANDS
+// #define EE_HANDS
 
-//#define SSD1306OLED
+#define SSD1306OLED
 
-// #define USE_SERIAL_PD2
+#define USE_SERIAL_PD2
 
 #define PREVENT_STUCK_MODIFIERS
 #define PERMISSIVE_HOLD
@@ -58,7 +58,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
-#define RGBLED_NUM 12
+#define RGBLED_NUM 6
+#define RGBLIGHT_LIMIT_VAL 255
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
