@@ -424,6 +424,8 @@ void persistent_default_layer_set(uint16_t default_layer) {
 void matrix_init_user(void) {
 #ifdef RGBLIGHT_ENABLE
   RGB_current_mode = rgblight_config.mode;
+  rgblight_disable();
+  rgblight_setrgb(255, 255, 255);
 #endif
   //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
 #ifdef SSD1306OLED
