@@ -432,6 +432,7 @@ void matrix_init_user(void) {
 #endif
 }
 
+#ifdef RGBLIGHT_ENABLE
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
@@ -463,7 +464,7 @@ uint32_t layer_state_set_user(uint32_t state) {
     }
     return state;
 }
-
+#endif
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
 #ifdef SSD1306OLED
