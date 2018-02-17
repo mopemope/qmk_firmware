@@ -425,7 +425,7 @@ void matrix_init_user(void) {
 #ifdef RGBLIGHT_ENABLE
   RGB_current_mode = rgblight_config.mode;
   rgblight_disable();
-  rgblight_setrgb(255, 255, 255);
+  rgblight_setrgb(0x0, 0x0, 255);
 #endif
   //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
 #ifdef SSD1306OLED
@@ -436,35 +436,35 @@ void matrix_init_user(void) {
 
 #ifdef RGBLIGHT_ENABLE
 uint32_t layer_state_set_user(uint32_t state) {
-    uint8_t layer = biton32(state);
-    switch (layer) {
+  uint8_t layer = biton32(state);
+  switch (layer) {
     case 0:
-        rgblight_mode(5);
-        break;
+      rgblight_mode(5);
+      break;
     case 1:
-        rgblight_mode(5);
-        break;
+      rgblight_mode(5);
+      break;
     case 2:
-        rgblight_mode(5);
-        break;
+      rgblight_mode(5);
+      break;
     case 3:
-        rgblight_mode(22);
-        break;
+      rgblight_mode(22);
+      break;
     case 4:
-        rgblight_mode(22);
-        break;
+      rgblight_mode(22);
+      break;
     case 5:
-        rgblight_mode(16);
-        break;
+      rgblight_mode(16);
+      break;
     case 6:
-        rgblight_mode(16);
-        break;
+      rgblight_mode(16);
+      break;
     case 7:
-        break;
+      break;
     default:
-        break;
-    }
-    return state;
+      break;
+  }
+  return state;
 }
 #endif
 
@@ -472,11 +472,11 @@ uint32_t layer_state_set_user(uint32_t state) {
 #ifdef SSD1306OLED
 
 void matrix_scan_user(void) {
-     iota_gfx_task();  // this is what updates the display continuously
+  iota_gfx_task();  // this is what updates the display continuously
 }
 
 void matrix_update(struct CharacterMatrix *dest,
-                          const struct CharacterMatrix *source) {
+                   const struct CharacterMatrix *source) {
   if (memcmp(dest->display, source->display, sizeof(dest->display))) {
     memcpy(dest->display, source->display, sizeof(dest->display));
     dest->dirty = true;
@@ -496,17 +496,7 @@ static void render_logo(struct CharacterMatrix *matrix) {
 
 void render_status(struct CharacterMatrix *matrix) {
 
-  // Render to mode icon
-  static char logo[][2][3]={{{0x95,0x96,0},{0xb5,0xb6,0}},{{0x97,0x98,0},{0xb7,0xb8,0}}};
-  if(keymap_config.swap_lalt_lgui==false){
-    matrix_write(matrix, logo[0][0]);
-    matrix_write_P(matrix, PSTR("\n"));
-    matrix_write(matrix, logo[0][1]);
-  }else{
-    matrix_write(matrix, logo[1][0]);
-    matrix_write_P(matrix, PSTR("\n"));
-    matrix_write(matrix, logo[1][1]);
-  }
+  matrix_write_P(matrix, PSTR("WOW DOGE !!! \n"));
 
   // Define layers here, Have not worked out how to have text displayed for each layer. Copy down the number you see and add a case for it below
   char buf[40];
@@ -543,10 +533,10 @@ void render_status(struct CharacterMatrix *matrix) {
 
   // Host Keyboard LED Status
   char led[40];
-    snprintf(led, sizeof(led), "\n%s  %s  %s",
-            (host_keyboard_leds() & (1<<USB_LED_NUM_LOCK)) ? "NUMLOCK" : "       ",
-            (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) ? "CAPS" : "    ",
-            (host_keyboard_leds() & (1<<USB_LED_SCROLL_LOCK)) ? "SCLK" : "    ");
+  snprintf(led, sizeof(led), "\n%s  %s  %s",
+           (host_keyboard_leds() & (1<<USB_LED_NUM_LOCK)) ? "NUMLOCK" : "       ",
+           (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) ? "CAPS" : "    ",
+           (host_keyboard_leds() & (1<<USB_LED_SCROLL_LOCK)) ? "SCLK" : "    ");
   matrix_write(matrix, led);
 }
 
