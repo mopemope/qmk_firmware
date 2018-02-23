@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-#define SSD1306OLED
+// #define SSD1306OLED
 
 #define USE_SERIAL_PD2
 
@@ -45,8 +45,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 140
 
-/* #define QMK_KEYS_PER_SCAN 4 */
-#define AUTO_SHIFT_TIMEOUT 120
+#define QMK_KEYS_PER_SCAN 4
+#define AUTO_SHIFT_TIMEOUT 100
 #define MOUSEKEY_INTERVAL 10
 #define MOUSEKEY_TIME_TO_MAX 40
 #define MOUSEKEY_MAX_SPEED 3
