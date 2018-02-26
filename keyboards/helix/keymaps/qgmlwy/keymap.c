@@ -244,15 +244,15 @@ extern uint8_t is_master;
   register_code (code); \
   unregister_code (code)
 
-enum double_taps {
-  E_LT = 0,
-  E_GT,
-};
+/* enum double_taps { */
+/*   E_LT = 0, */
+/*   E_GT, */
+/* }; */
 
-qk_tap_dance_action_t tap_dance_actions[] = {
-  [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
-  [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
-};
+/* qk_tap_dance_action_t tap_dance_actions[] = { */
+/*   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT), */
+/*   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT), */
+/* }; */
 
 
 #if HELIX_ROWS == 5
@@ -304,7 +304,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |      | C-G  |      |      |      |             | M-.  | E-LT |  UP  | E-GT |      |      |
+   * |      |      | C-G  |      |      |      |             | M-.  | C-LT |  UP  | C-GT |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |      |      | C-S  | C-T  |      | C-@  |             | M-%  | LEFT | DOWN |RIGHT |C-M-S |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
@@ -315,7 +315,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [EMACS2] = KEYMAP( \
       ____,  ____,  ____,   ____,  ____,  ____,                ____,  ____,  ____,   ____,  ____,   ____, \
-      ____,  ____,  C_G,    ____,  ____,  ____,                M_DOT, ELT,   C_P,    EGT,   ____,   ____, \
+      ____,  ____,  C_G,    ____,  ____,  ____,                M_DOT, C_LT,  C_P,   C_GT,  ____,   ____, \
       ____,  ____,  C_R,    C_S,   ____,  C_AT,                M_PER, C_LE,  C_N,    C_RI,  C_M_S,  ____, \
       ____,  C_Z,   C_X,    C_C,   C_V,   C_B,   ____,  ____,  M_X,   C_SCLN,C_COLN, C_PIPE,M_SCLN, ____, \
       ____,  ____,  ____,   ____,  ____,  ____,  ____,  ____,  ____,  ____,  ____,   ____,  ____,   ____  \
