@@ -499,6 +499,8 @@ void matrix_scan_user(void) {
   RXLED0;
 }
 
+#ifdef RGBLIGHT_ENABLE
+
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
@@ -531,3 +533,4 @@ uint32_t layer_state_set_user(uint32_t state) {
 
     return state;
 }
+#endif
