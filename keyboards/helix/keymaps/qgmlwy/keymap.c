@@ -244,15 +244,15 @@ extern uint8_t is_master;
   register_code (code); \
   unregister_code (code)
 
-/* enum double_taps { */
-/*   E_LT = 0, */
-/*   E_GT, */
-/* }; */
+enum double_taps {
+  E_LT = 0,
+  E_GT,
+};
 
-/* qk_tap_dance_action_t tap_dance_actions[] = { */
-/*   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT), */
-/*   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT), */
-/* }; */
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
+  [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
+};
 
 
 #if HELIX_ROWS == 5
