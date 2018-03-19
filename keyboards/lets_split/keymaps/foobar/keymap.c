@@ -392,9 +392,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |   |  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | ESC  |   @  |  {   |   }  |  _   |      | |      |   ~  |  =   |  :   |   /  |  *   |
+   * | ESC  |   [  |  (   |   {  |  \   |      | |      |   ~  |  =   |  :   |   /  |  *   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   |   \  |  (   |   )  |  SPC |      | |      |      |  -   |  ;   |   .  |  +   |
+   * |  ^   |   ]  |  )   |   }  |  SPC |      | |      |      |  -   |  ;   |   .  |  +   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -402,8 +402,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LOWER] = KEYMAP( \
     EXLM,    DQT,     HASH,   DLR,    PERC,   XXXXX, XXXXX, AMPR,    QUOT,   GRV,     PIPE,   YEN,   \
-    ESC,     AT,      LCBR,   RCBR,   UNDS,   XXXXX, XXXXX, TILD,    EQL,    COLN,    SLSH,   ASTR,  \
-    CIRC,    BSLS,    LPRN,   RPRN,   SPC,    XXXXX, XXXXX, _____,   MINS,   SCLN,    DOT,    PLUS,  \
+    ESC,     LBRC,    LPRN,   LCBR,   BSLS,   XXXXX, XXXXX, TILD,    EQL,    COLN,    SLSH,   ASTR,  \
+    CIRC,    RBRC,    RPRN,   RCBR,   SPC,    XXXXX, XXXXX, _____,   MINS,   SCLN,    DOT,    PLUS,  \
     XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX  \
   ),
 
