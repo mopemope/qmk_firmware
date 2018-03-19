@@ -113,7 +113,7 @@ extern keymap_config_t keymap_config;
 
 //#define COLN  CTL_T(JP_COLN)
 #define TAB    KC_TAB
-//#define MINS  CTL_T(JP_MINS)
+#define MINS   CTL_T(JP_MINS)
 #define SMINS  SFT_T(JP_MINS)
 #define SBSLS  SFT_T(JP_BSLS)
 #define DEL    KC_DEL
@@ -181,7 +181,6 @@ extern keymap_config_t keymap_config;
 #define RPRN   JP_RPRN
 #define BSLS   JP_BSLS
 #define CIRC   JP_CIRC
-#define MINS   JP_MINS
 #define SCLN   JP_SCLN
 #define COMM   SFT_T(JP_COMM)
 #define DOT    JP_DOT
