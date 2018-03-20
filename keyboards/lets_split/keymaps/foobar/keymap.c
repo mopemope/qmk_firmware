@@ -450,7 +450,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      | Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      | SPC  |      | |      | ENT  | BSPC |      |      |      |
+   * | RTOG | RMOD | RHUI | RHUD | SPC  |      | |      | ENT  | BSPC | RSAI | RSAD |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -459,7 +459,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISC2] = KEYMAP( \
     RESET,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  PGDN,   KUP,     PGUP,    RESET,  \
     _____,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
-    _____,   _____,  _____,  _____,  SPC,   XXXXX, XXXXX, ENT,    BSPC,   _____,   _____,   _____,  \
+    RTOG,    RMOD,   RHUI,   RHUD,   SPC,   XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,   XXXXX,   _____   \
   ),
 
@@ -488,3 +488,49 @@ void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
 }
+
+void matrix_init_user(void) {
+  TXLED0;
+  RXLED0;
+}
+
+void matrix_scan_user(void) {
+  TXLED0;
+  RXLED0;
+}
+
+#ifdef RGBLIGHT_ENABLE
+
+uint32_t layer_state_set_user(uint32_t state) {
+    uint8_t layer = biton32(state);
+    switch (layer) {
+    case 0:
+        rgblight_mode(5);
+        break;
+    case 1:
+        rgblight_mode(5);
+        break;
+    case 2:
+        rgblight_mode(5);
+        break;
+    case 3:
+        rgblight_mode(22);
+        break;
+    case 4:
+        rgblight_mode(22);
+        break;
+    case 5:
+        rgblight_mode(16);
+        break;
+    case 6:
+        rgblight_mode(16);
+        break;
+    case 7:
+        break;
+    default:
+        break;
+    }
+
+    return state;
+}
+#endif

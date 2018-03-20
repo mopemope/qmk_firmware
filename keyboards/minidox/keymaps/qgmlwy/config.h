@@ -44,6 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGB_DI_PIN D7
 #define RGBLIGHT_TIMER
+#undef RGBLED_NUM
 #define RGBLED_NUM 8
 #define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_HUE_STEP 10
