@@ -127,7 +127,7 @@ extern keymap_config_t keymap_config;
 #define ENT    KC_ENT
 #define CENT   CTL_T(KC_ENT)
 #define EENT   LT(EMACS2,KC_ENT)
-#define BSPC   KC_BSPC
+#define BSPC   CTL_T(KC_BSPC)
 #define SBSPC  SFT_T(KC_BSPC)
 #define EBSPC  LT(EMACS2,KC_BSPC)
 #define LOW    MO(LOWER)
