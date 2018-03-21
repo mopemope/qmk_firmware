@@ -62,8 +62,6 @@ extern keymap_config_t keymap_config;
 #define C_SCLN LCTL(JP_SCLN)
 // C-|
 #define C_PIPE LCTL(JP_PIPE)
-// C-SPC
-#define C_SPC  LCTL(KC_SPC)
 // M-;
 #define M_SCLN LALT(JP_SCLN)
 
@@ -113,7 +111,7 @@ extern keymap_config_t keymap_config;
 
 //#define COLN  CTL_T(JP_COLN)
 #define TAB    KC_TAB
-#define MINS   CTL_T(JP_MINS)
+#define MINS   JP_MINS
 #define SMINS  SFT_T(JP_MINS)
 #define SBSLS  SFT_T(JP_BSLS)
 #define DEL    KC_DEL
@@ -121,7 +119,6 @@ extern keymap_config_t keymap_config;
 #define RAI    MO(RAISE)
 #define RJ     LT(RAISE, KC_J)
 #define LK     LT(LOWER, KC_K)
-#define SPC    KC_SPC
 #define CSPC   CTL_T(KC_SPC)
 // #define ENT    SFT_T(KC_ENT)
 #define ENT    KC_ENT
@@ -381,10 +378,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
-    RESET,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,   XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,   XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,   XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXXXX, XXXXX,  XXXXX   \
+    RESET,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
+    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
+    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
+    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX   \
   ),
 
   /* LOWER (Symbol)
@@ -402,7 +399,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LOWER] = KEYMAP( \
     EXLM,    DQT,     HASH,   DLR,    PERC,   XXXXX, XXXXX, AMPR,    QUOT,   GRV,     PIPE,   YEN,   \
     ESC,     LBRC,    LPRN,   LCBR,   BSLS,   XXXXX, XXXXX, TILD,    EQL,    COLN,    SLSH,   ASTR,  \
-    CIRC,    RBRC,    RPRN,   RCBR,   SPC,    XXXXX, XXXXX, _____,   MINS,   SCLN,    DOT,    PLUS,  \
+    CIRC,    RBRC,    RPRN,   RCBR,   CSPC,   XXXXX, XXXXX, _____,   MINS,   SCLN,    DOT,    PLUS,  \
     XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX  \
   ),
 
@@ -459,7 +456,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISC2] = KEYMAP( \
     RESET,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  PGDN,   KUP,     PGUP,    RESET,  \
     _____,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
-    RTOG,    RMOD,   RHUI,   RHUD,   SPC,   XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
+    RTOG,    RMOD,   RHUI,   RHUD,   CSPC,  XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,   XXXXX,   _____   \
   ),
 
