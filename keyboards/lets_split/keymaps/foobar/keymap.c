@@ -177,7 +177,7 @@ extern keymap_config_t keymap_config;
 #define LPRN   JP_LPRN
 #define RPRN   JP_RPRN
 #define BSLS   JP_BSLS
-#define CIRC   JP_CIRC
+#define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
 #define COMM   SFT_T(JP_COMM)
 #define DOT    JP_DOT
