@@ -13,8 +13,9 @@ extern keymap_config_t keymap_config;
 #define RAISE   4
 #define MISC    5
 #define MISC2   6
-#define GAME    7
-#define NONE    8
+#define GAME1   7
+#define GAME2   8
+#define NONE    9
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -119,6 +120,7 @@ extern keymap_config_t keymap_config;
 #define RAI    MO(RAISE)
 #define RJ     LT(RAISE, KC_J)
 #define LK     LT(LOWER, KC_K)
+#define SPC    KC_SPC
 #define CSPC   CTL_T(KC_SPC)
 // #define ENT    SFT_T(KC_ENT)
 #define ENT    KC_ENT
@@ -192,9 +194,9 @@ extern keymap_config_t keymap_config;
 #define SFT2   SFT_T(JP_HENK)
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
-#define DC     DF(QGMLWY)
+#define DQ     DF(QGMLWY)
 #define DE     DF(EMACS)
-#define DG     DF(GAME)
+#define DG1    DF(GAME1)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define WH_D   KC_WH_D
@@ -445,7 +447,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET |      |      |      |      |      | |      |      | PgDn |  Up  | PgUp |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      | Left | Down |Right |      |
+   * |      | DG1  |      |      |      |      | |      |      | Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | RTOG | RMOD | RHUI | RHUD | SPC  |      | |      | ENT  | BSPC | RSAI | RSAD |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -455,11 +457,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISC2] = KEYMAP( \
     RESET,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  PGDN,   KUP,     PGUP,    RESET,  \
-    _____,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
+    _____,   DG1,    _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
     RTOG,    RMOD,   RHUI,   RHUD,   CSPC,  XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,   XXXXX,   _____   \
   ),
 
+  /* GAME1
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |      |  TAB |  W   |  E   |  R   |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * | SHIFT|  A   |  S   |  D   |  F   |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |  C   |      |  M   |  V   |  SPC |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [GAME1] = KEYMAP( \
+    XXXXX,   TAB,   KC_W,  KC_E,  KC_R,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    KC_LSFT, KC_A,  KC_S,  KC_D,  KC_F,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    KC_C,    XXXXX, KC_M,  KC_V,  SPC,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, DF(QGMLWY) \
+  ),
   /* NONE
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
