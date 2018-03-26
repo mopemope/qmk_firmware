@@ -464,21 +464,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* GAME1
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |  TAB |  W   |  E   |  R   |      | |      |      |      |      |      |      |
+   * |  TAB |  G   |  W   |  E   |  R   |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | SHIFT|  A   |  S   |  D   |  F   |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C   |      |  M   |  V   |  SPC |      | |      |      |      |      |      |      |
+   * |  C   |  Q   |  M   |  V   |  SPC |      | |      |      |      |      |      |  DQ  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [GAME1] = KEYMAP( \
-    XXXXX,   TAB,   KC_W,  KC_E,  KC_R,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    TAB,     KC_G,  KC_W,  KC_E,  KC_R,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     KC_LSFT, KC_A,  KC_S,  KC_D,  KC_F,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    KC_C,    XXXXX, KC_M,  KC_V,  SPC,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, DF(QGMLWY) \
+    KC_C,    KC_Q,  KC_M,  KC_V,  SPC,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, DQ,        \
+    XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
   /* NONE
    * ,-----------------------------------------, ,-----------------------------------------,
