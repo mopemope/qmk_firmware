@@ -13,8 +13,9 @@ extern keymap_config_t keymap_config;
 #define RAISE   4
 #define MISC    5
 #define MISC2   6
-#define GAME    7
-#define NONE    8
+#define GAME1   7
+#define GAME2   8
+#define NONE    9
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -121,7 +122,8 @@ extern keymap_config_t keymap_config;
 #define DEL    KC_DEL
 #define SDEL   SFT_T(KC_DEL)
 #define RAI    MO(RAISE)
-#define SPC    LT(RAISE, KC_SPC)
+#define SPC    KC_SPC
+#define RSPC   LT(RAISE, KC_SPC)
 #define CSPC   CTL_T(KC_SPC)
 // #define ENT    SFT_T(KC_ENT)
 #define ENT    LT(LOWER,KC_ENT)
@@ -197,7 +199,8 @@ extern keymap_config_t keymap_config;
 #define ESC    KC_ESC
 #define DC     DF(QGMLWY)
 #define DE     DF(EMACS)
-#define DG     DF(GAME)
+#define DG1    DF(GAME1)
+#define DG2    DF(GAME2)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define WH_D   KC_WH_D
@@ -350,7 +353,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_G,    KC_M,   KC_L,    KC_W,        KC_Y,    KC_F,    KC_U,   KC_B,   DEL, \
   D_M,    KC_S,    KC_T,   KC_N,    KC_R,        KC_I,    KC_A,    KC_E,   KC_O,   H_M, \
   Z_C,    KC_X,    KC_C,   KC_V,    KC_J,        KC_K,    KC_P,    COMM,   DOT,    S_A, \
-                   SFT1,   CLT,     SPC,         ENT,     CBSPC,   SFT2                 \
+                   SFT1,   CLT,     RSPC,         ENT,    CBSPC,   SFT2                 \
 ),
 
 /* EMACS(QGMLWY)
@@ -372,7 +375,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_G,    KC_M,  KC_L,    KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,  DEL,  \
   D_M,    KC_S,    KC_T,  KC_N,    KC_R,         KC_I,    KC_A,    KC_E,   KC_O,  H_M,  \
   Z_C,    KC_X,    KC_C,  KC_V,    KC_J,         KC_K,    KC_P,    COMM,   DOT,   S_A,  \
-                   SFT1,  CLT,     SPC,          ENT,     CBSPC,   SFT3                 \
+                   SFT1,  CLT,     RSPC,          ENT,     CBSPC,   SFT3                 \
 ),
 
 /* EMACS2(Shortcut Layer)
@@ -397,14 +400,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 C_SL,    M_D,    C_SPC,       _____,    _____,    _____                     \
 ),
 
-/* LOWER (Symbol)
+/* LOWER
  *
  * ,----------------------------------.           ,----------------------------------.
  * |   !  |   "  |   #  |   $  |   %  |           |   &  |   '  |   `  |   |  | yen  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  ESC |   @  |   {  |   }  |   _  |           |  ~   |   =  |   :  |   /  |   *  |
+ * |  ESC |   [  |   (  |   }  |   \  |           |  ~   |   =  |   :  |   /  |   *  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |   (  |   )  |   \  |           |  ^   |   -  |   ;  |   .  |   +  |
+ * |  ^   |   ]  |   )  |   }  |      |           |      |   -  |   ;  |   .  |   +  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  |      |      |      |    |      |      |      |
@@ -413,13 +416,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [LOWER] = KEYMAP( \
-  EXLM,     DQT,     HASH,    DLR,      PERC,     AMPR,    QUOT,  GRV,    PIPE, YEN,  \
-  ESC,      AT,      LCBR,    RCBR,     UNDS,     TILD,    EQL,   COLN,   SLSH, ASTR, \
-  XXXXX,    XXXXX,   LPRN,    RPRN,     BSLS,     CIRC,    MINS,  SCLN,   DOT,  PLUS, \
-                     _____, _____,  _____,  _____, _____, _____                       \
+  EXLM,    DQT,    HASH,  DLR,    PERC,     AMPR,    QUOT,  GRV,    PIPE, YEN,  \
+  ESC,     LBRC,   LPRN,  LCBR,   BSLS,     TILD,    EQL,   COLN,   SLSH, ASTR, \
+  CIRC,    RBRC,   RPRN,  RCBR,   _____,    _____,   MINS,  SCLN,   DOT,  PLUS, \
+                   _____, _____,  _____,    _____,   _____, _____                       \
 ),
 
-/* RAISE (Num + Fn + Others)
+/* RAISE
  *
  * ,----------------------------------.           ,----------------------------------.
  * |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |
@@ -448,7 +451,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | MsLf | MsDn | MsRg |WRKSP2|           |DWRKSP| Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      | Copy |Paste | Hide |           |COLEMA|EMACS | GAME |      |      |
+ * |      |      | Copy |Paste | Hide |           |COLEMA|EMACS |      |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | BTN2 | BTN1 |      |    |      | CTL  | ALT  |
@@ -459,7 +462,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MISC] = KEYMAP( \
   RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,   GU,     PGUP,   RESET, \
   XXXXX,   MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   GL,     GD,     GR,     XXXXX, \
-  XXXXX,   XXXXX,   COPY,    PASTE,   GH,        DC,       DE,     DG,     XXXXX,  XXXXX, \
+  XXXXX,   XXXXX,   COPY,    PASTE,   GH,        DC,       DE,     XXXXX,  XXXXX,  XXXXX, \
                     BTN2,    BTN1,    GUI,       GUI,      CTL,    CLT                    \
 ),
 
@@ -468,7 +471,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |RESET |      |      |      |      |           |      | PgDn |  Up  | PgUp |RESET |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |      |      |      |           |      | Left | Down |Right |      |
+ * |      | GAME1| GAME2|      |      |           |      | Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | RTOG | RMOD | RHUI | RHUD |           | RSAI | RSAD | RRMOD|      |      |
  * `----------------------------------'           `----------------------------------'
@@ -480,12 +483,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [MISC2] =  KEYMAP( \
   RESET,   XXXXX,  XXXXX, XXXXX, XXXXX,        XXXXX,  PGDN,     KUP,    PGUP,    RESET, \
-  XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX,        XXXXX,  KLEFT,    KDOWN,  KRIGHT,  XXXXX, \
+  XXXXX,   DG1,    DG2,   XXXXX, XXXXX,        XXXXX,  KLEFT,    KDOWN,  KRIGHT,  XXXXX, \
   XXXXX,   RTOG,   RMOD,  RHUI,  RHUD,         RSAI,   RSAD,     RRMOD,  XXXXX,   XXXXX, \
                    _____, CTL,   _____,        _____,  _____,    _____                   \
 ),
 
-/* GAME
+/* GAME1
  *
  * ,----------------------------------.           ,----------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |           |      |      |      |      |      |
@@ -500,11 +503,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[GAME] =  KEYMAP( \
+[GAME1] =  KEYMAP( \
   KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_F5,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
   KC_1,    KC_2,   KC_3,   KC_4,   KC_5,         XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
   XXXXX,   KC_C,   KC_I,   KC_B,   KC_F,         XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
                    KC_ESC, KC_TAB, KC_LCTRL,     DC,     _____,    _____                   \
+),
+
+/* GAME2
+ *
+ * ,----------------------------------.           ,----------------------------------.
+ * |  TAB |  G   |  W   |  E   |  R  |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * | SHIFT|  A   |  S   |  D   |  F   |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |  C   |  Q   |  M   |      |      |           |      |      |      |      |      |
+ * `----------------------------------'           `----------------------------------'
+ *                  ,--------------------.    ,------,-------------.
+ *                  | ESC  |  V   |      |    |      |      |      |
+ *                  `-------------| SPC  |    |      |------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
+ */
+[GAME2] =  KEYMAP( \
+  TAB,     KC_G,   KC_W,   KC_E,   KC_R,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_LSFT, KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_C,    KC_Q,   KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+                   KC_ESC, KC_V,   SPC,         DC,     _____,    _____                   \
 )
 };
 
