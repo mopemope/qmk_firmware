@@ -65,6 +65,8 @@ extern keymap_config_t keymap_config;
 #define C_PIPE LCTL(JP_PIPE)
 // M-;
 #define M_SCLN LALT(JP_SCLN)
+// C-SPC
+#define C_SPC  LCTL(KC_SPC)
 
 // C-V
 #define C_V LCTL(KC_V)
@@ -96,6 +98,7 @@ extern keymap_config_t keymap_config;
 // M-w
 #define M_W    LALT(KC_W)
 #define C_M_S  LCTL(LALT(JP_BSLS))
+#define C_M_N  LCTL(LALT(KC_N))
 
 // C-RIGHT
 #define C_RI LCTL(KC_RIGHT)
@@ -182,10 +185,11 @@ extern keymap_config_t keymap_config;
 #define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
 #define COMM   SFT_T(JP_COMM)
-#define DOT    JP_DOT
+#define DOT    LT(EMACS2,JP_DOT)
+#define EX     LT(EMACS2,KC_X)
 #define PLUS   JP_PLUS
 #define LBRC   JP_LBRC
-#define RBRC   JP_RBRC
+#define RBRC   ALT_T(JP_RBRC)
 #define GUI    KC_LGUI
 #define ZHTG   JP_ZHTG
 #define ALT    OSM(MOD_LALT)
@@ -370,20 +374,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* EMACS2(Shortcut Layer)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |RESET |      |      |      |      |      | |      |      |      |      |      |      |
+   * |RESET |      |      |      |      |      | |      | M-.  | E-LT |      | E-GT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      |      | C-@  |      | |      | M-%  | M-;  |C-M-N |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * | C-Z  |      | C-/  | M-D  | C_SPC|      | |      | M-x  | C-;  |  C-: |      |C-M-S |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
-    RESET,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX   \
+    RESET,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, M_DOT,  ELT,    XXXXX,  EGT,    XXXXX,  \
+    XXXXX,  XXXXX, XXXXX, XXXXX, C_AT,   XXXXX, XXXXX, M_PER,  M_SCLN, C_M_N,  XXXXX,  XXXXX,  \
+    C_Z,    _____, C_SL,  M_D,   C_SPC,  XXXXX, XXXXX, M_X,    C_SCLN, C_COLN, _____,  C_M_S,  \
+    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX   \
   ),
 
   /* LOWER (Symbol)
