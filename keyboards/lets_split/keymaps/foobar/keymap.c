@@ -233,9 +233,10 @@ extern keymap_config_t keymap_config;
 #define RVAD  RGB_VAD
 
 enum double_taps {
-  E_LT = 0,
-  E_GT = 1,
+  E_LT     = 0,
+  E_GT     = 1,
   ALT_CTL  = 2,
+  GTAB     = 3,
 };
 
 enum x_taps {
@@ -328,6 +329,7 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
+  [GTAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
   [ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
 };
 
@@ -451,7 +453,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET |      |      |      |      |      | |      |      | PgDn |  Up  | PgUp |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | DG1  |      |      |      |      | |      |      | Left | Down |Right |      |
+   * | DG1  |      |      |      |      |      | |      | SPC  | Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | RTOG | RMOD | RHUI | RHUD | SPC  |      | |      | ENT  | BSPC | RSAI | RSAD |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -461,7 +463,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISC2] = KEYMAP( \
     RESET,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  PGDN,   KUP,     PGUP,    RESET,  \
-    _____,   DG1,    _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
+    DG1,     _____,  _____,  _____,  _____, XXXXX, XXXXX, SPC,    KLEFT,  KDOWN,   KRIGHT,  _____,  \
     RTOG,    RMOD,   RHUI,   RHUD,   CSPC,  XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,   XXXXX,   _____   \
   ),
@@ -472,16 +474,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | SHIFT|  A   |  S   |  D   |  F   |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C   |  Q   |  M   |  V   |  SPC |      | |      |      |      |      |      |  DQ  |
+   * |  C   |  Q   |  M   |  V   |  SPC |      | |      |  DQ  |      |      |      |  DQ  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [GAME1] = KEYMAP( \
-    TAB,     KC_G,  KC_W,  KC_E,  KC_R,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    GTAB,    KC_G,  KC_W,  KC_E,  KC_R,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     KC_LSFT, KC_A,  KC_S,  KC_D,  KC_F,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    KC_C,    KC_Q,  KC_M,  KC_V,  SPC,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, DQ,        \
+    KC_C,    KC_Q,  KC_M,  KC_V,  SPC,   XXXXX, XXXXX, DQ,    XXXXX, XXXXX, XXXXX, DQ,        \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
   /* NONE
@@ -523,35 +525,36 @@ void matrix_scan_user(void) {
 #ifdef RGBLIGHT_ENABLE
 
 uint32_t layer_state_set_user(uint32_t state) {
-    uint8_t layer = biton32(state);
-    switch (layer) {
-    case 0:
-        rgblight_mode(5);
-        break;
-    case 1:
-        rgblight_mode(5);
-        break;
-    case 2:
-        rgblight_mode(5);
-        break;
-    case 3:
-        rgblight_mode(22);
-        break;
-    case 4:
-        rgblight_mode(22);
-        break;
-    case 5:
-        rgblight_mode(16);
-        break;
-    case 6:
-        rgblight_mode(16);
-        break;
-    case 7:
-        break;
+  uint8_t layer = biton32(state);
+  switch (layer) {
+    case QGMLWY:
+      rgblight_mode(7);
+      break;
+    case EMACS:
+      rgblight_mode(7);
+      break;
+    case EMACS2:
+      rgblight_mode(24);
+      break;
+    case LOWER:
+      rgblight_mode(21);
+      break;
+    case RAISE:
+      rgblight_mode(22);
+      break;
+    case MISC:
+      rgblight_mode(15);
+      break;
+    case MISC2:
+      rgblight_mode(16);
+      break;
+    case GAME1:
+      rgblight_mode(9);
+      break;
     default:
-        break;
-    }
+      break;
+  }
 
-    return state;
+  return state;
 }
 #endif
