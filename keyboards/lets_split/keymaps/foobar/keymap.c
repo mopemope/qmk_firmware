@@ -160,6 +160,7 @@ extern keymap_config_t keymap_config;
 #define ELT    TD(E_LT)
 #define EGT    TD(E_GT)
 #define CLT    TD(ALT_CTL)
+#define GTAB    TD(G_TAB)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -236,7 +237,7 @@ enum double_taps {
   E_LT     = 0,
   E_GT     = 1,
   ALT_CTL  = 2,
-  GTAB     = 3,
+  G_TAB    = 3,
 };
 
 enum x_taps {
@@ -329,7 +330,7 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
-  [GTAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
+  [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
   [ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
 };
 
@@ -415,7 +416,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |  1   |  2   |   3  |  4   |  5   |      | |      |   6  |   7  |   8  |   9  |   0  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  SPC |  F6  |  F7  |  F8  |   @  |
+   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  F5  |  SPC |  F7  |  F8  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  _   |  F9  |  F10 |  F11 |      |      | |      |  ENT | BSPC | ZHTG |  F12 |   -  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -425,7 +426,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [RAISE] = KEYMAP( \
     KC_1,    KC_2,   KC_3,    KC_4,   KC_5,   XXXXX,  XXXXX,  KC_6,   KC_7,    KC_8,   KC_9,    KC_0,   \
-    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  SPC,    KC_F6,   KC_F7,  KC_F8,   AT,     \
+    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  KC_F5,  SPC,   KC_F7,  KC_F8,   AT,     \
     UNDS,    KC_F9,  KC_F10,  KC_F11, _____,  XXXXX,  XXXXX,  ENT,    BSPC,    ZHTG,   KC_F12,  MINS,   \
     XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,   XXXXX,  XXXXX,   XXXXX   \
   ),
