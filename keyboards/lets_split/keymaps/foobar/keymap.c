@@ -160,7 +160,7 @@ extern keymap_config_t keymap_config;
 #define ELT    TD(E_LT)
 #define EGT    TD(E_GT)
 #define CLT    TD(ALT_CTL)
-#define GTAB    TD(G_TAB)
+#define GTAB   TD(G_TAB)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
