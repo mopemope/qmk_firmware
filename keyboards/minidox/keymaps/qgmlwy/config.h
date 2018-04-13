@@ -27,12 +27,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define EE_HANDS
 
 #define PREVENT_STUCK_MODIFIERS
-/* #define PERMISSIVE_HOLD */
-/* #define IGNORE_MOD_TAP_INTERRUPT */
+#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 120
-/* #define QMK_KEYS_PER_SCAN 4 */
-/* #define AUTO_SHIFT_TIMEOUT 120 */
+// #define QMK_KEYS_PER_SCAN 4
+// #define AUTO_SHIFT_TIMEOUT 120
 
 #define MOUSEKEY_INTERVAL 10
 #define MOUSEKEY_TIME_TO_MAX 40

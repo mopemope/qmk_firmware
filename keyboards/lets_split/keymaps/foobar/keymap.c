@@ -13,8 +13,9 @@ extern keymap_config_t keymap_config;
 #define RAISE   4
 #define MISC    5
 #define MISC2   6
-#define GAME    7
-#define NONE    8
+#define GAME1   7
+#define GAME2   8
+#define NONE    9
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -64,6 +65,8 @@ extern keymap_config_t keymap_config;
 #define C_PIPE LCTL(JP_PIPE)
 // M-;
 #define M_SCLN LALT(JP_SCLN)
+// C-SPC
+#define C_SPC  LCTL(KC_SPC)
 
 // C-V
 #define C_V LCTL(KC_V)
@@ -95,6 +98,7 @@ extern keymap_config_t keymap_config;
 // M-w
 #define M_W    LALT(KC_W)
 #define C_M_S  LCTL(LALT(JP_BSLS))
+#define C_M_N  LCTL(LALT(KC_N))
 
 // C-RIGHT
 #define C_RI LCTL(KC_RIGHT)
@@ -111,7 +115,7 @@ extern keymap_config_t keymap_config;
 
 //#define COLN  CTL_T(JP_COLN)
 #define TAB    KC_TAB
-#define MINS   JP_MINS
+#define MINS   ALT_T(JP_MINS)
 #define SMINS  SFT_T(JP_MINS)
 #define SBSLS  SFT_T(JP_BSLS)
 #define DEL    KC_DEL
@@ -119,6 +123,7 @@ extern keymap_config_t keymap_config;
 #define RAI    MO(RAISE)
 #define RJ     LT(RAISE, KC_J)
 #define LK     LT(LOWER, KC_K)
+#define SPC    KC_SPC
 #define CSPC   CTL_T(KC_SPC)
 // #define ENT    SFT_T(KC_ENT)
 #define ENT    KC_ENT
@@ -155,6 +160,7 @@ extern keymap_config_t keymap_config;
 #define ELT    TD(E_LT)
 #define EGT    TD(E_GT)
 #define CLT    TD(ALT_CTL)
+#define GTAB   TD(G_TAB)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -180,10 +186,11 @@ extern keymap_config_t keymap_config;
 #define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
 #define COMM   SFT_T(JP_COMM)
-#define DOT    JP_DOT
+#define DOT    LT(EMACS2,JP_DOT)
+#define EX     LT(EMACS2,KC_X)
 #define PLUS   JP_PLUS
 #define LBRC   JP_LBRC
-#define RBRC   JP_RBRC
+#define RBRC   ALT_T(JP_RBRC)
 #define GUI    KC_LGUI
 #define ZHTG   JP_ZHTG
 #define ALT    OSM(MOD_LALT)
@@ -192,9 +199,9 @@ extern keymap_config_t keymap_config;
 #define SFT2   SFT_T(JP_HENK)
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
-#define DC     DF(QGMLWY)
+#define DQ     DF(QGMLWY)
 #define DE     DF(EMACS)
-#define DG     DF(GAME)
+#define DG1    DF(GAME1)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define WH_D   KC_WH_D
@@ -227,9 +234,10 @@ extern keymap_config_t keymap_config;
 #define RVAD  RGB_VAD
 
 enum double_taps {
-  E_LT = 0,
-  E_GT = 1,
+  E_LT     = 0,
+  E_GT     = 1,
   ALT_CTL  = 2,
+  G_TAB    = 3,
 };
 
 enum x_taps {
@@ -322,6 +330,7 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
+  [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
   [ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
 };
 
@@ -368,20 +377,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* EMACS2(Shortcut Layer)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |RESET |      |      |      |      |      | |      |      |      |      |      |      |
+   * |RESET |      |      |      |      |      | |      | M-.  | E-LT |      | E-GT |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      |      | C-@  |      | |      | M-%  | M-;  |C-M-N |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * | C-Z  |      | C-/  | M-D  | C_SPC|      | |      | M-x  | C-;  |  C-: |      |C-M-S |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
   [EMACS2] = KEYMAP( \
-    RESET,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX   \
+    RESET,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, M_DOT,  ELT,    XXXXX,  EGT,    XXXXX,  \
+    XXXXX,  XXXXX, XXXXX, XXXXX, C_AT,   XXXXX, XXXXX, M_PER,  M_SCLN, C_M_N,  XXXXX,  XXXXX,  \
+    C_Z,    _____, C_SL,  M_D,   C_SPC,  XXXXX, XXXXX, M_X,    C_SCLN, C_COLN, _____,  C_M_S,  \
+    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX   \
   ),
 
   /* LOWER (Symbol)
@@ -407,7 +416,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |  1   |  2   |   3  |  4   |  5   |      | |      |   6  |   7  |   8  |   9  |   0  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  F5  |  F6  |  F7  |  F8  |   @  |
+   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  F5  |  SPC |  F7  |  F8  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  _   |  F9  |  F10 |  F11 |      |      | |      |  ENT | BSPC | ZHTG |  F12 |   -  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -417,7 +426,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [RAISE] = KEYMAP( \
     KC_1,    KC_2,   KC_3,    KC_4,   KC_5,   XXXXX,  XXXXX,  KC_6,   KC_7,    KC_8,   KC_9,    KC_0,   \
-    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  KC_F5,  KC_F6,   KC_F7,  KC_F8,   AT,     \
+    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  KC_F5,  SPC,     KC_F7,  KC_F8,   AT,     \
     UNDS,    KC_F9,  KC_F10,  KC_F11, _____,  XXXXX,  XXXXX,  ENT,    BSPC,    ZHTG,   KC_F12,  MINS,   \
     XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,   XXXXX,  XXXXX,   XXXXX   \
   ),
@@ -445,7 +454,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET |      |      |      |      |      | |      |      | PgDn |  Up  | PgUp |RESET |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      | Left | Down |Right |      |
+   * | DG1  |      |      |      |      |      | |      | SPC  | Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | RTOG | RMOD | RHUI | RHUD | SPC  |      | |      | ENT  | BSPC | RSAI | RSAD |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -455,11 +464,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISC2] = KEYMAP( \
     RESET,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  PGDN,   KUP,     PGUP,    RESET,  \
-    _____,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
+    DG1,     _____,  _____,  _____,  _____, XXXXX, XXXXX, SPC,    KLEFT,  KDOWN,   KRIGHT,  _____,  \
     RTOG,    RMOD,   RHUI,   RHUD,   CSPC,  XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,   XXXXX,   _____   \
   ),
 
+  /* GAME1
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |  TAB |  G   |  W   |  E   |  R   |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * | SHIFT|  A   |  S   |  D   |  F   |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |  C   |  Q   |  M   |  V   |  SPC |      | |      |  DQ  |      |      |      |  DQ  |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [GAME1] = KEYMAP( \
+    GTAB,    KC_G,  KC_W,  KC_E,  KC_R,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    KC_LSFT, KC_A,  KC_S,  KC_D,  KC_F,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    KC_C,    KC_Q,  KC_M,  KC_V,  SPC,   XXXXX, XXXXX, DQ,    XXXXX, XXXXX, XXXXX, DQ,        \
+    XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
+  ),
   /* NONE
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
@@ -499,35 +526,36 @@ void matrix_scan_user(void) {
 #ifdef RGBLIGHT_ENABLE
 
 uint32_t layer_state_set_user(uint32_t state) {
-    uint8_t layer = biton32(state);
-    switch (layer) {
-    case 0:
-        rgblight_mode(5);
-        break;
-    case 1:
-        rgblight_mode(5);
-        break;
-    case 2:
-        rgblight_mode(5);
-        break;
-    case 3:
-        rgblight_mode(22);
-        break;
-    case 4:
-        rgblight_mode(22);
-        break;
-    case 5:
-        rgblight_mode(16);
-        break;
-    case 6:
-        rgblight_mode(16);
-        break;
-    case 7:
-        break;
+  uint8_t layer = biton32(state);
+  switch (layer) {
+    case QGMLWY:
+      rgblight_mode(7);
+      break;
+    case EMACS:
+      rgblight_mode(7);
+      break;
+    case EMACS2:
+      rgblight_mode(24);
+      break;
+    case LOWER:
+      rgblight_mode(21);
+      break;
+    case RAISE:
+      rgblight_mode(22);
+      break;
+    case MISC:
+      rgblight_mode(15);
+      break;
+    case MISC2:
+      rgblight_mode(16);
+      break;
+    case GAME1:
+      rgblight_mode(9);
+      break;
     default:
-        break;
-    }
+      break;
+  }
 
-    return state;
+  return state;
 }
 #endif

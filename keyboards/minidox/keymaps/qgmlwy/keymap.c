@@ -13,8 +13,9 @@ extern keymap_config_t keymap_config;
 #define RAISE   4
 #define MISC    5
 #define MISC2   6
-#define GAME    7
-#define NONE    8
+#define GAME1   7
+#define GAME2   8
+#define NONE    9
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -115,13 +116,15 @@ extern keymap_config_t keymap_config;
 
 //#define COLN  CTL_T(JP_COLN)
 #define TAB    KC_TAB
-//#define MINS  CTL_T(JP_MINS)
+#define MINS   ALT_T(JP_MINS)
 #define SMINS  SFT_T(JP_MINS)
 #define SBSLS  SFT_T(JP_BSLS)
 #define DEL    KC_DEL
 #define SDEL   SFT_T(KC_DEL)
+#define ADEL   ALT_T(KC_DEL)
 #define RAI    MO(RAISE)
-#define SPC    LT(RAISE, KC_SPC)
+#define SPC    KC_SPC
+#define RSPC   LT(RAISE, KC_SPC)
 #define CSPC   CTL_T(KC_SPC)
 // #define ENT    SFT_T(KC_ENT)
 #define ENT    LT(LOWER,KC_ENT)
@@ -157,6 +160,7 @@ extern keymap_config_t keymap_config;
 #define ELT    TD(E_LT)
 #define EGT    TD(E_GT)
 #define CLT    TD(ALT_CTL)
+#define GTAB   TD(G_TAB)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -180,7 +184,6 @@ extern keymap_config_t keymap_config;
 #define RPRN   JP_RPRN
 #define BSLS   JP_BSLS
 #define CIRC   JP_CIRC
-#define MINS   JP_MINS
 #define SCLN   JP_SCLN
 #define COMM   JP_COMM
 #define DOT    JP_DOT
@@ -195,9 +198,10 @@ extern keymap_config_t keymap_config;
 #define SFT2   SFT_T(JP_HENK)
 #define SFT3   LT(EMACS2,JP_HENK)
 #define ESC    KC_ESC
-#define DC     DF(QGMLWY)
+#define DQ     DF(QGMLWY)
 #define DE     DF(EMACS)
-#define DG     DF(GAME)
+#define DG1    DF(GAME1)
+#define DG2    DF(GAME2)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define WH_D   KC_WH_D
@@ -230,18 +234,19 @@ extern keymap_config_t keymap_config;
 #define RVAD  RGB_VAD
 
 enum double_taps {
-  E_LT = 0,
-  E_GT = 1,
+  E_LT     = 0,
+  E_GT     = 1,
   ALT_CTL  = 2,
+  G_TAB    = 3,
 };
 
 enum x_taps {
-  SINGLE_TAP = 1,
-  SINGLE_HOLD = 2,
-  DOUBLE_TAP = 3,
-  DOUBLE_HOLD = 4,
+  SINGLE_TAP        = 1,
+  SINGLE_HOLD       = 2,
+  DOUBLE_TAP        = 3,
+  DOUBLE_HOLD       = 4,
   DOUBLE_SINGLE_TAP = 5,
-  OTHER = 7
+  OTHER             = 7
 };
 
 typedef struct {
@@ -325,6 +330,7 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
+  [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
   [ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
 };
 
@@ -346,11 +352,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[QGMLWY] = KEYMAP( \
+[QGMLWY] = LAYOUT( \
   KC_Q,   KC_G,    KC_M,   KC_L,    KC_W,        KC_Y,    KC_F,    KC_U,   KC_B,   DEL, \
   D_M,    KC_S,    KC_T,   KC_N,    KC_R,        KC_I,    KC_A,    KC_E,   KC_O,   H_M, \
   Z_C,    KC_X,    KC_C,   KC_V,    KC_J,        KC_K,    KC_P,    COMM,   DOT,    S_A, \
-                   SFT1,   CLT,     SPC,         ENT,     CBSPC,   SFT2                 \
+                   SFT1,   CLT,     RSPC,         ENT,    CBSPC,   SFT2                 \
 ),
 
 /* EMACS(QGMLWY)
@@ -368,11 +374,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[EMACS] = KEYMAP( \
+[EMACS] = LAYOUT( \
   KC_Q,   KC_G,    KC_M,  KC_L,    KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,  DEL,  \
   D_M,    KC_S,    KC_T,  KC_N,    KC_R,         KC_I,    KC_A,    KC_E,   KC_O,  H_M,  \
   Z_C,    KC_X,    KC_C,  KC_V,    KC_J,         KC_K,    KC_P,    COMM,   DOT,   S_A,  \
-                   SFT1,  CLT,     SPC,          ENT,     CBSPC,   SFT3                 \
+                   SFT1,  CLT,     RSPC,         ENT,     CBSPC,   SFT3                 \
 ),
 
 /* EMACS2(Shortcut Layer)
@@ -390,21 +396,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[EMACS2] = KEYMAP( \
+[EMACS2] = LAYOUT( \
   _____, C_G,   _____,   _____,  _____,       M_DOT,    ELT,      C_P,    EGT,      _____,  \
   _____, C_S,   C_T,     _____,  C_AT,        M_PER,    C_LE,     C_N,    C_RI,     C_M_S,  \
   C_Z,   C_X,   C_C,     C_V,    C_B,         M_X,      C_SCLN,   C_COLN, C_PIPE,   M_SCLN, \
                 C_SL,    M_D,    C_SPC,       _____,    _____,    _____                     \
 ),
 
-/* LOWER (Symbol)
+/* LOWER
  *
  * ,----------------------------------.           ,----------------------------------.
  * |   !  |   "  |   #  |   $  |   %  |           |   &  |   '  |   `  |   |  | yen  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  ESC |   @  |   {  |   }  |   _  |           |  ~   |   =  |   :  |   /  |   *  |
+ * |  ESC |   [  |   (  |   }  |   \  |           |  ~   |   =  |   :  |   /  |   *  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |   (  |   )  |   \  |           |  ^   |   -  |   ;  |   .  |   +  |
+ * |  ^   |   ]  |   )  |   }  |      |           |      |   -  |   ;  |   .  |   +  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  |      |      |      |    |      |      |      |
@@ -412,14 +418,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[LOWER] = KEYMAP( \
-  EXLM,     DQT,     HASH,    DLR,      PERC,     AMPR,    QUOT,  GRV,    PIPE, YEN,  \
-  ESC,      AT,      LCBR,    RCBR,     UNDS,     TILD,    EQL,   COLN,   SLSH, ASTR, \
-  XXXXX,    XXXXX,   LPRN,    RPRN,     BSLS,     CIRC,    MINS,  SCLN,   DOT,  PLUS, \
-                     _____, _____,  _____,  _____, _____, _____                       \
+[LOWER] = LAYOUT( \
+  EXLM,    DQT,    HASH,  DLR,    PERC,     AMPR,    QUOT,  GRV,    PIPE, YEN,  \
+  ESC,     LBRC,   LPRN,  LCBR,   BSLS,     TILD,    EQL,   COLN,   SLSH, ASTR, \
+  CIRC,    RBRC,   RPRN,  RCBR,   _____,    _____,   MINS,  SCLN,   DOT,  PLUS, \
+                   _____, _____,  _____,    _____,   _____, _____                       \
 ),
 
-/* RAISE (Num + Fn + Others)
+/* RAISE
  *
  * ,----------------------------------.           ,----------------------------------.
  * |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |
@@ -429,16 +435,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   _  |  F7  |  F8  |  F9  |  F10 |           |  F11 |  F12 |   (  |   )  |   -  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  |      |      |      |    |      |  DEL |      |
+ *                  |      |      |      |    |      |      |      |
  *                  `-------------|      |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[RAISE] = KEYMAP( \
+[RAISE] = LAYOUT( \
   KC_1,    KC_2,   KC_3,   KC_4,   KC_5,        KC_6,     KC_7,    KC_8,   KC_9,   KC_0, \
   TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,       KC_F5,    KC_F6,   LBRC,   RBRC,   AT,   \
   UNDS,    KC_F7,  KC_F8,  KC_F9,  KC_F10,      KC_F11,   KC_F12,  LPRN,   RPRN,   MINS, \
-                   _____,  _____,  _____,       _____,    CLT,     _____                 \
+                   _____,  _____,  _____,       _____,    _____,   _____                 \
 ),
 
 /* MISC (GUI)
@@ -448,7 +454,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | MsLf | MsDn | MsRg |WRKSP2|           |DWRKSP| Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      | Copy |Paste | Hide |           |COLEMA|EMACS | GAME |      |      |
+ * |      |      | Copy |Paste | Hide |           |QGMLWY|EMACS |      |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | BTN2 | BTN1 |      |    |      | CTL  | ALT  |
@@ -456,10 +462,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[MISC] = KEYMAP( \
+[MISC] = LAYOUT( \
   RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,   GU,     PGUP,   RESET, \
   XXXXX,   MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   GL,     GD,     GR,     XXXXX, \
-  XXXXX,   XXXXX,   COPY,    PASTE,   GH,        DC,       DE,     DG,     XXXXX,  XXXXX, \
+  XXXXX,   XXXXX,   COPY,    PASTE,   GH,        DQ,       DE,     XXXXX,  XXXXX,  XXXXX, \
                     BTN2,    BTN1,    GUI,       GUI,      CTL,    CLT                    \
 ),
 
@@ -468,7 +474,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |RESET |      |      |      |      |           |      | PgDn |  Up  | PgUp |RESET |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |      |      |      |           |      | Left | Down |Right |      |
+ * |      | GAME1| GAME2|      |      |           |      | Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | RTOG | RMOD | RHUI | RHUD |           | RSAI | RSAD | RRMOD|      |      |
  * `----------------------------------'           `----------------------------------'
@@ -478,14 +484,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[MISC2] =  KEYMAP( \
+[MISC2] =  LAYOUT( \
   RESET,   XXXXX,  XXXXX, XXXXX, XXXXX,        XXXXX,  PGDN,     KUP,    PGUP,    RESET, \
-  XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX,        XXXXX,  KLEFT,    KDOWN,  KRIGHT,  XXXXX, \
+  XXXXX,   DG1,    DG2,   XXXXX, XXXXX,        XXXXX,  KLEFT,    KDOWN,  KRIGHT,  XXXXX, \
   XXXXX,   RTOG,   RMOD,  RHUI,  RHUD,         RSAI,   RSAD,     RRMOD,  XXXXX,   XXXXX, \
                    _____, CTL,   _____,        _____,  _____,    _____                   \
 ),
 
-/* GAME
+/* GAME1
  *
  * ,----------------------------------.           ,----------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |           |      |      |      |      |      |
@@ -500,11 +506,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                |      |    |      |
  *                                `------'    `------'
  */
-[GAME] =  KEYMAP( \
+[GAME1] =  LAYOUT( \
   KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_F5,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
   KC_1,    KC_2,   KC_3,   KC_4,   KC_5,         XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
   XXXXX,   KC_C,   KC_I,   KC_B,   KC_F,         XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
-                   KC_ESC, KC_TAB, KC_LCTRL,     DC,     _____,    _____                   \
+                   KC_ESC, KC_TAB, KC_LCTRL,     DQ,     _____,    _____                   \
+),
+
+/* GAME2
+ *
+ * ,----------------------------------.           ,----------------------------------.
+ * |  TAB |  G   |  W   |  E   |  R  |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * | SHIFT|  A   |  S   |  D   |  F   |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |  C   |  Q   |  M   |      |      |           |      |      |      |      |      |
+ * `----------------------------------'           `----------------------------------'
+ *                  ,--------------------.    ,------,-------------.
+ *                  | ESC  |  V   |      |    |      |      |      |
+ *                  `-------------| SPC  |    |      |------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
+ */
+[GAME2] =  LAYOUT( \
+  GTAB,    KC_G,   KC_W,   KC_E,   KC_R,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_LSFT, KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_C,    KC_Q,   KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+                   KC_ESC, KC_V,   SPC,         DQ,     _____,    _____                   \
 )
 };
 
@@ -525,36 +553,39 @@ void matrix_scan_user(void) {
 
 #ifdef RGBLIGHT_ENABLE
 
-uint32_t layer_state_set_user(uint32_t state) {
-    uint8_t layer = biton32(state);
-    switch (layer) {
-    case 0:
-        rgblight_mode(5);
-        break;
-    case 1:
-        rgblight_mode(5);
-        break;
-    case 2:
-        rgblight_mode(5);
-        break;
-    case 3:
-        rgblight_mode(22);
-        break;
-    case 4:
-        rgblight_mode(22);
-        break;
-    case 5:
-        rgblight_mode(16);
-        break;
-    case 6:
-        rgblight_mode(16);
-        break;
-    case 7:
-        break;
-    default:
-        break;
-    }
 
-    return state;
+uint32_t layer_state_set_user(uint32_t state) {
+  uint8_t layer = biton32(state);
+  switch (layer) {
+    case QGMLWY:
+      rgblight_mode(7);
+      break;
+    case EMACS:
+      rgblight_mode(7);
+      break;
+    case EMACS2:
+      rgblight_mode(24);
+      break;
+    case LOWER:
+      rgblight_mode(21);
+      break;
+    case RAISE:
+      rgblight_mode(22);
+      break;
+    case MISC:
+      rgblight_mode(15);
+      break;
+    case MISC2:
+      rgblight_mode(16);
+      break;
+    case GAME1:
+      rgblight_mode(9);
+      break;
+    default:
+      break;
+  }
+
+  return state;
 }
+
 #endif
