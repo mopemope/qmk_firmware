@@ -1,5 +1,5 @@
 /*
-Copyright 2017 Danny Nguyen <danny@keeb.io>
+Copyright 2012 Jun Wako <wakojun@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,31 +15,24 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONFIG_USER_H
-#define CONFIG_USER_H
+#include <avr/io.h>
+#include "stdint.h"
+#include "led.h"
 
-#include "config_common.h"
 
-/* Use I2C or Serial, not both */
-
-#define USE_SERIAL
-// #define USE_I2C
-
-/* Select hand configuration */
-#define PERMISSIVE_HOLD
-#define PREVENT_STUCK_MODIFIERS
-#define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
-/*
-#undef RGBLED_NUM
-#define RGBLIGHT_ANIMATIONS
-#define RGBLED_NUM 12
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 8
-*/
-#define TAPPING_TERM 200
-#include "../../config.h"
-
-#endif
+void led_set(uint8_t usb_led)
+{
+    if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
+        // output low
+        DDRB |= (1<<0);
+        PORTB &= ~(1<<0);
+        DDRD |= (1<<5);
+        PORTD &= ~(1<<5);
+    } else {
+        // Hi-Z
+        DDRB &= ~(1<<0);
+        PORTB &= ~(1<<0);
+        DDRD &= ~(1<<5);
+        PORTD &= ~(1<<5);
+    }
+}
