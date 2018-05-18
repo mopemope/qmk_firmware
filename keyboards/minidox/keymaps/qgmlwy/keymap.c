@@ -15,7 +15,8 @@ extern keymap_config_t keymap_config;
 #define MISC2   6
 #define GAME1   7
 #define GAME2   8
-#define NONE    9
+#define GAME3   9
+#define NONE   10
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -202,6 +203,7 @@ extern keymap_config_t keymap_config;
 #define DE     DF(EMACS)
 #define DG1    DF(GAME1)
 #define DG2    DF(GAME2)
+#define DG3    DF(GAME3)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define WH_D   KC_WH_D
@@ -474,7 +476,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |RESET |      |      |      |      |           |      | PgDn |  Up  | PgUp |RESET |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      | GAME1| GAME2|      |      |           |      | Left | Down |Right |      |
+ * |      | GAME1| GAME2| GAME3|      |           |      | Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      | RTOG | RMOD | RHUI | RHUD |           | RSAI | RSAD | RRMOD|      |      |
  * `----------------------------------'           `----------------------------------'
@@ -486,12 +488,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [MISC2] =  LAYOUT( \
   RESET,   XXXXX,  XXXXX, XXXXX, XXXXX,        XXXXX,  PGDN,     KUP,    PGUP,    RESET, \
-  XXXXX,   DG1,    DG2,   XXXXX, XXXXX,        XXXXX,  KLEFT,    KDOWN,  KRIGHT,  XXXXX, \
+  XXXXX,   DG1,    DG2,   DG3,   XXXXX,        XXXXX,  KLEFT,    KDOWN,  KRIGHT,  XXXXX, \
   XXXXX,   RTOG,   RMOD,  RHUI,  RHUD,         RSAI,   RSAD,     RRMOD,  XXXXX,   XXXXX, \
                    _____, CTL,   _____,        _____,  _____,    _____                   \
 ),
 
-/* GAME1
+/* GAME1(Diablo)
  *
  * ,----------------------------------.           ,----------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |           |      |      |      |      |      |
@@ -513,7 +515,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                    KC_ESC, KC_TAB, KC_LCTRL,     DQ,     _____,    _____                   \
 ),
 
-/* GAME2
+/* GAME2(BL2)
  *
  * ,----------------------------------.           ,----------------------------------.
  * |  TAB |  G   |  W   |  E   |  R  |           |      |      |      |      |      |
@@ -533,6 +535,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT, KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
   KC_C,    KC_Q,   KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
                    KC_ESC, KC_V,   SPC,         DQ,     _____,    _____                   \
+),
+/* GAME3(WoL)
+ *
+ * ,----------------------------------.           ,----------------------------------.
+ * |  TAB |  Q   |  W   |  E   |  R   |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |      |  A   |  S   |  D   |      |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |      |      |  M   |      |      |           |      |      |      |      |      |
+ * `----------------------------------'           `----------------------------------'
+ *                  ,--------------------.    ,------,-------------.
+ *                  | ESC  |  F   |      |    |      |      |      |
+ *                  `-------------| SPC  |    |      |------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
+ */
+[GAME3] =  LAYOUT( \
+  GTAB,    KC_Q,   KC_W,   KC_E,   KC_R,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  XXXXX,   KC_A,   KC_S,   KC_D,   XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  XXXXX,   XXXXX,  KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+                   KC_ESC, KC_F,   SPC,         DQ,     _____,    _____                   \
 )
 };
 
