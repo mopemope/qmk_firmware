@@ -358,7 +358,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_G,    KC_M,   KC_L,    KC_W,        KC_Y,    KC_F,    KC_U,   KC_B,   DEL, \
   D_M,    KC_S,    KC_T,   KC_N,    KC_R,        KC_I,    KC_A,    KC_E,   KC_O,   H_M, \
   Z_C,    KC_X,    KC_C,   KC_V,    KC_J,        KC_K,    KC_P,    COMM,   DOT,    S_A, \
-                   SFT1,   CLT,     RSPC,         ENT,    CBSPC,   SFT2                 \
+                   SFT1,   ALT,     RSPC,        ENT,    CBSPC,   SFT2                 \
 ),
 
 /* EMACS(QGMLWY)
@@ -380,7 +380,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_G,    KC_M,  KC_L,    KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,  DEL,  \
   D_M,    KC_S,    KC_T,  KC_N,    KC_R,         KC_I,    KC_A,    KC_E,   KC_O,  H_M,  \
   Z_C,    KC_X,    KC_C,  KC_V,    KC_J,         KC_K,    KC_P,    COMM,   DOT,   S_A,  \
-                   SFT1,  CLT,     RSPC,         ENT,     CBSPC,   SFT3                 \
+                   SFT1,  ALT,     RSPC,         ENT,     CBSPC,   SFT3                 \
 ),
 
 /* EMACS2(Shortcut Layer)
