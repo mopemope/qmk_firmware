@@ -14,9 +14,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <math.h>
-#include <avr/eeprom.h>
-#include <avr/interrupt.h>
-#include <util/delay.h>
+#ifdef __AVR__
+  #include <avr/eeprom.h>
+  #include <avr/interrupt.h>
+#endif
+#include "wait.h"
 #include "progmem.h"
 #include "timer.h"
 #include "rgblight.h"
@@ -48,7 +50,6 @@ const uint16_t RGBLED_RGBTEST_INTERVALS[] PROGMEM = {1024};
 rgblight_config_t rgblight_config;
 
 LED_TYPE led[RGBLED_NUM];
-uint8_t rgblight_inited = 0;
 bool rgblight_timer_enabled = false;
 
 void sethsv(uint16_t hue, uint8_t sat, uint8_t val, LED_TYPE *led1) {
@@ -114,13 +115,19 @@ void setrgb(uint8_t r, uint8_t g, uint8_t b, LED_TYPE *led1) {
 
 
 uint32_t eeconfig_read_rgblight(void) {
-  return eeprom_read_dword(EECONFIG_RGBLIGHT);
+  #ifdef __AVR__
+    return eeprom_read_dword(EECONFIG_RGBLIGHT);
+  #else
+    return 0;
+  #endif
 }
 void eeconfig_update_rgblight(uint32_t val) {
-  eeprom_update_dword(EECONFIG_RGBLIGHT, val);
+  #ifdef __AVR__
+    eeprom_update_dword(EECONFIG_RGBLIGHT, val);
+  #endif
 }
 void eeconfig_update_rgblight_default(void) {
-  dprintf("eeconfig_update_rgblight_default\n");
+  //dprintf("eeconfig_update_rgblight_default\n");
   rgblight_config.enable = 1;
   rgblight_config.mode = 1;
   rgblight_config.hue = 0;
@@ -142,7 +149,6 @@ void eeconfig_debug_rgblight(void) {
 void rgblight_init(void) {
   debug_enable = 1; // Debug ON!
   dprintf("rgblight_init called.\n");
-  rgblight_inited = 1;
   dprintf("rgblight_init start!\n");
   if (!eeconfig_is_enabled()) {
     dprintf("rgblight_init eeconfig is not enabled.\n");
@@ -313,7 +319,7 @@ void rgblight_disable(void) {
   #ifdef RGBLIGHT_ANIMATIONS
     rgblight_timer_disable();
   #endif
-  _delay_ms(50);
+  wait_ms(50);
   rgblight_set();
 }
 
