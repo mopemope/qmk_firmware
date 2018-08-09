@@ -37,6 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 #ifdef BACKLIGHT_ENABLE
 #   include "backlight.h"
+    extern backlight_config_t backlight_config;
 #endif
 
 #if defined(USE_I2C) || defined(EH)
@@ -286,6 +287,16 @@ int serial_transaction(void) {
     for (int i = 0; i < ROWS_PER_HAND; ++i) {
         matrix[slaveOffset+i] = serial_slave_buffer[i];
     }
+    
+    #ifdef RGBLIGHT_ENABLE
+        // Code to send RGB over serial goes here (not implemented yet)
+    #endif
+    
+    #ifdef BACKLIGHT_ENABLE
+        // Write backlight level for slave to read
+        serial_master_buffer[SERIAL_BACKLIT_START] = backlight_config.enable ? backlight_config.level : 0;
+    #endif
+
     return 0;
 }
 #endif
