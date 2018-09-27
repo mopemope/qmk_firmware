@@ -14,6 +14,10 @@
 #include "keymap_jp.h"
 
 extern keymap_config_t keymap_config;
+#ifdef RGBLIGHT_ENABLE
+//Following line allows macro to read current RGB settings
+extern rgblight_config_t rgblight_config;
+#endif
 
 extern uint8_t is_master;
 
@@ -155,19 +159,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               //`--------------------'  `--------------------'
   ),
 
-  [MISC2] = LAYOUT_kc(                                                   \
+  [MISC2] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-       RST,  XXXXX,XXXXX, XXXXX, XXXXX,  UWRK,                   UWRK,  PGDN,    KUP,  PGUP, XXXXX,   RST,\
+       RST,  XXXXX,XXXXX, XXXXX, XXXXX,  UWRK,                   UWRK, XXXXX,  PGDN,   KUP,   PGUP,   RST,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     XXXXX,    DG1,  DG2,   DG3, XXXXX,  DWRK,                   DWRK, KLEFT,  KDOWN,KRIGHT, XXXXX, XXXXX,\
+     XXXXX,    DG1,  DG2,   DG3, XXXXX,  DWRK,                   DWRK, XXXXX, KLEFT, KDOWN, KRIGHT, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     XXXXX,  XXXXX, RTOG,  RMOD,  RHUI,  RHUD,                   RSAI,  RSAD,  RRMOD, XXXXX, XXXXX, XXXXX,\
+     XXXXX,  XXXXX, RTOG,  RMOD,  RHUI,  RHUD,                   RSAI,  RSAD, RRMOD, XXXXX,  XXXXX, XXXXX,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   ALT1,  CTL1, _____,     _____, CTL1,  ALT1 \
                               //`--------------------'  `--------------------'
   ),
 
-  [GAME1] = LAYOUT_kc(                                                   \
+  [GAME1] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
         F1,     F2,   F3,    F4,    F5,    F6,                   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
@@ -179,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               //`--------------------'  `--------------------'
   ),
 
-  [GAME2] = LAYOUT_kc(                                                   \
+  [GAME2] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
        ESC,    TAB,    G,     W,     E,     R,                   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
@@ -191,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               //`--------------------'  `--------------------'
   ),
 
-  [GAME3] = LAYOUT_kc(                                                   \
+  [GAME3] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
        ESC,    TAB,    Q,     W,     E,     R,                   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
@@ -210,19 +214,7 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-// Setting ADJUST layer RGB back to default
-void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
-  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
-    layer_on(layer3);
-  } else {
-    layer_off(layer3);
-  }
-}
-
 void matrix_init_user(void) {
-    #ifdef RGBLIGHT_ENABLE
-      RGB_current_mode = rgblight_config.mode;
-    #endif
     //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
     #ifdef SSD1306OLED
         iota_gfx_init(!has_usb());   // turns on the display
@@ -279,10 +271,46 @@ void iota_gfx_task_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
     set_keylog(keycode, record);
-    // set_timelog();
   }
 
   return true;
 }
 
+#endif
+
+#ifdef RGBLIGHT_ENABLE
+
+uint32_t layer_state_set_user(uint32_t state) {
+  uint8_t layer = biton32(state);
+  switch (layer) {
+    case QGMLWY:
+      rgblight_mode(7);
+      break;
+    case LOWER:
+      rgblight_mode(21);
+      break;
+    case RAISE:
+      rgblight_mode(22);
+      break;
+    case MISC:
+      rgblight_mode(15);
+      break;
+    case MISC2:
+      rgblight_mode(16);
+      break;
+    case GAME1:
+      rgblight_mode(9);
+      break;
+    case GAME2:
+      rgblight_mode(9);
+      break;
+    case GAME3:
+      rgblight_mode(9);
+      break;
+    default:
+      break;
+  }
+
+  return state;
+}
 #endif
