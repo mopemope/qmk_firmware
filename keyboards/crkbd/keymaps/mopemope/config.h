@@ -43,7 +43,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 180
 
 #define MOUSEKEY_INTERVAL 10
-#define MOUSEKEY_TIME_TO_MAX 100
+#define MOUSEKEY_TIME_TO_MAX 60
 #define MOUSEKEY_MAX_SPEED 2
 #define MOUSEKEY_DELAY 10
 

@@ -50,6 +50,8 @@ extern uint8_t is_master;
 #define KC_CTL1   OSM(MOD_LCTL)
 #define KC_MISC   LT(MISC,KC_TAB)
 #define KC_MISC2  LT(MISC2,KC_TAB)
+#define KC_DM     LT(MISC,KC_D)
+#define KC_HM     LT(MISC2,KC_H)
 #define KC_JEXLM  JP_EXLM
 #define KC_JDQT   JP_DQT
 #define KC_JHASH  JP_HASH
@@ -96,6 +98,7 @@ extern uint8_t is_master;
 #define KC_GD     LGUI(KC_DOWN)
 #define KC_GR     LGUI(KC_RIGHT)
 #define KC_GH     LGUI(KC_H)
+#define KC_HIDE   LGUI(KC_H)
 #define KC_RTOG   RGB_TOG
 #define KC_RMOD   RGB_MOD
 #define KC_RRMOD  RGB_RMOD
@@ -115,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------.                ,-----------------------------------------.
        ESC,     Q,     G,     M,     L,     W,                      Y,     F,     U,     B, JCIRC,  BSPC,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      MISC,     D,     S,     T,     N,     R,                      I,     A,     E,     O,     H, MISC2,\
+      MISC,    DM,     S,     T,     N,     R,                      I,     A,     E,     O,    HM, MISC2,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
       CTL1,     Z,     X,     C,     V,     J,                      K,     P, JCOMM,  JDOT, JSLSH,  JAT1,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
@@ -149,11 +152,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISC] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-       RST,  WH_D,  MS_U,  WH_U,  XXXXX,  WRK1,                   UWRK, XXXXX,  PGDN,    GU,  PGUP,   RST,\
+       RST,  XXXXX,  WH_D,  MS_U,  WH_U,  WRK1,                   UWRK,  PGDN,    GU,  PGUP, XXXXX,   RST,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     XXXXX,  MS_L,  MS_D,  MS_R,  XXXXX,  WRK2,                   DWRK, XXXXX,    GL,    GD,    GR, XXXXX,\
+     XXXXX,  XXXXX,  MS_L,  MS_D,  MS_R,  WRK2,                   DWRK,    GL,    GD,    GR, XXXXX, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     XXXXX,  _____,_____,  COPY,  PASTE, _____,                  _____, _____, _____, _____, _____, XXXXX,\
+     XXXXX,  _____, _____,  COPY, PASTE,  HIDE,                  _____, _____, _____, _____, _____, XXXXX,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   BTN2,  BTN1,  LGUI,      LGUI, CTL1,  ALT1 \
                               //`--------------------'  `--------------------'
@@ -161,11 +164,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISC2] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-       RST,  XXXXX,XXXXX, XXXXX, XXXXX,  UWRK,                   UWRK, XXXXX,  PGDN,   KUP,   PGUP,   RST,\
+       RST,  XXXXX,XXXXX, XXXXX, XXXXX,  UWRK,                   UWRK,  PGDN,   KUP,   PGUP, XXXXX,   RST,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     XXXXX,    DG1,  DG2,   DG3, XXXXX,  DWRK,                   DWRK, XXXXX, KLEFT, KDOWN, KRIGHT, XXXXX,\
+     XXXXX,  XXXXX,  DG1,   DG2,   DG3,  DWRK,                   DWRK, KLEFT, KDOWN, KRIGHT, XXXXX, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-     XXXXX,  XXXXX, RTOG,  RMOD,  RHUI,  RHUD,                   RSAI,  RSAD, RRMOD, XXXXX,  XXXXX, XXXXX,\
+     XXXXX,  XXXXX, RTOG,  RMOD,  RHUI,  RHUD,                   RSAI,  RSAD, RRMOD,  XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   ALT1,  CTL1, _____,     _____, CTL1,  ALT1 \
                               //`--------------------'  `--------------------'
