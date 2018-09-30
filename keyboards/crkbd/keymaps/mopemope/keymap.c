@@ -29,8 +29,6 @@ extern uint8_t is_master;
 #define GAME1   7
 #define GAME2   8
 #define GAME3   9
-#define NONE   10
-
 
 #define KC______  KC_TRNS
 #define KC_XXXXX  KC_NO
@@ -51,6 +49,7 @@ extern uint8_t is_master;
 #define KC_MISC   LT(MISC,KC_TAB)
 #define KC_MISC2  LT(MISC2,KC_TAB)
 #define KC_DM     LT(MISC,KC_D)
+#define KC_CZ     LCTL(KC_Z)
 #define KC_HM     LT(MISC2,KC_H)
 #define KC_JEXLM  JP_EXLM
 #define KC_JDQT   JP_DQT
@@ -70,6 +69,7 @@ extern uint8_t is_master;
 #define KC_JEQL   JP_EQL
 #define KC_JCOLN  JP_COLN
 #define KC_JSLSH  JP_SLSH
+#define KC_JSL1   LALT(JP_SLSH)
 #define KC_JASTR  JP_ASTR
 #define KC_JLPRN  JP_LPRN
 #define KC_JRPRN  JP_RPRN
@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
       MISC,    DM,     S,     T,     N,     R,                      I,     A,     E,     O,    HM, MISC2,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CTL1,     Z,     X,     C,     V,     J,                      K,     P, JCOMM,  JDOT, JSLSH,  JAT1,\
+      CTL1,    CZ,     X,     C,     V,     J,                      K,     P, JCOMM,  JDOT,  JSL1,  JAT1,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   SFT3,  ALT1,   RSPC,    LENT, CBSPC,  SFT3 \
                               //`--------------------'  `--------------------'
