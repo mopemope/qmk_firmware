@@ -198,6 +198,7 @@ extern keymap_config_t keymap_config;
 #define SFT1   SFT_T(JP_MHEN)
 #define SFT2   SFT_T(JP_HENK)
 #define SFT3   LT(EMACS2,JP_HENK)
+#define SFTZ   SFT_T(JP_ZHTG)
 #define ESC    KC_ESC
 #define DQ     DF(QGMLWY)
 #define DE     DF(EMACS)
@@ -358,7 +359,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_G,    KC_M,   KC_L,    KC_W,        KC_Y,    KC_F,    KC_U,   KC_B,   DEL, \
   D_M,    KC_S,    KC_T,   KC_N,    KC_R,        KC_I,    KC_A,    KC_E,   KC_O,   H_M, \
   Z_C,    KC_X,    KC_C,   KC_V,    KC_J,        KC_K,    KC_P,    COMM,   DOT,    S_A, \
-                   SFT1,   ALT,     RSPC,        ENT,     CBSPC,   SFT2                 \
+                   SFTZ,   ALT,     RSPC,        ENT,     CBSPC,   SFTZ                 \
 ),
 
 /* EMACS(QGMLWY)
@@ -380,7 +381,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,   KC_G,    KC_M,  KC_L,    KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,  DEL,  \
   D_M,    KC_S,    KC_T,  KC_N,    KC_R,         KC_I,    KC_A,    KC_E,   KC_O,  H_M,  \
   Z_C,    KC_X,    KC_C,  KC_V,    KC_J,         KC_K,    KC_P,    COMM,   DOT,   S_A,  \
-                   SFT1,  ALT,     RSPC,         ENT,     CBSPC,   SFT3                 \
+                   SFTZ,  ALT,     RSPC,         ENT,     CBSPC,   SFTZ                 \
 ),
 
 /* EMACS2(Shortcut Layer)
