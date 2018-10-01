@@ -7,8 +7,6 @@
 extern keymap_config_t keymap_config;
 
 #define QGMLWY  0
-#define EMACS   1
-#define EMACS2  2
 #define LOWER   3
 #define RAISE   4
 #define MISC    5
@@ -26,94 +24,6 @@ extern keymap_config_t keymap_config;
 #define UWRKSP LSFT(LALT(LCTL(KC_UP)))
 #define DWRKSP LSFT(LALT(LCTL(KC_DOWN)))
 
-// Emacs shortcut
-// C-a
-#define C_A LCTL(KC_A)
-// C-z
-#define C_Z LCTL(KC_Z)
-// C-g
-#define C_G LCTL(KC_G)
-// C-x
-#define C_X LCTL(KC_X)
-// C-c
-#define C_C LCTL(KC_C)
-// C-f
-#define C_F LCTL(KC_F)
-// C-e
-#define C_E LCTL(KC_E)
-// C-b
-#define C_B LCTL(KC_B)
-// C-o
-#define C_O LCTL(KC_O)
-// C-r
-#define C_R LCTL(KC_R)
-// C-t
-#define C_T LCTL(KC_T)
-// C-y
-#define C_Y LCTL(KC_Y)
-// C-/
-#define C_SL LCTL(JP_SLSH)
-// C-BSLS
-#define C_BSL LCTL(JP_BSLS)
-// C-@
-#define C_AT LCTL(JP_AT)
-
-// C-:
-#define C_COLN LCTL(JP_COLN)
-// C-;
-#define C_SCLN LCTL(JP_SCLN)
-// C-|
-#define C_PIPE LCTL(JP_PIPE)
-// M-;
-#define M_SCLN LALT(JP_SCLN)
-// C-SPC
-#define C_SPC  LCTL(KC_SPC)
-
-// C-V
-#define C_V LCTL(KC_V)
-// M-V
-#define M_V LALT(KC_V)
-// C-<
-#define C_LT LCTL(JP_LT)
-// C->
-#define C_GT LCTL(JP_GT)
-// M-<
-#define M_LT LALT(JP_LT)
-// M->
-#define M_GT LALT(JP_GT)
-
-// highlight symbol mode
-// C-M-n
-#define CMN LCTL(LALT(KC_N))
-// C-M-s
-#define CMP LCTL(LALT(KC_P))
-
-// M-.
-#define M_DOT  LALT(KC_DOT)
-// C-M-.
-#define CM_DOT LCTL(LALT(KC_DOT))
-// M-%
-#define M_PER  LALT(KC_PERC)
-// M-x
-#define M_X    LALT(KC_X)
-// M-w
-#define M_W    LALT(KC_W)
-#define C_M_S  LCTL(LALT(JP_BSLS))
-#define C_M_N  LCTL(LALT(KC_N))
-
-// C-RIGHT
-#define C_RI LCTL(KC_RIGHT)
-// C-LEFT
-#define C_LE LCTL(KC_LEFT)
-// C-N
-#define C_N  LCTL(KC_N)
-// C-P
-#define C_P  LCTL(KC_P)
-// M-D
-#define M_D  LALT(KC_D)
-
-// MOD Shortcut
-
 //#define COLN  CTL_T(JP_COLN)
 #define TAB    KC_TAB
 #define MINS   ALT_T(JP_MINS)
@@ -122,25 +32,22 @@ extern keymap_config_t keymap_config;
 #define DEL    KC_DEL
 #define SDEL   SFT_T(KC_DEL)
 #define RAI    MO(RAISE)
-#define RJ     LT(RAISE, KC_J)
-#define LK     LT(LOWER, KC_K)
-#define SPC    KC_SPC
+#define RJ     LT(RAISE,KC_J)
+#define LK     LT(LOWER,KC_K)
+#define SPC    LT(RAISE,KC_SPC)
 #define CSPC   CTL_T(KC_SPC)
-// #define ENT    SFT_T(KC_ENT)
-#define ENT    KC_ENT
+#define ENT    LT(LOWER,KC_ENT)
 #define CENT   CTL_T(KC_ENT)
-#define EENT   LT(EMACS2,KC_ENT)
 #define BSPC   CTL_T(KC_BSPC)
 #define SBSPC  SFT_T(KC_BSPC)
-#define EBSPC  LT(EMACS2,KC_BSPC)
 #define LOW    MO(LOWER)
 #define ABSPC  ALT_T(KC_BSPC)
 #define CBSPC  CTL_T(KC_BSPC)
-//#define GUI   LT(MISC,KC_LGUI)
 #define A_M    LT(MISC,KC_A)
 #define D_M    LT(MISC,KC_D)
 #define Z_A    ALT_T(KC_Z)
 #define Z_C    CTL_T(KC_Z)
+#define X_CT   CTL_T(KC_X)
 #define P_C    CTL_T(KC_P)
 #define A_C    CTL_T(KC_A)
 #define H_M    LT(MISC2,KC_H)
@@ -158,9 +65,6 @@ extern keymap_config_t keymap_config;
 #define GD     LGUI(KC_DOWN)
 #define GR     LGUI(KC_RIGHT)
 #define GH     LGUI(KC_H)
-#define ELT    TD(E_LT)
-#define EGT    TD(E_GT)
-#define CLT    TD(ALT_CTL)
 #define GTAB   TD(G_TAB)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
@@ -187,8 +91,7 @@ extern keymap_config_t keymap_config;
 #define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
 #define COMM   SFT_T(JP_COMM)
-#define DOT    LT(EMACS2,JP_DOT)
-#define EX     LT(EMACS2,KC_X)
+#define DOT    ALT_T(JP_DOT)
 #define PLUS   JP_PLUS
 #define LBRC   JP_LBRC
 #define RBRC   ALT_T(JP_RBRC)
@@ -201,7 +104,6 @@ extern keymap_config_t keymap_config;
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
 #define DQ     DF(QGMLWY)
-#define DE     DF(EMACS)
 #define DG1    DF(GAME1)
 #define DG2    DF(GAME2)
 #define DG3    DF(GAME3)
@@ -237,104 +139,11 @@ extern keymap_config_t keymap_config;
 #define RVAD  RGB_VAD
 
 enum double_taps {
-  E_LT     = 0,
-  E_GT     = 1,
-  ALT_CTL  = 2,
-  G_TAB    = 3,
+  G_TAB    = 0,
 };
-
-enum x_taps {
-  SINGLE_TAP = 1,
-  SINGLE_HOLD = 2,
-  DOUBLE_TAP = 3,
-  DOUBLE_HOLD = 4,
-  DOUBLE_SINGLE_TAP = 5,
-  OTHER = 7
-};
-
-typedef struct {
-  bool is_press_action;
-  int state;
-} tap;
-
-int cur_dance (qk_tap_dance_state_t *state) {
-  if (state->count == 1) {
-    if (state->interrupted || state->pressed == 0) {
-      return SINGLE_TAP;
-    } else {
-      return SINGLE_HOLD;
-    }
-  } else if (state->count == 2) {
-    if (state->interrupted) {
-      return DOUBLE_SINGLE_TAP;
-    } else if (state->pressed) {
-      return DOUBLE_HOLD;
-    } else {
-      return DOUBLE_TAP;
-    }
-  } else {
-    return OTHER;
-  }
-}
-
-static tap xtap_state = {
-  .is_press_action = true,
-  .state = 0
-};
-
-void x_finished (qk_tap_dance_state_t *state, void *user_data) {
-  xtap_state.state = cur_dance(state);
-  switch (xtap_state.state) {
-    case SINGLE_TAP:
-      register_code(KC_LALT);
-      break;
-    case SINGLE_HOLD:
-      register_code(KC_LALT);
-      break;
-    case DOUBLE_TAP:
-      register_code(KC_LCTRL);
-      break;
-    case DOUBLE_HOLD:
-      register_code(KC_LCTRL);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      register_code(KC_LALT);
-      break;
-    default:
-      break;
-  }
-}
-
-void x_reset (qk_tap_dance_state_t *state, void *user_data) {
-  switch (xtap_state.state) {
-    case SINGLE_TAP:
-      unregister_code(KC_LALT);
-      break;
-    case SINGLE_HOLD:
-      unregister_code(KC_LALT);
-      break;
-    case DOUBLE_TAP:
-      unregister_code(KC_LCTRL);
-      break;
-    case DOUBLE_HOLD:
-      unregister_code(KC_LCTRL);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      unregister_code(KC_LALT);
-      break;
-    default:
-      unregister_code(KC_LCTRL);
-      unregister_code(KC_LALT);
-      break;
-  }
-  xtap_state.state = 0;
-}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
-  [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
   [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
-  [ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
 };
 
 
@@ -353,47 +162,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [QGMLWY] = LAYOUT( \
-    KC_Q,    KC_G,    KC_M,    KC_L,  KC_W,  XXXXX, XXXXX, KC_Y,  KC_F,  KC_U,  KC_B,  DEL,    \
-    D_M,     KC_S,    KC_T,    KC_N,  KC_R,  XXXXX, XXXXX, KC_I,  KC_A,  KC_E,  KC_O,  H_M,    \
-    Z_C ,    KC_X,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,   S_A,    \
-    XXXXX,   XXXXX,   XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
-  ),
-
-  /* EMACS(QGMLWY)
-   * ,-----------------------------------------, ,-----------------------------------------,
-   * |  Q   |  G   |  M   |  L   |  W   |      | |      |  Y   |  F   |  U   |  B   | DEL  |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  D   |  S   |  T   |  N   |  R   |      | |      |  I   |  A   |  E   |  O   |  H   |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  Z   |  X   |  C   |  V   |  J   |      | |      |  K   |  P   |  ,   |  .   |  /   |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
-   * `-----------------------------------------' `-----------------------------------------'
-   */
-
-  [EMACS] = LAYOUT( \
-    KC_Q,    KC_G,    KC_M,    KC_L,  KC_W,  XXXXX, XXXXX, KC_Y,  KC_F,  KC_U,  KC_B,  DEL,    \
-    D_M,     KC_S,    KC_T,    KC_N,  KC_R,  XXXXX, XXXXX, KC_I,  KC_A,  KC_E,  KC_O,  H_M,    \
-    Z_C ,    KC_X,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,   S_A,    \
-    XXXXX,   XXXXX,   XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
-  ),
-
-  /* EMACS2(Shortcut Layer)
-   * ,-----------------------------------------, ,-----------------------------------------,
-   * |RESET |      |      |      |      |      | |      | M-.  | E-LT |      | E-GT |      |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      | C-@  |      | |      | M-%  | M-;  |C-M-N |      |      |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | C-Z  |      | C-/  | M-D  | C_SPC|      | |      | M-x  | C-;  |  C-: |      |C-M-S |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
-   * `-----------------------------------------' `-----------------------------------------'
-   */
-  [EMACS2] = LAYOUT( \
-    RESET,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, M_DOT,  ELT,    XXXXX,  EGT,    XXXXX,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, C_AT,   XXXXX, XXXXX, M_PER,  M_SCLN, C_M_N,  XXXXX,  XXXXX,  \
-    C_Z,    _____, C_SL,  M_D,   C_SPC,  XXXXX, XXXXX, M_X,    C_SCLN, C_COLN, _____,  C_M_S,  \
-    XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX   \
+    KC_Q,    KC_G,    KC_M,    KC_L,  KC_W,  XXXXX, XXXXX, KC_Y,  KC_F,  KC_U,  KC_B,   DEL,    \
+    D_M,     KC_S,    KC_T,    KC_N,  KC_R,  XXXXX, XXXXX, KC_I,  KC_A,  KC_E,  KC_O,   H_M,    \
+    Z_A ,    X_CT,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,    S_C,    \
+    XXXXX,   XXXXX,   XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
   /* LOWER (Symbol)
@@ -411,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LOWER] = LAYOUT( \
     EXLM,    DQT,     HASH,   DLR,    PERC,   XXXXX, XXXXX, AMPR,    QUOT,   GRV,     PIPE,   YEN,   \
     ESC,     LBRC,    LPRN,   LCBR,   BSLS,   XXXXX, XXXXX, TILD,    EQL,    COLN,    SLSH,   ASTR,  \
-    CIRC,    RBRC,    RPRN,   RCBR,   CSPC,   XXXXX, XXXXX, _____,   MINS,   SCLN,    DOT,    PLUS,  \
+    CIRC,    RBRC,    RPRN,   RCBR,   SPC,    XXXXX, XXXXX, _____,   MINS,   SCLN,    DOT,    PLUS,  \
     XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX  \
   ),
 
@@ -419,9 +191,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |  1   |  2   |   3  |  4   |  5   |      | |      |   6  |   7  |   8  |   9  |   0  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  F5  |  SPC |  F7  |  F8  |   @  |
+   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  F12 |  SPC |  F7  |  F8  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  _   |  F9  |  F10 |  F11 |      |      | |      |  ENT | BSPC | ZHTG |  F12 |   -  |
+   * |  _   |  F9  |  F10 |  F11 |      |      | |      |  ENT | BSPC | ZHTG |  F6 |   -  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -429,8 +201,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [RAISE] = LAYOUT( \
     KC_1,    KC_2,   KC_3,    KC_4,   KC_5,   XXXXX,  XXXXX,  KC_6,   KC_7,    KC_8,   KC_9,    KC_0,   \
-    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  KC_F5,  SPC,     KC_F7,  KC_F8,   AT,     \
-    UNDS,    KC_F9,  KC_F10,  KC_F11, _____,  XXXXX,  XXXXX,  ENT,    BSPC,    ZHTG,   KC_F12,  MINS,   \
+    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  KC_F12, SPC,     KC_F7,  KC_F8,   AT,     \
+    UNDS,    KC_F9,  KC_F10,  KC_F11, _____,  XXXXX,  XXXXX,  ENT,    BSPC,    ZHTG,   KC_F6,   MINS,   \
     XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,   XXXXX,  XXXXX,   XXXXX   \
   ),
 
@@ -551,12 +323,6 @@ uint32_t layer_state_set_user(uint32_t state) {
   switch (layer) {
     case QGMLWY:
       rgblight_mode(7);
-      break;
-    case EMACS:
-      rgblight_mode(7);
-      break;
-    case EMACS2:
-      rgblight_mode(24);
       break;
     case LOWER:
       rgblight_mode(21);
