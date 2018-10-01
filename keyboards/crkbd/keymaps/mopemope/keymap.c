@@ -39,8 +39,8 @@ extern uint8_t is_master;
 #define KC_LENT   LT(LOWER,KC_ENT)
 #define KC_RSPC   LT(RAISE, KC_SPC)
 #define KC_CBSPC  CTL_T(KC_BSPC)
-#define KC_ADEL   LALT_T(KC_DEL)
-#define KC_JAT1   LALT_T(JP_AT)
+#define KC_ADEL   ALT_T(KC_DEL)
+#define KC_JAT1   ALT_T(JP_AT)
 #define KC_SFT1   SFT_T(JP_MHEN)
 #define KC_SFT2   SFT_T(JP_HENK)
 #define KC_SFT3   SFT_T(JP_ZHTG)
@@ -49,7 +49,7 @@ extern uint8_t is_master;
 #define KC_MISC   LT(MISC,KC_TAB)
 #define KC_MISC2  LT(MISC2,KC_TAB)
 #define KC_DM     LT(MISC,KC_D)
-#define KC_CZ     LCTL(KC_Z)
+#define KC_CZ     CTL_T(KC_Z)
 #define KC_HM     LT(MISC2,KC_H)
 #define KC_JEXLM  JP_EXLM
 #define KC_JDQT   JP_DQT
@@ -69,7 +69,7 @@ extern uint8_t is_master;
 #define KC_JEQL   JP_EQL
 #define KC_JCOLN  JP_COLN
 #define KC_JSLSH  JP_SLSH
-#define KC_JSL1   LALT(JP_SLSH)
+#define KC_JSL1   ALT_T(JP_SLSH)
 #define KC_JASTR  JP_ASTR
 #define KC_JLPRN  JP_LPRN
 #define KC_JRPRN  JP_RPRN
