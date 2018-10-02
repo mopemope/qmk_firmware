@@ -15,6 +15,7 @@ extern keymap_config_t keymap_config;
 #define GAME2   8
 #define GAME3   9
 #define NONE   10
+#define EXTRA  11
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -35,6 +36,8 @@ extern keymap_config_t keymap_config;
 #define RAI    MO(RAISE)
 #define RJ     LT(RAISE,KC_J)
 #define LK     LT(LOWER,KC_K)
+#define NE     LT(EXTRA,KC_N)
+#define AE     LT(EXTRA,KC_A)
 #define SPC    LT(RAISE,KC_SPC)
 #define CSPC   CTL_T(KC_SPC)
 #define ENT    LT(LOWER,KC_ENT)
@@ -98,8 +101,6 @@ extern keymap_config_t keymap_config;
 #define RBRC   ALT_T(JP_RBRC)
 #define GUI    KC_LGUI
 #define ZHTG   JP_ZHTG
-#define ALT    OSM(MOD_LALT)
-#define CTL    OSM(MOD_LCTL)
 #define SFT1   SFT_T(JP_MHEN)
 #define SFT2   SFT_T(JP_HENK)
 #define C_S    SFT_T(KC_C)
@@ -110,6 +111,9 @@ extern keymap_config_t keymap_config;
 #define DG3    DF(GAME3)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
+#define CZ     LCTL(KC_Z)
+#define CN     LALT(LCTL(KC_N))
+#define CM     LALT(LCTL(KC_M))
 #define WH_D   KC_WH_D
 #define MS_U   KC_MS_U
 #define WH_U   KC_WH_U
@@ -147,7 +151,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
 };
 
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* QGMLWY
@@ -164,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [QGMLWY] = LAYOUT( \
     KC_Q,    KC_G,    KC_M,    KC_L,  KC_W,  XXXXX, XXXXX, KC_Y,  KC_F,  KC_U,  KC_B,   BSP,    \
-    D_M,     KC_S,    KC_T,    KC_N,  KC_R,  XXXXX, XXXXX, KC_I,  KC_A,  KC_E,  KC_O,   H_M,    \
+    D_M,     KC_S,    KC_T,    NE,    KC_R,  XXXXX, XXXXX, KC_I,  AE,    KC_E,  KC_O,   H_M,    \
     Z_A ,    X_CT,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,    S_C,    \
     XXXXX,   XXXXX,   XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
@@ -298,6 +301,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, DF(QGMLWY) \
+  ),
+  /* EXTRA
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |      |      | C_A_M|      |      |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      | C_A_N|      |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |  C_Z |      |      |      |      |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [EXTRA] = LAYOUT( \
+    _____, _____, CM,    _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
+    _____, _____, _____, CN,    _____, _____, _____, _____, _____, _____, _____, _____,     \
+    CZ,    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
+    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____      \
   ),
 
 };
