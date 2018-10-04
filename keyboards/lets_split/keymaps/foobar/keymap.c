@@ -51,13 +51,14 @@ extern keymap_config_t keymap_config;
 #define D_M    LT(MISC,KC_D)
 #define Z_A    ALT_T(KC_Z)
 #define Z_C    CTL_T(KC_Z)
+#define Z_S    SFT_T(KC_Z)
 #define X_CT   CTL_T(KC_X)
 #define P_C    CTL_T(KC_P)
 #define A_C    CTL_T(KC_A)
 #define H_M    LT(MISC2,KC_H)
 #define S_M    LT(MISC2,JP_SLSH)
 #define S_C    CTL_T(JP_SLSH)
-#define S_A    ALT_T(JP_SLSH)
+#define S_S    SFT_T(JP_SLSH)
 #define V_A    ALT_T(KC_V)
 #define O_C    CTL_T(KC_O)
 #define AT_M   LT(MISC,JP_AT)
@@ -184,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QGMLWY] = LAYOUT( \
     KC_Q,    KC_G,    KC_M,    KC_L,  KC_W,  XXXXX, XXXXX, KC_Y,  KC_F,  KC_U,  KC_B,   BSP,    \
     D_M,     KC_S,    KC_T,    NC,    KC_R,  XXXXX, XXXXX, KC_I,  AC,    KC_E,  KC_O,   H_M,    \
-    Z_A ,    X_CT,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,    S_C,    \
+    Z_S ,    X_CT,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,    S_S,    \
     XXXXX,   XXXXX,   XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
@@ -230,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET | WhDn | MsUp | WhUp |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | MsLf | MsDn | MsRg |WRKSP2|      | |      |DWRKSP| Left | Down |Right |      |
+   * |      | MsLf | MsDn | MsRg |WRKSP2|      | |      |DWRKSP| Left | Down |Right | HIDE |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      | Copy |Paste | GUI  |      | |      | BTN1 | BTN2 |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -240,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISC] = LAYOUT( \
     RESET, WH_D,  MS_U,    WH_U,   WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,   GU,     PGUP,   DEL,    \
-    _____, MS_L,  MS_D,    MS_R,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,     GD,     GR,     _____,  \
+    _____, MS_L,  MS_D,    MS_R,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,     GD,     GR,     GH,     \
     XXXXX, XXXXX, COPY,    PASTE,  GUI,    XXXXX,  XXXXX,  BTN1,   BTN2,   XXXXX,  XXXXX,  XXXXX,  \
     XXXXX, XXXXX, XXXXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX   \
   ),
