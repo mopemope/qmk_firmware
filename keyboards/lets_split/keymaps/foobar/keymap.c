@@ -14,8 +14,8 @@ extern keymap_config_t keymap_config;
 #define GAME1   7
 #define GAME2   8
 #define GAME3   9
-#define NONE   10
-#define EXTRA  11
+#define COMBA  11
+#define COMBN  12
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -36,8 +36,8 @@ extern keymap_config_t keymap_config;
 #define RAI    MO(RAISE)
 #define RJ     LT(RAISE,KC_J)
 #define LK     LT(LOWER,KC_K)
-#define NE     LT(EXTRA,KC_N)
-#define AE     LT(EXTRA,KC_A)
+#define AC     LT(COMBA,KC_A)
+#define NC     LT(COMBN,KC_N)
 #define SPC    LT(RAISE,KC_SPC)
 #define CSPC   CTL_T(KC_SPC)
 #define ENT    LT(LOWER,KC_ENT)
@@ -70,6 +70,8 @@ extern keymap_config_t keymap_config;
 #define GR     LGUI(KC_RIGHT)
 #define GH     LGUI(KC_H)
 #define GTAB   TD(G_TAB)
+#define ELT    TD(E_LT)
+#define EGT    TD(E_GT)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -143,11 +145,25 @@ extern keymap_config_t keymap_config;
 #define RVAI  RGB_VAI
 #define RVAD  RGB_VAD
 
+// COMB
+// C-V
+#define C_V LCTL(KC_V)
+// M-V
+#define M_V LALT(KC_V)
+// C-<
+#define C_LT LCTL(JP_LT)
+// C->
+#define C_GT LCTL(JP_GT)
+
 enum double_taps {
-  G_TAB    = 0,
+  E_LT     = 0,
+  E_GT     = 1,
+  G_TAB    = 2,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
+  [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
+  [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
   [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
 };
 
@@ -167,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [QGMLWY] = LAYOUT( \
     KC_Q,    KC_G,    KC_M,    KC_L,  KC_W,  XXXXX, XXXXX, KC_Y,  KC_F,  KC_U,  KC_B,   BSP,    \
-    D_M,     KC_S,    KC_T,    NE,    KC_R,  XXXXX, XXXXX, KC_I,  AE,    KC_E,  KC_O,   H_M,    \
+    D_M,     KC_S,    KC_T,    NC,    KC_R,  XXXXX, XXXXX, KC_I,  AC,    KC_E,  KC_O,   H_M,    \
     Z_A ,    X_CT,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,    S_C,    \
     XXXXX,   XXXXX,   XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
@@ -195,7 +211,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |  1   |  2   |   3  |  4   |  5   |      | |      |   6  |   7  |   8  |   9  |   0  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  SPC |  F12 |  F7  |  F8  |   @  |
+   * | TAB  |  F1  |  F2  |  F3  |  F4  |      | |      |  F5  |  F12 |  F7  |  F8  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  _   |  F9  |  F10 |  F11 |      |      | |      |  ENT | BSPC | ZHTG |  F6  |   -  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -205,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [RAISE] = LAYOUT( \
     KC_1,    KC_2,   KC_3,    KC_4,   KC_5,   XXXXX,  XXXXX,  KC_6,   KC_7,    KC_8,   KC_9,    KC_0,   \
-    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  SPC,    KC_F12,  KC_F7,  KC_F8,   AT,     \
+    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  KC_F5,  KC_F12,  KC_F7,  KC_F8,   AT,     \
     UNDS,    KC_F9,  KC_F10,  KC_F11, _____,  XXXXX,  XXXXX,  ENT,    BSPC,    ZHTG,   KC_F6,   MINS,   \
     XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,   XXXXX,  XXXXX,   XXXXX   \
   ),
@@ -233,9 +249,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET |      |      |      |      |      | |      |      | PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | DG1  | DG2  |      |      |      |      | |      | SPC  | Left | Down |Right |      |
+   * | DG1  | DG2  |      |      |      |      | |      |      | Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | RTOG | RMOD | RHUI | RHUD | SPC  |      | |      | ENT  | BSPC | RSAI | RSAD |      |
+   * | RTOG | RMOD |      |      | SPC  |      | |      | ENT  | BSPC | RSAI | RSAD |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -243,8 +259,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISC2] = LAYOUT( \
     RESET,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  PGDN,   KUP,     PGUP,    DEL,    \
-    DG1,     DG2,    _____,  _____,  _____, XXXXX, XXXXX, SPC,    KLEFT,  KDOWN,   KRIGHT,  _____,  \
-    RTOG,    RMOD,   RHUI,   RHUD,   CSPC,  XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
+    DG1,     DG2,    _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
+    RTOG,    RMOD,   _____,  _____,  CSPC,  XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,   XXXXX,   _____   \
   ),
 
@@ -284,40 +300,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX, KC_M,  XXXXX, SPC,   XXXXX, XXXXX, DQ,    XXXXX, XXXXX, XXXXX, DQ,        \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
-  /* NONE
-   * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
-   * `-----------------------------------------' `-----------------------------------------'
-   */
 
-  [NONE] = LAYOUT( \
-    XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, DF(QGMLWY) \
-  ),
-  /* EXTRA
+  /* COMBA
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      | C_A_M|      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      | C_A_N|      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C_Z |      |      |      |      |      | |      |      |      |      |      |      |
+   * |  C_Z |      |      |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [EXTRA] = LAYOUT( \
+  [COMBA] = LAYOUT( \
     _____, _____, CM,    _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
     _____, _____, _____, CN,    _____, _____, _____, _____, _____, _____, _____, _____,     \
-    CZ,    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
+    CZ,    _____, _____, _____, SPC,   _____, _____, ENT,   BSPC,  _____, _____, _____,     \
+    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____      \
+  ),
+
+  /* COMBN
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |  SPC |      | |      | ENT  | BSPC |   <  |   >  |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [COMBN] = LAYOUT( \
+    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
+    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
+    _____, _____, _____, _____, SPC,   _____, _____, ENT,   BSPC,  ELT,   EGT,   _____,     \
     _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____      \
   ),
 

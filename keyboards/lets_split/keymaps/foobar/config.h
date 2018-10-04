@@ -30,12 +30,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Select hand configuration */
 
 #define MASTER_LEFT
+#define EE_HANDS
 
 #define PREVENT_STUCK_MODIFIERS
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 160
+#define TAPPING_TERM 150
 #define AUTO_SHIFT_TIMEOUT 150
 
 #define MOUSEKEY_INTERVAL 5
