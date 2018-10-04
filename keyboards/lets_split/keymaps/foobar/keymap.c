@@ -97,7 +97,7 @@ extern keymap_config_t keymap_config;
 #define BSLS   JP_BSLS
 #define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
-#define COMM   SFT_T(JP_COMM)
+#define COMM   JP_COMM
 #define DOT    ALT_T(JP_DOT)
 #define PLUS   JP_PLUS
 #define LBRC   JP_LBRC
@@ -112,6 +112,7 @@ extern keymap_config_t keymap_config;
 #define DG1    DF(GAME1)
 #define DG2    DF(GAME2)
 #define DG3    DF(GAME3)
+#define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define CZ     LCTL(KC_Z)
@@ -183,10 +184,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [QGMLWY] = LAYOUT( \
-    KC_Q,    KC_G,    KC_M,    KC_L,  KC_W,  XXXXX, XXXXX, KC_Y,  KC_F,  KC_U,  KC_B,   BSP,    \
-    D_M,     KC_S,    KC_T,    NC,    KC_R,  XXXXX, XXXXX, KC_I,  AC,    KC_E,  KC_O,   H_M,    \
-    Z_S ,    X_CT,    C_S,     V_A,   RJ,    XXXXX, XXXXX, LK,    P_C,   COMM,  DOT,    S_S,    \
-    XXXXX,   XXXXX,   XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
+    KC_Q,    KC_G,   KC_M,  KC_L,  KC_W,  XXXXX,  XXXXX,  KC_Y,  KC_F,  KC_U,  KC_B,   BSP,    \
+    D_M,     KC_S,   KC_T,  NC,    KC_R,  XXXXX,  XXXXX,  KC_I,  AC,    KC_E,  KC_O,   H_M,    \
+    Z_S ,    X_CT,   KC_C,  V_A,   RJ,    XXXXX,  XXXXX,  LK,    P_C,   COMM,  DOT,    S_S,    \
+    XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
   /* LOWER (Symbol)
@@ -202,10 +203,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [LOWER] = LAYOUT( \
-    EXLM,    DQT,     HASH,   DLR,    PERC,   XXXXX, XXXXX, AMPR,    QUOT,   GRV,     PIPE,   YEN,   \
-    ESC,     LBRC,    LPRN,   LCBR,   BSLS,   XXXXX, XXXXX, TILD,    EQL,    COLN,    SLSH,   ASTR,  \
-    CIRC,    RBRC,    RPRN,   RCBR,   SPC,    XXXXX, XXXXX, _____,   MINS,   SCLN,    DOT,    PLUS,  \
-    XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX  \
+    EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   PIPE,  YEN,   \
+    ESC,     LBRC,   LPRN,   LCBR,  BSLS,  XXXXX,  XXXXX, TILD,   EQL,   COLN,  SLSH,  ASTR,  \
+    CIRC,    RBRC,   RPRN,   RCBR,  SPC,   XXXXX,  XXXXX, _____,  MINS,  SCLN,  DOT,   PLUS,  \
+    XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX  \
   ),
 
   /* RAISE (Num + Fn + Others)
@@ -221,48 +222,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [RAISE] = LAYOUT( \
-    KC_1,    KC_2,   KC_3,    KC_4,   KC_5,   XXXXX,  XXXXX,  KC_6,   KC_7,    KC_8,   KC_9,    KC_0,   \
-    TAB,     KC_F1,  KC_F2,   KC_F3,  KC_F4,  XXXXX,  XXXXX,  KC_F5,  KC_F12,  KC_F7,  KC_F8,   AT,     \
-    UNDS,    KC_F9,  KC_F10,  KC_F11, _____,  XXXXX,  XXXXX,  ENT,    BSPC,    ZHTG,   KC_F6,   MINS,   \
-    XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,   XXXXX,  XXXXX,   XXXXX   \
+    KC_1,    KC_2,  KC_3,   KC_4,   KC_5,  XXXXX,  XXXXX, KC_6,  KC_7,   KC_8,  KC_9,  KC_0,   \
+    TAB,     KC_F1, KC_F2,  KC_F3,  KC_F4, XXXXX,  XXXXX, KC_F5, KC_F12, KC_F7, KC_F8, AT,     \
+    UNDS,    KC_F9, KC_F10, KC_F11, _____, XXXXX,  XXXXX, ENT,   BSPC,   ZHTG,  KC_F6, MINS,   \
+    XXXXX,   XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX   \
   ),
 
   /* MISC (GUI)
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET | WhDn | MsUp | WhUp |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp | DEL  |
+   * |RESET |      |      |      |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | MsLf | MsDn | MsRg |WRKSP2|      | |      |DWRKSP| Left | Down |Right | HIDE |
+   * |      |      |      | SELA |WRKSP2|      | |      |DWRKSP| Left | Down |Right | HIDE |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | Copy |Paste | GUI  |      | |      | BTN1 | BTN2 |      |      |      |
+   * |      |      | COPY | PASTE|  GUI |      | |      | BTN1 | BTN2 | ZHTG |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISC] = LAYOUT( \
-    RESET, WH_D,  MS_U,    WH_U,   WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,   GU,     PGUP,   DEL,    \
-    _____, MS_L,  MS_D,    MS_R,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,     GD,     GR,     GH,     \
-    XXXXX, XXXXX, COPY,    PASTE,  GUI,    XXXXX,  XXXXX,  BTN1,   BTN2,   XXXXX,  XXXXX,  XXXXX,  \
-    XXXXX, XXXXX, XXXXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX   \
+    RESET, WH_D,   _____,  _____, WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
+    _____, _____,  _____,  SELA,  WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    GH,     \
+    _____, XXXXX,  COPY,   PASTE, GUI,    XXXXX,  XXXXX,  BTN1,   BTN2,  ZHTG,  _____, _____,  \
+    XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* MISC2 (GUI2)
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |      |      |      |      |      | |      |      | PgDn |  Up  | PgUp | DEL  |
+   * |RESET |  DG1 |  DG2 |      | RTOG |      | |      |      | PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | DG1  | DG2  |      |      |      |      | |      |      | Left | Down |Right |      |
+   * |      |      |      | SELA |      |      | |      |      | Left | Down | Right|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | RTOG | RMOD |      |      | SPC  |      | |      | ENT  | BSPC | RSAI | RSAD |      |
+   * |      |      | COPY | PASTE| SPC  |      | |      | ENT  | BSPC | ZHTG |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISC2] = LAYOUT( \
-    RESET,   _____,  _____,  _____,  _____, XXXXX, XXXXX, _____,  PGDN,   KUP,     PGUP,    DEL,    \
-    DG1,     DG2,    _____,  _____,  _____, XXXXX, XXXXX, _____,  KLEFT,  KDOWN,   KRIGHT,  _____,  \
-    RTOG,    RMOD,   _____,  _____,  CSPC,  XXXXX, XXXXX, ENT,    BSPC,   RSAI,    RSAD,    _____,  \
-    XXXXX,   XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,   XXXXX,   _____   \
+    RESET,   DG1,    DG2,   _____, RTOG,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
+    _____,   _____,  _____, SELA,  _____, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
+    _____,   _____,  COPY,  PASTE, CSPC,  XXXXX,  XXXXX, ENT,    BSPC,  ZHTG,  _____,  _____,  \
+    XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
   /* GAME1(BL2)
@@ -315,10 +316,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBA] = LAYOUT( \
-    _____, _____, CM,    _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
-    _____, _____, _____, CN,    _____, _____, _____, _____, _____, _____, _____, _____,     \
-    CZ,    _____, _____, _____, SPC,   _____, _____, ENT,   BSPC,  _____, _____, _____,     \
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____      \
+    _____,   _____,  CM,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
+    _____,   _____,  _____, CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
+    CZ,      _____,  _____, _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,     \
+    XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
   /* COMBN
@@ -334,10 +335,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBN] = LAYOUT( \
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,     \
-    _____, _____, _____, _____, SPC,   _____, _____, ENT,   BSPC,  ELT,   EGT,   _____,     \
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____      \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
+    _____,  _____,  _____,  _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  ELT,   EGT,   _____,     \
+    XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
 };
