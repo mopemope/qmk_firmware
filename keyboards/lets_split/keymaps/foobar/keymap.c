@@ -230,7 +230,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC (GUI)
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |      |      |      |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp | DEL  |
+   * |RESET | PGDN |      | PGUP |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      | SELA |WRKSP2|      | |      |DWRKSP| Left | Down |Right | HIDE |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -241,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISC] = LAYOUT( \
-    RESET, WH_D,   _____,  _____, WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
+    RESET, PGDN,   _____,  PGUP,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
     _____, _____,  _____,  SELA,  WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    GH,     \
     _____, XXXXX,  COPY,   PASTE, GUI,    XXXXX,  XXXXX,  BTN1,   BTN2,  ZHTG,  _____, _____,  \
     XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
@@ -364,7 +364,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   uint8_t layer = biton32(state);
   switch (layer) {
     case QGMLWY:
-      rgblight_mode(7);
+      rgblight_mode(8);
       break;
     case LOWER:
       rgblight_mode(21);
@@ -378,8 +378,17 @@ uint32_t layer_state_set_user(uint32_t state) {
     case MISC2:
       rgblight_mode(16);
       break;
+    case COMBA:
+      rgblight_mode(5);
+      break;
+    case COMBN:
+      rgblight_mode(5);
+      break;
     case GAME1:
       rgblight_mode(9);
+      break;
+    case GAME2:
+      rgblight_mode(10);
       break;
     default:
       break;
