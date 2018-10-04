@@ -56,7 +56,7 @@ extern keymap_config_t keymap_config;
 #define P_C    CTL_T(KC_P)
 #define A_C    CTL_T(KC_A)
 #define H_M    LT(MISC2,KC_H)
-#define S_M    LT(MISC2,JP_SLSH)
+#define S_M    LT(MISC2,JP_SLSHH)
 #define S_C    CTL_T(JP_SLSH)
 #define S_S    SFT_T(JP_SLSH)
 #define V_A    ALT_T(KC_V)
@@ -118,6 +118,11 @@ extern keymap_config_t keymap_config;
 #define CZ     LCTL(KC_Z)
 #define CN     LALT(LCTL(KC_N))
 #define CM     LALT(LCTL(KC_M))
+#define CG     LCTL(KC_G)
+#define CT     LCTL(KC_M)
+#define CAT    LCTL(JP_AT)
+#define MX     LALT(KC_X)
+
 #define WH_D   KC_WH_D
 #define MS_U   KC_MS_U
 #define WH_U   KC_WH_U
@@ -305,21 +310,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMBA
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |      | C_A_M|      |      |      | |      |      |      |      |      |      |
+   * |      |  C_G | C_A_M|      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      | C_A_N|      |      | |      |      |      |      |      |      |
+   * |      |      |  C_T | C_A_N|      |      | |      |      |      |      |      |  CAT |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C_Z |      |      |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
+   * |  C_Z |  MX  |      |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COMBA] = LAYOUT( \
-    _____,   _____,  CM,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
-    _____,   _____,  _____, CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
-    CZ,      _____,  _____, _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,     \
-    XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
+    _____,   CG,     CM,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
+    _____,   _____,  CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, CAT,    \
+    CZ,      MX,     _____, _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,  \
+    XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* COMBN
