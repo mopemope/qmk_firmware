@@ -39,10 +39,10 @@ extern keymap_config_t keymap_config;
 #define AC     LT(COMBA,KC_A)
 #define NC     LT(COMBN,KC_N)
 #define SPC    LT(RAISE,KC_SPC)
-#define CSPC   CTL_T(KC_SPC)
+#define CSPC   LCTL(KC_SPC)
 #define ENT    LT(LOWER,KC_ENT)
 #define CENT   CTL_T(KC_ENT)
-#define BSPC   CTL_T(KC_BSPC)
+#define BSPC   RCTL_T(KC_BSPC)
 #define SBSPC  SFT_T(KC_BSPC)
 #define LOW    MO(LOWER)
 #define ABSPC  ALT_T(KC_BSPC)
@@ -51,15 +51,15 @@ extern keymap_config_t keymap_config;
 #define D_M    LT(MISC,KC_D)
 #define Z_A    ALT_T(KC_Z)
 #define Z_C    CTL_T(KC_Z)
-#define Z_S    SFT_T(KC_Z)
-#define X_CT   CTL_T(KC_X)
-#define P_C    CTL_T(KC_P)
-#define A_C    CTL_T(KC_A)
+#define Z_S    LSFT_T(KC_Z)
+#define X_CT   LCTL_T(KC_X)
+#define P_C    RCTL_T(KC_P)
+#define A_C    RCTL_T(KC_A)
 #define H_M    LT(MISC2,KC_H)
 #define S_M    LT(MISC2,JP_SLSHH)
 #define S_C    CTL_T(JP_SLSH)
-#define S_S    SFT_T(JP_SLSH)
-#define V_A    ALT_T(KC_V)
+#define S_S    RSFT_T(JP_SLSH)
+#define V_A    LALT_T(KC_V)
 #define O_C    CTL_T(KC_O)
 #define AT_M   LT(MISC,JP_AT)
 #define AT_A   ALT_T(JP_AT)
@@ -98,7 +98,9 @@ extern keymap_config_t keymap_config;
 #define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
 #define COMM   JP_COMM
-#define DOT    ALT_T(JP_DOT)
+#define CCOM   LCTL(JP_COMM)
+#define DOT    RALT_T(JP_DOT)
+#define CDOT   LCTL(JP_DOT)
 #define PLUS   JP_PLUS
 #define LBRC   JP_LBRC
 #define RBRC   ALT_T(JP_RBRC)
@@ -267,7 +269,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISC2] = LAYOUT( \
     RESET,   DG1,    DG2,   _____, RTOG,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
     _____,   _____,  _____, SELA,  _____, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
-    _____,   _____,  COPY,  PASTE, CSPC,  XXXXX,  XXXXX, ENT,    BSPC,  ZHTG,  _____,  _____,  \
+    _____,   _____,  COPY,  PASTE, SPC,   XXXXX,  XXXXX, ENT,    BSPC,  ZHTG,  _____,  _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
@@ -323,7 +325,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBA] = LAYOUT( \
     _____,   CG,     CM,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
     _____,   _____,  CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, CAT,    \
-    CZ,      MX,     _____, _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,  \
+    CZ,      MX,     _____, _____, CSPC,  XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
@@ -331,7 +333,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      |      |      |      | |      |      |      |   ,  |   .  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |  SPC |      | |      | ENT  | BSPC |   <  |   >  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -341,7 +343,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [COMBN] = LAYOUT( \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, CCOM,  CDOT,  _____,     \
     _____,  _____,  _____,  _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  ELT,   EGT,   _____,     \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
