@@ -118,12 +118,16 @@ extern keymap_config_t keymap_config;
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define CZ     LCTL(KC_Z)
+#define CSL    LCTL(JP_SLSH)
 #define CN     LALT(LCTL(KC_N))
 #define CM     LALT(LCTL(KC_M))
 #define CG     LCTL(KC_G)
 #define CT     LCTL(KC_M)
 #define CAT    LCTL(JP_AT)
 #define MX     LALT(KC_X)
+#undef  MD
+#define MD     LALT(KC_D)
+#define MSCLN LALT(JP_SCLN)
 
 #define WH_D   KC_WH_D
 #define MS_U   KC_MS_U
@@ -312,40 +316,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMBA
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |  C_G | C_A_M|      |      |      | |      |      |      |      |      |      |
+   * | ZHTG |  C_G | C_A_M|      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |  C_T | C_A_N|      |      | |      |      |      |      |      |  CAT |
+   * |  MD  |      |  C_T | C_A_N|      |      | |      |      |      |      |      |  CAT |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C_Z |  MX  |      |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
+   * |  CZ  |  MX  |      |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COMBA] = LAYOUT( \
-    _____,   CG,     CM,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
-    _____,   _____,  CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, CAT,    \
+    ZHTG,    CG,     CM,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
+    MD,      _____,  CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, CAT,    \
     CZ,      MX,     _____, _____, CSPC,  XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* COMBN
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      |      |      |      | |      |      |  <   |      |   >  |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |   ,  |   .  |      |
+   * |      |      |      |      |      |      | |      |      |      |  M-; |      |  @   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |  SPC |      | |      | ENT  | BSPC |   <  |   >  |      |
+   * |      |      |      |      |  SPC |      | |      | ENT  | BSPC |   ,  |   .  |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COMBN] = LAYOUT( \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,     \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, CCOM,  CDOT,  _____,     \
-    _____,  _____,  _____,  _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  ELT,   EGT,   _____,     \
-    XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, ELT,   _____, EGT,   _____,   \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, MSCLN, _____, CAT,     \
+    _____,  _____,  _____,  _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  CCOM,  CDOT,  CSL,     \
+    XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX    \
   ),
 
 };
