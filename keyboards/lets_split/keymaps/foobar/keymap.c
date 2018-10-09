@@ -122,12 +122,17 @@ extern keymap_config_t keymap_config;
 #define CN     LALT(LCTL(KC_N))
 #define CM     LALT(LCTL(KC_M))
 #define CG     LCTL(KC_G)
-#define CT     LCTL(KC_M)
+#define CT     LCTL(KC_T)
+#define CS     LCTL(KC_S)
+#define CX     LCTL(KC_X)
+#define CL     LCTL(KC_L)
 #define CAT    LCTL(JP_AT)
 #define MX     LALT(KC_X)
 #undef  MD
 #define MD     LALT(KC_D)
-#define MSCLN LALT(JP_SCLN)
+#define MSCLN  LALT(JP_SCLN)
+#define APERC  LALT(JP_PERC)
+#define CPIPE  LCTL(JP_PIPE)
 
 #define WH_D   KC_WH_D
 #define MS_U   KC_MS_U
@@ -316,37 +321,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMBA
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | ZHTG |  C_G | C_A_M|      |      |      | |      |      |      |      |      |      |
+   * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  MD  |      |  C_T | C_A_N|      |      | |      |      |      |      |      |  CAT |
+   * |  M-D |  C-S |  C-T | C-M-N|      |      | |      |      |      |      |      |  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  CZ  |  MX  |      |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
+   * |  C-Z |  M-X |      |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COMBA] = LAYOUT( \
-    ZHTG,    CG,     CM,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
-    MD,      _____,  CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, CAT,    \
+    ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
+    MD,      CS,     CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, CAT,    \
     CZ,      MX,     _____, _____, CSPC,  XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* COMBN
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |      |      |      |      |      | |      |      |  <   |      |   >  |      |
+   * |      |      |      |      |      |      | |      |  C-x |  C-< |      |  C-> |  C-| |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |  M-; |      |  @   |
+   * |      |      |      |      |      |      | |      |      |      |  M-; |      |  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |  SPC |      | |      | ENT  | BSPC |   ,  |   .  |  /   |
+   * |      |      |      |      |  SPC |      | |      | ENT  | BSPC |  C-, |  C-. |  C-/ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COMBN] = LAYOUT( \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, ELT,   _____, EGT,   _____,   \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, CX,    ELT,   _____, EGT,   CPIPE,   \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, MSCLN, _____, CAT,     \
     _____,  _____,  _____,  _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  CCOM,  CDOT,  CSL,     \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX    \
