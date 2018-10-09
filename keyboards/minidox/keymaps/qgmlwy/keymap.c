@@ -7,8 +7,6 @@
 extern keymap_config_t keymap_config;
 
 #define QGMLWY  0
-#define EMACS   1
-#define EMACS2  2
 #define LOWER   3
 #define RAISE   4
 #define MISC    5
@@ -16,7 +14,9 @@ extern keymap_config_t keymap_config;
 #define GAME1   7
 #define GAME2   8
 #define GAME3   9
-#define NONE   10
+#define NONE    10
+#define COMBA   11
+#define COMBN   12
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -124,19 +124,9 @@ extern keymap_config_t keymap_config;
 #define SDEL   SFT_T(KC_DEL)
 #define ADEL   ALT_T(KC_DEL)
 #define RAI    MO(RAISE)
-#define SPC    KC_SPC
-#define RSPC   LT(RAISE, KC_SPC)
-#define CSPC   CTL_T(KC_SPC)
-// #define ENT    SFT_T(KC_ENT)
+#define SPC    LT(RAISE, KC_SPC)
 #define ENT    LT(LOWER,KC_ENT)
-#define CENT   CTL_T(KC_ENT)
-#define EENT   LT(EMACS2,KC_ENT)
-#define BSPC   KC_BSPC
-#define SBSPC  SFT_T(KC_BSPC)
-#define EBSPC  LT(EMACS2,KC_BSPC)
-#define LOW    MO(LOWER)
-#define ABSPC  ALT_T(KC_BSPC)
-#define CBSPC  RCTL_T(KC_BSPC)
+#define BSPC   RCTL_T(KC_BSPC)
 //#define GUI   LT(MISC,KC_LGUI)
 #define A_M    LT(MISC,KC_A)
 #define D_M    LT(MISC,KC_D)
@@ -197,11 +187,9 @@ extern keymap_config_t keymap_config;
 #define CTL    OSM(MOD_RCTL)
 #define SFT1   SFT_T(JP_MHEN)
 #define SFT2   SFT_T(JP_HENK)
-#define SFT3   LT(EMACS2,JP_HENK)
 #define SFTZ   SFT_T(JP_ZHTG)
 #define ESC    KC_ESC
 #define DQ     DF(QGMLWY)
-#define DE     DF(EMACS)
 #define DG1    DF(GAME1)
 #define DG2    DF(GAME2)
 #define DG3    DF(GAME3)
@@ -225,6 +213,8 @@ extern keymap_config_t keymap_config;
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
 #define ASTG   KC_ASTG
+#define CA     LT(COMBA,KC_A)
+#define CN     LT(COMBN,KC_N)
 
 #define RTOG  RGB_TOG
 #define RMOD  RGB_MOD
@@ -357,53 +347,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [QGMLWY] = LAYOUT( \
   KC_Q,   KC_G,    KC_M,   KC_L,    KC_W,        KC_Y,    KC_F,    KC_U,   KC_B,   DEL, \
-  D_M,    KC_S,    KC_T,   KC_N,    KC_R,        KC_I,    KC_A,    KC_E,   KC_O,   H_M, \
+  D_M,    KC_S,    KC_T,   CN,      KC_R,        KC_I,    CA,      KC_E,   KC_O,   H_M, \
   Z_C,    KC_X,    KC_C,   KC_V,    KC_J,        KC_K,    KC_P,    COMM,   DOT,    S_A, \
-                   SFTZ,   ALT,     RSPC,        ENT,     CBSPC,   SFTZ                 \
-),
-
-/* EMACS(QGMLWY)
- *
- * ,----------------------------------.           ,----------------------------------.
- * |   Q  |   G  |   M  |   L  |   W  |           |   Y  |   F  |   U  |   B  | DEL  |
- * |------+------+------+------+------|           |------+------+------+------+------|
- * |   D  |   S  |   T  |   N  |   R  |           |   I  |   A  |   E  |   O  |   H  |
- * |------+------+------+------+------|           |------+------+------+------+------|
- * |   Z  |   X  |   C  |   V  |   J  |           |   K  |   P  |   ,  |   .  |   /  |
- * `----------------------------------'           `----------------------------------'
- *                  ,--------------------.    ,------,-------------.
- *                  | SFT  | ALT  |      |    |      |  BS  | SFT  |
- *                  `-------------| SPC  |    | ENT  |------+------.
- *                                |      |    |      |
- *                                `------'    `------'
- */
-[EMACS] = LAYOUT( \
-  KC_Q,   KC_G,    KC_M,  KC_L,    KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,  DEL,  \
-  D_M,    KC_S,    KC_T,  KC_N,    KC_R,         KC_I,    KC_A,    KC_E,   KC_O,  H_M,  \
-  Z_C,    KC_X,    KC_C,  KC_V,    KC_J,         KC_K,    KC_P,    COMM,   DOT,   S_A,  \
-                   SFTZ,  ALT,     RSPC,         ENT,     CBSPC,   SFTZ                 \
-),
-
-/* EMACS2(Shortcut Layer)
- *
- * ,----------------------------------.           ,----------------------------------.
- * |      | C-G  |      |      |      |           | M-.  | E-LT |  UP  | E-GT |      |
- * |------+------+------+------+------|           |------+------+------+------+------|
- * |      | C-S  | C-T  |      | C-@  |           | M-%  | LEFT | DOWN |RIGHT |C-M-S |
- * |------+------+------+------+------|           |------+------+------+------+------|
- * | C-Z  | C-X  | C-C  | C-V  | C-B  |           | M-x  | C-;  | C-:  | C-|  | M-;  |
- * `----------------------------------'           `----------------------------------'
- *                  ,--------------------.    ,------,-------------.
- *                  | C-SL | M-D  |      |    |      |      |      |
- *                  `-------------|C-SPC |    |      |------+------.
- *                                |      |    |      |
- *                                `------'    `------'
- */
-[EMACS2] = LAYOUT( \
-  _____, C_G,   _____,   _____,  _____,       M_DOT,    ELT,      C_P,    EGT,      _____,  \
-  _____, C_S,   C_T,     _____,  C_AT,        M_PER,    C_LE,     C_N,    C_RI,     C_M_S,  \
-  C_Z,   C_X,   C_C,     C_V,    C_B,         M_X,      C_SCLN,   C_COLN, C_PIPE,   M_SCLN, \
-                C_SL,    M_D,    C_SPC,       _____,    _____,    _____                     \
+                   SFTZ,   ALT,     SPC,         ENT,     BSPC,    SFTZ                 \
 ),
 
 /* LOWER
@@ -466,9 +412,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [MISC] = LAYOUT( \
-  RESET,   WH_D,    MS_U,    WH_U,    WRKSP1,    UWRKSP,   PGDN,   GU,     PGUP,   RESET, \
-  XXXXX,   MS_L,    MS_D,    MS_R,    WRKSP2,    DWRKSP,   GL,     GD,     GR,     XXXXX, \
-  XXXXX,   XXXXX,   COPY,    PASTE,   GH,        DQ,       DE,     XXXXX,  XXXXX,  XXXXX, \
+  RESET,   _____,   _____,   _____,   WRKSP1,    UWRKSP,   PGDN,   GU,     PGUP,   RESET, \
+  XXXXX,   _____,   _____,   _____,   WRKSP2,    DWRKSP,   GL,     GD,     GR,     XXXXX, \
+  XXXXX,   XXXXX,   COPY,    PASTE,   GH,        DQ,       XXXXX,  XXXXX,  XXXXX,  XXXXX, \
                     BTN2,    BTN1,    GUI,       GUI,      CTL,    CLT                    \
 ),
 
@@ -537,6 +483,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_C,    KC_Q,   KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
                    KC_ESC, KC_V,   SPC,         DQ,     _____,    _____                   \
 ),
+
 /* GAME3(WoL)
  *
  * ,----------------------------------.           ,----------------------------------.
@@ -557,7 +504,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXX,   KC_A,   KC_S,   KC_D,   XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
   XXXXX,   XXXXX,  KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
                    KC_ESC, KC_F,   SPC,         DQ,     _____,    _____                   \
-)
+),
+
+/* COMBA
+ *
+ * ,----------------------------------.           ,----------------------------------.
+ * |      |      |      |      |      |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |      |      |      |      |      |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |      |      |      |      |      |           |      |      |      |      |      |
+ * `----------------------------------'           `----------------------------------'
+ *                  ,--------------------.    ,------,-------------.
+ *                  |      |      |      |    |      |      |      |
+ *                  `-------------|      |    |      |------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
+ */
+[COMBA] =  LAYOUT( \
+  _____,   _____, _____,  _____,   _____,          _____,  _____,    _____,  _____,   _____, \
+  _____,   _____, _____,  _____,   _____,          _____,  _____,    _____,  _____,   _____, \
+  _____,   _____, _____,  _____,   _____,          _____,  _____,    _____,  _____,   _____, \
+                  _____,  _____,   _____,          _____,  _____,    _____                   \
+),
+
+/* COMBN
+ *
+ * ,----------------------------------.           ,----------------------------------.
+ * |      |      |      |      |      |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |      |      |      |      |      |           |      |      |      |      |      |
+ * |------+------+------+------+------|           |------+------+------+------+------|
+ * |      |      |      |      |      |           |      |      |      |      |      |
+ * `----------------------------------'           `----------------------------------'
+ *                  ,--------------------.    ,------,-------------.
+ *                  |      |      |      |    |      |      |      |
+ *                  `-------------|      |    |      |------+------.
+ *                                |      |    |      |
+ *                                `------'    `------'
+ */
+[COMBA] =  LAYOUT( \
+  _____,  _____,   _____,  _____,  _____,        _____,  _____,    _____,  _____,   _____, \
+  _____,  _____,   _____,  _____,  _____,        _____,  _____,    _____,  _____,   _____, \
+  _____,  _____,   _____,  _____,  _____,        _____,  _____,    _____,  _____,   _____, \
+                   _____,  _____,  _____,        _____,  _____,    _____                   \
+),
+
 };
 
 void persistant_default_layer_set(uint16_t default_layer) {
@@ -583,12 +575,6 @@ uint32_t layer_state_set_user(uint32_t state) {
   switch (layer) {
     case QGMLWY:
       rgblight_mode(7);
-      break;
-    case EMACS:
-      rgblight_mode(7);
-      break;
-    case EMACS2:
-      rgblight_mode(24);
       break;
     case LOWER:
       rgblight_mode(21);
