@@ -193,6 +193,7 @@ extern keymap_config_t keymap_config;
 #define DG1    DF(GAME1)
 #define DG2    DF(GAME2)
 #define DG3    DF(GAME3)
+#define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define WH_D   KC_WH_D
@@ -399,11 +400,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* MISC (GUI)
  *
  * ,----------------------------------.           ,----------------------------------.
- * |RESET | WhDn | MsUp | WhUp |WRKSP1|           |UWRKSP| PgDn |  Up  | PgUp |RESET |
+ * |RESET | PgDn |      | PgUp |WRKSP1|           |UWRKSP| PgDn |  Up  | PgUp |RESET |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      | MsLf | MsDn | MsRg |WRKSP2|           |DWRKSP| Left | Down |Right |      |
+ * |      |      |      | SELA |WRKSP2|           |DWRKSP| Left | Down |Right |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      | Copy |Paste | Hide |           |QGMLWY|EMACS |      |      |      |
+ * |      |      | Copy |Paste | Hide |           |      |      |      |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | BTN2 | BTN1 |      |    |      | CTL  | ALT  |
@@ -412,10 +413,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [MISC] = LAYOUT( \
-  RESET,   _____,   _____,   _____,   WRKSP1,    UWRKSP,   PGDN,   GU,     PGUP,   RESET, \
-  XXXXX,   _____,   _____,   _____,   WRKSP2,    DWRKSP,   GL,     GD,     GR,     XXXXX, \
-  XXXXX,   XXXXX,   COPY,    PASTE,   GH,        DQ,       XXXXX,  XXXXX,  XXXXX,  XXXXX, \
-                    BTN2,    BTN1,    GUI,       GUI,      CTL,    CLT                    \
+  RESET,   PGDN,   _____,  PGUP,   WRKSP1,      UWRKSP,   PGDN,   GU,     PGUP,   RESET, \
+  _____,   _____,  _____,  SELA,   WRKSP2,      DWRKSP,   GL,     GD,     GR,     _____, \
+  _____,   _____,  COPY,   PASTE,  GH,          _____,    _____,  _____,  _____,  _____, \
+                   BTN2,   BTN1,   GUI,         GUI,      CTL,    CLT                    \
 ),
 
 /* MISC2 (GUI)
@@ -428,16 +429,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      | RTOG | RMOD | RHUI | RHUD |           | RSAI | RSAD | RRMOD|      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  |      | CTL  |      |    |      |      |      |
+ *                  |      |      |      |    |      |      |      |
  *                  `-------------|      |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [MISC2] =  LAYOUT( \
-  RESET,   XXXXX,  XXXXX, XXXXX, XXXXX,        XXXXX,  PGDN,     KUP,    PGUP,    RESET, \
-  XXXXX,   DG1,    DG2,   DG3,   XXXXX,        XXXXX,  KLEFT,    KDOWN,  KRIGHT,  XXXXX, \
-  XXXXX,   RTOG,   RMOD,  RHUI,  RHUD,         RSAI,   RSAD,     RRMOD,  XXXXX,   XXXXX, \
-                   _____, CTL,   _____,        _____,  _____,    _____                   \
+  RESET,   _____,  _____, _____, _____,        _____,  PGDN,     KUP,    PGUP,    RESET, \
+  _____,   DG1,    DG2,   DG3,   _____,        _____,  KLEFT,    KDOWN,  KRIGHT,  _____, \
+  _____,   RTOG,   RMOD,  RHUI,  RHUD,         RSAI,   RSAD,     RRMOD,  _____,   _____, \
+                   _____, _____, _____,        _____,  _____,    _____                   \
 ),
 
 /* GAME1(Diablo)
