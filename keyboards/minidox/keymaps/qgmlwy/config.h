@@ -34,13 +34,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define QMK_KEYS_PER_SCAN 4
 // #define AUTO_SHIFT_TIMEOUT 120
 
-#define MOUSEKEY_INTERVAL 10
-#define MOUSEKEY_TIME_TO_MAX 40
-#define MOUSEKEY_MAX_SPEED 3
-#define MOUSEKEY_DELAY 0
-
-#define MOUSEKEY_WHEEL_MAX_SPEED 3
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 100
+// #define MOUSEKEY_INTERVAL 10
+// #define MOUSEKEY_TIME_TO_MAX 40
+// #define MOUSEKEY_MAX_SPEED 3
+// #define MOUSEKEY_DELAY 0
+// #define MOUSEKEY_WHEEL_MAX_SPEED 3
+// #define MOUSEKEY_WHEEL_TIME_TO_MAX 100
 
 #define RGB_DI_PIN D7
 #define RGBLIGHT_TIMER
