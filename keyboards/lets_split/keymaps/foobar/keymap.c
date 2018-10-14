@@ -33,7 +33,6 @@ extern keymap_config_t keymap_config;
 #define BSP    KC_BSPC
 #define DEL    KC_DEL
 #define SDEL   SFT_T(KC_DEL)
-#define RAI    MO(RAISE)
 #define RJ     LT(RAISE,KC_J)
 #define LK     LT(LOWER,KC_K)
 #define AC     LT(COMBA,KC_A)
@@ -45,11 +44,11 @@ extern keymap_config_t keymap_config;
 #define CENT   CTL_T(KC_ENT)
 #define BSPC   RCTL_T(KC_BSPC)
 #define SBSPC  SFT_T(KC_BSPC)
-#define LOW    MO(LOWER)
 #define ABSPC  ALT_T(KC_BSPC)
 #define CBSPC  CTL_T(KC_BSPC)
 #define A_M    LT(MISC,KC_A)
 #define D_M    LT(MISC,KC_D)
+#define D_C    CTL_T(KC_D)
 #define Z_A    ALT_T(KC_Z)
 #define Z_C    CTL_T(KC_Z)
 #define Z_S    LSFT_T(KC_Z)
@@ -65,7 +64,6 @@ extern keymap_config_t keymap_config;
 #define AT_M   LT(MISC,JP_AT)
 #define AT_A   ALT_T(JP_AT)
 #define AT_C   CTL_T(JP_AT)
-#define M2     MO(MISC2)
 #define GL     LGUI(KC_LEFT)
 #define GU     LGUI(KC_UP)
 #define GD     LGUI(KC_DOWN)
@@ -152,16 +150,16 @@ extern keymap_config_t keymap_config;
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
 #define ASTG   KC_ASTG
-
-#define RTOG  RGB_TOG
-#define RMOD  RGB_MOD
-#define RRMOD RGB_RMOD
-#define RHUI  RGB_HUI
-#define RHUD  RGB_HUD
-#define RSAI  RGB_SAI
-#define RSAD  RGB_SAD
-#define RVAI  RGB_VAI
-#define RVAD  RGB_VAD
+#define RTOG   RGB_TOG
+#define RMOD   RGB_MOD
+#define RRMOD  RGB_RMOD
+#define RHUI   RGB_HUI
+#define RHUD   RGB_HUD
+#define RSAI   RGB_SAI
+#define RSAD   RGB_SAD
+#define RVAI   RGB_VAI
+#define RVAD   RGB_VAD
+#define CTL    OSM(MOD_RCTL)
 
 // COMB
 // C-V
@@ -284,28 +282,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMBA
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      |      |      |      |      |
+   * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      |      |  M-X |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  M-D |  C-S |  C-T | C-M-N|      |      | |      |      |      |      |      |  C-@ |
+   * |  M-D |  C-S |  C-T | C-M-N|      |      | |      |      |      |   [  |      |  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C-Z |  M-X |  C-C |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
+   * |  C-Z |  C-X |  C-C |      |  SPC |      | |      |  ENT | BSPC |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [COMBA] = LAYOUT( \
-    ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
-    MD,      CS,     CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, _____, _____, CAT,    \
-    CZ,      MX,     CC,    _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,  \
+    ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, _____, MX,    _____, _____,  \
+    MD,      CS,     CT,    CN,    _____, XXXXX,   XXXXX, _____, _____, LBRC,  _____, CAT,    \
+    CZ,      CX,     CC,    _____, SPC,   XXXXX,   XXXXX, ENT,   BSPC,  _____, _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* COMBN
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      | C-G  |      |      |      |      | |      |      |  C-< |  ↑  |  C-> |  C-| |
+   * |      | C-G  |      |      |      |      | |      |      |  C-< |  Up  |  C-> |  C-| |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |  M-; |   ← |  ↓  |  →  |  C-@ |
+   * |  CTL | C-S  |      |      |      |      | |      |  M-; |  Left|  Down| Right|  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      | C-X  |      |      | CSPC |      | |      | ENT  | BSPC |  C-, |  C-. |  C-/ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -315,7 +313,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [COMBN] = LAYOUT( \
     _____,  CG,     _____,  _____, _____, XXXXX,   XXXXX, _____, ELT,   KUP,   EGT,    CPIPE,   \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, MSCLN, KLEFT, KDOWN, KRIGHT, CAT,     \
+    CTL,    CS,     _____,  _____, _____, XXXXX,   XXXXX, MSCLN, KLEFT, KDOWN, KRIGHT, CAT,     \
     _____,  CX,     _____,  _____, CSPC,  XXXXX,   XXXXX, ENT,   BSPC,  CCOM,  CDOT,   CSL,     \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
   ),
