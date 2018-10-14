@@ -74,6 +74,8 @@ extern keymap_config_t keymap_config;
 #define C_PIPE LCTL(JP_PIPE)
 // C-SPC
 #define C_SPC  LCTL(KC_SPC)
+// C-RETURN
+#define C_RET  LCTL(KC_ENT)
 // M-;
 #define M_SCLN LALT(JP_SCLN)
 
@@ -373,7 +375,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  CTL |  C-S |      |      |      |           |  M-; | Left | Down | Right|  C-@ |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |  C-X |      |      | C-SPC|           |      |      |  C-, |  C-. |  C-\ |
+ * |      |  C-X |      | C-RET| C-SPC|           |      |      |  C-, |  C-. |  C-\ |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  |      |      |      |    |      |      |      |
@@ -384,7 +386,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [COMBN] =  LAYOUT( \
   _____,   C_G,   _____,  _____,  _____,        _____,  ELT,     KUP,    EGT,    C_PIPE, \
   CTL,     C_S,   _____,  _____,  _____,        M_SCLN, KLEFT,   KDOWN,  KRIGHT, C_AT,   \
-  _____,   C_X,   _____,  _____,  C_SPC,        _____,  _____,   C_COM,  C_DOT,  C_SL ,  \
+  _____,   C_X,   _____,  C_RET,  C_SPC,        _____,  _____,   C_COM,  C_DOT,  C_SL ,  \
                   _____,  _____,  _____,        _____,  _____,   _____                   \
 ),
 
