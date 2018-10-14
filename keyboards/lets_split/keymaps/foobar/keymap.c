@@ -40,6 +40,7 @@ extern keymap_config_t keymap_config;
 #define NC2    CTL_T(KC_N)
 #define SPC    LT(RAISE,KC_SPC)
 #define CSPC   LCTL(KC_SPC)
+#define CRET   LCTL(KC_ENT)
 #define ENT    LT(LOWER,KC_ENT)
 #define CENT   CTL_T(KC_ENT)
 #define BSPC   RCTL_T(KC_BSPC)
@@ -305,7 +306,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  CTL | C-S  |      |      |      |      | |      |  M-; |  Left|  Down| Right|  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | C-X  |      |      | CSPC |      | |      | ENT  | BSPC |  C-, |  C-. |  C-/ |
+   * |      | C-X  |      | CRET | CSPC |      | |      | ENT  | BSPC |  C-, |  C-. |  C-/ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -314,7 +315,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBN] = LAYOUT( \
     _____,  CG,     _____,  _____, _____, XXXXX,   XXXXX, _____, ELT,   KUP,   EGT,    CPIPE,   \
     CTL,    CS,     _____,  _____, _____, XXXXX,   XXXXX, MSCLN, KLEFT, KDOWN, KRIGHT, CAT,     \
-    _____,  CX,     _____,  _____, CSPC,  XXXXX,   XXXXX, ENT,   BSPC,  CCOM,  CDOT,   CSL,     \
+    _____,  CX,     _____,  CRET,  CSPC,  XXXXX,   XXXXX, ENT,   BSPC,  CCOM,  CDOT,   CSL,     \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
   ),
 
