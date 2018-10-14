@@ -222,102 +222,13 @@ extern keymap_config_t keymap_config;
 enum double_taps {
   E_LT     = 0,
   E_GT     = 1,
-  ALT_CTL  = 2,
   G_TAB    = 3,
 };
-
-enum x_taps {
-  SINGLE_TAP        = 1,
-  SINGLE_HOLD       = 2,
-  DOUBLE_TAP        = 3,
-  DOUBLE_HOLD       = 4,
-  DOUBLE_SINGLE_TAP = 5,
-  OTHER             = 7
-};
-
-typedef struct {
-  bool is_press_action;
-  int state;
-} tap;
-
-int cur_dance (qk_tap_dance_state_t *state) {
-  if (state->count == 1) {
-    if (state->interrupted || state->pressed == 0) {
-      return SINGLE_TAP;
-    } else {
-      return SINGLE_HOLD;
-    }
-  } else if (state->count == 2) {
-    if (state->interrupted) {
-      return DOUBLE_SINGLE_TAP;
-    } else if (state->pressed) {
-      return DOUBLE_HOLD;
-    } else {
-      return DOUBLE_TAP;
-    }
-  } else {
-    return OTHER;
-  }
-}
-
-static tap xtap_state = {
-  .is_press_action = true,
-  .state = 0
-};
-
-void x_finished (qk_tap_dance_state_t *state, void *user_data) {
-  xtap_state.state = cur_dance(state);
-  switch (xtap_state.state) {
-    case SINGLE_TAP:
-      register_code(KC_LALT);
-      break;
-    case SINGLE_HOLD:
-      register_code(KC_LALT);
-      break;
-    case DOUBLE_TAP:
-      register_code(KC_LCTRL);
-      break;
-    case DOUBLE_HOLD:
-      register_code(KC_LCTRL);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      register_code(KC_LALT);
-      break;
-    default:
-      break;
-  }
-}
-
-void x_reset (qk_tap_dance_state_t *state, void *user_data) {
-  switch (xtap_state.state) {
-    case SINGLE_TAP:
-      unregister_code(KC_LALT);
-      break;
-    case SINGLE_HOLD:
-      unregister_code(KC_LALT);
-      break;
-    case DOUBLE_TAP:
-      unregister_code(KC_LCTRL);
-      break;
-    case DOUBLE_HOLD:
-      unregister_code(KC_LCTRL);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      unregister_code(KC_LALT);
-      break;
-    default:
-      unregister_code(KC_LCTRL);
-      unregister_code(KC_LALT);
-      break;
-  }
-  xtap_state.state = 0;
-}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
   [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
-  [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
-  [ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)
+  [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC)
 };
 
 
