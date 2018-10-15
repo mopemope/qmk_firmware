@@ -9,8 +9,8 @@ extern keymap_config_t keymap_config;
 #define QGMLWY  0
 #define LOWER   3
 #define RAISE   4
-#define MISC    5
-#define MISC2   6
+#define MISCL    5
+#define MISCR   6
 #define GAME1   7
 #define GAME2   8
 #define GAME3   9
@@ -47,8 +47,7 @@ extern keymap_config_t keymap_config;
 #define SBSPC  SFT_T(KC_BSPC)
 #define ABSPC  ALT_T(KC_BSPC)
 #define CBSPC  CTL_T(KC_BSPC)
-#define A_M    LT(MISC,KC_A)
-#define D_M    LT(MISC,KC_D)
+#define D_M    LT(MISCL,KC_D)
 #define D_C    CTL_T(KC_D)
 #define Z_A    ALT_T(KC_Z)
 #define Z_C    CTL_T(KC_Z)
@@ -56,13 +55,11 @@ extern keymap_config_t keymap_config;
 #define X_CT   LCTL_T(KC_X)
 #define P_C    RCTL_T(KC_P)
 #define A_C    RCTL_T(KC_A)
-#define H_M    LT(MISC2,KC_H)
-#define S_M    LT(MISC2,JP_SLSHH)
+#define H_M    LT(MISCR,KC_H)
 #define S_C    CTL_T(JP_SLSH)
 #define S_S    RSFT_T(JP_SLSH)
 #define V_A    LALT_T(KC_V)
 #define O_C    CTL_T(KC_O)
-#define AT_M   LT(MISC,JP_AT)
 #define AT_A   ALT_T(JP_AT)
 #define AT_C   CTL_T(JP_AT)
 #define GL     LGUI(KC_LEFT)
@@ -243,7 +240,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX   \
   ),
 
-  /* MISC (GUI)
+  /* MISC Left
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET | PGDN |      | PGUP |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -255,14 +252,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [MISC] = LAYOUT( \
+  [MISCL] = LAYOUT( \
     RESET, PGDN,   _____,  PGUP,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
     _____, _____,  SELA,   GUI,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    GH,     \
     _____, XXXXX,  COPY,   PASTE, SPC,    XXXXX,  XXXXX,  ENT,    BSPC,  ZHTG,  _____, _____,  \
     XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
-  /* MISC2 (GUI2)
+  /* MISC Right
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET |  DG1 |  DG2 |      | RTOG |      | |      |      | PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -274,7 +271,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------' `-----------------------------------------'
    */
 
-  [MISC2] = LAYOUT( \
+  [MISCR] = LAYOUT( \
     RESET,   DG1,    DG2,   _____, RTOG,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
     _____,   _____,  _____, NC2,   _____, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
     _____,   _____,  COPY,  PASTE, SPC,   XXXXX,  XXXXX, ENT,    BSPC,  ZHTG,  _____,  _____,  \
@@ -387,10 +384,10 @@ uint32_t layer_state_set_user(uint32_t state) {
     case RAISE:
       rgblight_mode(21);
       break;
-    case MISC:
+    case MISCR:
       rgblight_mode(16);
       break;
-    case MISC2:
+    case MISCL:
       rgblight_mode(16);
       break;
     case COMBA:
