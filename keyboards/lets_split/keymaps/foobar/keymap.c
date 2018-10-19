@@ -206,9 +206,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |   |  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | ESC  |   [  |  (   |   {  |  \   |      | |      |   ~  |  =   |  :   |   /  |  *   |
+   * | ESC  |   [  |  (   |   {  |   \  |      | |      |   ~  |  =   |  :   |   /  |  *   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   |   ]  |  )   |   }  |  SPC |      | |      |      |  -   |  ;   |   .  |  +   |
+   * |  ^   |   ]  |  )   |   }  |  SPC |      | |      |      |  -   |  ;   |   .  |  /   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -216,8 +216,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LOWER] = LAYOUT( \
     EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   PIPE,  YEN,   \
-    ESC,     LBRC,   LPRN,   LCBR,  BSLS,  XXXXX,  XXXXX, TILD,   EQL,   COLN,  SLSH,  ASTR,  \
-    CIRC,    RBRC,   RPRN,   RCBR,  SPC,   XXXXX,  XXXXX, _____,  MINS,  SCLN,  DOT,   PLUS,  \
+    ESC,     LBRC,   LPRN,   LCBR,  BSLS,  XXXXX,  XXXXX, TILD,   EQL,   COLN,  PLUS,  ASTR,  \
+    CIRC,    RBRC,   RPRN,   RCBR,  SPC,   XXXXX,  XXXXX, _____,  MINS,  SCLN,  DOT,   SLSH,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX  \
   ),
 
@@ -244,9 +244,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET | PGDN |      | PGUP |WRKSP1|      | |      |UWRKSP| PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | SELA |  GUI |WRKSP2|      | |      |DWRKSP| Left | Down |Right | HIDE |
+   * |      |      | SELA |  GUI |WRKSP2|      | |      |DWRKSP| Left | Down |Right |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | COPY | PASTE|  SPC |      | |      |  ENT | BSPC | ZHTG |      |      |
+   * |      |      | COPY | PASTE|  SPC |      | |      |  ENT | BSPC | ZHTG | HIDE |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -254,16 +254,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISCL] = LAYOUT( \
     RESET, PGDN,   _____,  PGUP,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
-    _____, _____,  SELA,   GUI,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    GH,     \
-    _____, XXXXX,  COPY,   PASTE, SPC,    XXXXX,  XXXXX,  ENT,    BSPC,  ZHTG,  _____, _____,  \
+    _____, _____,  SELA,   GUI,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,     \
+    _____, XXXXX,  COPY,   PASTE, SPC,    XXXXX,  XXXXX,  ENT,    BSPC,  ZHTG,  GH,    _____,  \
     XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* MISC Right
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |  DG1 |  DG2 |      | RTOG |      | |      |      | PgDn |  Up  | PgUp | DEL  |
+   * |RESET |      |  DG1 |  DG2 | RTOG |      | |      |      | PgDn |  Up  | PgUp | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      | Left | Down | Right|      |
+   * | TAB  |      |      |      |      |      | |      |      | Left | Down | Right|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      | COPY | PASTE| SPC  |      | |      |  ENT | BSPC | ZHTG |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -272,9 +272,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCR] = LAYOUT( \
-    RESET,   DG1,    DG2,   _____, RTOG,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
-    _____,   _____,  _____, NC2,   _____, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
-    _____,   _____,  COPY,  PASTE, SPC,   XXXXX,  XXXXX, ENT,    BSPC,  ZHTG,  _____,  _____,  \
+    RESET,   _____,  DG1,   DG2,   RTOG,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
+    TAB,     _____,  _____, NC2,   _____, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
+    _____,   _____,  _____, _____, SPC,   XXXXX,  XXXXX, ENT,    BSPC,  ZHTG,  _____,  _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
@@ -301,9 +301,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      | C-G  |      |      |      |      | |      |      |  C-< |  Up  |  C-> |  C-| |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  CTL | C-S  |      |      |      |      | |      |  M-; |  Left|  Down| Right|  C-@ |
+   * |  TAB | C-S  | CTL  |      |      |      | |      |  M-; |  Left|  Down| Right|  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | C-X  |      | CRET | CSPC |      | |      | ENT  | BSPC |  C-, |  C-. |  C-/ |
+   * |      | C-X  | CRET | CSPC |  SPC |      | |      | ENT  | BSPC |  C-, |  C-. |  C-/ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -311,8 +311,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [COMBN] = LAYOUT( \
     _____,  CG,     _____,  _____, _____, XXXXX,   XXXXX, _____, ELT,   KUP,   EGT,    CPIPE,   \
-    CTL,    CS,     _____,  _____, _____, XXXXX,   XXXXX, MSCLN, KLEFT, KDOWN, KRIGHT, CAT,     \
-    _____,  CX,     _____,  CRET,  CSPC,  XXXXX,   XXXXX, ENT,   BSPC,  CCOM,  CDOT,   CSL,     \
+    TAB,    CS,     CTL,    _____, _____, XXXXX,   XXXXX, MSCLN, KLEFT, KDOWN, KRIGHT, CAT,     \
+    _____,  CX,     CRET,   CSPC,  SPC,   XXXXX,   XXXXX, ENT,   BSPC,  CCOM,  CDOT,   CSL,     \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
   ),
 
@@ -320,9 +320,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  TAB |  G   |  W   |  E   |  R   |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | SHIFT|  A   |  S   |  D   |  F   |      | |      |      |      |      |      |      |
+   * | SHIFT|  A   |  S   |  D   |  F   |      | |      |  DQ  |  DQ  |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C   |  Q   |  M   |  V   |  SPC |      | |      |  DQ  |      |      |      |  DQ  |
+   * |  C   |  Q   |  M   |  V   |  SPC |      | |      |  ENT |      |      |      |  DQ  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -330,10 +330,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [GAME1] = LAYOUT( \
     GTAB,    KC_G,  KC_W,  KC_E,  KC_R,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    KC_LSFT, KC_A,  KC_S,  KC_D,  KC_F,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-    KC_C,    KC_Q,  KC_M,  KC_V,  SPC,   XXXXX, XXXXX, DQ,    XXXXX, XXXXX, XXXXX, DQ,        \
+    KC_LSFT, KC_A,  KC_S,  KC_D,  KC_F,  XXXXX, XXXXX, DQ,    DQ,    XXXXX, XXXXX, XXXXX,     \
+    KC_C,    KC_Q,  KC_M,  KC_V,  SPC,   XXXXX, XXXXX, ENT,   XXXXX, XXXXX, XXXXX, DQ,        \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
+
   /* GAME2(WoL)
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  TAB |  Q   |  W   |  E   |  R   |      | |      |      |      |      |      |      |
