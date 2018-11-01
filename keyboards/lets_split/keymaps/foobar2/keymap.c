@@ -16,6 +16,7 @@ extern keymap_config_t keymap_config;
 #define GAME3   9
 #define COMBR  11
 #define COMBL  12
+#define COMBM  13
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -37,7 +38,7 @@ extern keymap_config_t keymap_config;
 #define AC     LT(COMBR,KC_A)
 #define NC     LT(COMBL,KC_N)
 #define EC     LT(COMBR,KC_E)
-#define TC     LT(COMBL,KC_T)
+#define TC     LT(COMBM,KC_T)
 #define SPC    LT(RAISE,KC_SPC)
 #define CSPC   LCTL(KC_SPC)
 #define CRET   LCTL(KC_ENT)
@@ -256,7 +257,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MISCL] = LAYOUT( \
     RESET, PGDN,   _____,  PGUP,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
-    _____, _____,  SELA,   GUI,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,     \
+    _____, _____,  SELA,   GUI,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
     _____, _____,  COPY,   PASTE, _____,  XXXXX,  XXXXX,  _____,  _____, _____, GH,    _____,  \
     XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
@@ -316,6 +317,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TAB,    CS,     _____,  _____, _____, XXXXX,   XXXXX, MSCLN, KLEFT, KDOWN, KRIGHT, CAT,     \
     _____,  CX,     CRET,   CSPC,  _____, XXXXX,   XXXXX, _____, ZHTG,  CCOM,  CDOT,   CSL,     \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
+  ),
+
+  /* COMBM
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |  =   |   ;  |   :  |   @  |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |  -   |   ,  |   .  |   /  |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [COMBM] = LAYOUT( \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____,  _____,  \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, EQL,   SCLN,  COLN,   AT,     \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, MINS,  COMM,  DOT,    SLSH,   \
+    XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
   /* GAME1(BL2)
@@ -397,6 +417,9 @@ uint32_t layer_state_set_user(uint32_t state) {
       rgblight_mode(5);
       break;
     case COMBL:
+      rgblight_mode(5);
+      break;
+    case COMBM:
       rgblight_mode(5);
       break;
     case GAME1:
