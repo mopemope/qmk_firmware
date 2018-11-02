@@ -51,7 +51,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef RGB_DI_PIN
 #define RGB_DI_PIN B6
 #undef RGBLED_NUM
-#define RGBLED_NUM 8
+#define RGBLED_NUM 10
 #define RGBLIGHT_TIMER
 #define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_HUE_STEP 10
