@@ -219,8 +219,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LOWER] = LAYOUT( \
     EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   PIPE,  YEN,   \
-    ESC,     LBRC,   LPRN,   LCBR,  BSLS,  XXXXX,  XXXXX, TILD,   EQL,   SCLN,  COLN,  ASTR,  \
-    CIRC,    RBRC,   RPRN,   RCBR,  SPC,   XXXXX,  XXXXX, _____,  MINS,  COMM,  DOT,   SLSH,  \
+    ESC,     LBRC,   LPRN,   LCBR,  BSLS,  XXXXX,  XXXXX, TILD,   EQL,   SCLN,  COLN,  PLUS,  \
+    CIRC,    RBRC,   RPRN,   RCBR,  SPC,   XXXXX,  XXXXX, _____,  MINS,  COMM,  DOT,   ASTR,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX  \
   ),
 
