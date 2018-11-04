@@ -209,9 +209,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |   |  | yen  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | ESC  |   [  |  (   |   {  |   \  |      | |      |   ~  |  =   |  ;   |   :  |  +   |
+   * | ESC  |   (  |  )   |   {  |   }  |      | |      |   ~  |  =   |  ;   |   :  |  +   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   |   ]  |  )   |   }  |      |      | |      |      |  -   |  ,   |   .  |  *   |
+   * |  ^   |   [  |  ]   |      |      |      | |      |      |  -   |  ,   |   .  |  *   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -219,8 +219,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LOWER] = LAYOUT( \
     EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   PIPE,  YEN,   \
-    ESC,     LBRC,   LPRN,   LCBR,  BSLS,  XXXXX,  XXXXX, TILD,   EQL,   SCLN,  COLN,  PLUS,  \
-    CIRC,    RBRC,   RPRN,   RCBR,  SPC,   XXXXX,  XXXXX, _____,  MINS,  COMM,  DOT,   ASTR,  \
+    ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, TILD,   EQL,   SCLN,  COLN,  PLUS,  \
+    CIRC,    LBRC,   RBRC,   _____, _____, XXXXX,  XXXXX, _____,  MINS,  COMM,  DOT,   ASTR,  \
     XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX  \
   ),
 
@@ -281,7 +281,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
-  /* COMBR
+  /* COMB Right
    * ,-----------------------------------------, ,-----------------------------------------,
    * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      |      |      |  M-X |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -300,7 +300,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
-  /* COMBL
+  /* COMB Left
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      | C-G  |      |      |      |      | |      |      |  C-< |  UP  |  C-> |  C-| |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -319,9 +319,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
   ),
 
-  /* COMBM
+  /* COMB Left2
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      |      |      |      | |      |      |  (   |   )  |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |  =   |   ;  |   :  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -332,7 +332,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBM] = LAYOUT( \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____,  _____,  \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, LPRN,  RPRN,  _____,  _____,  \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, EQL,   SCLN,  COLN,   AT,     \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, MINS,  COMM,  DOT,    SLSH,   \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
