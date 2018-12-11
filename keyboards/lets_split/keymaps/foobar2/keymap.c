@@ -306,7 +306,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
-  /* COMB Right
+  /* COMB Right (Emacs)
    * ,-----------------------------------------, ,-----------------------------------------,
    * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -325,7 +325,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
-  /* COMB Left
+  /* COMB Left (Emacs)
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      | C-G  |      |      |      |      | |      |      |  C-< |  UP  |  C-> |  C-| |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
