@@ -11,7 +11,7 @@
 // #define AUTO_SHIFT_TIMEOUT 150
 
 #undef RGBLED_NUM
-#define RGBLED_NUM 10
+#define RGBLED_NUM 16
 #define RGBLIGHT_TIMER
 #define RGBLIGHT_ANIMATIONS
 

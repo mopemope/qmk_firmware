@@ -291,7 +291,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* MISC_RIGHT
  *
  * ,----------------------------------.           ,----------------------------------.
- * | RESET|  DG1 |  DG2 |  DG3 |      |           |      | PGDN |  UP  | PGUP | DEL  |
+ * | RESET|  DG1 |  DG2 |  DG3 | RTOG |           |      | PGDN |  UP  | PGUP | DEL  |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  TAB |      |      |      |      |           |      | LEFT | DOWN | RIGHT|      |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -301,7 +301,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [MISCR] = LAYOUT( \
-  RESET,   DG1,    DG2,   DG3,   _____,            _____, PGDN,   KUP,   PGUP,   DEL,     \
+  RESET,   DG1,    DG2,   DG3,   RTOG,             _____, PGDN,   KUP,   PGUP,   DEL,     \
   TAB,     _____,  _____, _____, _____,            _____, KLEFT,  KDOWN, KRIGHT, _____,   \
   _____,   _____,  COPY,  PASTE, _____,            _____, _____,  _____, _____,  _____,   \
                    _____, _____, _____,            _____, _____,  _____                   \
@@ -459,5 +459,50 @@ void matrix_init_user(void) {
 void matrix_scan_user(void) {
 }
 
-void led_set_user(uint8_t usb_led) {
+#ifdef RGBLIGHT_ENABLE
+uint32_t layer_state_set_user(uint32_t state) {
+  uint8_t layer = biton32(state);
+  switch (layer) {
+    case QGMLWY:
+      rgblight_mode(7);
+      break;
+    case LOWER:
+      rgblight_mode(21);
+      break;
+    case RAISE:
+      rgblight_mode(21);
+      break;
+    case MISCR:
+      rgblight_mode(16);
+      break;
+    case MISCL:
+      rgblight_mode(16);
+      break;
+    case COMBR:
+      rgblight_mode(5);
+      break;
+    case COMBL:
+      rgblight_mode(5);
+      break;
+    case COMBE:
+      rgblight_mode(6);
+      break;
+    case COMBT:
+      rgblight_mode(6);
+      break;
+    case GAME1:
+      rgblight_mode(11);
+      break;
+    case GAME2:
+      rgblight_mode(11);
+      break;
+    case GAME3:
+      rgblight_mode(11);
+      break;
+    default:
+      break;
+  }
+
+  return state;
 }
+#endif
