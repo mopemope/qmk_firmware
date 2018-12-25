@@ -219,7 +219,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   D  |   S  |   T  |   N  |   R  |           |   I  |   A  |   E  |   O  |  H   |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |   Z  |   X  |   C  |   V  |      |           |      |   J  |   K  |   P  |   /  |
+ * |   Z  |   X  |   C  |   V  |  GUI |           | SPC  |   J  |   K  |   P  |   /  |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |  SFT |  ALT | SPC  |           | ENT  | CTRL |  SFT |
  *               `--------------------'           `--------------------'
@@ -227,8 +227,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QGMLWY] = LAYOUT( \
   KC_Q,    KC_G,   KC_M,  KC_L,  KC_W,             KC_Y,   KC_F,   KC_U,  KC_B,   BSP,     \
   D_M,     KC_S,   TC,    NC,    KC_R,             KC_I,   AC,     EC,    KC_O,   H_M,     \
-  Z_S,     KC_X,   KC_C,  KC_V,  SPC,              ENT,    KC_J,   KC_K,  KC_P,   S_S,     \
-                   SFTZ,  ALT,   SPC,              ENT,    CTL,    SFTZ                    \
+  Z_S,     KC_X,   KC_C,  KC_V,  GUI,              SPC,    KC_J,   KC_K,  KC_P,   S_S,     \
+                   SFT1,  ALT,   SPC,              ENT,    CTL,    SFT2                    \
 ),
 
 /* LOWER (Symbol)
