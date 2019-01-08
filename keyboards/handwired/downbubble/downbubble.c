@@ -1,4 +1,4 @@
-/* Copyright 2017 Jack Humbert
+/* Copyright 2018 REPLACE_WITH_YOUR_NAME
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,11 +13,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#pragma once
-
-#include "quantum.h"
-#include "process_unicode_common.h"
-
-void unicodemap_input_error(void);
-bool process_unicodemap(uint16_t keycode, keyrecord_t *record);
+#include "downbubble.h"
