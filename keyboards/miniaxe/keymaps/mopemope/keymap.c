@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* LOWER (Symbol)
  *
  * ,----------------------------------.           ,----------------------------------.
- * |   !  |   "  |   #  |   $  |   %  |           |   &  |   '  |   `  |  yen |   |  |
+ * |   !  |   "  |   #  |   $  |   %  |           |   &  |   '  |   `  |  yen |  DEL |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  ESC |   (  |   )  |   {  |   }  |           |   ~  |   =  |   :  |   ;  |   @  |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -245,10 +245,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [LOWER] = LAYOUT( \
-  EXLM,   DQT,     HASH,  DLR,   PERC,              AMPR,  QUOT,  GRV,    YEN,   PIPE,     \
+  EXLM,   DQT,     HASH,  DLR,   PERC,              AMPR,  QUOT,  GRV,    YEN,   DEL,      \
   ESC,    LPRN,    RPRN,  LCBR,  RCBR,              TILD,  EQL,   COLN,   SCLN,  AT,       \
   CIRC,   LBRC,    RBRC,  _____, _____,             _____, _____, _____,  _____, _____,    \
-                   _____, _____, _____,             _____, _____, _____                    \
+                  _____, _____, _____,             _____, _____, _____ \
 ),
 
 /* RAISE
@@ -330,7 +330,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* COMB_LEFT (Emacs)
  *
  * ,----------------------------------.           ,----------------------------------.
- * |      |  C-G |      |      |      |           |      |  C-> |  UP  |  C-> |  C-| |
+ * |      |  C-G |      |      |      |           |      |  C-> |  UP  |  C-> |  DEL |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  TAB |  C-S |  C-T |      |      |           |  M-; | LEFT | DOWN | RIGHT|  C-@ |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -340,10 +340,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [COMBL] = LAYOUT( \
-  _____,   CG,     CM,    CL,    _____,            _____, ELT,    KUP,   EGT,    _____,   \
+  _____,   CG,     CM,    CL,    _____,            _____, ELT,    KUP,   EGT,    DEL,     \
   TAB,     CS,     CT,    _____, _____,            MSCLN, KLEFT,  KDOWN, KRIGHT, CAT,     \
   _____,   CX,     CRET,  CSPC,  _____,            MCOM,  MDOT,   CCOM,  CDOT,   CSL,     \
-                   _____, _____, _____,            _____, _____,  _____                   \
+                   _____, _____, _____,            _____, _____,  _____   \
 ),
 
 /* COMB_RIGHT2 (COMBE)
