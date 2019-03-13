@@ -93,6 +93,10 @@ extern keymap_config_t keymap_config;
 #define GU     LGUI(KC_UP)
 #define GD     LGUI(KC_DOWN)
 #define GR     LGUI(KC_RIGHT)
+#define CLEFT  LCTL(KC_LEFT)
+#define CUP    LCTL(KC_UP)
+#define CDOWN  LCTL(KC_DOWN)
+#define CRIGHT LCTL(KC_RIGHT)
 #define GH     LGUI(KC_H)
 #define GTAB   TD(G_TAB)
 #define ELT    TD(E_LT)
@@ -343,8 +347,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [COMBL] = LAYOUT( \
-  _____,   CG,     CM,    CL,    _____,            CMY,   C_LT,   KUP,   C_GT,   DEL,     \
-  TAB,     CS,     CT,    _____, _____,            MSCLN, KLEFT,  KDOWN, KRIGHT, CAT,     \
+  _____,   CG,     CM,    CL,    _____,            CMY,   C_LT,   CUP,   C_GT,   DEL,     \
+  TAB,     CS,     CT,    _____, _____,            MSCLN, CLEFT,  CDOWN, CRIGHT, CAT,     \
   _____,   CX,     CRET,  CSPC,  _____,            MCOM,  MDOT,   CCOM,  CDOT,   CSL,     \
                   _____, _____, _____,            _____, _____,  _____   \
 ),
