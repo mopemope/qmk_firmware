@@ -218,6 +218,12 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
 };
 
+enum custom_keycodes {
+  CXCF = SAFE_RANGE,
+  CXCB,
+  CXCS
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QGMLWY
@@ -318,9 +324,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* COMB_RIGHT (Emacs)
  *
  * ,----------------------------------.           ,----------------------------------.
- * | ZHTG |  C-G | C-M-M|  C-L | M-%  |           |      |  C-F |      | C-B  |      |
+ * | ZHTG |  C-G | C-M-M|  C-L | M-%  |           |      | CXCF |      | CXCB |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  M-D |  C-S |  C-T | C-M-N| M-X  |           |      |      |   [  | C-M-.|  C-@ |
+ * |  M-D | CXCS |  C-T | C-M-N| M-X  |           |      |      |   [  | C-M-.|  C-@ |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  C-Z |  C-X |  C-C |      |      |           |      |      |      |      |      |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -328,8 +334,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [COMBR] = LAYOUT( \
-  ZHTG,    CG,     CM,    CL,    APERC,            _____, CF,     _____, CB,     _____,   \
-  MD,      CS,     CT,    CN,    MX,               _____, _____,  LBRC,  CMD,    CAT,     \
+  ZHTG,    CG,     CM,    CL,    APERC,            _____, CXCF,   _____, CXCB,    _____,   \
+  MD,      CXCS,   CT,    CN,    MX,               _____, _____,  LBRC,  CMD,    CAT,     \
   CZ,      CX,     CC,    _____, _____,            _____, _____,  _____, _____,  _____,   \
                   _____, _____, _____,            _____, _____,  _____                   \
 ),
@@ -457,6 +463,20 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case CXCF:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("xf"));
+      }
+      break;
+    case CXCB:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("xb"));
+      }
+      break;
+    case CXCS:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("xs"));
+      }
   }
   return true;
 }
