@@ -72,6 +72,10 @@ extern keymap_config_t keymap_config;
 #define GU     LGUI(KC_UP)
 #define GD     LGUI(KC_DOWN)
 #define GR     LGUI(KC_RIGHT)
+#define CLEFT  LCTL(KC_LEFT)
+#define CUP    LCTL(KC_UP)
+#define CDOWN  LCTL(KC_DOWN)
+#define CRIGHT LCTL(KC_RIGHT)
 #define GH     LGUI(KC_H)
 #define GTAB   TD(G_TAB)
 #define ELT    TD(E_LT)
@@ -192,6 +196,12 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
 };
 
+enum custom_keycodes {
+  CXCF = SAFE_RANGE,
+  CXCB,
+  CXCS
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* QGMLWY
@@ -310,9 +320,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMB Right (Emacs)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      |      |      |      |      |
+   * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      | CXCF |      | CXCB |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  M-D |  C-S |  C-T | C-M-N|  M-X |      | |      |      |      |   [  | C-M-.|  C-@ |
+   * |  M-D | CXCS |  C-T | C-M-N|  M-X |      | |      |      |      |   [  | C-M-.|  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  C-Z |  C-X |  C-C |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -321,8 +331,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBR] = LAYOUT( \
-    ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
-    MD,      CS,     CT,    CN,    MX,    XXXXX,   XXXXX, _____, _____, LBRC,  CMD,   CAT,    \
+    ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  _____, CXCB,  _____,  \
+    MD,      CXCS,   CT,    CN,    MX,    XXXXX,   XXXXX, _____, _____, LBRC,  CMD,   CAT,    \
     CZ,      CX,     CC,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
@@ -340,8 +350,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBL] = LAYOUT( \
-    _____,  CG,     _____,  _____, _____, XXXXX,   XXXXX, CMY,   ELT,   KUP,   EGT,    DEL,     \
-    TAB,    CS,     _____,  _____, _____, XXXXX,   XXXXX, MSCLN, KLEFT, KDOWN, KRIGHT, CAT,     \
+    _____,  CG,     _____,  _____, _____, XXXXX,   XXXXX, CMY,   C_LT,  CUP,   C_GT,   DEL,     \
+    TAB,    CS,     _____,  _____, _____, XXXXX,   XXXXX, MSCLN, CLEFT, CDOWN, CRIGHT, CAT,     \
     _____,  CX,     CRET,   CSPC,  _____, XXXXX,   XXXXX, MCOM,  MDOT,  CCOM,  CDOT,   CSL,     \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
   ),
@@ -446,6 +456,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case CXCF:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("xf"));
+      }
+      break;
+    case CXCB:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("xb"));
+      }
+      break;
+    case CXCS:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("xs"));
+      }
+  }
+  return true;
 }
 
 void matrix_init_user(void) {
