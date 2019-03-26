@@ -221,7 +221,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 enum custom_keycodes {
   CXCF = SAFE_RANGE,
   CXCB,
-  CXCS
+  CXCS,
+  CXO,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -326,7 +327,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * | ZHTG |  C-G | C-M-M|  C-L | M-%  |           |      | CXCF |      | CXCB |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  M-D | CXCS |  C-T | C-M-N| M-X  |           |      |      |   [  | C-M-.|  C-@ |
+ * |  M-D | CXCS |  C-T | C-M-N| M-X  |           |      |      |   [  | CXO  |  C-@ |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  C-Z |  C-X |  C-C |      |      |           |      |      |      |      |      |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -334,8 +335,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [COMBR] = LAYOUT( \
-  ZHTG,    CG,     CM,    CL,    APERC,            _____, CXCF,   _____, CXCB,    _____,   \
-  MD,      CXCS,   CT,    CN,    MX,               _____, _____,  LBRC,  CMD,    CAT,     \
+  ZHTG,    CG,     CM,    CL,    APERC,            _____, CXCF,   _____, CXCB,   _____,   \
+  MD,      CXCS,   CT,    CN,    MX,               _____, _____,  LBRC,  CXO,    CAT,     \
   CZ,      CX,     CC,    _____, _____,            _____, _____,  _____, _____,  _____,   \
                   _____, _____, _____,            _____, _____,  _____                   \
 ),
@@ -477,6 +478,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         SEND_STRING(SS_LCTRL("xs"));
       }
+    case CXO:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("x") "o");
+      }
+      break;
   }
   return true;
 }
