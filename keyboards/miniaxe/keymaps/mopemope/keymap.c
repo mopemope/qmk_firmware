@@ -45,8 +45,7 @@ extern keymap_config_t keymap_config;
 #define DWRKSP LSFT(LALT(LCTL(KC_DOWN)))
 
 #define TAB    KC_TAB
-#define MINS   ALT_T(JP_MINS)
-#define SMINS  SFT_T(JP_MINS)
+#define MINS   RSFT_T(JP_MINS)
 #define SBSLS  SFT_T(JP_BSLS)
 #define BSP    KC_BSPC
 #define DEL    KC_DEL
@@ -56,6 +55,8 @@ extern keymap_config_t keymap_config;
 #define SFT1   SFT_T(JP_MHEN)
 #define SFT2   SFT_T(JP_HENK)
 #define SFTZ   SFT_T(JP_ZHTG)
+#define PSCR   KC_PSCR
+#define SPSCR  LSFT(KC_PSCR)
 #define RJ     LT(RAISE,KC_J)
 #define LK     LT(LOWER,KC_K)
 #define AC     LT(COMBR,KC_A)
@@ -114,7 +115,7 @@ extern keymap_config_t keymap_config;
 #define AT     JP_AT
 #define LCBR   JP_LCBR
 #define RCBR   JP_RCBR
-#define UNDS   JP_UNDS
+#define UNDS   LSFT_T(JP_UNDS)
 #define TILD   JP_TILD
 #define EQL    JP_EQL
 #define COLN   JP_COLN
@@ -272,16 +273,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  TAB |  F1  |  F2  |  F3  |  F4  |           |  F5  | F12  |  F7  |  F8  |   @  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |   _  |  F9  |  F10 |  F11 |      |           |  DQG |  F6  |   <  |   >  |   -  |
+ * |   _  |  F9  |  F10 |  F11 |      |           | PSCR |  F6  |   <  |   >  |   -  |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      |      |      |           |   .  |  :   |      |
  *               `--------------------'           `--------------------'
  */
 [RAISE] = LAYOUT( \
-  KC_1,    KC_2,   KC_3,  KC_4,  KC_5,              KC_6,  KC_7,   KC_8,  KC_9,   KC_0,   \
-  TAB,     KC_F1,  KC_F2, KC_F3, KC_F4,             KC_F5, KC_F12, KC_F7, KC_F8,  AT,     \
-  UNDS,    KC_F9,  KC_F10,KC_F11,_____,             DQG,   KC_F6,  KC_LT, KC_GT,  MINS,   \
-                  _____, _____, _____,             DOT,   _____,  _____                  \
+  KC_1,   KC_2,   KC_3,  KC_4,   KC_5,              KC_6,  KC_7,   KC_8,  KC_9,   KC_0,   \
+  TAB,    KC_F1,  KC_F2, KC_F3,  KC_F4,             KC_F5, KC_F12, KC_F7, KC_F8,  AT,     \
+  UNDS,   KC_F9,  KC_F10,KC_F11, _____,             PSCR,  KC_F6,  KC_LT, KC_GT,  MINS,   \
+                 _____, _____,  _____,             DOT,   _____,  _____                  \
 ),
 
 /* MISC_LEFT
@@ -299,7 +300,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MISCL] = LAYOUT( \
   RESET,   WH_D,   MS_U,  WH_U,  WRKSP1,           UWRKSP, PGDN,  GU,    PGUP,  DEL,     \
   _____,   MS_L,   MS_D,  MS_R,  WRKSP2,           DWRKSP, GL,    GD,    GR,    _____,   \
-  _____,   _____,  COPY,  PASTE, _____,            _____,  _____, _____, GH,    _____,   \
+  _____,   _____,  COPY,  PASTE, _____,            SPSCR,  _____, _____, GH,    _____,   \
                   _____, BTN2,  BTN1,             _____,  _____, _____                  \
 ),
 
