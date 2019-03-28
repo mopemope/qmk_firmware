@@ -115,7 +115,7 @@ extern keymap_config_t keymap_config;
 #define AT     JP_AT
 #define LCBR   JP_LCBR
 #define RCBR   JP_RCBR
-#define UNDS   LSFT_T(JP_UNDS)
+#define UNDS   JP_UNDS
 #define TILD   JP_TILD
 #define EQL    JP_EQL
 #define COLN   JP_COLN
