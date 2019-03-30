@@ -287,20 +287,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Left
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET | PGDN |      | PGUP |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
+   * |RESET | WHDN | MSUP | WHUP |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | SELA |  GUI |WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
+   * |      | MSL  | MSDN | MSR  |WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | COPY | PASTE|      |      | |      |      |      |      | HIDE |      |
+   * |      |      | COPY | PASTE| BTN1 |      | |      | GUI  |      |      | HIDE |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISCL] = LAYOUT( \
-    RESET, PGDN,   _____,  PGUP,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
-    _____, _____,  SELA,   GUI,   WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
-    _____, _____,  COPY,   PASTE, _____,  XXXXX,  XXXXX,  _____,  _____, _____, GH,    _____,  \
+    RESET, WH_D,   MS_U,   WH_U,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
+    _____, MS_L,   MS_D,   MS_R,  WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
+    _____, _____,  COPY,   PASTE, BTN1,   XXXXX,  XXXXX,  GUI,    _____, _____, GH,    _____,  \
     XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
