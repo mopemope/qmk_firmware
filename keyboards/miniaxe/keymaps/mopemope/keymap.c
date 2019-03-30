@@ -357,8 +357,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [COMBL] = LAYOUT( \
-  _____,   CG,     CM,    CL,    _____,            CMY,   C_LT,   CUP,   C_GT,   DEL,     \
-  TAB,     CS,     CT,    _____, _____,            MSCLN, CLEFT,  CDOWN, CRIGHT, CAT,     \
+  _____,   CG,     CM,    CL,    _____,            CMY,   C_LT,   KUP,   C_GT,   DEL,     \
+  TAB,     CS,     CT,    _____, _____,            MSCLN, CLEFT,  KDOWN, CRIGHT, CAT,     \
   _____,   CX,     CRET,  CSPC,  _____,            MCOM,  MDOT,   CCOM,  CDOT,   CSL,     \
                   _____, _____, _____,            _____, _____,  _____   \
 ),
