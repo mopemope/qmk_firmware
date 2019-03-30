@@ -43,6 +43,8 @@ extern keymap_config_t keymap_config;
 #define WRKSP2 LALT(LCTL(KC_DOWN))
 #define UWRKSP LSFT(LALT(LCTL(KC_UP)))
 #define DWRKSP LSFT(LALT(LCTL(KC_DOWN)))
+#define CAF2   LALT(LCTL(KC_F2))
+#define CAF7   LALT(LCTL(KC_F7))
 
 #define TAB    KC_TAB
 #define MINS   RSFT_T(JP_MINS)
@@ -275,14 +277,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   _  |  F9  |  F10 |  F11 |      |           | PSCR |  F6  |   <  |   >  |   -  |
  * `-------------+------+------+------|           |------+------+------+------+------'
- *               |      |      |      |           |   .  |  :   |      |
+ *               |  F2  |  F7  |      |           |   .  |  :   |      |
  *               `--------------------'           `--------------------'
  */
 [RAISE] = LAYOUT( \
   KC_1,   KC_2,   KC_3,  KC_4,   KC_5,              KC_6,  KC_7,   KC_8,  KC_9,   KC_0,   \
   TAB,    KC_F1,  KC_F2, KC_F3,  KC_F4,             KC_F5, KC_F12, KC_F7, KC_F8,  AT,     \
   UNDS,   KC_F9,  KC_F10,KC_F11, _____,             PSCR,  KC_F6,  KC_LT, KC_GT,  MINS,   \
-                 _____, _____,  _____,             DOT,   _____,  _____                  \
+                 CAF2,  CAF7,   _____,             DOT,   _____,  _____                  \
 ),
 
 /* MISC_LEFT
