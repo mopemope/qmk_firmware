@@ -320,7 +320,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [MISCR] = LAYOUT( \
   RESET,   DG1,    DG2,   DG3,   RTOG,             _____, PGDN,   KUP,   PGUP,   RESET,   \
-  TAB,     RHUI,   RHUD,  RSAI,  RSAD,             _____, KLEFT,  KDOWN, KRIGHT, _____,   \
+  TAB,     RHUI,   RHUD,  RSAI,  RSAD,             _____, CLEFT,  KDOWN, CRIGHT, _____,   \
   _____,   _____,  COPY,  PASTE, RMOD,             _____, _____,  _____, _____,  _____,   \
                   _____, _____, _____,            _____, _____,  _____                   \
 ),
@@ -358,7 +358,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [COMBL] = LAYOUT( \
   _____,   CG,     CM,    CL,    _____,            CMY,   C_LT,   KUP,   C_GT,   DEL,     \
-  TAB,     CS,     CT,    _____, _____,            MSCLN, CLEFT,  KDOWN, CRIGHT, CAT,     \
+  TAB,     CS,     CT,    _____, _____,            MSCLN, KLEFT,  KDOWN, KRIGHT, CAT,     \
   _____,   CX,     CRET,  CSPC,  _____,            MCOM,  MDOT,   CCOM,  CDOT,   CSL,     \
                   _____, _____, _____,            _____, _____,  _____   \
 ),
