@@ -479,6 +479,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         SEND_STRING(SS_LCTRL("xs"));
       }
+      break;
+    case CXO:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("x") "o");
+      }
+      break;
   }
   return true;
 }
