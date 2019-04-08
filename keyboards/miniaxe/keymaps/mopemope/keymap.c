@@ -163,6 +163,7 @@ extern keymap_config_t keymap_config;
 #define CL     LCTL(KC_L)
 #define CF     LCTL(KC_F)
 #define CB     LCTL(KC_B)
+#define CK     LCTL(KC_K)
 #define CAT    LCTL(JP_AT)
 #define MX     LALT(KC_X)
 #undef  MD
@@ -328,7 +329,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* COMB_RIGHT (Emacs)
  *
  * ,----------------------------------.           ,----------------------------------.
- * | ZHTG |  C-G | C-M-M|  C-L | M-%  |           |      | CXCF |      | CXCB |      |
+ * | ZHTG |  C-G | C-M-M|  C-L | M-%  |           |      | CXCF |  CK  | CXCB |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  M-D | CXCS |  C-T | C-M-N| M-X  |           |      |      |   [  | CXO  |  C-@ |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -338,7 +339,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [COMBR] = LAYOUT( \
-  ZHTG,    CG,     CM,    CL,    APERC,            _____, CXCF,   _____, CXCB,   _____,   \
+  ZHTG,    CG,     CM,    CL,    APERC,            _____, CXCF,   CK,    CXCB,   _____,   \
   MD,      CXCS,   CT,    CN,    MX,               _____, _____,  LBRC,  CXO,    CAT,     \
   CZ,      CX,     CC,    _____, _____,            _____, _____,  _____, _____,  _____,   \
                   _____, _____, _____,            _____, _____,  _____                   \
