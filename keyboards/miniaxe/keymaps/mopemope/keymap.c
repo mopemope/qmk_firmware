@@ -101,9 +101,6 @@ extern keymap_config_t keymap_config;
 #define CDOWN  LCTL(KC_DOWN)
 #define CRIGHT LCTL(KC_RIGHT)
 #define GH     LGUI(KC_H)
-#define GTAB   TD(G_TAB)
-#define ELT    TD(E_LT)
-#define EGT    TD(E_GT)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -164,6 +161,7 @@ extern keymap_config_t keymap_config;
 #define CF     LCTL(KC_F)
 #define CB     LCTL(KC_B)
 #define CK     LCTL(KC_K)
+#define CE     LCTL(KC_E)
 #define CAT    LCTL(JP_AT)
 #define MX     LALT(KC_X)
 #undef  MD
@@ -210,18 +208,6 @@ extern keymap_config_t keymap_config;
 // C->
 #define C_GT LCTL(JP_GT)
 
-enum double_taps {
-  E_LT     = 0,
-  E_GT     = 1,
-  G_TAB    = 2,
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-  [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
-  [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
-  [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
-};
-
 enum custom_keycodes {
   CXCF = SAFE_RANGE,
   CXCB,
@@ -238,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   D  |   S  |   T  |   N  |   R  |           |   I  |   A  |   E  |   O  |  H   |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |   Z  |   X  |   C  |   V  |      |           |      |   J  |   K  |   P  |   /  |
+ * |   Z  |   X  |   C  |   V  |  GUI |           |      |   J  |   K  |   P  |   /  |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |  SFT |  ALT | SPC  |           | ENT  | CTRL |  BSP |
  *               `--------------------'           `--------------------'
@@ -255,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |   !  |   "  |   #  |   $  |   %  |           |   &  |   '  |   `  |  yen |  DEL |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  ESC |   (  |   )  |   {  |   }  |           |   ~  |   =  |   :  |   ;  |   @  |
+ * |  ESC |   (  |   )  |   {  |   }  |           |   ~  |   <  |   >  |   |  |   @  |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   ^  |   [  |   ]  |      |      |           |      |      |      |      |      |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -264,9 +250,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LOWER] = LAYOUT( \
   EXLM,   DQT,     HASH,  DLR,   PERC,              AMPR,  QUOT,  GRV,    YEN,   DEL,      \
-  ESC,    LPRN,    RPRN,  LCBR,  RCBR,              TILD,  EQL,   COLN,   SCLN,  AT,       \
+  ESC,    LPRN,    RPRN,  LCBR,  RCBR,              TILD,  KC_LT, KC_GT,  PIPE,  AT,       \
   CIRC,   LBRC,    RBRC,  _____, _____,             _____, _____, _____,  _____, _____,    \
-                  _____, _____, _____,             _____, _____, _____ \
+                  CAF2,  CAF7,  _____,             _____, _____, _____                    \
 ),
 
 /* RAISE
@@ -278,7 +264,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   _  |  F9  |  F10 |  F11 |      |           | PSCR |  F6  |   <  |   >  |   -  |
  * `-------------+------+------+------|           |------+------+------+------+------'
- *               |  F2  |  F7  |      |           |   .  |  :   |      |
+ *               |  F2  |  F7  |      |           |   .  |      |      |
  *               `--------------------'           `--------------------'
  */
 [RAISE] = LAYOUT( \
@@ -291,20 +277,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* MISC_LEFT
  *
  * ,----------------------------------.           ,----------------------------------.
- * | RESET| WHDN | MSUP | WHUP |WRKSP1|           |UWRKSP| PGDN |  UP  | PGUP | DEL  |
+ * | RESET|  C-V |  UP  |  M-V |WRKSP1|           |UWRKSP| PGDN |  UP  | PGUP | DEL  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      | MSL  | MSDN | MSR  |WRKSP2|           |DWRKSP| LEFT | DOWN | RIGHT|      |
+ * |      | LEFT | DOWN | RIGHT|WRKSP2|           |DWRKSP| LEFT | DOWN | RIGHT|      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      | COPY | PASTE|      |           |      |      |      | HIDE |      |
+ * |      |      | COPY | PASTE|      |           | PSCR |      |      | HIDE |      |
  * `-------------+------+------+------|           |------+------+------+------+------'
- *               |      | BTN2 | BTN1 |           |      |      |      |
+ *               |      |      |      |           |      |      |      |
  *               `--------------------'           `--------------------'
  */
 [MISCL] = LAYOUT( \
-  RESET,   WH_D,   MS_U,  WH_U,  WRKSP1,           UWRKSP, PGDN,  GU,    PGUP,  DEL,     \
-  _____,   MS_L,   MS_D,  MS_R,  WRKSP2,           DWRKSP, GL,    GD,    GR,    _____,   \
+  RESET,   C_V,    KUP,   M_V,   WRKSP1,           UWRKSP, PGDN,  GU,    PGUP,  DEL,     \
+  _____,   CLEFT,  KDOWN, CRIGHT,WRKSP2,           DWRKSP, GL,    GD,    GR,    _____,   \
   _____,   _____,  COPY,  PASTE, _____,            SPSCR,  _____, _____, GH,    _____,   \
-                  _____, BTN2,  BTN1,             _____,  _____, _____                  \
+                  _____, _____, _____,            _____,  _____, _____                  \
 ),
 
 /* MISC_RIGHT
@@ -329,9 +315,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* COMB_RIGHT (Emacs)
  *
  * ,----------------------------------.           ,----------------------------------.
- * | ZHTG |  C-G | C-M-M|  C-L | M-%  |           |      | CXCF |  CK  | CXCB |      |
+ * | ZHTG |  C-G | C-M-M|  C-L | M-%  |           |      | CXCF |  C-K | CXCB |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  M-D | CXCS |  C-T | C-M-N| M-X  |           |      |      |   [  | CXO  |  C-@ |
+ * |  M-D | CXCS |  C-T | C-M-N| M-X  |           |      |      |  C-E | CXO  |  C-@ |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  C-Z |  C-X |  C-C |      |      |           |      |      |      |      |      |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -340,7 +326,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [COMBR] = LAYOUT( \
   ZHTG,    CG,     CM,    CL,    APERC,            _____, CXCF,   CK,    CXCB,   _____,   \
-  MD,      CXCS,   CT,    CN,    MX,               _____, _____,  LBRC,  CXO,    CAT,     \
+  MD,      CXCS,   CT,    CN,    MX,               _____, _____,  CE,    CXO,    CAT,     \
   CZ,      CX,     CC,    _____, _____,            _____, _____,  _____, _____,  _____,   \
                   _____, _____, _____,            _____, _____,  _____                   \
 ),
@@ -348,7 +334,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* COMB_LEFT (Emacs)
  *
  * ,----------------------------------.           ,----------------------------------.
- * |      |  C-G |      |      |      |           | C-M-Y|  C-< |  UP  |  C-> |  DEL |
+ * |      |  C-G |      |      |      |           | C-M-Y|  C-< |  UP  |  C-> |  M-D |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  TAB |  C-S |  C-T |      |      |           |  M-; | LEFT | DOWN | RIGHT|  C-@ |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -358,7 +344,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [COMBL] = LAYOUT( \
-  _____,   CG,     CM,    CL,    _____,            CMY,   C_LT,   KUP,   C_GT,   DEL,     \
+  _____,   CG,     CM,    CL,    _____,            CMY,   C_LT,   KUP,   C_GT,   MD,      \
   TAB,     CS,     CT,    _____, _____,            MSCLN, CLEFT,  KDOWN, CRIGHT, CAT,     \
   _____,   CX,     CRET,  CSPC,  _____,            MCOM,  MDOT,   CCOM,  CDOT,   CSL,     \
                   _____, _____, _____,            _____, _____,  _____   \
