@@ -139,6 +139,10 @@ extern uint32_t default_layer_state;
     #include "haptic.h"
 #endif
 
+#ifdef OLED_DRIVER_ENABLE
+    #include "oled_driver.h"
+#endif
+
 //Function substitutions to ease GPIO manipulation
 #ifdef __AVR__
     #define PIN_ADDRESS(p, offset) _SFR_IO8(ADDRESS_BASE + (p >> PORT_SHIFTER) + offset)
@@ -206,6 +210,7 @@ extern uint32_t default_layer_state;
 
 #define SEND_STRING(str) send_string_P(PSTR(str))
 extern const bool ascii_to_shift_lut[0x80];
+extern const bool ascii_to_altgr_lut[0x80];
 extern const uint8_t ascii_to_keycode_lut[0x80];
 void send_string(const char *str);
 void send_string_with_delay(const char *str, uint8_t interval);
@@ -255,8 +260,12 @@ void tap_code16(uint16_t code);
 #ifdef BACKLIGHT_ENABLE
 void backlight_init_ports(void);
 void backlight_task(void);
+void backlight_task_internal(void);
+void backlight_on(uint8_t backlight_pin);
+void backlight_off(uint8_t backlight_pin);
 
 #ifdef BACKLIGHT_BREATHING
+void breathing_task(void);
 void breathing_enable(void);
 void breathing_pulse(void);
 void breathing_disable(void);

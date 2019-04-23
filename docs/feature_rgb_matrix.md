@@ -5,7 +5,7 @@ This feature allows you to use RGB LED matrices driven by external drivers. It h
 If you want to use single color LED's you should use the [LED Matrix Subsystem](feature_led_matrix.md) instead.
 
 ## Driver configuration
-
+---
 ### IS31FL3731
 
 There is basic support for addressable RGB matrix lighting with the I2C IS31FL3731 RGB controller. To enable it, add this to your `rules.mk`:
@@ -52,6 +52,7 @@ const is31_led g_is31_leds[DRIVER_LED_TOTAL] = {
 
 Where `Cx_y` is the location of the LED in the matrix defined by [the datasheet](http://www.issi.com/WW/pdf/31FL3731.pdf) and the header file `drivers/issi/is31fl3731.h`. The `driver` is the index of the driver you defined in your `config.h` (`0` or `1` right now).
 
+---
 ###  IS31FL3733/IS31FL3737
 
 !> For the IS31FL3737, replace all instances of `IS31FL3733` below with `IS31FL3737`.
@@ -102,7 +103,28 @@ const is31_led g_is31_leds[DRIVER_LED_TOTAL] = {
 
 Where `X_Y` is the location of the LED in the matrix defined by [the datasheet](http://www.issi.com/WW/pdf/31FL3733.pdf) and the header file `drivers/issi/is31fl3733.h`. The `driver` is the index of the driver you defined in your `config.h` (Only `0` right now).
 
-From this point forward the configuration is the same for all the drivers. 
+---
+
+### WS2812 (AVR only)
+
+There is basic support for addressable RGB matrix lighting with a WS2811/WS2812{a,b,c} addressable LED strand. To enable it, add this to your `rules.mk`:
+
+```C
+RGB_MATRIX_ENABLE = WS2812
+```
+
+Configure the hardware via your `config.h`:
+
+```C
+// The pin connected to the data pin of the LEDs
+#define RGB_DI_PIN D7
+// The number of LEDs connected
+#define DRIVER_LED_TOTAL 70
+```
+
+---
+
+From this point forward the configuration is the same for all the drivers. The struct rgb_led array tells the system for each led, what key electrical matrix it represents, what the physical position is on the board, and if the led is for a modifier key or not. Here is a brief example:
 
 ```C
 const rgb_led g_rgb_leds[DRIVER_LED_TOTAL] = {
@@ -116,14 +138,14 @@ const rgb_led g_rgb_leds[DRIVER_LED_TOTAL] = {
 }
 ```
 
-The format for the matrix position used in this array is `{row | (col << 4)}`. The `x` is between (inclusive) 0-224, and `y` is between (inclusive) 0-64. The easiest way to calculate these positions is:
+The first part, `{row | col << 4}`, tells the system what key this LED represents by using the key's electrical matrix row & col. The second part, `{x=0..224, y=0..64}` represents the LED's physical position on the keyboard. The `x` is between (inclusive) 0-224, and `y` is between (inclusive) 0-64 as the effects are based on this range. The easiest way to calculate these positions is imagine your keyboard is a grid, and the top left of the keyboard represents x, y coordinate 0, 0 and the bottom right of your keyboard represents 224, 64. Using this as a basis, you can use the following formula to calculate the physical position:
 
 ```C
-x = 224 / ( NUMBER_OF_COLS - 1 ) * ROW_POSITION
-y = 64 / (NUMBER_OF_ROWS - 1 ) * COL_POSITION
+x = 224 / (NUMBER_OF_COLS - 1) * COL_POSITION
+y =  64 / (NUMBER_OF_ROWS - 1) * ROW_POSITION
 ```
 
-Where all variables are decimels/floats.
+Where NUMBER_OF_COLS, NUMBER_OF_ROWS, COL_POSITION, & ROW_POSITION are all based on the physical layout of your keyboard, not the electrical layout.
 
 `modifier` is a boolean, whether or not a certain key is considered a modifier (used in some effects).
 
@@ -167,6 +189,12 @@ enum rgb_matrix_effects {
 #if defined(RGB_MATRIX_KEYPRESSES) || defined(RGB_MATRIX_KEYRELEASES)
     RGB_MATRIX_SOLID_REACTIVE_SIMPLE,   // Pulses keys hit to hue & value then fades value out
     RGB_MATRIX_SOLID_REACTIVE,      // Static single hue, pulses keys hit to shifted hue then fades to current hue
+    RGB_MATRIX_SOLID_REACTIVE_WIDE       // Hue & value pulse near a single key hit then fades value out
+    RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE  // Hue & value pulse near multiple key hits then fades value out
+    RGB_MATRIX_SOLID_REACTIVE_CROSS      // Hue & value pulse the same column and row of a single key hit then fades value out
+    RGB_MATRIX_SOLID_REACTIVE_MULTICROSS // Hue & value pulse the same column and row of multiple key hits then fades value out
+    RGB_MATRIX_SOLID_REACTIVE_NEXUS      // Hue & value pulse away on the same column and row of a single key hit then fades value out
+    RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS // Hue & value pulse away on the same column and row of multiple key hits then fades value out
     RGB_MATRIX_SPLASH,              // Full gradient & value pulse away from a single key hit then fades value out
     RGB_MATRIX_MULTISPLASH,         // Full gradient & value pulse away from multiple key hits then fades value out
     RGB_MATRIX_SOLID_SPLASH,        // Hue & value pulse away from a single key hit then fades value out
@@ -179,27 +207,33 @@ enum rgb_matrix_effects {
 You can disable a single effect by defining `DISABLE_[EFFECT_NAME]` in your `config.h`:
 
 
-|Define                                             |Description                                 |
-|---------------------------------------------------|--------------------------------------------|
-|`#define DISABLE_RGB_MATRIX_ALPHAS_MODS`           |Disables `RGB_MATRIX_ALPHAS_MODS`           |
-|`#define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN`      |Disables `RGB_MATRIX_GRADIENT_UP_DOWN`      |
-|`#define DISABLE_RGB_MATRIX_BREATHING`             |Disables `RGB_MATRIX_BREATHING`             |
-|`#define DISABLE_RGB_MATRIX_CYCLE_ALL`             |Disables `RGB_MATRIX_CYCLE_ALL`             |
-|`#define DISABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT`      |Disables `RGB_MATRIX_CYCLE_LEFT_RIGHT`      |
-|`#define DISABLE_RGB_MATRIX_CYCLE_UP_DOWN`         |Disables `RGB_MATRIX_CYCLE_UP_DOWN`         |
-|`#define DISABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON`|Disables `RGB_MATRIX_RAINBOW_MOVING_CHEVRON`|
-|`#define DISABLE_RGB_MATRIX_DUAL_BEACON`           |Disables `RGB_MATRIX_DUAL_BEACON`           |
-|`#define DISABLE_RGB_MATRIX_RAINBOW_BEACON`        |Disables `RGB_MATRIX_RAINBOW_BEACON`        |
-|`#define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS`     |Disables `RGB_MATRIX_RAINBOW_PINWHEELS`     |
-|`#define DISABLE_RGB_MATRIX_RAINDROPS`             |Disables `RGB_MATRIX_RAINDROPS`             |
-|`#define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS`   |Disables `RGB_MATRIX_JELLYBEAN_RAINDROPS`   |
-|`#define DISABLE_RGB_MATRIX_DIGITAL_RAIN`          |Disables `RGB_MATRIX_DIGITAL_RAIN`          |
-|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE`        |Disables `RGB_MATRIX_SOLID_REACTIVE`        |
-|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE` |Disables `RGB_MATRIX_SOLID_REACTIVE_SIMPLEE`|
-|`#define DISABLE_RGB_MATRIX_SPLASH`                |Disables `RGB_MATRIX_SPLASH`                |
-|`#define DISABLE_RGB_MATRIX_MULTISPLASH`           |Disables `RGB_MATRIX_MULTISPLASH`           |
-|`#define DISABLE_RGB_MATRIX_SOLID_SPLASH`          |Disables `RGB_MATRIX_SOLID_SPLASH`          |
-|`#define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH`     |Disables `RGB_MATRIX_SOLID_MULTISPLASH`     |
+|Define                                                 |Description                                    |
+|-------------------------------------------------------|-----------------------------------------------|
+|`#define DISABLE_RGB_MATRIX_ALPHAS_MODS`               |Disables `RGB_MATRIX_ALPHAS_MODS`              |
+|`#define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN`          |Disables `RGB_MATRIX_GRADIENT_UP_DOWN`         |
+|`#define DISABLE_RGB_MATRIX_BREATHING`                 |Disables `RGB_MATRIX_BREATHING`                |
+|`#define DISABLE_RGB_MATRIX_CYCLE_ALL`                 |Disables `RGB_MATRIX_CYCLE_ALL`                |
+|`#define DISABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT`          |Disables `RGB_MATRIX_CYCLE_LEFT_RIGHT`         |
+|`#define DISABLE_RGB_MATRIX_CYCLE_UP_DOWN`             |Disables `RGB_MATRIX_CYCLE_UP_DOWN`            |
+|`#define DISABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON`    |Disables `RGB_MATRIX_RAINBOW_MOVING_CHEVRON`   |
+|`#define DISABLE_RGB_MATRIX_DUAL_BEACON`               |Disables `RGB_MATRIX_DUAL_BEACON`              |
+|`#define DISABLE_RGB_MATRIX_RAINBOW_BEACON`            |Disables `RGB_MATRIX_RAINBOW_BEACON`           |
+|`#define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS`         |Disables `RGB_MATRIX_RAINBOW_PINWHEELS`        |
+|`#define DISABLE_RGB_MATRIX_RAINDROPS`                 |Disables `RGB_MATRIX_RAINDROPS`                |
+|`#define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS`       |Disables `RGB_MATRIX_JELLYBEAN_RAINDROPS`      |
+|`#define DISABLE_RGB_MATRIX_DIGITAL_RAIN`              |Disables `RGB_MATRIX_DIGITAL_RAIN`             |
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE`            |Disables `RGB_MATRIX_SOLID_REACTIVE`           |
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE`     |Disables `RGB_MATRIX_SOLID_REACTIVE_SIMPLE`    |
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE`       |Disables `RGB_MATRIX_SOLID_REACTIVE_WIDE`      |
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE`  |Disables `RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE` |
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS`      |Disables `RGB_MATRIX_SOLID_REACTIVE_CROSS`     |
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS` |Disables `RGB_MATRIX_SOLID_REACTIVE_MULTICROSS`|
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS`      |Disables `RGB_MATRIX_SOLID_REACTIVE_NEXUS`     |
+|`#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS` |Disables `RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS`|
+|`#define DISABLE_RGB_MATRIX_SPLASH`                    |Disables `RGB_MATRIX_SPLASH`                   |
+|`#define DISABLE_RGB_MATRIX_MULTISPLASH`               |Disables `RGB_MATRIX_MULTISPLASH`              |
+|`#define DISABLE_RGB_MATRIX_SOLID_SPLASH`              |Disables `RGB_MATRIX_SOLID_SPLASH`             |
+|`#define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH`         |Disables `RGB_MATRIX_SOLID_MULTISPLASH`        |
 
 
 ## Custom layer effects
@@ -213,6 +247,35 @@ void rgb_matrix_indicators_kb(void) {
 ```
 
 A similar function works in the keymap as `rgb_matrix_indicators_user`.
+
+
+## Colors
+
+These are shorthands to popular colors. The `RGB` ones can be passed to the `setrgb` functions, while the `HSV` ones to the `sethsv` functions.
+
+|RGB                |HSV                |
+|-------------------|-------------------|
+|`RGB_WHITE`        |`HSV_WHITE`        |
+|`RGB_RED`          |`HSV_RED`          |
+|`RGB_CORAL`        |`HSV_CORAL`        |
+|`RGB_ORANGE`       |`HSV_ORANGE`       |
+|`RGB_GOLDENROD`    |`HSV_GOLDENROD`    |
+|`RGB_GOLD`         |`HSV_GOLD`         |
+|`RGB_YELLOW`       |`HSV_YELLOW`       |
+|`RGB_CHARTREUSE`   |`HSV_CHARTREUSE`   |
+|`RGB_GREEN`        |`HSV_GREEN`        |
+|`RGB_SPRINGGREEN`  |`HSV_SPRINGGREEN`  |
+|`RGB_TURQUOISE`    |`HSV_TURQUOISE`    |
+|`RGB_TEAL`         |`HSV_TEAL`         |
+|`RGB_CYAN`         |`HSV_CYAN`         |
+|`RGB_AZURE`        |`HSV_AZURE`        |
+|`RGB_BLUE`         |`HSV_BLUE`         |
+|`RGB_PURPLE`       |`HSV_PURPLE`       |
+|`RGB_MAGENTA`      |`HSV_MAGENTA`      |
+|`RGB_PINK`         |`HSV_PINK`         |
+
+These are defined in [`rgblight_list.h`](https://github.com/qmk/qmk_firmware/blob/master/quantum/rgblight_list.h). Feel free to add to this list!
+
 
 ## Additional `config.h` Options
 
@@ -231,10 +294,10 @@ A similar function works in the keymap as `rgb_matrix_indicators_user`.
 The EEPROM for it is currently shared with the RGBLIGHT system (it's generally assumed only one RGB would be used at a time), but could be configured to use its own 32bit address with:
 
 ```C
-#define EECONFIG_RGB_MATRIX (uint32_t *)16
+#define EECONFIG_RGB_MATRIX (uint32_t *)28
 ```
 
-Where `16` is an unused index from `eeconfig.h`.
+Where `28` is an unused index from `eeconfig.h`.
 
 ## Suspended state
 
