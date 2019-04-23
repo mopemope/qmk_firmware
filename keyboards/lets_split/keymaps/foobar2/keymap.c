@@ -141,6 +141,8 @@ extern keymap_config_t keymap_config;
 #define CS     LCTL(KC_S)
 #define CX     LCTL(KC_X)
 #define CL     LCTL(KC_L)
+#define CK     LCTL(KC_K)
+#define CE     LCTL(KC_E)
 #define CAT    LCTL(JP_AT)
 #define MX     LALT(KC_X)
 #undef  MD
@@ -251,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |  yen |  DEL |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | ESC  |   (  |  )   |   {  |   }  |      | |      |  -   |  =   |  :   |  ;   |  @   |
+   * | ESC  |   (  |  )   |   {  |   }  |      | |      |  -   |  <   |  >   |  |   |  @   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  ^   |   [  |  ]   |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -261,8 +263,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LOWER] = LAYOUT( \
     EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   YEN,   DEL,   \
-    ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, TILD,   EQL,   COLN,  SCLN,  AT,    \
-    CIRC,    LBRC,   RBRC,   _____, _____, XXXXX,  XXXXX, _____,  _____, _____, _____, _____, \
+    ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, TILD,   KC_LT, KC_GT, PIPE,  AT,    \
+    CIRC,    LBRC,   RBRC,   CAF2,  CAF7,  XXXXX,  XXXXX, _____,  _____, _____, _____, _____, \
     XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX  \
   ),
 
@@ -287,20 +289,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Left
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET | WHDN | MSUP | WHUP |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
+   * |RESET | C-V  |  UP  | M-V  |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | MSL  | MSDN | MSR  |WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
+   * |      | LEFT | DOWN | RIGHT|WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | COPY | PASTE| BTN1 |      | |      | GUI  |      |      | HIDE |      |
+   * |      |      | COPY | PASTE| GUI  |      | |      |PSCR  |      |      | HIDE |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISCL] = LAYOUT( \
-    RESET, WH_D,   MS_U,   WH_U,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
-    _____, MS_L,   MS_D,   MS_R,  WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
-    _____, _____,  COPY,   PASTE, BTN1,   XXXXX,  XXXXX,  GUI,    _____, _____, GH,    _____,  \
+    RESET, C_V,    KUP,    M_V,   WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
+    _____, CLEFT,  KDOWN,  CRIGHT,WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
+    _____, _____,  COPY,   PASTE, GUI,    XXXXX,  XXXXX,  SPSCR,   _____, _____, GH,    _____,  \
     XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
@@ -325,9 +327,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMB Right (Emacs)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      | CXCF |      | CXCB |      |
+   * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      | CXCF | C-K  | CXCB |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  M-D | CXCS |  C-T | C-M-N|  M-X |      | |      |      |      |   [  | CXO  |  C-@ |
+   * |  M-D | CXCS |  C-T | C-M-N|  M-X |      | |      |      |      | C-E  | CXO  |  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  C-Z |  C-X |  C-C |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -336,17 +338,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBR] = LAYOUT( \
-    ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  _____, CXCB,  _____,  \
-    MD,      CXCS,   CT,    CN,    MX,    XXXXX,   XXXXX, _____, _____, LBRC,  CXO,   CAT,    \
+    ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  CK,    CXCB,  _____,  \
+    MD,      CXCS,   CT,    CN,    MX,    XXXXX,   XXXXX, _____, _____, CE,    CXO,   CAT,    \
     CZ,      CX,     CC,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* COMB Left (Emacs)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      | C-G  |      |      |      |      | |      | C-M-Y|  C-< |  UP  |  C-> |  DEL |
+   * |      | C-G  | C-M  | C-L  |      |      | |      | C-M-Y|  C-< |  UP  |  C-> |  M-D |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  TAB | C-S  |      |      |      |      | |      |  M-; | LEFT |  DOWN| RIGHT|  C-@ |
+   * |  TAB | C-S  | C-T  |      |      |      | |      |  M-; | LEFT |  DOWN| RIGHT|  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      | C-X  | CRET | CSPC |      |      | |      |  M-, |  M-. |  C-, |  C-. |  C-/ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -355,19 +357,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBL] = LAYOUT( \
-    _____,  CG,     _____,  _____, _____, XXXXX,   XXXXX, CMY,   C_LT,  KUP,   C_GT,   DEL,     \
-    TAB,    CS,     _____,  _____, _____, XXXXX,   XXXXX, MSCLN, CLEFT, KDOWN, CRIGHT, CAT,     \
-    _____,  CX,     CRET,   CSPC,  _____, XXXXX,   XXXXX, MCOM,  MDOT,  CCOM,  CDOT,   CSL,     \
-    XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
+    _____,  CG,     CM,    CL,    _____, XXXXX,   XXXXX, CMY,   C_LT,  KUP,   C_GT,   MD,     \
+    TAB,    CS,     CT,    _____, _____, XXXXX,   XXXXX, MSCLN, CLEFT, KDOWN, CRIGHT, CAT,     \
+    _____,  CX,     CRET,  CSPC,  _____, XXXXX,   XXXXX, MCOM,  MDOT,  CCOM,  CDOT,   CSL,     \
+    XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX    \
   ),
 
   /* COMB Right2 (COMBE)
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      |      |      |      | DQW  |      | |      | DQG  |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      | SPSCR| PSCR |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      | CAF2 | CAF7 |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
