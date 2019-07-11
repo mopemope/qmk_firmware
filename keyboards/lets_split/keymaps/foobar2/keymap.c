@@ -15,6 +15,7 @@ extern keymap_config_t keymap_config;
 #define GAME1   7
 #define GAME2   8
 #define GAME3   9
+#define GAME4  10
 #define COMBR  11
 #define COMBL  12
 #define COMBE  13
@@ -126,6 +127,7 @@ extern keymap_config_t keymap_config;
 #define DG1    DF(GAME1)
 #define DG2    DF(GAME2)
 #define DG3    DF(GAME3)
+#define DG4    DF(GAME4)
 #define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
@@ -308,9 +310,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Right
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |  DG1 |  DG2 |  DG3 | RTOG |      | |      |      | PGDN |  UP  | PGUP | DEL  |
+   * |RESET |  DG1 |  DG2 |  DG3 |  DG4 |      | |      |      | PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |      |      |      |      |      | |      |      | LEFT | DOWN | RIGHT|      |
+   * | TAB  |      |      |      | RTOG |      | |      |      | LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      | COPY | PASTE|      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -319,8 +321,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCR] = LAYOUT( \
-    RESET,   DG1,    DG2,   DG3,   RTOG,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
-    TAB,     _____,  _____, _____, _____, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
+    RESET,   DG1,    DG2,   DG3,   DG4,   XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
+    TAB,     _____,  _____, _____, RTOG,  XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
     _____,   _____,  _____, _____, _____, XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
@@ -455,6 +457,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_F1,  KC_F2, KC_F3, KC_F4, KC_F5, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
      KC_1,   KC_2,  KC_3,  KC_4,  KC_5,  XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
      KC_ESC, KC_C,  KC_I,  KC_B,  KC_F,  XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+     XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
+  ),
+
+  /* GAME4(Crypt of the NecroDancer)
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |  ESC |      |  UP  |      |      |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      | LEFT | DOWN | RIGHT|      |      | |      |      |  DQG |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |  DQG |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [GAME4] = LAYOUT( \
+     ESC,    XXXXX, KUP,   XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+     XXXXX,  KLEFT, KDOWN, KRIGHT,XXXXX, XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
+     XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
      XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
