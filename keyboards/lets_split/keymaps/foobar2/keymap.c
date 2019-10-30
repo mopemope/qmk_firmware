@@ -7,19 +7,19 @@
 extern keymap_config_t keymap_config;
 
 #define QGMLWY  0
-#define QWERTY  1
-#define LOWER   3
-#define RAISE   4
-#define MISCL   5
-#define MISCR   6
-#define GAME1   7
-#define GAME2   8
-#define GAME3   9
-#define GAME4  10
-#define COMBR  11
-#define COMBL  12
-#define COMBE  13
-#define COMBT  14
+#define LOWER   1
+#define RAISE   2
+#define MISCL   3
+#define MISCR   4
+#define COMBR   5
+#define COMBL   6
+#define COMBE   7
+#define COMBT   8
+#define GAME1   9
+#define GAME2  10
+#define GAME3  11
+#define GAME4  12
+#define GAME5  13
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -61,6 +61,7 @@ extern keymap_config_t keymap_config;
 #define Z_A    ALT_T(KC_Z)
 #define Z_C    CTL_T(KC_Z)
 #define Z_S    LSFT_T(KC_Z)
+#define I_S    LSFT_T(KC_I)
 #define X_CT   LCTL_T(KC_X)
 #define P_AL   LALT_T(KC_P)
 #define J_C    RCTL_T(KC_J)
@@ -123,16 +124,17 @@ extern keymap_config_t keymap_config;
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
 #define DQG    DF(QGMLWY)
-#define DQW    DF(QWERTY)
 #define DG1    DF(GAME1)
 #define DG2    DF(GAME2)
 #define DG3    DF(GAME3)
 #define DG4    DF(GAME4)
+#define DG5    DF(GAME5)
 #define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define CZ     LCTL(KC_Z)
 #define CSL    LCTL(JP_SLSH)
+#define CF     LCTL(KC_F)
 #define CMN    LALT(LCTL(KC_N))
 #define CM     LALT(LCTL(KC_M))
 #define CMD    LALT(LCTL(JP_DOT))
@@ -234,25 +236,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
-  /* QWERTY
-   * ,-----------------------------------------, ,-----------------------------------------,
-   * |  Q   |  W   |  E   |  R   |  T   |      | |      |  Y   |  U   |  I   |  O   |  P   |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  A   |  S   |  D   |  F   |  G   |      | |      |  H   |  J   |  K   |  L   | BSP  |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  Z   |  X   |  C   |  V   | SPC  |      | |      | ENT  |  B   |  N   |  M   |  /   |
-   * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
-   * `-----------------------------------------' `-----------------------------------------'
-   */
-
-  [QWERTY] = LAYOUT( \
-    KC_Q,    KC_W,   KC_E,  KC_R,  KC_T,  XXXXX,  XXXXX,  KC_Y,  KC_U,  KC_I,  KC_O,   KC_P,   \
-    KC_A,    KC_S,   KC_D,  KC_F,  KC_G,  XXXXX,  XXXXX,  KC_H,  KC_J,  KC,    KC_L,   BSP,    \
-    Z_S ,    X_CT,   KC_C,  V_A,   SPC,   XXXXX,  XXXXX,  ENT,   KC_B,  KC_N,  KC_M,   S_S,    \
-    XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
-  ),
-
   /* LOWER (Symbol)
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |  yen |  DEL |
@@ -312,7 +295,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Right
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |  DG1 |  DG2 |  DG3 |  DG4 |      | |      |      | PGDN |  UP  | PGUP | DEL  |
+   * |RESET |  DG1 |  DG4 |  DG5 |      |      | |      |      | PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | TAB  |      |      |      | RTOG |      | |      |      | LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -323,7 +306,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCR] = LAYOUT( \
-    RESET,   DG1,    DG2,   DG3,   DG4,   XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
+    RESET,   DG1,    DG4,   DG5,   _____, XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
     TAB,     _____,  _____, _____, RTOG,  XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
     _____,   _____,  _____, _____, _____, XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
@@ -369,7 +352,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMB Right2 (COMBE)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |      |      |      | DQW  |      | |      | DQG  |      |      |      |      |
+   * |      |      |      |      |      |      | |      | DQG  |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      | SPSCR| PSCR |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -380,7 +363,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBE] = LAYOUT( \
-    _____,  _____,  _____,  _____, DQW,   XXXXX,   XXXXX, DQG,   _____, _____, _____,  _____,  \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, DQG,   _____, _____, _____,  _____,  \
     _____,  _____,  _____,  SPSCR, PSCR,  XXXXX,   XXXXX, _____, _____, _____, _____,  _____,  \
     _____,  _____,  _____,  CAF2,  CAF7,  XXXXX,   XXXXX, _____, _____, _____, _____,  _____,  \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
@@ -399,7 +382,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBT] = LAYOUT( \
-    _____,  DG1,    DG2,    DG3,   DG4,   XXXXX,   XXXXX, DQT,   EXLM,  PLUS,  ASTR,   PIPE,   \
+    _____,  DG1,    DG4,    DG5,   _____, XXXXX,   XXXXX, DQT,   EXLM,  PLUS,  ASTR,   PIPE,   \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, TILD,  EQL,   COLN,  SCLN,   AT,     \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, MINS,  COMM,  DOT,    SLSH,   \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
@@ -479,6 +462,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXX,  KLEFT, KDOWN, KRIGHT,XXXXX, XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
      XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
      XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
+  ),
+
+  /* GAME5(LD)
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |  TAB |  Q   |  W   |  H   |  R   |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |   I  |  A   |  S   |  D   |  F   |      | |      |      |  DQG |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |   F  |      |  M   |  J   |  SPC |      | |      |      |      |      |      |  DQG |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [GAME5] = LAYOUT( \
+    GTAB,    KC_Q,  KC_W,  KC_H,  KC_R,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    I_S,     KC_A,  KC_S,  KC_D,  KC_F,  XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX, \
+    CF,      XXXXX, KC_M,  KC_J,  SPC,   XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+    XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
 };
@@ -563,6 +565,12 @@ uint32_t layer_state_set_user(uint32_t state) {
       rgblight_mode(11);
       break;
     case GAME3:
+      rgblight_mode(11);
+      break;
+    case GAME4:
+      rgblight_mode(11);
+      break;
+    case GAME5:
       rgblight_mode(11);
       break;
     default:
