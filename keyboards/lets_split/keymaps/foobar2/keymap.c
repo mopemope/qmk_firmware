@@ -403,7 +403,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [GAME1] = LAYOUT( \
     GTAB,    KC_G,  KC_W,  KC_E,  KC_R,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     KC_LSFT, KC_A,  KC_S,  KC_D,  KC_F,  XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
-    KC_C,    KC_Q,  KC_M,  KC_V,  SPC,   XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+    KC_C,    KC_Q,  KC_M,  KC_V,  KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
@@ -422,7 +422,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [GAME2] = LAYOUT( \
     GTAB,    KC_Q,  KC_W,  KC_E,  KC_R,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     XXXXX,   KC_A,  KC_S,  KC_D,  KC_F,  XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
-    XXXXX,   XXXXX, KC_M,  XXXXX, SPC,   XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+    XXXXX,   XXXXX, KC_M,  XXXXX, KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
@@ -479,7 +479,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [GAME5] = LAYOUT( \
     GTAB,    KC_Q,  KC_W,  KC_H,  KC_R,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     I_S,     KC_A,  KC_S,  KC_D,  KC_F,  XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX, \
-    CF,      XXXXX, KC_M,  KC_J,  SPC,   XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+    CF,      XXXXX, KC_M,  KC_J,  KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
