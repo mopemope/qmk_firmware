@@ -487,9 +487,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* GAME6(Moonlighter)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  TAB |      |  W   |      |  M   |      | |      |      |  E   |   L  |      |      |
+   * |  TAB |  Q   |  W   |  E   |  M   |      | |      |      |  E   |   L  |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |   I  |  A   |  S   |  D   |      |      | |      |      |  J   |   K  |      |      |
+   * |   I  |  A   |  S   |  D   |  R   |      | |      |   I  |  J   |   K  |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |   Z  |  C   |      |      |  SPC |      | |      |      |      |      |      |  DQG |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -498,8 +498,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [GAME6] = LAYOUT( \
-    GTAB,    XXXXX, KC_W,  XXXXX, KC_M,  XXXXX,  XXXXX, XXXXX, KC_E,  KC_L,  XXXXX, XXXXX,     \
-    I_S,     KC_A,  KC_S,  KC_D,  XXXXX, XXXXX,  XXXXX, XXXXX, KC_J,  KC_K,  XXXXX, XXXXX,     \
+    GTAB,    KC_Q,  KC_W,  KC_E,  KC_M,  XXXXX,  XXXXX, XXXXX, KC_E,  KC_L,  XXXXX, XXXXX,     \
+    I_S,     KC_A,  KC_S,  KC_D,  KC_R,  XXXXX,  XXXXX, KC_I,  KC_J,  KC_K,  XXXXX, XXXXX,     \
     KC_Z,    KC_C,  XXXXX, XXXXX, KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
