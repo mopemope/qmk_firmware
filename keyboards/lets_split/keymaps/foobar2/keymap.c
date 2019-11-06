@@ -21,6 +21,7 @@ extern keymap_config_t keymap_config;
 #define GAME4  12
 #define GAME5  13
 #define GAME6  14
+#define GAME7  15
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -131,6 +132,7 @@ extern keymap_config_t keymap_config;
 #define DG4    DF(GAME4)
 #define DG5    DF(GAME5)
 #define DG6    DF(GAME6)
+#define DG7    DF(GAME7)
 #define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
@@ -299,7 +301,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------.
    * |RESET |  DG1 |  DG4 |  DG5 |  DG6 |      | |      |      | PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |      |      |      | RTOG |      | |      |      | LEFT | DOWN | RIGHT|      |
+   * | TAB  |  DG7 |      |      | RTOG |      | |      |      | LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      | COPY | PASTE|      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -308,10 +310,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCR] = LAYOUT( \
-    RESET,   DG1,    DG4,   DG5,   DG6,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
-    TAB,     _____,  _____, _____, RTOG, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
-    _____,   _____,  _____, _____, _____,XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
-    XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX,XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
+    RESET,   DG1,   DG4,   DG5,   DG6,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
+    TAB,     DG7,   _____, _____, RTOG, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
+    _____,   _____, _____, _____, _____,XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
+    XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX,XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
   /* COMB Right (Emacs)
@@ -501,6 +503,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     GTAB,    KC_Q,  KC_W,  KC_E,  KC_M,  XXXXX,  XXXXX, XXXXX, KC_E,  KC_L,  XXXXX, XXXXX,     \
     I_S,     KC_A,  KC_S,  KC_D,  KC_R,  XXXXX,  XXXXX, KC_I,  KC_J,  KC_K,  XXXXX, XXXXX,     \
     KC_Z,    KC_C,  XXXXX, XXXXX, KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+    XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
+  ),
+
+  /* GAME7(FO3)
+   * ,-----------------------------------------, ,-----------------------------------------,
+   * |  TAB |  Q   |  W   |  E   |  R   |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |   I  |  A   |  S   |  D   |  F   |      | |      |      |      |      |      |      |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |   Z  |  T   |      |  V   |  SPC |      | |      |      |      |      |      |  DQG |
+   * |------+------+------+------+------+------| |------+------+------+------+------+------|
+   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * `-----------------------------------------' `-----------------------------------------'
+   */
+
+  [GAME7] = LAYOUT( \
+    GTAB,    KC_Q,  KC_W,  KC_E,  KC_R,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    I_S,     KC_A,  KC_S,  KC_D,  KC_F,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+    Z_C,     KC_T,  XXXXX, KC_V,  KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
