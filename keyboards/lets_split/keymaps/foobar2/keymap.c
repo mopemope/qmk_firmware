@@ -299,9 +299,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Right
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |  DG1 |  DG4 |  DG5 |  DG6 |      | |      |      | PGDN |  UP  | PGUP | DEL  |
+   * |RESET |  DG1 |  DG2 |  DG3 |  DG4 |      | |      |      | PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |  DG7 |      |      | RTOG |      | |      |      | LEFT | DOWN | RIGHT|      |
+   * | TAB  |  DG5 |  DG6 |  DG7 | RTOG |      | |      |      | LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      | COPY | PASTE|      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -310,8 +310,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCR] = LAYOUT( \
-    RESET,   DG1,   DG4,   DG5,   DG6,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
-    TAB,     DG7,   _____, _____, RTOG, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
+    RESET,   DG1,   DG2,   DG3,   DG4,  XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
+    TAB,     DG5,   DG6,   DG7,   RTOG, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
     _____,   _____, _____, _____, _____,XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX,XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
