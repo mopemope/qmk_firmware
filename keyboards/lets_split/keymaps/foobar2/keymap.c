@@ -162,11 +162,11 @@ extern keymap_config_t keymap_config;
 #define CPIPE  LCTL(JP_PIPE)
 
 #define WH_D   KC_WH_D
-#define MS_U   KC_MS_U
 #define WH_U   KC_WH_U
 #define PGDN   KC_PGDN
 #define PGUP   KC_PGUP
 #define MS_L   KC_MS_L
+#define MS_U   KC_MS_U
 #define MS_D   KC_MS_D
 #define MS_R   KC_MS_R
 #define KLEFT  KC_LEFT
@@ -280,21 +280,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Left
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET | C-V  |  UP  | M-V  |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
+   * |RESET | BTN2 |  MUP | BTN1 |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | LEFT | DOWN | RIGHT|WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
+   * |      |MLEFT | MDOWN|MRIGHT|WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      | COPY | PASTE| GUI  |      | |      |PSCR  |      |      | HIDE |      |
+   * |      |      | COPY | PASTE| GUI  |      | |      | BTN1 | BTN2 | PSCR | HIDE |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [MISCL] = LAYOUT( \
-    RESET, C_V,    KUP,    M_V,   WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
-    _____, CLEFT,  KDOWN,  CRIGHT,WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
-    _____, _____,  COPY,   PASTE, GUI,    XXXXX,  XXXXX,  SPSCR,   _____, _____, GH,    _____,  \
-    XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
+    RESET, BTN2,   MS_U,  BTN1,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
+    _____, MS_L,   MS_D,  MS_R,  WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
+    _____, _____,  COPY,  PASTE, GUI,    XXXXX,  XXXXX,  BTN1,   BTN2,  SPSCR, GH,    _____, \
+    XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
   /* MISC Right
