@@ -468,13 +468,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
-  /* GAME5(LD)
+  /* GAME5(TLD)
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  TAB |  Q   |  W   |  H   |  R   |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |   I  |  A   |  S   |  D   |  F   |      | |      |      |  DQG |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |   F  |      |  M   |  J   |  SPC |      | |      |      |      |      |      |  DQG |
+   * | CTRL |      |  M   |  J   |  SPC |      | |      |      |      |      |      |  DQG |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -483,7 +483,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [GAME5] = LAYOUT( \
     GTAB,    KC_Q,  KC_W,  KC_H,  KC_R,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
     I_S,     KC_A,  KC_S,  KC_D,  KC_F,  XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
-    CF,      XXXXX, KC_M,  KC_J,  KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+    KC_LCTL, XXXXX, KC_M,  KC_J,  KC_SPC,XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG, \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
