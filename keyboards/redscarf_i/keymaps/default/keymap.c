@@ -1,4 +1,4 @@
-/* Copyright 2019 hineybush
+/* Copyright 2019 Ben Weakley
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,13 +14,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "h75_singa.h"
+#include QMK_KEYBOARD_H
 
-void eeconfig_init_kb(void) {  // EEPROM is getting reset!
-  rgblight_enable(); // Enable RGB by default
-  rgblight_sethsv(0, 255, 128);  // Set default HSV - red hue, full saturation, medium brightness
-  rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL + 2); // set to RGB_RAINBOW_SWIRL by default
-
-  eeconfig_update_kb(0);
-  eeconfig_init_user();
-}
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  [0] = LAYOUT_ortho_6x4( // Base
+    KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
+    KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
+    KC_P4,   KC_P5,   KC_P6,   KC_PEQL,
+    KC_P1,   KC_P2,   KC_P3,   KC_ENT,
+    KC_P0,   KC_UP,   KC_PDOT, KC_BSPC,
+    KC_LEFT, KC_DOWN, KC_RGHT, BL_TOGG
+  )
+};

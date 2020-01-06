@@ -1,4 +1,4 @@
-/* Copyright 2019 hineybush
+/* Copyright 2019 MechMerlin
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,13 +14,4 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "h75_singa.h"
-
-void eeconfig_init_kb(void) {  // EEPROM is getting reset!
-  rgblight_enable(); // Enable RGB by default
-  rgblight_sethsv(0, 255, 128);  // Set default HSV - red hue, full saturation, medium brightness
-  rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL + 2); // set to RGB_RAINBOW_SWIRL by default
-
-  eeconfig_update_kb(0);
-  eeconfig_init_user();
-}
+#include "db63.h"
