@@ -246,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | ESC  |   (  |  )   |   {  |   }  |      | |      |  -   |  <   |  >   |  |   |  @   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   |   [  |  ]   | CAF2 | CAF7 |      | |      |      |      |      |      |      |
+   * |  ^   |   [  |  ]   |   <  |   >  |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -255,7 +255,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LOWER] = LAYOUT( \
     EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   YEN,   DEL,   \
     ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, TILD,   KC_LT, KC_GT, PIPE,  AT,    \
-    CIRC,    LBRC,   RBRC,   CAF2,  CAF7,  XXXXX,  XXXXX, _____,  _____, _____, _____, _____, \
+    CIRC,    LBRC,   RBRC,   KC_LT, KC_GT, XXXXX,  XXXXX, _____,  _____, _____, _____, _____, \
     XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX  \
   ),
 
@@ -316,13 +316,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
-  /* COMB Right (Emacs)
+  /* COMB Right (COMBA)
    * ,-----------------------------------------, ,-----------------------------------------,
    * | ZHTG |  C-G | C-M-M|  C-L |  M-% |      | |      |      | CXCF | C-K  | CXCB |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  M-D | CXCS |  C-T | C-M-N|  M-X |      | |      |      |      | C-E  | CXO  |  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C-Z |  C-X |  C-C |      |      |      | |      |      |      |      |      |      |
+   * |  C-Z |  C-X |  C-C | CAF2 | CAF7 |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -331,11 +331,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBR] = LAYOUT( \
     ZHTG,    CG,     CM,    CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  CK,    CXCB,  _____,  \
     MD,      CXCS,   CT,    CMN,   MX,    XXXXX,   XXXXX, _____, _____, CE,    CXO,   CAT,    \
-    CZ,      CX,     CC,    _____, _____, XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
+    CZ,      CX,     CC,    CAF2,  CAF7,  XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
-  /* COMB Left (Emacs)
+  /* COMB Left  (COMBN)
    * ,-----------------------------------------, ,-----------------------------------------,
    * |      | C-G  | C-M  | C-L  |      |      | |      | C-M-Y|  C-< |  UP  |  C-> |  M-D |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
