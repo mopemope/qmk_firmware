@@ -61,7 +61,7 @@ endif
 
 ifeq ($(strip $(STENO_ENABLE)), yes)
     OPT_DEFS += -DSTENO_ENABLE
-    VIRTSER_ENABLE := yes
+    VIRTSER_ENABLE ?= yes
     SRC += $(QUANTUM_DIR)/process_keycode/process_steno.c
 endif
 
@@ -277,6 +277,8 @@ ifeq ($(strip $(WS2812_DRIVER_REQUIRED)), yes)
     ifeq ($(filter $(WS2812_DRIVER),$(VALID_WS2812_DRIVER_TYPES)),)
         $(error WS2812_DRIVER="$(WS2812_DRIVER)" is not a valid WS2812 driver)
     endif
+
+    OPT_DEFS += -DWS2812_DRIVER_$(strip $(shell echo $(WS2812_DRIVER) | tr '[:lower:]' '[:upper:]'))
 
     ifeq ($(strip $(WS2812_DRIVER)), bitbang)
         SRC += ws2812.c
