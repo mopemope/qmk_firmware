@@ -38,12 +38,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 160
 // #define AUTO_SHIFT_TIMEOUT 150
-#define MOUSEKEY_INTERVAL 10
-#define MOUSEKEY_TIME_TO_MAX 100
-#define MOUSEKEY_MAX_SPEED 4
-#define MOUSEKEY_DELAY 0
-#define MOUSEKEY_WHEEL_MAX_SPEED 3
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 100
+/* #define MOUSEKEY_INTERVAL 10 */
+/* #define MOUSEKEY_TIME_TO_MAX 100 */
+/* #define MOUSEKEY_MAX_SPEED 4 */
+/* #define MOUSEKEY_DELAY 0 */
+/* #define MOUSEKEY_WHEEL_MAX_SPEED 3 */
+/* #define MOUSEKEY_WHEEL_TIME_TO_MAX 100 */
 
 /* #undef RGB_DI_PIN */
 /* #define RGB_DI_PIN B6 */

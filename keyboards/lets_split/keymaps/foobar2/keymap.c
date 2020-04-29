@@ -1,7 +1,4 @@
-#include "lets_split.h"
-#include "pro_micro.h"
-#include "action_layer.h"
-#include "eeconfig.h"
+#include QMK_KEYBOARD_H
 #include "keymap_jp.h"
 
 extern keymap_config_t keymap_config;
@@ -557,68 +554,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
-void matrix_init_user(void) {
-  TXLED0;
-  RXLED0;
-}
-
-void matrix_scan_user(void) {
-  TXLED0;
-  RXLED0;
-}
-
-#ifdef RGBLIGHT_ENABLE
-
-uint32_t layer_state_set_user(uint32_t state) {
-  uint8_t layer = biton32(state);
-  switch (layer) {
-    case QGMLWY:
-      rgblight_mode(8);
-      break;
-    case LOWER:
-      rgblight_mode(21);
-      break;
-    case RAISE:
-      rgblight_mode(21);
-      break;
-    case MISCR:
-      rgblight_mode(16);
-      break;
-    case MISCL:
-      rgblight_mode(16);
-      break;
-    case COMBR:
-      rgblight_mode(5);
-      break;
-    case COMBL:
-      rgblight_mode(5);
-      break;
-    case COMBE:
-      rgblight_mode(6);
-      break;
-    case COMBT:
-      rgblight_mode(6);
-      break;
-    case GAME1:
-      rgblight_mode(11);
-      break;
-    case GAME2:
-      rgblight_mode(11);
-      break;
-    case GAME3:
-      rgblight_mode(11);
-      break;
-    case GAME4:
-      rgblight_mode(11);
-      break;
-    case GAME5:
-      rgblight_mode(11);
-      break;
-    default:
-      break;
-  }
-
-  return state;
-}
-#endif
