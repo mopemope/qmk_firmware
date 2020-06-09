@@ -27,6 +27,8 @@ extern keymap_config_t keymap_config;
 #define WRKSP2 LALT(LCTL(KC_DOWN))
 #define UWRKSP LSFT(LALT(LCTL(KC_UP)))
 #define DWRKSP LSFT(LALT(LCTL(KC_DOWN)))
+#define PREVTB LSFT(LCTL(KC_UP))
+#define NEXTTB LSFT(LCTL(KC_DOWN))
 #define CAF2   LALT(LCTL(KC_F2))
 #define CAF7   LALT(LCTL(KC_F7))
 
@@ -296,9 +298,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Right
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |      |      |      |      |      | |      |      | PGDN |  UP  | PGUP | DEL  |
+   * |RESET |      |      |      |      |      | |      |PREVTB| PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |      |      |      |      |      | |      |      | LEFT | DOWN | RIGHT|      |
+   * | TAB  |      |      |      |      |      | |      |NEXTTB| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -307,8 +309,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCR] = LAYOUT( \
-    RESET,   _____, _____, _____, _____, XXXXX,  XXXXX, _____,  PGDN,  KUP,   PGUP,   DEL,    \
-    TAB,     _____, _____, _____, _____, XXXXX,  XXXXX, _____,  KLEFT, KDOWN, KRIGHT, _____,  \
+    RESET,   _____, _____, _____, _____, XXXXX,  XXXXX, PREVTB, PGDN,  KUP,   PGUP,   DEL,    \
+    TAB,     _____, _____, _____, _____, XXXXX,  XXXXX, NEXTTB, KLEFT, KDOWN, KRIGHT, _____,  \
     _____,   _____, _____, _____, _____, XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
