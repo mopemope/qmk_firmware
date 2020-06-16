@@ -283,9 +283,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Left
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET | BTN2 |  MUP | BTN1 |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
+   * |RESET |      |  UP  |      |WRKSP1|      | |      |UWRKSP| PGDN |  UP  | PGUP | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |MLEFT | MDOWN|MRIGHT|WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
+   * |      | LEFT | DOWN | RIGHT|WRKSP2|      | |      |DWRKSP| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      | COPY | PASTE| GUI  |      | |      | BTN1 | BTN2 | PSCR | HIDE |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -294,8 +294,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCL] = LAYOUT( \
-    RESET, BTN2,   MS_U,  BTN1,  WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
-    _____, MS_L,   MS_D,  MS_R,  WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
+    RESET, _____,  KUP,   _____, WRKSP1, XXXXX,  XXXXX,  UWRKSP, PGDN,  GU,    PGUP,  DEL,    \
+    _____, KLEFT,  KDOWN, KRIGHT,WRKSP2, XXXXX,  XXXXX,  DWRKSP, GL,    GD,    GR,    _____,  \
     _____, _____,  COPY,  PASTE, GUI,    XXXXX,  XXXXX,  BTN1,   BTN2,  SPSCR, GH,    _____, \
     XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
