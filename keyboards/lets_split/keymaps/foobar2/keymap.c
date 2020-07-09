@@ -324,11 +324,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMB Right (COMBA)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  C-Q |  C-G | C-M-M|  C-L | M-%  |      | |      |      | CXCF | C-K  | CXCB |      |
+   * |  C-Q |  C-G | C-M-M|  C-L | M-%  |      | |      |      | CXCF |      | CXCB |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  M-D | CXCS |  C-T | C-M-N| M-X  |      | |      |      |      | C-Q  | CXO  |  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  C-Z |  C-X |  C-C |      | ZHTG |      | |      |      |      |      |      |      |
+   * |  C-Z |  C-X |  C-C |      | ZHTG |      | |      |      |      | C-K  |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -337,7 +337,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBR] = LAYOUT( \
     CQ,      CG,     CMM,   CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  CK,    CXCB,  _____,  \
     MD,      CXCS,   CT,    CMN,   MX,    XXXXX,   XXXXX, _____, _____, CQ,    CXO,   CAT,    \
-    CZ,      CX,     CC,    XXXXX, ZHTG,  XXXXX,   XXXXX, _____, _____, _____, _____, _____,  \
+    CZ,      CX,     CC,    XXXXX, ZHTG,  XXXXX,   XXXXX, _____, _____, CK,    _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
