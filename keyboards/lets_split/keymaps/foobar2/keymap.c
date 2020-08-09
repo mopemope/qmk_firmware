@@ -222,7 +222,10 @@ enum custom_keycodes {
   CXCF = SAFE_RANGE,
   CXCB,
   CXCS,
-  CXO
+  CXO,
+  CXU,
+  CCN,
+  CCP
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -324,7 +327,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMB Right (COMBA)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  C-Q |  C-G | C-M-M|  C-L | M-%  |      | |      |      | CXCF |      | CXCB |      |
+   * |  C-Q |  C-G | C-M-M|  C-L | M-%  |      | |      |      | CXCF | CXU  | CXCB |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  M-D | CXCS |  C-T | C-M-N| M-X  |      | |      |      |      | C-Q  | CXO  |  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -335,7 +338,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBR] = LAYOUT( \
-    CQ,      CG,     CMM,   CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  CK,    CXCB,  _____,  \
+    CQ,      CG,     CMM,   CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  CXU,   CXCB,  _____,  \
     MD,      CXCS,   CT,    CMN,   MX,    XXXXX,   XXXXX, _____, _____, CQ,    CXO,   CAT,    \
     CZ,      CX,     CC,    XXXXX, ZHTG,  XXXXX,   XXXXX, _____, _____, CK,    _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
@@ -343,7 +346,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMB Left  (COMBN)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      | C-G  |      | C-L  |      |      | |      | C-M-Y| M-L  |  UP  |  M-R |  M-D |
+   * |      | C-G  |      | C-L  |      |      | |      | C-M-Y| CCP  |  UP  |  CCN |  M-D |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  TAB | C-S  | C-T  |      |      |      | |      |  M-; | LEFT |  DOWN| RIGHT|  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -354,7 +357,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBL] = LAYOUT( \
-    _____,  CG,     XXXXX, CL,    _____, XXXXX,   XXXXX, CMY,   MLEFT, CP,   MRIGHT, MD,   \
+    _____,  CG,     XXXXX, CL,    _____, XXXXX,   XXXXX, CMY,   CCP,   CP,   CCN,    MD,   \
     TAB,    CS,     CT,    _____, _____, XXXXX,   XXXXX, MSCLN, CLEFT, CN,   CRIGHT, CAT,  \
     _____,  CX,     CRET,  CSPC,  _____, XXXXX,   XXXXX, MCOM,  MDOT,  CCOM, CDOT,   CSL,  \
     XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX,XXXXX,  XXXXX \
@@ -366,7 +369,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      | CLEFT| CDOWN|CRIGHT|      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | SPSCR| PSCR | CAF2 | CAF7 |      | |      |      |      |      |      |      |
+   * |      |      | PSCR | CAF2 | CAF7 |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -375,7 +378,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBE] = LAYOUT( \
     _____,  _____, CUP,   _____,  _____, XXXXX,   XXXXX, DQG,   _____, _____, _____,  _____,  \
     _____,  CLEFT, CDOWN, CRIGHT, _____, XXXXX,   XXXXX, _____, _____, _____, _____,  _____, \
-    _____,  SPSCR, PSCR,  CAF2,   CAF7,  XXXXX,   XXXXX, _____, _____, _____, _____,  _____,  \
+    _____,  _____, PSCR,  CAF2,   CAF7,  XXXXX,   XXXXX, _____, _____, _____, _____,  _____,  \
     XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
@@ -540,26 +543,41 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case CXCF:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("xf"));
+  case CXCF:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("xf"));
       }
-      break;
-    case CXCB:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("xb"));
-      }
-      break;
-    case CXCS:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("xs"));
-      }
-      break;
-    case CXO:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL("x") "o");
-      }
-      break;
+    break;
+  case CXCB:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("xb"));
+    }
+    break;
+  case CXCS:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("xs"));
+    }
+    break;
+  case CXO:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("x") "o");
+    }
+    break;
+  case CXU:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("x") "u");
+    }
+    return false;
+  case CCN:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("c") "n");
+    }
+    return false;
+  case CCP:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("c") "p");
+    }
+    return false;
   }
   return true;
 }
