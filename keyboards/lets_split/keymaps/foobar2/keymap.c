@@ -91,8 +91,8 @@ extern keymap_config_t keymap_config;
 #define MGT    LALT(KC_GT)
 #define GH     LGUI(KC_H)
 #define GTAB   TD(G_TAB)
-#define ELT    TD(E_LT)
-#define EGT    TD(E_GT)
+#define FG   TD(D_FG)
+#define VB   TD(D_VB)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -207,15 +207,15 @@ extern keymap_config_t keymap_config;
 #define C_GT LCTL(JP_GT)
 
 enum double_taps {
-  E_LT     = 0,
-  E_GT     = 1,
-  G_TAB    = 2,
+  G_TAB = 0,
+  D_FG = 1,
+  D_VB = 2,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [E_LT] = ACTION_TAP_DANCE_DOUBLE (M_V, C_LT),
-  [E_GT] = ACTION_TAP_DANCE_DOUBLE (C_V, C_GT),
   [G_TAB] = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC),
+  [D_FG] =  ACTION_TAP_DANCE_DOUBLE (KC_F, KC_G),
+  [D_VB] =  ACTION_TAP_DANCE_DOUBLE (KC_V, KC_B),
 };
 
 enum custom_keycodes {
@@ -384,7 +384,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* COMB Left2 (COMBT)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |      |  DG1 |  DG4 |  DG5 |  DG6 |      | |      |   "  |  !   |   +  |   *  |   |  |
+   * |  DG1 |  DG2 |  DG3 |  DG4 |  DG5 |      | |      |   "  |  !   |   +  |   *  |   |  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |   ~  |  =   |   :  |   ;  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -395,7 +395,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBT] = LAYOUT( \
-    _____,  DG1,    DG4,    DG5,   DG6,   XXXXX,   XXXXX, DQT,   EXLM,  PLUS,  ASTR,   PIPE,   \
+    DG1,    DG2,    DG3,    DG4,   DG5,   XXXXX,   XXXXX, DQT,   EXLM,  PLUS,  ASTR,   PIPE,   \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, TILD,  EQL,   COLN,  SCLN,   AT,     \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, MINS,  COMM,  DOT,    SLSH,   \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
@@ -458,22 +458,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
-  /* GAME4(Crypt of the NecroDancer)
+  /* GAME4(VAROLANT)
    * ,-----------------------------------------, ,-----------------------------------------,
-   * |  ESC |      |  UP  |      |      |      | |      |      |      |      |      |      |
+   * |  ESC |  Q   |  W   |  E   |  R   |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | LEFT | DOWN | RIGHT|      |      | |      |      |  DQG |      |      |      |
+   * |  SFT |  A   |  S   |  D   |  F   |      | |      |      |  DQG |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |  DQG |
+   * |  CTL |  4   |  X   |  C   |  V   |      | |      |      |      |      |      |  DQG |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [GAME4] = LAYOUT( \
-     ESC,    XXXXX, KUP,   XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
-     XXXXX,  KLEFT, KDOWN, KRIGHT,XXXXX, XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
-     XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
+     GTAB,   KC_Q,  KC_W,  KC_E,  KC_R,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,     \
+     KC_LSFT,KC_A,  KC_S,  KC_D,  FG,    XXXXX,  XXXXX, XXXXX, DQG,   XXXXX, XXXXX, XXXXX,     \
+     KC_LCTL,KC_4,  KC_X,  KC_C,  VB,    XXXXX,  XXXXX, _____, XXXXX, XXXXX, XXXXX, DQG,       \
      XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX      \
   ),
 
