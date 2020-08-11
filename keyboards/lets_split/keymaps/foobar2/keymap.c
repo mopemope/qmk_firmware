@@ -31,6 +31,8 @@ extern keymap_config_t keymap_config;
 #define NEXTTB LSFT(LCTL(KC_DOWN))
 #define CAF2   LALT(LCTL(KC_F2))
 #define CAF7   LALT(LCTL(KC_F7))
+#define PREVW  LGUI(LCTL(KC_LEFT))
+#define NEXTW  LGUI(LCTL(KC_RIGHT))
 
 #define TAB    KC_TAB
 #define MINS   ALT_T(JP_MINS)
@@ -308,9 +310,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MISC Right
    * ,-----------------------------------------, ,-----------------------------------------.
-   * |RESET |      |      |      |      |      | |      |PREVTB| MLT  |  UP  | MGT  | DEL  |
+   * |RESET |      |      |      |PREVW |      | |      |PREVTB| MLT  |  UP  | MGT  | DEL  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | TAB  |      |      |      |      |      | |      |NEXTTB| LEFT | DOWN | RIGHT|      |
+   * | TAB  |      |      |      |NEXTW |      | |      |NEXTTB| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -319,8 +321,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [MISCR] = LAYOUT( \
-    RESET,   _____, _____, _____, _____, XXXXX,  XXXXX, PREVTB, MLT,   KUP,   MGT,   DEL,    \
-    TAB,     _____, _____, _____, _____, XXXXX,  XXXXX, NEXTTB, KLEFT, KDOWN, KRIGHT, _____,  \
+    RESET,   _____, _____, _____, PREVW, XXXXX,  XXXXX, PREVTB, MLT,   KUP,   MGT,   DEL,    \
+    TAB,     _____, _____, _____, NEXTW, XXXXX,  XXXXX, NEXTTB, KLEFT, KDOWN, KRIGHT, _____,  \
     _____,   _____, _____, _____, _____, XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
@@ -350,7 +352,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |  TAB | C-S  | C-T  |      |      |      | |      |  M-; | LEFT |  DOWN| RIGHT|  C-@ |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      | C-X  | CRET | CSPC |      |      | |      |  M-, |  M-. |  C-, |  C-. |  C-/ |
+   * |      | C-X  | CRET | CSPC |      |      | |      |  M-, |  M-. |  C-, |  C-. |  CXU |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -359,7 +361,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBL] = LAYOUT( \
     _____,  CG,     XXXXX, CL,    _____, XXXXX,   XXXXX, CMY,   CCP,   CP,   CCN,    MD,   \
     TAB,    CS,     CT,    _____, _____, XXXXX,   XXXXX, MSCLN, CLEFT, CN,   CRIGHT, CAT,  \
-    _____,  CX,     CRET,  CSPC,  _____, XXXXX,   XXXXX, MCOM,  MDOT,  CCOM, CDOT,   CSL,  \
+    _____,  CX,     CRET,  CSPC,  _____, XXXXX,   XXXXX, MCOM,  MDOT,  CCOM, CDOT,   CXU,  \
     XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX,XXXXX,  XXXXX \
   ),
 
