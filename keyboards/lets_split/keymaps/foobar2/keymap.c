@@ -35,7 +35,8 @@ extern keymap_config_t keymap_config;
 #define NEXTW  LGUI(LCTL(KC_RIGHT))
 
 #define TAB    KC_TAB
-#define MINS   ALT_T(JP_MINS)
+#define MINS   JP_MINS
+// #define MINS   ALT_T(JP_MINS)
 #define SMINS  SFT_T(JP_MINS)
 #define SBSLS  SFT_T(JP_BSLS)
 #define BSP    KC_BSPC
@@ -93,8 +94,8 @@ extern keymap_config_t keymap_config;
 #define MGT    LALT(KC_GT)
 #define GH     LGUI(KC_H)
 #define GTAB   TD(G_TAB)
-#define FG   TD(D_FG)
-#define VB   TD(D_VB)
+#define FG     TD(D_FG)
+#define VB     TD(D_VB)
 #define EXLM   JP_EXLM
 #define DQT    JP_DQT
 #define HASH   JP_HASH
@@ -256,19 +257,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |  |   |  yen |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | ESC  |   (  |  )   |   {  |   }  |      | |      |   ~  |  +   |  *   |  =   |  @   |
+   * | ESC  |   (  |  )   |   {  |   }  |      | |      |   ,  |  .   |  /   |  =   |  ~   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   |   [  |  ]   |   <  |   >  |      | |      |      |      |      |      |      |
+   * |  ^   |   [  |  ]   |   <  |   >  |      | |      |      |      |      |      |  -   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
    */
 
   [LOWER] = LAYOUT( \
-    EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   PIPE,  YEN,   \
-    ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, TILD,   PLUS,  ASTR,  EQL,   AT,    \
-    CIRC,    LBRC,   RBRC,   KC_LT, KC_GT, XXXXX,  XXXXX, _____,  _____, _____, _____, _____, \
-    XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX  \
+    EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   PIPE,  YEN,  \
+    ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, COMM,   DOT,   SLSH,  EQL,   TILD, \
+    CIRC,    LBRC,   RBRC,   KC_LT, KC_GT, XXXXX,  XXXXX, _____,  _____, _____, _____, MINS, \
+    XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX \
   ),
 
   /* RAISE (Num + Fn + Others)
@@ -315,7 +316,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | TAB  |      |      |      |NEXTW |      | |      |NEXTTB| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      | BSP  |      |      |      |
+   * |      |      |      |      | BSP  |      | |      |      | BSP  |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -324,7 +325,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISCR] = LAYOUT( \
     RESET,   _____, _____, _____, PREVW, XXXXX,  XXXXX, PREVTB, MLT,   KUP,   MGT,   DEL,    \
     TAB,     _____, _____, _____, NEXTW, XXXXX,  XXXXX, NEXTTB, KLEFT, KDOWN, KRIGHT, _____,  \
-    _____,   _____, _____, _____, _____, XXXXX,  XXXXX, _____,  BSP,   _____, _____,  _____,  \
+    _____,   _____, _____, _____, BSP,   XXXXX,  XXXXX, _____,  BSP,   _____, _____,  _____,  \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
@@ -398,10 +399,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [COMBT] = LAYOUT( \
-    DG1,    DG2,    DG3,    DG4,   DG5,   XXXXX,   XXXXX, DQT,   EXLM,  PLUS,  ASTR,   PIPE,   \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, TILD,  EQL,   COLN,  SCLN,   AT,     \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, BSP,   COMM,  DOT,    SLSH,   \
-    XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
+    DG1,    DG2,    DG3,    DG4,   DG5,   XXXXX,  XXXXX, DQT,   EXLM,  PLUS,  ASTR,   PIPE,   \
+    _____,  _____,  _____,  _____, _____, XXXXX,  XXXXX, TILD,  EQL,   COLN,  SCLN,   AT,     \
+    _____,  _____,  _____,  _____, _____, XXXXX,  XXXXX, _____, BSP,   COMM,  DOT,    SLSH,   \
+    XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
   /* GAME1(BL2)
@@ -542,6 +543,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
+}
+
+void keyboard_post_init_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
