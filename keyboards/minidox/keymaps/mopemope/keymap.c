@@ -471,26 +471,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                    KC_ESC, KC_V,   SPC,         DQG,     DQG,       DQG                   \
 ),
 
-/* GAME3(WoL)
+/* GAME3(V)
  *
  * ,----------------------------------.           ,----------------------------------.
  * |  TAB |  Q   |  W   |  E   |  R   |           |      |      |      |      |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |  A   |  S   |  D   |      |           |      |      |      |      |      |
+ * |  SFT |  A   |  S   |  D   |  F   |           |      |      |      |      |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |      |  M   |      |      |           |      |      |      |      |      |
+ * |  CTL |  Z   |  M   |  C   |  V   |           |      |      |      |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  | ESC  |  F   |      |    |      |      |      |
- *                  `-------------| SPC  |    |      |------+------.
+ *                  | ESC  |  C   |      |    |      |      |      |
+ *                  `-------------|  4   |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [GAME3] =  LAYOUT( \
-  GTAB,    KC_Q,   KC_W,   KC_E,   KC_R,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
-  XXXXX,   KC_A,   KC_S,   KC_D,   XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
-  XXXXX,   XXXXX,  KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
-                   KC_ESC, KC_F,   SPC,         DQG,    DQG,      DQG                     \
+  GTAB,    KC_Q,  KC_W,   KC_E,   KC_R,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_LSFT, KC_A,  KC_S,   KC_D,   FG,          XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_LCTL, KC_Z,  KC_M,   KC_C,   VB,          XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+                  KC_ESC, KC_C,   KC_4,        DQG,    DQG,      DQG                     \
 ),
 
 };
