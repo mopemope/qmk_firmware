@@ -147,6 +147,7 @@ extern keymap_config_t keymap_config;
 #define CSL    LCTL(JP_SLSH)
 #define CF     LCTL(KC_F)
 #define CMN    LALT(LCTL(KC_N))
+#define CMP    LALT(LCTL(KC_P))
 #define CMM    LALT(LCTL(KC_M))
 #define CMD    LALT(LCTL(JP_DOT))
 #define CMY    LALT(LCTL(JP_YEN))
@@ -314,7 +315,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * | TAB  |      |      |      |NEXTW |      | |      |NEXTTB| LEFT | DOWN | RIGHT|      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |      |      |      |      |
+   * |      |      |      |      |      |      | |      |      | BSP  |      |      |      |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -323,7 +324,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISCR] = LAYOUT( \
     RESET,   _____, _____, _____, PREVW, XXXXX,  XXXXX, PREVTB, MLT,   KUP,   MGT,   DEL,    \
     TAB,     _____, _____, _____, NEXTW, XXXXX,  XXXXX, NEXTTB, KLEFT, KDOWN, KRIGHT, _____,  \
-    _____,   _____, _____, _____, _____, XXXXX,  XXXXX, _____,  _____, _____, _____,  _____,  \
+    _____,   _____, _____, _____, _____, XXXXX,  XXXXX, _____,  BSP,   _____, _____,  _____,  \
     XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX,  _____   \
   ),
 
@@ -342,7 +343,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBR] = LAYOUT( \
     CQ,      CG,     CMM,   CL,    APERC, XXXXX,   XXXXX, _____, CXCF,  CXU,   CXCB,  _____,  \
     MD,      CXCS,   CT,    CMN,   MX,    XXXXX,   XXXXX, _____, _____, CQ,    CXO,   CAT,    \
-    CZ,      CX,     CC,    XXXXX, ZHTG,  XXXXX,   XXXXX, _____, _____, CK,    _____, _____,  \
+    CZ,      CX,     CC,    _____, ZHTG,  XXXXX,   XXXXX, _____, _____, CK,    _____, _____,  \
     XXXXX,   XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX   \
   ),
 
@@ -390,7 +391,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |   ~  |  =   |   :  |   ;  |   @  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |      |      |      |      |      |      | |      |      |  -   |   ,  |   .  |   /  |
+   * |      |      |      |      |      |      | |      |      | BSP  |   ,  |   .  |   /  |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -399,7 +400,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COMBT] = LAYOUT( \
     DG1,    DG2,    DG3,    DG4,   DG5,   XXXXX,   XXXXX, DQT,   EXLM,  PLUS,  ASTR,   PIPE,   \
     _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, TILD,  EQL,   COLN,  SCLN,   AT,     \
-    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, MINS,  COMM,  DOT,    SLSH,   \
+    _____,  _____,  _____,  _____, _____, XXXXX,   XXXXX, _____, BSP,   COMM,  DOT,    SLSH,   \
     XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,   XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  XXXXX   \
   ),
 
