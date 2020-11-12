@@ -257,9 +257,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------, ,-----------------------------------------,
    * |  !   |   "  |   #  |   $  |   %  |      | |      |   &  |  '   |  `   |  |   |  yen |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * | ESC  |   (  |  )   |   {  |   }  |      | |      |   ,  |  .   |  /   |  =   |  ~   |
+   * | ESC  |   (  |  )   |   {  |   }  |      | |      |   ~  |  .   |  /   |  =   |  @   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
-   * |  ^   |   [  |  ]   |   <  |   >  |      | |      |      |      |      |      |  -   |
+   * |  ^   |   [  |  ]   |   <  |   >  |      | |      |      |  ,   |      |      |  -   |
    * |------+------+------+------+------+------| |------+------+------+------+------+------|
    * |      |      |      |      |      |      | |      |      |      |      |      |      |
    * `-----------------------------------------' `-----------------------------------------'
@@ -267,8 +267,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LOWER] = LAYOUT( \
     EXLM,    DQT,    HASH,   DLR,   PERC,  XXXXX,  XXXXX, AMPR,   QUOT,  GRV,   PIPE,  YEN,  \
-    ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, COMM,   DOT,   SLSH,  EQL,   TILD, \
-    CIRC,    LBRC,   RBRC,   KC_LT, KC_GT, XXXXX,  XXXXX, _____,  _____, _____, _____, MINS, \
+    ESC,     LPRN,   RPRN,   LCBR,  RCBR,  XXXXX,  XXXXX, TILD,   DOT,   SLSH,  EQL,   AT, \
+    CIRC,    LBRC,   RBRC,   KC_LT, KC_GT, XXXXX,  XXXXX, _____,  COMM,  _____, _____, MINS, \
     XXXXX,   XXXXX,  XXXXX,  XXXXX, XXXXX, XXXXX,  XXXXX, XXXXX,  XXXXX, XXXXX, XXXXX, XXXXX \
   ),
 
