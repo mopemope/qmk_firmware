@@ -416,7 +416,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  |      |      |      |    |      |      |      |
- *                  `-------------|      |    |      |------+------.
+ *                  `-------------| RTOG |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
@@ -424,7 +424,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   DG1,    DG2,   DG3,    _____,  _____,        DQT,    EXLM,    PLUS,   ASTR,   PIPE,  \
   _____,  _____, _____,  _____,  _____,        TILD,   EQL,     COLN,   SCLN,   AT,    \
   _____,  _____, _____,  _____,  _____,        _____,  MINS,    COMM,   DOT,    SLSH,  \
-                 _____,  _____,  _____,        _____,  _____,   _____                  \
+                 _____,  _____,  RTOG,         _____,  _____,   _____                  \
 ),
 
 /* GAME1(VAROLANT)
@@ -452,23 +452,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* GAME2(R6S)
  *
  * ,----------------------------------.           ,----------------------------------.
- * |  TAB |  G   |  W   |  E   |  R  |           |      |      |      |      |      |
+ * |  ESC |  Q   |  W   |  E   |  R   |           |      |      |      |      |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * | SHIFT|  A   |  S   |  D   |  F   |           |      |      |      |      |      |
+ * | SHIFT|  A   |  S   |  D   |  G   |           |      |      |      |      |      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  C   |  Q   |  M   |      |      |           |      |      |      |      |      |
+ * |  ALT |  Z   |  X   |  C   |  3   |           |      |      |      |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  | ESC  |  V   |      |    |      |      |      |
- *                  `-------------| SPC  |    |      |------+------.
+ *                  |  5   |  6   |      |    |      |      |      |
+ *                  `-------------|  V   |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [GAME2] =  LAYOUT( \
-  GTAB,    KC_G,   KC_W,   KC_E,   KC_R,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
-  KC_LSFT, KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
-  KC_C,    KC_Q,   KC_M,   XXXXX,  XXXXX,       XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
-                   KC_ESC, KC_V,   SPC,         DQG,     DQG,       DQG                   \
+  GTAB,    KC_Q,   KC_W,  KC_E,   KC_R,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_LSFT, KC_A,   KC_S,  KC_D,   KC_G,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+  KC_LALT, KC_Z,   KC_X,  KC_C,   KC_3,        XXXXX,  XXXXX,    XXXXX,  XXXXX,   XXXXX, \
+                   KC_5,  KC_6,   KC_V,        DQG,     DQG,     DQG                     \
 ),
 
 /* GAME3(V)
