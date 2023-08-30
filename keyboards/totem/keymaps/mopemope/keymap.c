@@ -280,7 +280,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        TAB,    KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,  XXXXX,      \
        KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_G,   KC_J,   KC_K,   KC_L,  KC_U,       \
   ESC, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
-                       ESC,    KC_H,   KC_W,        KC_P,   KC_H,   ESC                       \
+                       ESC,    KC_B,   KC_W,        KC_P,   KC_H,   ESC                       \
 ),
 
 [QGMLWY] = LAYOUT( \
@@ -305,8 +305,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [MISCL] = LAYOUT( \
-          QK_RBT,  XXXXX,  GU,     XXXXX,  WRKSP1,      UWRKSP,   PGDN,   KUP,     PGUP,   DEL,    \
-          XXXXX,   GL,     GD,     GR,     WRKSP2,      DWRKSP,   CLEFT,  KDOWN,   CRIGHT, GH,     \
+          QK_RBT,  XXXXX,  GU,     XXXXX,  WRKSP1,      UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
+          XXXXX,   GL,     GD,     GR,     WRKSP2,      DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
     SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  XXXXX, SFT, \
                            COPY,   PASTE,  GUI,         TAB,      M_V,    C_V                     \
 ),
@@ -342,8 +342,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [COMBT] =  LAYOUT( \
            _____,  _____,  GSF6,   _____,  _____,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,       TILD,   EQL,    COLN,   SCLN,   AT,     \
-  QK_BOOT, _____,  _____,  _____,  _____,  _____,       CIRC,   MINS,   COMM,   DOT,    SLSH, QK_BOOT,  \
-                           _____,  _____,  _____,       DOT,    QUOT,   _____                   \
+  QK_BOOT, _____,  _____,  _____,  _____,  _____,       CIRC,   XXXXX,  COMM,   DOT,    SLSH, QK_BOOT,  \
+                           _____,  _____,  _____,       MINS,   UNDS,   SLSH                     \
 ),
 
 /* [BL3] = LAYOUT( \ */
