@@ -12,22 +12,21 @@
 #define COMBE   7
 #define COMBT   8
 #define SF6     9
-
 #define VAL    10
-#define DB3    11
-#define R6S    12
+#define CYBER  11
+//#define DB3    11
+//#define R6S    12
 #define DIV    13
 #define EFT    14
 #define COD    15
 
-#define SN     16
-#define DAD    17
-#define CYBER  18
-#define BL3    22
-#define B4B    23
-#define LD     24
-#define APEX   25
-#define CH2    26
+/* #define SN     16 */
+/* #define DAD    17 */
+/* #define BL3    22 */
+/* #define B4B    23 */
+/* #define LD     24 */
+/* #define APEX   25 */
+/* #define CH2    26 */
 
 #define ______ KC_TRNS
 #define XXXXXX KC_NO
@@ -322,32 +321,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [COMBT] = LAYOUT( \
-    GVAL,   GDB3,   GSF6,   ______, ______,                      AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
+    GVAL,   GEFT,   GSF6,   ______, ______,                      AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
     GDV2,   ______, ______, ______, GCOD,                        TILD,   EQL,    COLN,   SCLN,   AT, \
     ______, ______, ______, ______, ______,                      CIRC,   MINS,   COMM,   DOT,    SLSH,   \
     ______, ______, ______, ______, ______, ______,      TAB,    DQT,    QUOT,   ______, ______, ______ \
   ),
 
-  /* [VAL] = LAYOUT( \ */
-  /*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        KC_F1,  KC_F2,  KC_F3,  KC_F4,  ALTZ,    \ */
-  /*   KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        KC_5,   KC_6,   KC_7,   KC_8,   ALTX,    \ */
-  /*   KC_Z,   KC_X,   KC_B,   KC_G,   KC_C,                        SRY,    KC_V,   KC_Y,   KC_T,   GUI,     \ */
-  /*   KC_M,   KC_T,   ESC,    KC_4,   GCTL,   KC_SPC,      GENT,   NICE,   TY,     GG,     NT,     DQG      \ */
-  /* ), */
+  [VAL] = LAYOUT( \
+    TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        KC_F1,  KC_F2,  KC_F3,  KC_F4,  ALTZ,    \
+    KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        KC_5,   KC_6,   KC_7,   KC_8,   ALTX,    \
+    KC_Z,   KC_X,   KC_B,   KC_G,   KC_C,                        SRY,    KC_V,   KC_Y,   KC_T,   GUI,     \
+    KC_M,   KC_T,   ESC,    KC_4,   GCTL,   KC_SPC,      GENT,   NICE,   TY,     GG,     NT,     DQG      \
+  ),
 
-  /* [EFT] = LAYOUT( \ */
-  /*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   \ */
-  /*   KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   \ */
-  /*   KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,                        KC_O,   KC_T,   KC_B,   KC_N,   DEL,    \ */
-  /*   KC_Y,   KC_L,   KC_U,   GCTL,   GALT,   KC_SPC,      ESC,    ALTZ,   REC,    KC_U,   KC_Z,   DQG     \ */
-  /* ), */
+  [EFT] = LAYOUT( \
+    TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   \
+    KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   \
+    KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,                        KC_O,   KC_T,   KC_B,   KC_N,   DEL,    \
+    KC_Y,   KC_L,   KC_U,   GCTL,   GALT,   KC_SPC,      ESC,    ALTZ,   REC,    KC_U,   KC_Z,   DQG     \
+  ),
 
-  /* [CYBER] = LAYOUT( \ */
-  /*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_M,   KC_J,   KC_K,   ESC,    \ */
-  /*   KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        ______, KC_I,   KC_O,   KC_P,   ______, \ */
-  /*   KC_Z,   KC_X,   GALT,   KC_V,   KC_T,                        ______, ______, ______, KC_V,   KC_N,   \ */
-  /*   ______, ______, ______, KC_Z,   KC_C,   KC_SPC,      GENT,   ALTZ,   REC,    ______, ______, DQG     \ */
-  /* ), */
+  [CYBER] = LAYOUT( \
+    TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_M,   KC_J,   KC_K,   ESC,    \
+    KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        ______, KC_I,   KC_O,   KC_P,   ______, \
+    KC_Z,   KC_X,   GALT,   KC_V,   KC_T,                        ______, ______, ______, KC_V,   KC_N,   \
+    ______, ______, ______, KC_Z,   KC_C,   KC_SPC,      GENT,   ALTZ,   REC,    ______, ______, DQG     \
+  ),
 
   /* [BL3] = LAYOUT( \ */
   /*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_F5,  KC_F6,  KC_F7,  ESC,     \ */
