@@ -336,16 +336,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [COMBT] =  LAYOUT( \
            GVAL,   GEFT,   GSF6,   GDV2,   GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
-           _____,  _____,  _____,  _____,  _____,       TILD,   EQL,    COLN,   SCLN,   AT,     \
-  QK_BOOT, _____,  _____,  _____,  _____,  _____,       CIRC,   XXXXX,  COMM,   DOT,    SLSH, QK_BOOT,  \
-                           _____,  _____,  _____,       MINS,   UNDS,   SLSH                     \
+           _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
+  QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   XXXXX,  COMM,   DOT,    SLSH, QK_BOOT,  \
+                           _____,  _____,  _____,      MINS,   UNDS,   SLSH                     \
 ),
 
 [SF6] = LAYOUT(                                                       \
-       TAB,    KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,  XXXXX,      \
+       XXXXX,  KC_Q,   KC_W,   KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,  XXXXX,      \
        KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_G,   KC_J,   KC_K,   KC_L,  KC_U,       \
-  ESC, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
-                       ESC,    KC_B,   KC_W,        KC_P,   KC_H,   ESC                       \
+  TAB, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
+                       ESC,    KC_B,   KC_W,        KC_G,   KC_H,   ESC                       \
 ),
 
 [VAL] = LAYOUT(                                                         \
