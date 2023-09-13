@@ -281,21 +281,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QGMLWY] = LAYOUT( \
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   XXXXX,  \
          D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,    \
-   SFT,  Z_S,    X_CT,    KC_C,    KC_V,  GUI,          DOT,     KC_J,    KC_K,   P_AL,   SFT, SFT, \
+   SFT,  Z_S,    X_CT,    KC_C,    KC_V,  GUI,          DOT,     KC_J,    KC_K,   P_AL,   S_S, SFT, \
                           TABC,    GALT,  SPC,          ENT,     BSPC,    ESCS         \
 ),
 
 [LOWER] = LAYOUT( \
            EXLM,    DQT,    HASH,  DLR,    PERC,        AMPR,    QUOT,  GRV,    PIPE,  YEN,    \
            ESC,     LPRN,   RPRN,  LCBR,   RCBR,        TILD,    DOT,   SLSH,   EQL,   AT,     \
-    XXXXX, XXXXX,   LBRC,   RBRC,  KC_LT,  KC_GT,       CIRC,    COMM,  XXXXX,  XXXXX, XXXXX, XXXXX, \
+    XXXXX, CIRC,    LBRC,   RBRC,  KC_LT,  KC_GT,       CIRC,    COMM,  XXXXX,  XXXXX, XXXXX, XXXXX, \
                             ESC,   TAB,    KC_SPC,      XXXXX,   XXXXX, XXXXX                  \
 ),
 
 [RAISE] = LAYOUT( \
            KC_1,    KC_2,   KC_3,   KC_4,   KC_5,       KC_6,     KC_7,    KC_8,   KC_9,   KC_0, \
            TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,      KC_F5,    KC_F12,  KC_F7,  KC_F8,  AT,   \
-  XXXXX,   XXXXX,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, XXXXX, \
+  XXXXX,   UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, XXXXX, \
                             XXXXX,  XXXXX,  XXXXX,      DOT,      COMM,    ASTR                 \
 ),
 
