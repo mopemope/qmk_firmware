@@ -47,3 +47,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
+
+#define SPLIT_USB_TIMEOUT 5000
+#define SPLIT_USB_TIMEOUT_POLL 25
