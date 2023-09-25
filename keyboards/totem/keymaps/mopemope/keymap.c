@@ -146,6 +146,7 @@ extern keymap_config_t keymap_config;
 #define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
 #define COMM   JP_COMM
+#define COMS   LSFT_T(JP_COMM)
 #define CCOM   LCTL(JP_COMM)
 #define DOT    JP_DOT
 #define CDOT   LCTL(JP_DOT)
@@ -282,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   XXXXX,  \
          D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,    \
    SFT,  Z_S,    X_CT,    KC_C,    KC_V,  GUI,          DOT,     KC_J,    KC_K,   P_AL,   S_S, SFT, \
-                          TABC,    GALT,  SPC,          ENT,     BSPC,    COMM         \
+                          TABC,    GALT,  SPC,          ENT,     BSPC,    COMS         \
 ),
 
 [LOWER] = LAYOUT( \
@@ -296,7 +297,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_1,    KC_2,   KC_3,   KC_4,   KC_5,       KC_6,     KC_7,    KC_8,   KC_9,   KC_0, \
            TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,      KC_F5,    KC_F12,  KC_F7,  KC_F8,  AT,   \
   XXXXX,   UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, XXXXX, \
-                            XXXXX,  XXXXX,  XXXXX,      DOT,      SLSH,    COMM                 \
+                            XXXXX,  XXXXX,  XXXXX,      DOT,      COMM,    SLSH                 \
 ),
 
 [MISCL] = LAYOUT( \
@@ -370,9 +371,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ), */
 
 [CYBER] = LAYOUT(                                                         \
-       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        XXXXX,  KC_M,   KC_J ,  KC_K,  ESC,         \
-       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  KC_I,   KC_O,   KC_P,  XXXXX,       \
-  ESC, KC_Z,   KC_X,   GALT,   KC_V,   KC_T,        XXXXX,  XXXXX,  XXXXX,  KC_V,  KC_N,  DQG,  \
+       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,  KC_M,   KC_J ,  KC_K,  XXXXX, \
+       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_3,  KC_I,   KC_O,   KC_P,  XXXXX, \
+  ESC, GCTL,   KC_X,   GALT,   KC_V,   KC_T,        KC_N,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
                        KC_Z,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \
 ),
 
