@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
 
-#define DEBOUNCE 5
+#define DEBOUNCE 6
 
 /* Serial settings */
 #define USE_SERIAL
@@ -48,5 +48,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
 
-#define SPLIT_USB_TIMEOUT 5000
-#define SPLIT_USB_TIMEOUT_POLL 25
+#define SPLIT_USB_TIMEOUT 10000
+#define SPLIT_USB_TIMEOUT_POLL 30
