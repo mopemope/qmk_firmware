@@ -17,7 +17,7 @@ extern keymap_config_t keymap_config;
 #define COMBT   8
 #define SF6     9
 #define VAL    10
-#define EFT    11
+#define COD    11
 #define DIV    12
 #define CYBER  13
 
@@ -336,7 +336,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBT] =  LAYOUT( \
-           GVAL,   XXXXX,   GSF6,  XXXXX,  GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           GVAL,   XXXXX,   GSF6,  GCOD,   GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            _____,  _____,  _____,      MINS,   UNDS,   SLSH                     \
@@ -375,6 +375,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_3,  KC_I,   KC_O,   KC_P,  XXXXX, \
   ESC, GCTL,   KC_X,   GALT,   KC_V,   KC_T,        KC_N,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
                        KC_Z,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \
+),
+
+[COD] = LAYOUT(                                                         \
+       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_2,   KC_3,   KC_4,   XXXXX, \
+       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_B,   KC_M,   KC_7,   KC_8,   XXXXX, \
+  ESC, GCTL,   GALT,   KC_Z,   KC_X,   KC_G,        KLEFT,  KUP,    KDOWN,  KRIGHT, XXXXX,  DQG, \
+                       KC_V,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \
 ),
 
 };
