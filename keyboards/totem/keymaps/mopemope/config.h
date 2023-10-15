@@ -11,7 +11,7 @@ for more options.
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 #define NO_ACTION_ONESHOT
-// #define FORCE_NKRO
+#define FORCE_NKRO
 // #define DEBOUNCE 3
 // #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 0
