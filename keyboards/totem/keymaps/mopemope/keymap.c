@@ -85,6 +85,7 @@ extern keymap_config_t keymap_config;
 #define H_S    LSFT_T(KC_H)
 #define I_S    LSFT_T(KC_I)
 #define TABC   CTL_T(KC_TAB)
+#define TABG   GUI_T(KC_TAB)
 #define TABS   LSFT_T(KC_TAB)
 #define ESCC   CTL_T(KC_ESC)
 #define ESCS   LSFT_T(KC_ESC)
@@ -283,7 +284,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   XXXXX,  \
          D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,    \
    SFT,  Z_S,    X_CT,    KC_C,    KC_V,  GUI,          DOT,     KC_J,    KC_K,   P_AL,   S_S, SFT, \
-                          TABC,    GALT,  SPC,          ENT,     BSPC,    COMS         \
+                          TABC,    GALT,  SPC,          ENT,     BSPC,    GUI         \
 ),
 
 [LOWER] = LAYOUT( \
