@@ -8,10 +8,6 @@
     "polling_interval": 1,
     "device_version": "0.3.0"
   },
-  "build": {
-    "debounce_type": "sym_eager_pk",
-    "firmware_format": "uf2"
-  },
   "debounce": 5,
   "layouts": {
     "LAYOUT": {
