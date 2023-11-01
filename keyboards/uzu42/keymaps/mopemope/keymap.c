@@ -14,11 +14,11 @@
 #define SF6     9
 #define VAL    10
 #define CYBER  11
+#define COD    12
 //#define DB3    11
 //#define R6S    12
-//#define DIV    13
-//#define EFT    14
-#define COD    12
+#define DIV    13
+#define EFT    14
 
 /* #define SN     16 */
 /* #define DAD    17 */
@@ -259,8 +259,6 @@ enum custom_keycodes {
   TY,
   NT,
   SRY,
-  LDR,
-  RDR,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -321,7 +319,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [COMBT] = LAYOUT( \
-    GVAL,   GEFT,   GSF6,   ______, GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
+    GVAL,   GEFT,   GSF6,   GCOD,   GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
     GDV2,   ______, ______, ______, GCOD,                        TILD,   EQL,    COLN,   SCLN,   AT, \
     ______, ______, ______, ______, ______,                      CIRC,   MINS,   COMM,   DOT,    SLSH,   \
     ______, ______, ______, ______, ______, ______,      TAB,    DQT,    QUOT,   ______, ______, ______ \
@@ -434,9 +432,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [SF6] = LAYOUT( \
     XXXXXX, KC_Q,   KC_W,   KC_E,   KC_R,                        XXXXXX, KC_U,   KC_I,   KC_O,   XXXXXX, \
-    KC_B,   KC_A,   KC_S,   KC_D,   KC_F,                        XXXXXX, KC_J,   KC_K,   KC_L,   XXXXXX, \
-    KC_Z,   XXXXXX, KC_C,   XXXXXX, XXXXXX,                      XXXXXX, XXXXXX, KC_N,   KC_M,   KC_T,    \
-    TAB,    XXXXXX, XXXXXX, ESC,    KC_B,   KC_W,       KC_G,    KC_H,   ALTZ,   REC,    XXXXXX, DQG      \
+    XXXXXX, KC_A,   KC_S,   KC_D,   KC_F,                        XXXXXX, KC_J,   KC_K,   KC_L,   XXXXXX, \
+    KC_Z,   XXXXXX, KC_C,   XXXXXX, XXXXXX,                      XXXXXX, XXXXXX, XXXXXX, XXXXXX, KC_T,    \
+    TAB,    ESC,    XXXXXX, XXXXXX, KC_B,   KC_W,       KC_G,    KC_H,   XXXXXX, XXXXXX, ESC,    DQG      \
   ),
 
 };
@@ -530,18 +528,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case SRY:
     if (record->event.pressed) {
       SEND_STRING("s" "r" "y");
-    }
-    break;
-  case RDR:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_D));
-      SEND_STRING(SS_TAP(X_D));
-    }
-    break;
-  case LDR:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_A));
-      SEND_STRING(SS_TAP(X_A));
     }
     break;
   }
