@@ -23,4 +23,4 @@ for more options.
 #define PREVENT_STUCK_MODIFIERS
 #define PERMISSIVE_HOLD
 #define TAPPING_FORCE_HOLD
-/* #defineTAPPING_TERM 150 */
+/* #define TAPPING_TERM 150 */
