@@ -20,6 +20,7 @@ extern keymap_config_t keymap_config;
 #define EFT    11
 #define DIV    12
 #define CYBER  13
+#define COD    14
 
 /* #define CYBER  22 */
 /* #define BL3    10 */
@@ -85,6 +86,7 @@ extern keymap_config_t keymap_config;
 #define H_S    LSFT_T(KC_H)
 #define I_S    LSFT_T(KC_I)
 #define TABC   CTL_T(KC_TAB)
+#define TABG   GUI_T(KC_TAB)
 #define TABS   LSFT_T(KC_TAB)
 #define ESCC   CTL_T(KC_ESC)
 #define ESCS   LSFT_T(KC_ESC)
@@ -146,6 +148,7 @@ extern keymap_config_t keymap_config;
 #define CIRC   CTL_T(JP_CIRC)
 #define SCLN   JP_SCLN
 #define COMM   JP_COMM
+#define COMS   LSFT_T(JP_COMM)
 #define CCOM   LCTL(JP_COMM)
 #define DOT    JP_DOT
 #define CDOT   LCTL(JP_DOT)
@@ -281,14 +284,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QGMLWY] = LAYOUT( \
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   XXXXX,  \
          D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,    \
-   SFT,  Z_S,    X_CT,    KC_C,    KC_V,  GUI,          DOT,     KC_J,    KC_K,   P_AL,   S_S, SFT, \
-                          TABC,    GALT,  SPC,          ENT,     BSPC,    ESCS         \
+   SFT,  Z_S,    X_CT,    KC_C,    KC_V,  TABG,         DOT,     KC_J,    KC_K,   P_AL,   S_S, SFT, \
+                          TABC,    GALT,  SPC,          ENT,     BSPC,    GUI         \
 ),
 
 [LOWER] = LAYOUT( \
            EXLM,    DQT,    HASH,  DLR,    PERC,        AMPR,    QUOT,  GRV,    PIPE,  YEN,    \
            ESC,     LPRN,   RPRN,  LCBR,   RCBR,        TILD,    DOT,   SLSH,   EQL,   AT,     \
-    XXXXX, CIRC,    LBRC,   RBRC,  KC_LT,  KC_GT,       CIRC,    COMM,  XXXXX,  XXXXX, XXXXX, XXXXX, \
+    XXXXX, CIRC,    LBRC,   RBRC,  KC_LT,  KC_GT,       CIRC,    COMM,  XXXXX,  XXXXX, SLSH, XXXXX, \
                             ESC,   TAB,    KC_SPC,      XXXXX,   XXXXX, XXXXX                  \
 ),
 
@@ -296,13 +299,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_1,    KC_2,   KC_3,   KC_4,   KC_5,       KC_6,     KC_7,    KC_8,   KC_9,   KC_0, \
            TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,      KC_F5,    KC_F12,  KC_F7,  KC_F8,  AT,   \
   XXXXX,   UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, XXXXX, \
-                            XXXXX,  XXXXX,  XXXXX,      DOT,      COMM,    ASTR                 \
+                            XXXXX,  XXXXX,  XXXXX,      DOT,      COMM,    SLSH                 \
 ),
 
 [MISCL] = LAYOUT( \
           QK_RBT,  XXXXX,  GU,     XXXXX,  WRKSP1,      UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
           XXXXX,   GL,     GD,     GR,     WRKSP2,      DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
-    SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  XXXXX, SFT, \
+    SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
                            COPY,   PASTE,  GUI,         TAB,      M_V,    C_V                     \
 ),
 
@@ -310,14 +313,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            QK_RBT,  XXXXX,  GU,    XXXXX,  PREVW,       PREVTB,  MLT,     KUP,    MGT,    DEL,    \
            TAB,     GL,     GD,    GR,     NEXTW,       NEXTTB,  KLEFT,   KDOWN,  KRIGHT, XXXXX,  \
      SFT,  SFT,     XXXXX,  XXXXX, XXXXX,  XXXXX,       XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
-                            XXXXX, CXU,    KC_SPC,      TAB,     DEL,     AU                   \
+                            XXXXX, CXU,    KC_SPC,      DOT,     DEL,     COMM                   \
 ),
 
 [COMBA] =  LAYOUT( \
            CQ,     CG,    CMM,    CL,      APERC,       _____,  CXCF,   CXU,   CXCB,   _____,  \
            MD,     CXCS,  CT,     CMN,     MX,          _____,  _____,  CXCC,  CXO,    CAT,    \
   QK_BOOT, CZ,     CX,    _____,  _____,   _____,       _____,  _____,  CK,    _____,  _____,  QK_BOOT,\
-                          ESC,    TAB,     ZHTG,        CCX,    _____,  _____                  \
+                          ESC,    TAB,     ZHTG,        DOT,    _____,  COMM                  \
 ),
 
 [COMBN] =  LAYOUT( \
@@ -335,14 +338,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBT] =  LAYOUT( \
-           GVAL,   GEFT,   GSF6,   GDV2,   GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
-           _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
+           GVAL,   GDV2,   GSF6,   _____,  GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  _____,  _____,  _____,  GEFT,       TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            _____,  _____,  _____,      MINS,   UNDS,   SLSH                     \
 ),
 
 [SF6] = LAYOUT(                                                       \
-       XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        XXXXX,  KC_U,   KC_I,   KC_O,  XXXXX,      \
+       XXXXX,  KC_Q,   KC_W,   KC_E,   KC_R,        XXXXX,  KC_U,   KC_I,   KC_O,  XXXXX,      \
        XXXXX,  KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  KC_J,   KC_K,   KC_L,  XXXXX,       \
   TAB, KC_Z,   XXXXX,  KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  XXXXX,  XXXXX, KC_T, DQG,  \
                        ESC,    KC_B,   KC_W,        KC_G,   KC_H,   XXXXX                       \
@@ -358,7 +361,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [EFT] = LAYOUT(                                                         \
        TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
        SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
-  KC_Y,KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
+  ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
                        GCTL,   GALT,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \
 ),
 
@@ -370,11 +373,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [CYBER] = LAYOUT(                                                         \
-       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        XXXXX,  KC_M,   KC_J ,  KC_K,  ESC,         \
-       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  KC_I,   KC_O,   KC_P,  XXXXX,       \
-  ESC, KC_Z,   KC_X,   GALT,   KC_V,   KC_T,        XXXXX,  XXXXX,  XXXXX,  KC_V,  KC_N,  DQG,  \
+       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,  KC_M,   KC_J ,  KC_K,  XXXXX, \
+       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_3,  KC_I,   KC_O,   KC_P,  XXXXX, \
+  ESC, GCTL,   KC_X,   GALT,   KC_V,   KC_T,        KC_N,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
                        KC_Z,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \
 ),
+
+/* [COD] = LAYOUT(                                                         \ */
+/*        TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_2,   KC_3,   KC_4,   XXXXX, \ */
+/*        SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_B,   KC_M,   KC_7,   KC_8,   XXXXX, \ */
+/*   ESC, GCTL,   GALT,   KC_Z,   KC_X,   KC_G,        KLEFT,  KUP,    KDOWN,  KRIGHT, XXXXX,  DQG, \ */
+/*                        KC_V,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \ */
+/* ), */
 
 };
 
