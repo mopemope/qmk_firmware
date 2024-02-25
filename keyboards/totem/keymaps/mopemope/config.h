@@ -12,7 +12,7 @@ for more options.
 #undef LOCKING_RESYNC_ENABLE
 #define NO_ACTION_ONESHOT
 #define FORCE_NKRO
-#define DEBOUNCE 32
+#define DEBOUNCE 16
 #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 1
 #define TAP_HOLD_CAPS_DELAY 0
