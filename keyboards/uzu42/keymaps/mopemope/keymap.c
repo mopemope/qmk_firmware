@@ -15,7 +15,7 @@
 #define VAL    10
 #define CYBER  11
 //#define DB3    11
-//#define R6S    12
+#define R6S    12
 #define DIV    13
 #define EFT    14
 #define COD    15
@@ -321,7 +321,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [COMBT] = LAYOUT( \
-    GVAL,   GDV2,   GSF6,   ______, GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
+    GVAL,   GDV2,   GSF6,   GR6S,   GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
     ______, ______, ______, ______, GEFT,                        TILD,   EQL,    COLN,   SCLN,   AT, \
     ______, ______, ______, ______, ______,                      CIRC,   MINS,   COMM,   DOT,    SLSH,   \
     ______, ______, ______, ______, ______, ______,      TAB,    DQT,    QUOT,   ______, ______, ______ \
@@ -355,12 +355,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*   KC_X,   XXXXXX, XXXXXX, KC_V,   KC_C,   KC_SPC,      GENT,   ALTZ,   REC,    XXXXXX, XXXXXX, DQG      \ */
   /* ), */
 
-  /* [R6S] = LAYOUT( \ */
-  /*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_F5,  KC_F6,  KC_F7,  ALTZ,    \ */
-  /*   KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        KC_U,   KC_5,   KC_6,   KC_7,   ALTX,    \ */
-  /*   GALT,   KC_Z,   GCTL,   KC_X,   KC_G,                        KC_Y,   KC_B,   ______, ______, GUI,     \ */
-  /*   KC_5,   KC_6,   KC_B,   KC_V,   KC_C,   KC_SPC,      GENT,   ESC,    REC,    XXXXXX, ESC,    DQG      \ */
-  /* ), */
+  [R6S] = LAYOUT( \
+    TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_F5,  KC_F6,  KC_F7,  ALTZ,    \
+    KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        KC_U,   KC_5,   KC_6,   KC_7,   ALTX,    \
+    GALT,   KC_Z,   GCTL,   KC_X,   KC_G,                        KC_Y,   KC_B,   ______, ______, GUI,     \
+    KC_5,   KC_6,   KC_B,   KC_V,   KC_C,   KC_SPC,      GENT,   ESC,    REC,    XXXXXX, ESC,    DQG      \
+  ),
 
   /* [CH2] = LAYOUT( \ */
   /*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        KC_1,   KC_2,   KC_3,   KC_4,   ESC,     \ */
