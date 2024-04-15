@@ -16,7 +16,7 @@
 #define CYBER  11
 //#define DB3    11
 #define R6S    12
-#define DIV    13
+#define BL3    13
 #define EFT    14
 #define COD    15
 
@@ -321,7 +321,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [COMBT] = LAYOUT( \
-    GVAL,   GDV2,   GSF6,   GR6S,   GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
+    GVAL,   GBL3,   GSF6,   GR6S,   GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
     ______, ______, ______, ______, GEFT,                        TILD,   EQL,    COLN,   SCLN,   AT, \
     ______, ______, ______, ______, ______,                      CIRC,   MINS,   COMM,   DOT,    SLSH,   \
     ______, ______, ______, ______, ______, ______,      TAB,    DQT,    QUOT,   ______, ______, ______ \
@@ -348,12 +348,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ______, ______, ______, KC_Z,   KC_C,   KC_SPC,      GENT,   ALTZ,   REC,    ______, ______, DQG     \
   ),
 
-  /* [BL3] = LAYOUT( \ */
-  /*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_F5,  KC_F6,  KC_F7,  ESC,     \ */
-  /*   KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        ______, KC_5,   KC_6,   KC_7,   ______,  \ */
-  /*   GCTL,   KC_L,   KC_M,   KC_I,   KC_G,                        KC_Y,   KC_T,   KC_B,   KC_U,   ______,  \ */
-  /*   KC_X,   XXXXXX, XXXXXX, KC_V,   KC_C,   KC_SPC,      GENT,   ALTZ,   REC,    XXXXXX, XXXXXX, DQG      \ */
-  /* ), */
+  [BL3] = LAYOUT( \
+    TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_F5,  KC_F6,  KC_F7,  ESC,     \
+    KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        ______, KC_5,   KC_6,   KC_7,   ______,  \
+    GCTL,   KC_L,   KC_M,   KC_I,   KC_G,                        KC_Y,   KC_T,   KC_B,   KC_U,   ______,  \
+    KC_X,   XXXXXX, XXXXXX, KC_V,   KC_C,   KC_SPC,      GENT,   ALTZ,   REC,    XXXXXX, XXXXXX, DQG      \
+  ),
 
   [R6S] = LAYOUT( \
     TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        ______, KC_F5,  KC_F6,  KC_F7,  ALTZ,    \
