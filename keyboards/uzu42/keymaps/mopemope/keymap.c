@@ -322,7 +322,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [COMBT] = LAYOUT( \
-    GAPEX,  GBL3,   GSF6,   GR6S,   GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
+    GAPEX,  GBL3,   GSF6,   GCOD,   GCYB,                        AMPR,   EXLM,   PLUS,   ASTR,   PIPE,   \
     ______, ______, ______, ______, GEFT,                        TILD,   EQL,    COLN,   SCLN,   AT, \
     ______, ______, ______, ______, ______,                      CIRC,   MINS,   COMM,   DOT,    SLSH,   \
     ______, ______, ______, ______, ______, ______,      TAB,    DQT,    QUOT,   ______, ______, ______ \
