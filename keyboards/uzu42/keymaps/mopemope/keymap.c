@@ -373,7 +373,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COD] = LAYOUT( \
     TAB,    KC_Q,   KC_W,   KC_E,   KC_R,                        KC_1,   KC_2,   KC_3,   KC_4,   ESC,     \
     KC_LSFT,KC_A,   KC_S,   KC_D,   KC_F,                        KC_5,   KC_6,   KC_7,   KC_8,   GUI,     \
-    GCTL,   KC_K,   KC_M,   KC_X,   KC_G,                        KLEFT,  KUP,    KDOWN,  KRIGHT, ______,  \
+    GCTL,   KC_K,   KC_M,   KC_X,   KC_G,                        KLEFT,  KUP,    KDOWN,  KRIGHT, KC_T,    \
     KC_5,   KC_4,   KC_3,   KC_V,   KC_C,   KC_SPC,      GENT,   ALTZ,   REC,    KC_Y,   KC_B,   DQG      \
   ),
 
