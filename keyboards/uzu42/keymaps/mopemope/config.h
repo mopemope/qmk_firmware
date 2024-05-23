@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
-#define DEBOUNCE 8
+#define DEBOUNCE 10
 #define NO_ACTION_ONESHOT
 #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 1
