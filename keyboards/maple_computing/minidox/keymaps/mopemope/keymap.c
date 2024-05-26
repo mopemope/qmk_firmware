@@ -1,8 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "keymap_japanese.h"
 
-extern keymap_config_t keymap_config;
-
 #define QGMLWY  0
 #define LOWER   1
 #define RAISE   2
@@ -254,11 +252,6 @@ enum custom_keycodes {
   CCP,
   CCZ,
   CCX,
-  CCT,
-  CCC,
-  CXTT,
-  CCR,
-  CCW,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -331,10 +324,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBE] =  LAYOUT(                                                                       \
-   CAF7,  _____,  CUP,    _____,  CCW,            DQG,    _____,  _____, _____,  _____,  \
-   CAF2,  CLEFT,  CDOWN,  CRIGHT, CCR,            AU,     CU,     _____, _____,  _____,  \
-   PSCR,  _____,  _____,  _____,  _____,          _____,  _____,  _____, _____,  _____,  \
-                  _____,  _____,  KC_SPC,         DOT,    _____,  _____                  \
+   CAF7,  _____,  CUP,    _____,  _____,         DQG,    _____,  _____, _____,  _____,  \
+   CAF2,  CLEFT,  CDOWN,  CRIGHT, _____,         AU,     CU,     _____, _____,  _____,  \
+   PSCR,  _____,  _____,  _____,  _____,         _____,  _____,  _____, _____,  _____,  \
+                  _____,  _____,  KC_SPC,        DOT,    _____,  _____                  \
 ),
 
 [COMBT] =  LAYOUT( \
@@ -434,31 +427,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CCX:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("c") "x");
-    }
-    break;
-  case CCT:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "t");
-    }
-    break;
-  case CCC:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "c");
-    }
-    break;
-  case CXTT:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("x") "t" "t");
-    }
-    break;
-  case CCR:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "r");
-    }
-    break;
-  case CCW:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "w");
     }
     break;
   }
