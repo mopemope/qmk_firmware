@@ -12,7 +12,7 @@ for more options.
 #undef LOCKING_RESYNC_ENABLE
 #define NO_ACTION_ONESHOT
 #define FORCE_NKRO
-// #define DEBOUNCE 16
+//#define DEBOUNCE 10
 #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 1
 #define TAP_HOLD_CAPS_DELAY 0
@@ -20,7 +20,7 @@ for more options.
 #define GPIO_INPUT_PIN_DELAY 0
 #define NO_MUSIC_MODE
 
-#define PREVENT_STUCK_MODIFIERS
-#define PERMISSIVE_HOLD
-#define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 150
+/* #define PREVENT_STUCK_MODIFIERS */
+/* #define PERMISSIVE_HOLD */
+/* #define TAPPING_FORCE_HOLD */
+/* #define TAPPING_TERM 150 */

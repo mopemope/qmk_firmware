@@ -345,10 +345,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [SF6] = LAYOUT(                                                       \
-       XXXXX,  KC_Q,   KC_W,   KC_E,   KC_R,        XXXXX,  KC_U,   KC_I,   KC_O,  XXXXX,      \
-       XXXXX,  KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  KC_J,   KC_K,   KC_L,  XXXXX,       \
-  TAB, KC_Z,   XXXXX,  KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  XXXXX,  XXXXX, KC_T, DQG,  \
-                       ESC,    KC_B,   KC_W,        KC_G,   KC_H,   XXXXX                       \
+       XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,  XXXXX,      \
+       KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_G,   KC_J,   KC_K,   KC_L,  KC_U,        \
+  TAB, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
+                       ESC,    KC_B,   KC_W,        KC_H,   KC_P,   XXXXX                       \
 ),
 
 [VAL] = LAYOUT(                                                         \
