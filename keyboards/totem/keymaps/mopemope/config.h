@@ -12,8 +12,8 @@ for more options.
 #undef LOCKING_RESYNC_ENABLE
 #define NO_ACTION_ONESHOT
 #define FORCE_NKRO
-//#define DEBOUNCE 10
-#define LAYER_STATE_16BIT
+// #define DEBOUNCE 10
+// #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 1
 #define TAP_HOLD_CAPS_DELAY 0
 #define USB_POLLING_INTERVAL_MS 1
