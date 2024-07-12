@@ -14,9 +14,9 @@ for more options.
 #define FORCE_NKRO
 // #define DEBOUNCE 10
 // #define LAYER_STATE_16BIT
-/* #define TAP_CODE_DELAY 1 */
-/* #define TAP_HOLD_CAPS_DELAY 0 */
-/* #define USB_POLLING_INTERVAL_MS 1 */
+#define TAP_CODE_DELAY 1
+#define TAP_HOLD_CAPS_DELAY 0
+#define USB_POLLING_INTERVAL_MS 1
 /* #define GPIO_INPUT_PIN_DELAY 0 */
 #define NO_MUSIC_MODE
 
