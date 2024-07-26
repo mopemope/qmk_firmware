@@ -5,8 +5,8 @@ see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options.
 */
 
-// #define MASTER_LEFT
-#define MASTER_RIGHT
+#define MASTER_LEFT
+// #define MASTER_RIGHT
 
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
@@ -20,7 +20,7 @@ for more options.
 /* #define GPIO_INPUT_PIN_DELAY 0 */
 #define NO_MUSIC_MODE
 
-/* #define PREVENT_STUCK_MODIFIERS */
-/* #define PERMISSIVE_HOLD */
-/* #define TAPPING_FORCE_HOLD */
+#define PREVENT_STUCK_MODIFIERS
+#define PERMISSIVE_HOLD
+#define TAPPING_FORCE_HOLD
 /* #define TAPPING_TERM 150 */
