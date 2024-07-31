@@ -61,7 +61,7 @@ extern keymap_config_t keymap_config;
 #define PSCR   KC_PSCR
 #define SPSCR  LSFT(KC_PSCR)
 #define RJ     LT(RAISE,KC_J)
-#define LK     LT(LOWER,KC_K)
+// #define LK     LT(LOWER,KC_K)
 #define AC     LT(COMBA,KC_A)
 #define NC     LT(COMBN,KC_N)
 #define EC     LT(COMBE,KC_E)
@@ -276,13 +276,26 @@ enum custom_keycodes {
   SOCD_W,
   SOCD_A,
   SOCD_S,
-  SOCD_D
+  SOCD_D,
+  LP,
+  LK,
+  MP,
+  MK,
+  HP,
+  HK
 };
 
 bool w_down = false;
 bool a_down = false;
 bool s_down = false;
 bool d_down = false;
+
+bool lp_down = false;
+bool lk_down = false;
+bool mp_down = false;
+bool mk_down = false;
+bool hp_down = false;
+bool hk_down = false;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -350,8 +363,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [SF6] = LAYOUT(                                                       \
-       XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,  XXXXX,      \
-       KC_B,   SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_G,   KC_J,   KC_K,   KC_L,  KC_U,        \
+       XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   LP,     MP,     HP,    XXXXX,      \
+       KC_B,   SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_G,   LK,     MK,     HK,    KC_U,        \
   TAB, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
                        KC_B,   XXXXX,  SOCD_W,      KC_H,   KC_P,   KC_T                       \
 ),
@@ -463,6 +476,78 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (a_down) {
         register_code(KC_A);
       }
+    }
+    return false;
+  case LP:
+    if (record->event.pressed) {
+      if (lk_down) {
+        unregister_code(KC_J);
+      }
+      register_code(KC_U);
+      lp_down = true;
+    } else {
+      unregister_code(KC_U);
+      lp_down = false;
+    }
+    return false;
+  case LK:
+    if (record->event.pressed) {
+      if (lp_down) {
+        unregister_code(KC_U);
+      }
+      register_code(KC_J);
+      lk_down = true;
+    } else {
+      unregister_code(KC_J);
+      lk_down = false;
+    }
+    return false;
+  case MP:
+    if (record->event.pressed) {
+      if (mk_down) {
+        unregister_code(KC_K);
+      }
+      register_code(KC_I);
+      mp_down = true;
+    } else {
+      unregister_code(KC_I);
+      mp_down = false;
+    }
+    return false;
+  case MK:
+    if (record->event.pressed) {
+      if (mp_down) {
+        unregister_code(KC_I);
+      }
+      register_code(KC_K);
+      mk_down = true;
+    } else {
+      unregister_code(KC_K);
+      mk_down = false;
+    }
+    return false;
+  case HP:
+    if (record->event.pressed) {
+      if (hk_down) {
+        unregister_code(KC_L);
+      }
+      register_code(KC_O);
+      hp_down = true;
+    } else {
+      unregister_code(KC_O);
+      hp_down = false;
+    }
+    return false;
+  case HK:
+    if (record->event.pressed) {
+      if (hp_down) {
+        unregister_code(KC_O);
+      }
+      register_code(KC_L);
+      hk_down = true;
+    } else {
+      unregister_code(KC_L);
+      hk_down = false;
     }
     return false;
   case CXCF:
