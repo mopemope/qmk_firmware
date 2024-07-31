@@ -20,7 +20,7 @@ for more options.
 /* #define GPIO_INPUT_PIN_DELAY 0 */
 #define NO_MUSIC_MODE
 
-#define PREVENT_STUCK_MODIFIERS
-#define PERMISSIVE_HOLD
-#define TAPPING_FORCE_HOLD
+/* #define PREVENT_STUCK_MODIFIERS */
+/* #define PERMISSIVE_HOLD */
+/* #define TAPPING_FORCE_HOLD */
 /* #define TAPPING_TERM 150 */
