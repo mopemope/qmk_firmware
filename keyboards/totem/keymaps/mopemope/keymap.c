@@ -271,13 +271,18 @@ enum custom_keycodes {
   CCN,
   CCP,
   CCZ,
-  CCX,
-  CCT,
-  CCC,
-  CXTT,
   CCR,
   CCW,
+  SOCD_W,
+  SOCD_A,
+  SOCD_S,
+  SOCD_D
 };
+
+bool w_down = false;
+bool a_down = false;
+bool s_down = false;
+bool d_down = false;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -346,9 +351,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [SF6] = LAYOUT(                                                       \
        XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,  XXXXX,      \
-       KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_G,   KC_J,   KC_K,   KC_L,  KC_U,        \
+       KC_B,   SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_G,   KC_J,   KC_K,   KC_L,  KC_U,        \
   TAB, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
-                       ESC,    KC_B,   KC_W,        KC_H,   KC_P,   KC_T                       \
+                       ESC,    KC_B,   SOCD_W,      KC_H,   KC_P,   KC_T                       \
 ),
 
 [VAL] = LAYOUT(                                                         \
@@ -395,6 +400,71 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case SOCD_W:
+    if (record->event.pressed) {
+      if (s_down) {
+        unregister_code(KC_S);
+      } else {
+        register_code(KC_W);
+      }
+      w_down = true;
+    } else {
+      unregister_code(KC_W);
+      w_down = false;
+      if (s_down) {
+        register_code(KC_S);
+      }
+    }
+    return false;
+  case SOCD_A:
+    if (record->event.pressed) {
+      if (d_down) {
+        unregister_code(KC_D);
+      } else {
+        register_code(KC_A);
+      }
+      a_down = true;
+    } else {
+      unregister_code(KC_A);
+      a_down = false;
+      if (d_down) {
+        register_code(KC_D);
+      }
+    }
+    return false;
+  case SOCD_S:
+    if (record->event.pressed) {
+      if (w_down) {
+        unregister_code(KC_W);
+      } else {
+        register_code(KC_S);
+      }
+      s_down = true;
+    } else {
+      unregister_code(KC_S);
+      s_down = false;
+
+      if (w_down) {
+        register_code(KC_W);
+      }
+    }
+    return false;
+  case SOCD_D:
+    if (record->event.pressed) {
+      if (a_down) {
+        unregister_code(KC_A);
+      } else {
+        register_code(KC_D);
+      }
+      d_down = true;
+    } else {
+      unregister_code(KC_D);
+      d_down = false;
+      if (a_down) {
+        register_code(KC_A);
+      }
+    }
+    return false;
   case CXCF:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("xf"));
@@ -443,26 +513,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CCZ:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("c") "z");
-    }
-    break;
-  case CCX:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "x");
-    }
-    break;
-  case CCT:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "t");
-    }
-    break;
-  case CCC:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "c");
-    }
-    break;
-  case CXTT:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("x") "t" "t");
     }
     break;
   case CCR:
