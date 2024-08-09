@@ -370,15 +370,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [VAL] = LAYOUT(                                                         \
-       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_F1,  KC_F2,  KC_F3,  KC_4,  ALTZ,      \
-       KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \
+       TAB,    KC_Q,   SOCD_W, KC_E,   KC_R,        KC_F1,  KC_F2,  KC_F3,  KC_4,  ALTZ,      \
+       KC_B,   SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \
   KC_M,KC_Z,   KC_X,   KC_B,   KC_G,   KC_C,        KC_T,   KC_V,   KC_V,   KC_T,  GUI,  DQG,  \
                        KC_4,   GCTL,   KC_SPC,      KC_ENT, KC_H,   ESC                       \
 ),
 
 [EFT] = LAYOUT(                                                         \
-       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
-       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
+       TAB,    KC_Q,   SOCD_W, KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
+       SFT,    SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
   ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
                        GCTL,   GALT,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \
 ),
