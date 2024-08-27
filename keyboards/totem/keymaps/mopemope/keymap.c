@@ -364,7 +364,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [SF6] = LAYOUT(                                                       \
        XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   LP,     MP,     HP,    XXXXX,      \
-       XXXXX,  SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_G,   LK,     MK,     HK,    XXXXX,      \
+       XXXXX,  SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_G,   LK,     MK,     HK,    KC_B,       \
   TAB, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
                        KC_B,   XXXXX,  SOCD_W,      KC_H,   XXXXX,  KC_P                       \
 ),
