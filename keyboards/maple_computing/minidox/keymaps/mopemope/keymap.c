@@ -13,20 +13,22 @@ extern keymap_config_t keymap_config;
 #define COMBE   7
 #define COMBT   8
 #define SF6     9
+#define DEAD   10
+#define P3R    11
+#define CYBER  12
+#define EFT    13
 
-#define CYBER  22
-#define BL3    10
-#define R6S    11
-#define B4B    12
-#define LD     13
-#define APEX   14
-#define SN     15
-#define EFT    16
-#define DIV    17
-#define VAL    18
-#define COD    19
-#define BF     20
-#define KOC    21
+#define BL3    17
+#define R6S    18
+#define B4B    19
+#define LD     20
+#define APEX   21
+#define SN     22
+#define VAL    23
+#define DIV    24
+#define COD    26
+#define BF     27
+#define KOC    28
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -56,7 +58,6 @@ extern keymap_config_t keymap_config;
 #define PSCR   KC_PSCR
 #define SPSCR  LSFT(KC_PSCR)
 #define RJ     LT(RAISE,KC_J)
-#define LK     LT(LOWER,KC_K)
 #define AC     LT(COMBA,KC_A)
 #define NC     LT(COMBN,KC_N)
 #define EC     LT(COMBE,KC_E)
@@ -161,6 +162,8 @@ extern keymap_config_t keymap_config;
 #define GLD    DF(LD)
 #define GSN    DF(SN)
 #define GSF6   DF(SF6)
+#define GDL    DF(DEAD)
+#define GP3    DF(P3R)
 
 #define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
@@ -241,6 +244,7 @@ extern keymap_config_t keymap_config;
 #define GALT   KC_LALT
 #define AQ     LALT(KC_Q)
 #define AE     LALT(KC_E)
+#define SFT    KC_LSFT
 
 enum custom_keycodes {
   CXCF = SAFE_RANGE,
@@ -259,27 +263,31 @@ enum custom_keycodes {
   CXTT,
   CCR,
   CCW,
+  SW,
+  SA,
+  SS,
+  SD,
+  LP,
+  LK,
+  MP,
+  MK,
+  HP,
+  HK
 };
 
+bool w_down = false;
+bool a_down = false;
+bool s_down = false;
+bool d_down = false;
+
+bool lp_down = false;
+bool lk_down = false;
+bool mp_down = false;
+bool mk_down = false;
+bool hp_down = false;
+bool hk_down = false;
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[SF6] = LAYOUT( \
-  TAB,    KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,  XXXXX,      \
-  KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_G,   KC_J,   KC_K,   KC_L,  KC_U,       \
-  KC_Z,   KC_X,   KC_C,   KC_V,   QK_RBT,      XXXXX,  KC_N,   KC_M,   KC_T,  DQG,        \
-                  ESC,    KC_B,   KC_W,        KC_H,   KC_P,   KC_T                       \
-),
-/* [SF6] = LAYOUT( \ */
-/*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,   XXXXX,     \ */
-/*   KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_G,   KC_J,   KC_K,   KC_L,   KC_U,     \ */
-/*   KC_Z,   KC_X,   KC_C,   KC_V,   QK_RBT,      XXXXX,  KC_B,   KC_N,   KC_M,   KC_T,     \ */
-/*                   ESC,    KC_B,   KC_W,        KC_P,   KC_H,   DQG                       \ */
-/* ), */
-/* [SF62] = LAYOUT( \ */
-/*   TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_Y,   KC_U,   KC_I,   KC_O,   XXXXX,     \ */
-/*   KC_B,   KC_A,   KC_S,   KC_D,   KC_F,        KC_G,   KC_J,   KC_K,   KC_L,   KC_U,     \ */
-/*   KC_Z,   KC_X,   KC_C,   KC_V,   QK_RBT,      XXXXX,  KC_B,   KC_N,   KC_M,   KC_T,     \ */
-/*                   ESC,    KC_B,   KC_W,        KC_P,   KC_H,   DQG                       \ */
-/* ), */
 
 [QGMLWY] = LAYOUT( \
   KC_Q,   KC_G,    KC_M,   KC_L,    KC_W,        KC_Y,    KC_F,    KC_U,   KC_B,   BSP, \
@@ -338,10 +346,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBT] =  LAYOUT( \
-  _____,  _____,  GSF6,   _____,  _____,        DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+  _____,  GDL,    GSF6,   GP3,    GEFT,        DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
   _____,  _____,  _____,  _____,  _____,        TILD,   EQL,    COLN,   SCLN,   AT,     \
   _____,  _____,  _____,  _____,  _____,        CIRC,   MINS,   COMM,   DOT,    SLSH,   \
                   _____,  _____,  _____,        DOT,    QUOT,   _____                   \
+),
+
+[SF6] = LAYOUT( \
+  XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   LP,     MP,     HP,     XXXXX,      \
+  XXXXX,  SA,     SS,     SD,     KC_F,        KC_G,   LK,     MK,     HK,     XXXXX,       \
+  KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  KC_N,   KC_M,   KC_T,   DQG,        \
+                  TAB,    KC_B,   SW,          KC_H,   KC_P,   ESC                       \
+),
+
+[DEAD] = LAYOUT(                                                        \
+  TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_2,   KC_3,   KC_4,   ESC,     \
+  SFT,    KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,     \
+  KC_Z,   KC_X,   KC_C,   KC_V,   KC_G,        XXXXX,  XXXXX,  XXXXX,  XXXXX,  DQG,   \
+                  GCTL,   GALT,   KC_SPC,      KC_J,   KC_B,   KC_T                      \
+),
+
+[P3R] = LAYOUT(                                                         \
+  TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_G,   KC_Q,   KC_T,   KC_Y,   ESC,     \
+  SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_V,   KC_I,   KC_M,   KC_H,   KC_J,     \
+  KC_Z,   KC_X,   KC_C,   KC_V,   KC_M,        XXXXX,  XXXXX,  XXXXX,  XXXXX,  DQG,   \
+                  KC_H,   GCTL,   KC_SPC,      KC_ENT, KC_U,   KC_Z                      \
+),
+
+[CYBER] = LAYOUT(                                                         \
+  TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_M,   KC_J,   KC_K,   ESC,     \
+  SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_3,   KC_I,   KC_O,   KC_P,   KC_J,     \
+  GCTL,   KC_X,   GALT,   KC_V,   KC_T,        KC_N,   XXXXX,  XXXXX,  XXXXX,  DQG,   \
+                  KC_Z,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z                      \
+),
+
+[EFT] = LAYOUT(                                                         \
+  TAB,    KC_Q,   SW,     KC_E,   KC_R,        KC_1,   KC_2,   KC_3,   KC_4,   KC_5,     \
+  SFT,    SA,     SS,     SD,     KC_F,        KC_6,   KC_7,   KC_8,   KC_9,   KC_0,     \
+  KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   DEL,    DQG,   \
+                  GCTL,   GALT,   KC_SPC,      KC_ENT, KC_U,   KC_Z                      \
 ),
 
 /* [BL3] = LAYOUT( \ */
@@ -381,6 +424,142 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case SW:
+    if (record->event.pressed) {
+      if (s_down) {
+        unregister_code(KC_S);
+      } else {
+        register_code(KC_W);
+      }
+      w_down = true;
+    } else {
+      unregister_code(KC_W);
+      w_down = false;
+      if (s_down) {
+        register_code(KC_S);
+      }
+    }
+    return false;
+  case SA:
+    if (record->event.pressed) {
+      if (d_down) {
+        unregister_code(KC_D);
+      } else {
+        register_code(KC_A);
+      }
+      a_down = true;
+    } else {
+      unregister_code(KC_A);
+      a_down = false;
+      if (d_down) {
+        register_code(KC_D);
+      }
+    }
+    return false;
+  case SS:
+    if (record->event.pressed) {
+      if (w_down) {
+        unregister_code(KC_W);
+      } else {
+        register_code(KC_S);
+      }
+      s_down = true;
+    } else {
+      unregister_code(KC_S);
+      s_down = false;
+      if (w_down) {
+        register_code(KC_W);
+      }
+    }
+    return false;
+  case SD:
+    if (record->event.pressed) {
+      if (a_down) {
+        unregister_code(KC_A);
+      } else {
+        register_code(KC_D);
+      }
+      d_down = true;
+    } else {
+      unregister_code(KC_D);
+      d_down = false;
+      if (a_down) {
+        register_code(KC_A);
+      }
+    }
+    return false;
+  case LP:
+    if (record->event.pressed) {
+      if (lk_down) {
+        unregister_code(KC_J);
+      }
+      register_code(KC_U);
+      lp_down = true;
+    } else {
+      unregister_code(KC_U);
+      lp_down = false;
+    }
+    return false;
+  case LK:
+    if (record->event.pressed) {
+      if (lp_down) {
+        unregister_code(KC_U);
+      }
+      register_code(KC_J);
+      lk_down = true;
+    } else {
+      unregister_code(KC_J);
+      lk_down = false;
+    }
+    return false;
+  case MP:
+    if (record->event.pressed) {
+      if (mk_down) {
+        unregister_code(KC_K);
+      }
+      register_code(KC_I);
+      mp_down = true;
+    } else {
+      unregister_code(KC_I);
+      mp_down = false;
+    }
+    return false;
+  case MK:
+    if (record->event.pressed) {
+      if (mp_down) {
+        unregister_code(KC_I);
+      }
+      register_code(KC_K);
+      mk_down = true;
+    } else {
+      unregister_code(KC_K);
+      mk_down = false;
+    }
+    return false;
+  case HP:
+    if (record->event.pressed) {
+      if (hk_down) {
+        unregister_code(KC_L);
+      }
+      register_code(KC_O);
+      hp_down = true;
+    } else {
+      unregister_code(KC_O);
+      hp_down = false;
+    }
+    return false;
+  case HK:
+    if (record->event.pressed) {
+      if (hp_down) {
+        unregister_code(KC_O);
+      }
+      register_code(KC_L);
+      hk_down = true;
+    } else {
+      unregister_code(KC_L);
+      hk_down = false;
+    }
+    return false;
   case CXCF:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("xf"));

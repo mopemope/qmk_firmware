@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 #define EE_HANDS
 #define FORCE_NKRO
-#define DEBOUNCE 10
+#define DEBOUNCE 15
 #define NO_ACTION_ONESHOT
 #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 1
@@ -33,9 +33,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
-#define PREVENT_STUCK_MODIFIERS
-#define PERMISSIVE_HOLD
-#define TAPPING_FORCE_HOLD
+//#define PREVENT_STUCK_MODIFIERS
+//#define PERMISSIVE_HOLD
+//#define TAPPING_FORCE_HOLD
 //#define TAPPING_TERM 160
 
 /* #define RGB_DI_PIN D7 */
