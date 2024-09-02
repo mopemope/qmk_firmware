@@ -387,10 +387,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [DEAD] = LAYOUT(                                                         \
-       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  ESC,       \
-       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX,       \
-  ESC, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,        XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
-                       KC_Y,   GCTL,   KC_SPC,      KC_J,   KC_B,   KC_T                       \
+       ESC,    KC_1,   KC_W,   KC_2,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  ESC,       \
+       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_T,   XXXXX,  XXXXX,  XXXXX, XXXXX,       \
+  TAB, KC_B,   KC_X,   KC_3,   KC_4,   KC_Z,        KC_Z,   KC_X,   KC_C,   KC_V,  XXXXX,  DQG, \
+                       KC_Q,   GCTL,   KC_SPC,      KC_M,   KC_Y,   KC_J                       \
 ),
 
 [P3R] = LAYOUT(                                                        \
