@@ -276,10 +276,10 @@ enum custom_keycodes {
   CCZ,
   CCR,
   CCW,
-  SOCD_W,
-  SOCD_A,
-  SOCD_S,
-  SOCD_D,
+  SOCDW,
+  SOCDA,
+  SOCDS,
+  SOCDD,
   LP,
   LK,
   MP,
@@ -319,21 +319,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [RAISE] = LAYOUT( \
            KC_1,    KC_2,   KC_3,   KC_4,   KC_5,       KC_6,     KC_7,    KC_8,   KC_9,   KC_0, \
            TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,      KC_F5,    KC_F12,  KC_F7,  KC_F8,  AT,   \
-  XXXXX,   UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, XXXXX, \
+     UNDS, UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, MINS, \
                             XXXXX,  XXXXX,  XXXXX,      DOT,      COMM,    SLSH                 \
 ),
 
 [MISCL] = LAYOUT( \
-          QK_RBT,  XXXXX,  GU,     XXXXX,  WRKSP1,      UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
+          XXXXX,   XXXXX,  GU,     XXXXX,  WRKSP1,      UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
           XXXXX,   GL,     GD,     GR,     WRKSP2,      DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
     SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
                            COPY,   PASTE,  GUI,         TAB,      M_V,    C_V                     \
 ),
 
 [MISCR] =  LAYOUT( \
-           QK_RBT,  XXXXX,  GU,    XXXXX,  PREVW,       PREVTB,  MLT,     KUP,    MGT,    DEL,    \
-           TAB,     GL,     GD,    GR,     NEXTW,       NEXTTB,  KLEFT,   KDOWN,  KRIGHT, XXXXX,  \
-     SFT,  SFT,     XXXXX,  XXXXX, XXXXX,  XXXXX,       XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
+           XXXXX,  XXXXX,  GU,    XXXXX,  PREVW,       PREVTB,  MLT,     KUP,    MGT,    DEL,    \
+           TAB,    GL,     GD,    GR,     NEXTW,       NEXTTB,  KLEFT,   KDOWN,  KRIGHT, XXXXX,  \
+     SFT,  SFT,    XXXXX,  XXXXX, XXXXX,  XXXXX,       XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
                             XXXXX, CXU,    KC_SPC,      DOT,     DEL,     COMM                   \
 ),
 
@@ -359,50 +359,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBT] =  LAYOUT( \
-           GVAL,   GDEAD,  GSF6,   GP3R,   GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
-           _____,  _____,  _____,  _____,  GEFT,       TILD,   EQL,    COLN,   SCLN,   AT,     \
+           _____,  GDEAD,  GSF6,   GP3R,   GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            _____,  _____,  _____,      MINS,   UNDS,   SLSH                     \
 ),
 
 [SF6] = LAYOUT(                                                       \
        XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   LP,     MP,     HP,    XXXXX,      \
-       XXXXX,  SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_G,   LK,     MK,     HK,    XXXXX,       \
+       XXXXX,  SOCDA,  SOCDS,  SOCDD, KC_F,        KC_G,   LK,     MK,     HK,    XXXXX,       \
   TAB, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T, DQG,  \
-                       XXXXX,  KC_B,   SOCD_W,      KC_H,   KC_P,   XXXXX                       \
+                       XXXXX,  KC_B,   SOCDW,      KC_H,   KC_P,   XXXXX                       \
 ),
 
-[VAL] = LAYOUT(                                                         \
-       TAB,    KC_Q,   SOCD_W, KC_E,   KC_R,        KC_F1,  KC_F2,  KC_F3,  KC_4,  ALTZ,      \
-       KC_B,   SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \
-  KC_M,KC_Z,   KC_X,   KC_B,   KC_G,   KC_C,        KC_T,   KC_V,   KC_V,   KC_T,  GUI,  DQG,  \
-                       KC_4,   GCTL,   KC_SPC,      KC_ENT, KC_H,   ESC                       \
-),
+/* [VAL] = LAYOUT(                                                         \ */
+/*        TAB,    KC_Q,   SOCDW, KC_E,   KC_R,        KC_F1,  KC_F2,  KC_F3,  KC_4,  ALTZ,      \ */
+/*        KC_B,   SOCDA, SOCDS, SOCDD, KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \ */
+/*   KC_M,KC_Z,   KC_X,   KC_B,   KC_G,   KC_C,        KC_T,   KC_V,   KC_V,   KC_T,  GUI,  DQG,  \ */
+/*                        KC_4,   GCTL,   KC_SPC,      KC_ENT, KC_H,   ESC                       \ */
+/* ), */
 
-[EFT] = LAYOUT(                                                         \
-       TAB,    KC_Q,   SOCD_W, KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
-       SFT,    SOCD_A, SOCD_S, SOCD_D, KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
-  ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
-                       GCTL,   GALT,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \
-),
+/* [EFT] = LAYOUT(                                                         \ */
+/*        TAB,    KC_Q,   SOCDW, KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \ */
+/*        SFT,    SOCDA, SOCDS, SOCDD, KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \ */
+/*   ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \ */
+/*                        GCTL,   GALT,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \ */
+/* ), */
 
 [DEAD] = LAYOUT(                                                         \
-       TAB,    KC_3,   KC_W,   KC_4,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  ESC,       \
-       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_T,   XXXXX,  XXXXX,  XXXXX, XXXXX,       \
+       TAB,    KC_3,   SOCDW,  KC_4,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  ESC,       \
+       SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_T,   XXXXX,  XXXXX,  XXXXX, XXXXX,       \
   ESC, GALT,   KC_Z,   KC_X,   KC_C,   KC_B,        KC_Z,   KC_X,   KC_C,   KC_V,  XXXXX,  DQG, \
                        KC_Q,   GCTL,   KC_SPC,      KC_M,   KC_Y,   KC_J                       \
 ),
 
 [P3R] = LAYOUT(                                                        \
-       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_G,   KC_Q,   KC_T ,  KC_Y,  ESC,       \
-       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_V,   KC_I,   KC_M,   KC_H,  KC_J,       \
+       TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_G,   KC_Q,   KC_T ,  KC_Y,  ESC,       \
+       SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_V,   KC_I,   KC_M,   KC_H,  KC_J,       \
   KC_H,KC_Z,   KC_X,   KC_C,   KC_V,   KC_M,        XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
                        KC_B,   GCTL,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \
 ),
 
 [CYBER] = LAYOUT(                                                         \
-       TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,  KC_M,   KC_J ,  KC_K,  XXXXX, \
-       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_3,  KC_I,   KC_O,   KC_P,  XXXXX, \
+       TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,  KC_M,   KC_J ,  KC_K,  XXXXX, \
+       SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_3,  KC_I,   KC_O,   KC_P,  XXXXX, \
   ESC, GCTL,   KC_X,   GALT,   KC_V,   KC_T,        KC_N,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
                        KC_Z,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \
 ),
@@ -436,7 +436,7 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-  case SOCD_W:
+  case SOCDW:
     if (record->event.pressed) {
       if (s_down) {
         unregister_code(KC_S);
@@ -452,7 +452,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     }
     return false;
-  case SOCD_A:
+  case SOCDA:
     if (record->event.pressed) {
       if (d_down) {
         unregister_code(KC_D);
@@ -468,7 +468,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     }
     return false;
-  case SOCD_S:
+  case SOCDS:
     if (record->event.pressed) {
       if (w_down) {
         unregister_code(KC_W);
@@ -485,7 +485,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     }
     return false;
-  case SOCD_D:
+  case SOCDD:
     if (record->event.pressed) {
       if (a_down) {
         unregister_code(KC_A);
