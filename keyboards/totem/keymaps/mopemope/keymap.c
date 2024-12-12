@@ -303,7 +303,7 @@ bool hk_down = false;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [QGMLWY] = LAYOUT( \
-         Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   XXXXX,      \
+         Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   DEL,      \
          D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,        \
    GUI,  Z_S,    X_CT,    KC_C,    KC_V,  TABG,         DOT,     KC_J,    KC_K,   P_AL,   S_S,   GUI, \
                           TABC,    GALT,  SPC,          ENT,     BSPC,    GALT         \
@@ -376,7 +376,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_1,   KC_2,   KC_3,   KC_4,   KC_5,       KC_F1,  KC_F2,  KC_F3,  KC_F4, ALTZ,      \
         KC_6,   KC_7,   KC_8,   KC_9,   KC_0,       KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \
   XXXXX,XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,      KC_T,   KC_V,   KC_V,   KC_T,  GUI,   DQG,  \
-                        XXXXX,  XXXXX,  XXXXX,      KC_ENT, KC_H,   ESC                       \
+                        XXXXX,  BSPC,   KC_ENT,     KC_ENT, KC_H,   ESC                       \
 ),
 /* [VAL] = LAYOUT(                                                         \ */
 /*        TAB,    KC_Q,   SOCDW, KC_E,   KC_R,        KC_F1,  KC_F2,  KC_F3,  KC_4,  ALTZ,      \ */
