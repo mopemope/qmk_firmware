@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 #include "totem.h"
-
+#include "os_detection.h"
 #include "keymap_japanese.h"
 
 extern keymap_config_t keymap_config;
@@ -285,7 +285,9 @@ enum custom_keycodes {
   MP,
   MK,
   HP,
-  HK
+  HK,
+  NWS,
+  PWS
 };
 
 bool w_down = false;
@@ -299,6 +301,9 @@ bool mp_down = false;
 bool mk_down = false;
 bool hp_down = false;
 bool hk_down = false;
+
+bool os_win = false;
+bool os_linux = false;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -324,8 +329,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [MISCL] = LAYOUT( \
-          XXXXX,   XXXXX,  GU,     XXXXX,  WRKSP1,      UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
-          XXXXX,   GL,     GD,     GR,     WRKSP2,      DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
+          XXXXX,   XXXXX,  GU,     XXXXX,  NWS,         UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
+          XXXXX,   GL,     GD,     GR,     PWS,         DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
     SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
                            COPY,   PASTE,  GUI,         TAB,      M_V,    C_V                     \
 ),
@@ -439,6 +444,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
+}
+
+void keyboard_post_init_user(void) {
+  wait_ms(400);
+  switch (detected_host_os()) {
+    case OS_WINDOWS:
+      os_win = true;
+      os_linux = false;
+      break;
+    case OS_MACOS:
+    case OS_IOS:
+      break;
+    case OS_LINUX:
+      os_win = false;
+      os_linux = true;
+      break;
+    default:
+      os_win = false;
+      os_linux = true;
+  }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -640,6 +665,52 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_LCTL("c") "w");
     }
     break;
+  case NWS:
+    if (record->event.pressed) {
+      if (os_win) {
+        // LGUI(LCTL(KC_RIGHT))
+        register_code(KC_LGUI);
+        register_code(KC_LCTL);
+        register_code(KC_RIGHT);
+      } else {
+        // LGUI(KC_PGUP)
+        register_code(KC_LGUI);
+        register_code(KC_PGUP);
+      }
+    } else {
+      if (os_win) {
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTL);
+        unregister_code(KC_RIGHT);
+      } else {
+        unregister_code(KC_LGUI);
+        unregister_code(KC_PGUP);
+      }
+    }
+    return false;
+  case PWS:
+    if (record->event.pressed) {
+      if (os_win) {
+        // LGUI(LCTL(KC_LEFT))
+        register_code(KC_LGUI);
+        register_code(KC_LCTL);
+        register_code(KC_LEFT);
+      } else {
+        // LGUI(KC_PGUP)
+        register_code(KC_LGUI);
+        register_code(KC_PGDN);
+      }
+    } else {
+      if (os_win) {
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTL);
+        unregister_code(KC_LEFT);
+      } else {
+        unregister_code(KC_LGUI);
+        unregister_code(KC_PGDN);
+      }
+    }
+    return false;
   }
   return true;
 }
