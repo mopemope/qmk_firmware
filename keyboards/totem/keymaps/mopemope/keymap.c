@@ -302,9 +302,6 @@ bool mk_down = false;
 bool hp_down = false;
 bool hk_down = false;
 
-bool os_win = false;
-bool os_linux = false;
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [QGMLWY] = LAYOUT( \
@@ -329,8 +326,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [MISCL] = LAYOUT( \
-          XXXXX,   XXXXX,  GU,     XXXXX,  NWS,         UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
-          XXXXX,   GL,     GD,     GR,     PWS,         DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
+          XXXXX,   XXXXX,  GU,     XXXXX,  PWS,         UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
+          XXXXX,   GL,     GD,     GR,     NWS,         DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
     SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
                            COPY,   PASTE,  GUI,         TAB,      M_V,    C_V                     \
 ),
@@ -444,26 +441,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
-}
-
-void keyboard_post_init_user(void) {
-  wait_ms(400);
-  switch (detected_host_os()) {
-    case OS_WINDOWS:
-      os_win = true;
-      os_linux = false;
-      break;
-    case OS_MACOS:
-    case OS_IOS:
-      break;
-    case OS_LINUX:
-      os_win = false;
-      os_linux = true;
-      break;
-    default:
-      os_win = false;
-      os_linux = true;
-  }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -667,47 +644,48 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   case NWS:
     if (record->event.pressed) {
-      if (os_win) {
-        // LGUI(LCTL(KC_RIGHT))
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
         register_code(KC_LGUI);
         register_code(KC_LCTL);
         register_code(KC_RIGHT);
-      } else {
-        // LGUI(KC_PGUP)
+      default:
         register_code(KC_LGUI);
-        register_code(KC_PGUP);
+        register_code(KC_PGDN);
       }
     } else {
-      if (os_win) {
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
         unregister_code(KC_LGUI);
         unregister_code(KC_LCTL);
         unregister_code(KC_RIGHT);
-      } else {
+      default:
         unregister_code(KC_LGUI);
-        unregister_code(KC_PGUP);
+        unregister_code(KC_PGDN);
       }
     }
     return false;
   case PWS:
     if (record->event.pressed) {
-      if (os_win) {
-        // LGUI(LCTL(KC_LEFT))
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
         register_code(KC_LGUI);
         register_code(KC_LCTL);
         register_code(KC_LEFT);
-      } else {
-        // LGUI(KC_PGUP)
+      default:
         register_code(KC_LGUI);
-        register_code(KC_PGDN);
+        register_code(KC_PGUP);
       }
+
     } else {
-      if (os_win) {
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
         unregister_code(KC_LGUI);
         unregister_code(KC_LCTL);
         unregister_code(KC_LEFT);
-      } else {
+      default:
         unregister_code(KC_LGUI);
-        unregister_code(KC_PGDN);
+        unregister_code(KC_PGUP);
       }
     }
     return false;
