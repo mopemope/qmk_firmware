@@ -152,13 +152,14 @@ extern keymap_config_t keymap_config;
 #define COMS   LSFT_T(JP_COMM)
 #define CCOM   LCTL(JP_COMM)
 #define DOT    JP_DOT
-#define CDOT   LCTL(JP_DOT)
+#define CDOT   CTL_T(JP_DOT)
 #define MCOM   LALT(JP_COMM)
 #define MDOT   LALT(JP_DOT)
 #define PLUS   JP_PLUS
 #define LBRC   JP_LBRC
 #define RBRC   ALT_T(JP_RBRC)
 #define GUI    KC_LGUI
+#define GUIT   LGUI(KC_TAB)
 #define ZHTG   JP_ZKHK
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
@@ -307,7 +308,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QGMLWY] = LAYOUT( \
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   DEL,      \
          D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,        \
-   TAB,  Z_S,    X_CT,    KC_C,    KC_V,  GUI,          DOT,     KC_J,    KC_K,   P_AL,   S_S,   GUI, \
+   TAB,  Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         DOT,     KC_J,    KC_K,   P_AL,   S_S,   GUI, \
                           TABC,    GALT,  SPC,          ENT,     BSPC,    GALT         \
 ),
 
@@ -322,7 +323,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_1,    KC_2,   KC_3,   KC_4,   KC_5,       KC_6,     KC_7,    KC_8,   KC_9,   KC_0, \
            TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,      KC_F5,    KC_F12,  KC_F7,  KC_F8,  AT,   \
      UNDS, UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, MINS, \
-                            XXXXX,  XXXXX,  XXXXX,      DOT,      COMM,    SLSH                 \
+                            XXXXX,  XXXXX,  XXXXX,      CDOT,     COMM,    SLSH                 \
 ),
 
 [MISCL] = LAYOUT( \
@@ -333,10 +334,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [MISCR] =  LAYOUT( \
-           XXXXX,  XXXXX,  GU,    XXXXX,  PREVW,       PREVTB,  MLT,     KUP,    MGT,    DEL,    \
-           TAB,    GL,     GD,    GR,     NEXTW,       NEXTTB,  KLEFT,   KDOWN,  KRIGHT, XXXXX,  \
-     SFT,  SFT,    XXXXX,  XXXXX, XXXXX,  XXXXX,       XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
-                            XXXXX, CXU,    KC_SPC,      DOT,     DEL,     COMM                   \
+           XXXXX,  XXXXX,  GU,    XXXXX,  PREVW,        PREVTB,  MLT,     KUP,    MGT,    DEL,    \
+           TAB,    GL,     GD,    GR,     NEXTW,        NEXTTB,  KLEFT,   KDOWN,  KRIGHT, XXXXX,  \
+     SFT,  SFT,    XXXXX,  XXXXX, XXXXX,  XXXXX,        XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
+                           XXXXX, CXU,    KC_SPC,       CDOT,    DEL,     COMM                   \
 ),
 
 [COMBA] =  LAYOUT( \
