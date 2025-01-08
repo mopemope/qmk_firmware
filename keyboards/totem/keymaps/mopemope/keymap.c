@@ -277,6 +277,7 @@ enum custom_keycodes {
   CCZ,
   CCR,
   CCW,
+  CCA,
   SOCDW,
   SOCDA,
   SOCDS,
@@ -358,11 +359,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            CAF7,  _____,  CUP,    _____,  CCW,          DQG,    _____,  _____, _____,  _____,  \
            CAF2,  CLEFT,  CDOWN,  CRIGHT, CCR,          AU,     CU,     _____, _____,  _____,  \
   QK_BOOT, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
-                          _____,  _____,  KC_SPC,       DOT,    _____,  _____                  \
+                          _____,  _____,  KC_SPC,       CCA,    _____,  _____                  \
 ),
 
 [COMBT] =  LAYOUT( \
-           GVAL,   GDEAD,  GSF6,   GP3R,   GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  GDEAD,  GSF6,   GP3R,   GCYB,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            _____,  _____,  _____,      MINS,   UNDS,   SLSH                     \
@@ -375,12 +376,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        XXXXX,  KC_B,   SOCDW,       KC_H,   KC_P,   XXXXX                       \
 ),
 
-[VAL] = LAYOUT(                                                         \
-        KC_1,   KC_2,   KC_3,   KC_4,   KC_5,       KC_F1,  KC_F2,  KC_F3,  KC_F4, ALTZ,      \
-        KC_6,   KC_7,   KC_8,   KC_9,   KC_0,       KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \
-  XXXXX,XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,      KC_T,   KC_V,   KC_V,   KC_T,  GUI,   DQG,  \
-                        XXXXX,  BSPC,   KC_ENT,     KC_ENT, KC_H,   ESC                       \
-),
+/* [VAL] = LAYOUT(                                                         \ */
+/*         KC_1,   KC_2,   KC_3,   KC_4,   KC_5,       KC_F1,  KC_F2,  KC_F3,  KC_F4, ALTZ,      \ */
+/*         KC_6,   KC_7,   KC_8,   KC_9,   KC_0,       KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \ */
+/*   XXXXX,XXXXX,  XXXXX,  XXXXX,  XXXXX,  XXXXX,      KC_T,   KC_V,   KC_V,   KC_T,  GUI,   DQG,  \ */
+/*                         XXXXX,  BSPC,   KC_ENT,     KC_ENT, KC_H,   ESC                       \ */
+/* ), */
 /* [VAL] = LAYOUT(                                                         \ */
 /*        TAB,    KC_Q,   SOCDW, KC_E,   KC_R,        KC_F1,  KC_F2,  KC_F3,  KC_4,  ALTZ,      \ */
 /*        KC_B,   SOCDA, SOCDS, SOCDD, KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  ALTX,       \ */
@@ -641,6 +642,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CCW:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("c") "w");
+    }
+    break;
+  case CCA:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL("c") "a");
     }
     break;
   case NWS:
