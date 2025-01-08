@@ -278,6 +278,7 @@ enum custom_keycodes {
   CCR,
   CCW,
   CCA,
+  CCE,
   SOCDW,
   SOCDA,
   SOCDS,
@@ -359,7 +360,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            CAF7,  _____,  CUP,    _____,  CCW,          DQG,    _____,  _____, _____,  _____,  \
            CAF2,  CLEFT,  CDOWN,  CRIGHT, CCR,          AU,     CU,     _____, _____,  _____,  \
   QK_BOOT, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
-                          _____,  _____,  KC_SPC,       CCA,    _____,  _____                  \
+                          _____,  _____,  KC_SPC,       CCA,    CCE,    _____                  \
 ),
 
 [COMBT] =  LAYOUT( \
@@ -647,6 +648,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CCA:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("c") "a");
+    }
+    break;
+  case CCE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL("c") "e");
     }
     break;
   case NWS:
