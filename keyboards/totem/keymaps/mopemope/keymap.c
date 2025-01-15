@@ -49,6 +49,7 @@ extern keymap_config_t keymap_config;
 #define NEXTTB LSFT(LCTL(KC_DOWN))
 #define CAF2   LALT(LCTL(KC_F2))
 #define CAF7   LALT(LCTL(KC_F7))
+#define CF12   LCTL(KC_F12)
 #define PREVW  LGUI(LCTL(KC_LEFT))
 #define NEXTW  LGUI(LCTL(KC_RIGHT))
 
@@ -310,7 +311,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QGMLWY] = LAYOUT( \
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   DEL,      \
          D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,        \
-   TAB,  Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         DOT,     KC_J,    KC_K,   P_AL,   S_S,   GUI, \
+   TAB,  Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         CF12,    KC_J,    KC_K,   P_AL,   S_S,   GUI, \
                           TABC,    GALT,  SPC,          ENT,     BSPC,    GALT         \
 ),
 
