@@ -410,8 +410,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [P3R] = LAYOUT(                                                        \
        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        XXXXX,  XXXXX,  XXXXX,  XXXXX, ESC,       \
        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        XXXXX,  KC_L,   KC_C,   KC_E,  KC_R,       \
-  KC_H,KC_Z,   KC_X,   KC_C,   KC_V,   KC_M,        XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
-                       KC_B,   GCTL,   KC_SPC,      KC_ENT, KC_T,   KC_N                       \
+  KC_H,KC_Z,   KC_X,   KC_C,   KC_V,   KC_M,        KC_LCTL,XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
+                       KC_B,   KC_RCTL,KC_SPC,      KC_ENT, KC_T,   KC_N                       \
 ),
 
 /* [CYBER] = LAYOUT(                                                         \ */
