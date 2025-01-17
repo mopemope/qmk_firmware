@@ -16,11 +16,13 @@ extern keymap_config_t keymap_config;
 #define COMBE   7
 #define COMBT   8
 #define SF6     9
-#define DS     10
-#define EFT    11
-#define DEAD   12
-#define CYBER  13
+#define DS1    10
+#define DS2    11
+#define EFT1   12
+#define EFT2   13
+//#define CYBER  13
 #define P3R    14
+#define DEAD   15
 // #define COD    14
 
 /* #define CYBER  22 */
@@ -169,7 +171,7 @@ extern keymap_config_t keymap_config;
 #define GBL3   DF(BL3)
 #define GCYB   DF(CYBER)
 #define GVAL   DF(VAL)
-#define GEFT   DF(EFT)
+#define GEFT   DF(EFT1)
 #define GDEAD  DF(DEAD)
 #define GP3R   DF(P3R)
 #define GR6S   DF(R6S)
@@ -182,7 +184,8 @@ extern keymap_config_t keymap_config;
 #define GLD    DF(LD)
 #define GSN    DF(SN)
 #define GSF6   DF(SF6)
-#define GDS    DF(DS)
+#define GDS    DF(DS1)
+#define DSS    LT(DS2,KC_SPC)
 
 #define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
@@ -393,7 +396,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                        KC_4,   GCTL,   KC_SPC,      KC_ENT, KC_H,   ESC                       \ */
 /* ), */
 
-[EFT] = LAYOUT(                                                         \
+[EFT1] = LAYOUT(                                                         \
        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
   ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
@@ -421,10 +424,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                        KC_Z,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \ */
 /* ), */
 
-[DS] = LAYOUT(                                                         \
+[DS1] = LAYOUT(                                                         \
        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,         KC_1,  KC_2,   KC_3 ,  KC_4,  XXXXX, \
        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,         KC_G,  XXXXX,  XXXXX,  XXXXX, XXXXX, \
   ESC, GCTL,   KC_X,   KC_C,   KC_Z,   KC_T,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
+                       KC_V,   GALT,   DSS,          KC_ENT,KC_I,   KC_5               \
+),
+[DS2] = LAYOUT(                                                         \
+       XXXXX,  KC_Q,   KC_I,   KC_G,   XXXXX,        XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \
+       XXXXX,  KC_1,   KC_2,   KC_3,   KC_4,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \
+  ESC, XXXXX,  KC_5,   KC_6,   KC_7,   KC_8,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
                        KC_V,   GALT,   KC_SPC,       KC_ENT,KC_I,   KC_5               \
 ),
 
