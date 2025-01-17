@@ -400,7 +400,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
   ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
-                       GCTL,   GALT,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \
+                       GCTL,   GALT,   EFTS,        KC_ENT, KC_U,   KC_Z                       \
+),
+[EFT2] = LAYOUT(                                                         \
+       KC_U,   KC_1,   KC_2,   KC_3,   KC_4,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
+       KC_Z,   KC_5,   KC_6,   KC_7,   KC_8,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
+  ESC, KC_O,   KC_T,   KC_B,   KC_N,   DEL,         KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
+                       _____,  _____,  _____,       KC_ENT, KC_U,   KC_Z                       \
 ),
 
 [DEAD] = LAYOUT(                                                         \
@@ -431,10 +437,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_V,   GALT,   DSS,          KC_ENT,KC_I,   KC_5               \
 ),
 [DS2] = LAYOUT(                                                         \
-       XXXXX,  KC_Q,   KC_I,   KC_G,   XXXXX,        XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \
        XXXXX,  KC_1,   KC_2,   KC_3,   KC_4,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \
-  ESC, XXXXX,  KC_5,   KC_6,   KC_7,   KC_8,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
-                       KC_V,   GALT,   KC_SPC,       KC_ENT,KC_I,   KC_5               \
+       XXXXX,  KC_5,   KC_6,   KC_7,   KC_8,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \
+  ESC, XXXXX,  KC_I,   KC_G,   XXXXX,  XXXXX,        XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
+                       _____,  _____,  _____,        KC_ENT,KC_I,   KC_5               \
 ),
 
 /* [DIV] = LAYOUT(                                                         \ */
