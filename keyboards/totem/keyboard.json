@@ -5,8 +5,20 @@
   "usb": {
     "vid": "0x3A3C",
     "pid": "0x0002",
-    "device_version": "0.3.0"
+    "device_version": "0.3.0",
+    "force_nkro": true
   },
+  "features": {
+    "rgb_matrix": false,
+    "console": false,
+    "command": false,
+    "nkro": true
+  },
+  "build": {
+    "lto": true,
+    "debounce_type": "sym_eager_pk"
+  },
+  "debounce": 20,
   "layouts": {
     "LAYOUT": {
       "layout": [
