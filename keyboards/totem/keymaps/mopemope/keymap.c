@@ -372,7 +372,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            GDS,    GDEAD,  GSF6,   GP3R,   GEFT,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
-                           _____,  _____,  _____,      MINS,   UNDS,   SLSH                     \
+                          KC_MUTE, KC_VOLD,KC_VOLU,    MINS,   UNDS,   SLSH                     \
 ),
 
 [SF6] = LAYOUT(                                                       \
