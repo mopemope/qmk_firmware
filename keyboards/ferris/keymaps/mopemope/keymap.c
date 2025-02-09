@@ -2,6 +2,7 @@
 // This is the canonical layout file for the Quantum project. If you want to add another keyboard,
 
 #include QMK_KEYBOARD_H
+#include "os_detection.h"
 #include "keymap_japanese.h"
 
 extern keymap_config_t keymap_config;
@@ -48,6 +49,7 @@ extern keymap_config_t keymap_config;
 #define NEXTTB LSFT(LCTL(KC_DOWN))
 #define CAF2   LALT(LCTL(KC_F2))
 #define CAF7   LALT(LCTL(KC_F7))
+#define CF12   LCTL(KC_F12)
 #define PREVW  LGUI(LCTL(KC_LEFT))
 #define NEXTW  LGUI(LCTL(KC_RIGHT))
 
@@ -158,6 +160,7 @@ extern keymap_config_t keymap_config;
 #define LBRC   JP_LBRC
 #define RBRC   ALT_T(JP_RBRC)
 #define GUI    KC_LGUI
+#define GUIT   LGUI(KC_TAB)
 #define ZHTG   JP_ZKHK
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
@@ -180,6 +183,7 @@ extern keymap_config_t keymap_config;
 
 #define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
+#define C_C    LCTL(KC_C)
 #define PASTE  LCTL(KC_V)
 #define CZ     LCTL(KC_Z)
 #define CSL    LCTL(JP_SLSH)
@@ -244,6 +248,7 @@ extern keymap_config_t keymap_config;
 #define SFTZ   SFT_T(JP_ZHTG)
 #define SFT    KC_LSFT
 #define C_V    LCTL(KC_V)
+#define C_I    LCTL(KC_I)
 #define M_V    LALT(KC_V)
 #define ALTZ   LALT(KC_Z)
 #define ALTX   LALT(KC_X)
@@ -273,6 +278,8 @@ enum custom_keycodes {
   CCZ,
   CCR,
   CCW,
+  CCA,
+  CCE,
   SOCD_W,
   SOCD_A,
   SOCD_S,
@@ -282,7 +289,9 @@ enum custom_keycodes {
   MP,
   MK,
   HP,
-  HK
+  HK,
+  NWS,
+  PWS
 };
 
 bool w_down = false;
@@ -301,7 +310,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QGMLWY] = LAYOUT(
     Q_M, KC_G,    KC_M,    KC_L,    KC_W,            KC_Y,    KC_F,  KC_U,    KC_B,   DEL,
     D_M, KC_S,    TC,      NC,      KC_R,            KC_I,    AC,    EC,      KC_O,   H_M,
-    Z_S, X_CT,    KC_C,    KC_V,    TABG,            DOT,     KC_J,  KC_K,    P_AL,   S_S,
+    Z_S, X_CT,    KC_C,    KC_V,    GUIT,            CF12,    KC_J,  KC_K,    P_AL,   S_S,
                                     GALT, SPC,  ENT, BSPC
   ),
   [LOWER] = LAYOUT(
@@ -310,47 +319,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CIRC, LBRC,   RBRC,    KC_LT,   KC_GT,           CIRC,    COMM,  XXXX,    XXXX,   SLSH,
                                     TAB, KC_SPC,XXXX,XXXX
   ),
+
   [RAISE] = LAYOUT(
     KC_1, KC_2,   KC_3,    KC_4,    KC_5,            KC_6,    KC_7,  KC_8,    KC_9,   KC_0,
     TAB,  KC_F1,  KC_F2,   KC_F3,   KC_F4,           KC_F5,   KC_F12,KC_F7,   KC_F8,  AT,
-    UNDS, KC_F9,  KC_F10,  KC_F11,  XXXX,            EXLM,    KC_F6, KC_LT,   KC_GT,  MINS,
+    UNDS, KC_F9,  KC_F10,  KC_F11,  XXXX,            C_I,     KC_F6, KC_LT,   KC_GT,  MINS,
                                     XXXX, XXXX, DOT, COMM
   ),
   [MISCL] = LAYOUT(
-    QK_RBT,XXXX,  GU,    XXXX,     WRKSP1,           UWRKSP, PGDN,  KUP,    PGUP,   DEL,
-    XXXX,  GL,    GD,    GR,       WRKSP2,           DWRKSP, CLEFT, KDOWN,  CRIGHT, XXXX,
-    XXXX,  XXXX,  XXXX,  XXXX,     ENT,              MLT,    MGT,   SPSCR,  XXXX,   SLSH,
-                                   COPY, PASTE,M_V, C_V
+    QK_RBT,XXXX,  GU,    XXXX,     PWS,              UWRKSP, PGDN,  KUP,    PGUP,   DEL,
+    XXXX,  GL,    GD,    GR,       NWS,              DWRKSP, CLEFT, KDOWN,  CRIGHT, XXXX,
+    XXXX,  XXXX,  XXXX,  XXXX,     XXXX,             MLT,    MGT,   SPSCR,  XXXX,   SLSH,
+                                   C_V,  GUI,   TAB, M_V
   ),
   [MISCR] = LAYOUT(
     QK_RBT,XXXX,  GU,    XXXX,     PREVW,            PREVTB, MLT,   KUP,   MGT,    DEL,
     TAB,   GL,    GD,    GR,       NEXTW,            NEXTTB, KLEFT, KDOWN, KRIGHT, XXXX,
     SFT,   XXXX,  XXXX,  XXXX,     XXXX,             XXXX,   XXXX,  XXXX,  XXXX,   SFT,
-                                   CXU,KC_SPC, DOT, COMM
+                                   C_C,KC_SPC,  CDOT,COMM
   ),
   [COMBA] = LAYOUT(
     CQ, CQ,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   XXXX,
     MD, CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  CXCC,   CXO,    XXXX,
     CZ, CX,     XXXX,   XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
-                                  TAB, ZHTG,  DOT, COMM
+                                  TAB, ZHTG,    DOT, COMM
   ),
   [COMBN] = LAYOUT(
     XXXX, CG,   XXXX,   CL,       XXXX,              AMPR,  MCOM,  CXU,    MDOT,   MD,
     TAB,  CS,   CT,     XXXX,     XXXX,              MSCLN, CLEFT, CCZ,    CRIGHT, CAT,
     XXXX, CX,   CRET,   CSPC,     XXXX,              MCOM,  MDOT,  XXXX,   XXXX,   CXU,
-                                  ____, ____,  CJ, ____
+                                  ____, ____,   CRET,CJ
   ),
   [COMBE] = LAYOUT(
     CAF7, ____, CUP,    XXXX,     CCW,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
     CAF2, CLEFT,CDOWN,  CRIGHT,   CCR,               AU,   CU,    XXXX,   XXXX,  XXXX,
     PSCR, XXXX, XXXX,   XXXX,     XXXX,              XXXX, XXXX,  XXXX,   XXXX,  XXXX,
-                                  ____, KC_SPC, DOT, ____
+                                  ____, KC_SPC, CCA, CCE
   ),
   [COMBT] = LAYOUT(
-    GVAL, XXXX, GSF6,   XXXX,   GCYB,              DQT,  EXLM,  PLUS,   ASTR,  PIPE,
+    XXXX, XXXX, GSF6,   XXXX,   GCYB,              DQT,  EXLM,  PLUS,   ASTR,  PIPE,
     XXXX, XXXX, XXXX,   XXXX,   XXXX,              TILD, EQL,   COLN,   SCLN,  AT,
     XXXX, XXXX, XXXX,   XXXX,   XXXX,              CIRC, DOT,   COMM,   XXXX,  XXXX,
-                                ____, GUI, MINS, UNDS
+                             KC_VOLD,KC_VOLU, MINS,UNDS
   ),
   [SF6] = LAYOUT(
     XXXX, KC_Q,  XXXX,  XXXX,   KC_R,              KC_Y, LP,   MP,    HP,   XXXX,
@@ -577,6 +587,86 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_LCTL("c") "w");
     }
     break;
+  case CCA:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL("c") "a");
+    }
+    break;
+  case CCE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL("c") "e");
+    }
+    break;
+  case NWS:
+    if (record->event.pressed) {
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
+        register_code(KC_LGUI);
+        register_code(KC_LCTL);
+        register_code(KC_RIGHT);
+        return false;
+      case OS_LINUX:
+        register_code(KC_LGUI);
+        register_code(KC_PGDN);
+        return false;
+      default:
+        register_code(KC_LGUI);
+        register_code(KC_PGDN);
+        return false;
+      }
+    } else {
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTL);
+        unregister_code(KC_RIGHT);
+        return false;
+      case OS_LINUX:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_PGDN);
+        return false;
+      default:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_PGDN);
+        return false;
+      }
+    }
+    return false;
+  case PWS:
+    if (record->event.pressed) {
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
+        register_code(KC_LGUI);
+        register_code(KC_LCTL);
+        register_code(KC_LEFT);
+        return false;
+      case OS_LINUX:
+        register_code(KC_LGUI);
+        register_code(KC_PGUP);
+        return false;
+      default:
+        register_code(KC_LGUI);
+        register_code(KC_PGUP);
+        return false;
+      }
+    } else {
+      switch (detected_host_os()) {
+      case OS_WINDOWS:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTL);
+        unregister_code(KC_LEFT);
+        return false;
+      case OS_LINUX:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_PGUP);
+        return false;
+      default:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_PGUP);
+        return false;
+      }
+    }
+    return false;
   }
   return true;
 }
