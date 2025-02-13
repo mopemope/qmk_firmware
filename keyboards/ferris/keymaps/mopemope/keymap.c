@@ -319,7 +319,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CIRC, LBRC,   RBRC,    KC_LT,   KC_GT,           CIRC,    COMM,  XXXX,    XXXX,   SLSH,
                                     TAB, KC_SPC,XXXX,XXXX
   ),
-
   [RAISE] = LAYOUT(
     KC_1, KC_2,   KC_3,    KC_4,    KC_5,            KC_6,    KC_7,  KC_8,    KC_9,   KC_0,
     TAB,  KC_F1,  KC_F2,   KC_F3,   KC_F4,           KC_F5,   KC_F12,KC_F7,   KC_F8,  AT,
@@ -348,7 +347,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXX, CG,   XXXX,   CL,       XXXX,              AMPR,  MCOM,  CXU,    MDOT,   MD,
     TAB,  CS,   CT,     XXXX,     XXXX,              MSCLN, CLEFT, CCZ,    CRIGHT, CAT,
     XXXX, CX,   CRET,   CSPC,     XXXX,              MCOM,  MDOT,  XXXX,   XXXX,   CXU,
-                                  ____, ____,   CRET,CJ
+                                  ____, TAB,    CRET,CJ
   ),
   [COMBE] = LAYOUT(
     CAF7, ____, CUP,    XXXX,     CCW,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
