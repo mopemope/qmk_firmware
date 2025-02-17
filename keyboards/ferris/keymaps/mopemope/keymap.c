@@ -17,11 +17,11 @@ extern keymap_config_t keymap_config;
 #define COMBE   7
 #define COMBT   8
 #define SF6     9
-#define VAL    10
-#define EFT    11
-#define DIV    12
-#define CYBER  13
-#define COD    14
+#define P3R    10
+/* #define EFT    11 */
+/* #define DIV    12 */
+/* #define CYBER  13 */
+/* #define COD    14 */
 
 /* #define CYBER  22 */
 /* #define BL3    10 */
@@ -69,10 +69,11 @@ extern keymap_config_t keymap_config;
 #define EC     LT(COMBE,KC_E)
 #define KC     LT(COMBE,KC_K)
 #define TC     LT(COMBT,KC_T)
-#define SPC    LT(RAISE,KC_SPC)
+#define RSPC   LT(RAISE,KC_SPC)
+#define SPC    KC_SPC
 #define CSPC   LCTL(KC_SPC)
 #define CRET   LCTL(KC_ENT)
-#define ENT    LT(LOWER,KC_ENT)
+#define LENT   LT(LOWER,KC_ENT)
 #define CENT   CTL_T(KC_ENT)
 #define BSPC   RCTL_T(KC_BSPC)
 #define SBSPC  SFT_T(KC_BSPC)
@@ -160,26 +161,28 @@ extern keymap_config_t keymap_config;
 #define LBRC   JP_LBRC
 #define RBRC   ALT_T(JP_RBRC)
 #define GUI    KC_LGUI
+#define ENT    KC_ENT
 #define GUIT   LGUI(KC_TAB)
 #define ZHTG   JP_ZKHK
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
 
 #define DQG    DF(QGMLWY)
-#define GBL3   DF(BL3)
-#define GCYB   DF(CYBER)
-#define GVAL   DF(VAL)
-#define GEFT   DF(EFT)
-#define GR6S   DF(R6S)
-#define GB4B   DF(B4B)
-#define GBF    DF(BF)
-#define GCOD   DF(COD)
-#define GDV2   DF(DIV)
-#define GAPEX  DF(APEX)
-#define GKOC   DF(KOC)
-#define GLD    DF(LD)
-#define GSN    DF(SN)
+/* #define GBL3   DF(BL3) */
+/* #define GCYB   DF(CYBER) */
+/* #define GVAL   DF(VAL) */
+/* #define GEFT   DF(EFT) */
+/* #define GR6S   DF(R6S) */
+/* #define GB4B   DF(B4B) */
+/* #define GBF    DF(BF) */
+/* #define GCOD   DF(COD) */
+/* #define GDV2   DF(DIV) */
+/* #define GAPEX  DF(APEX) */
+/* #define GKOC   DF(KOC) */
+/* #define GLD    DF(LD) */
+/* #define GSN    DF(SN) */
 #define GSF6   DF(SF6)
+#define GP3R   DF(P3R)
 
 #define SELA   LCTL(KC_A)
 #define COPY   LCTL(KC_C)
@@ -261,6 +264,7 @@ extern keymap_config_t keymap_config;
 #define DI_C   LT(DIV2,KC_LCTL)
 #define AP_I   LT(APEX2,KC_I)
 #define GCTL   KC_LCTL
+#define GRCTL  KC_RCTL
 #define GALT   KC_LALT
 #define AQ     LALT(KC_Q)
 #define AE     LALT(KC_E)
@@ -311,13 +315,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     Q_M, KC_G,    KC_M,    KC_L,    KC_W,            KC_Y,    KC_F,  KC_U,    KC_B,   DEL,
     D_M, KC_S,    TC,      NC,      KC_R,            KC_I,    AC,    EC,      KC_O,   H_M,
     Z_S, X_CT,    KC_C,    KC_V,    GUIT,            CF12,    KC_J,  KC_K,    P_AL,   S_S,
-                                    GALT, SPC,  ENT, BSPC
+                                    GALT,RSPC,  LENT,BSPC
   ),
+
   [LOWER] = LAYOUT(
     EXLM, DQT,    HASH,    DLR,     PERC,            AMPR,    QUOT,  GRV,     PIPE,   YEN,
     ESC,  LPRN,   RPRN,    LCBR,    RCBR,            TILD,    DOT,   SLSH,    EQL,    AT,
     CIRC, LBRC,   RBRC,    KC_LT,   KC_GT,           CIRC,    COMM,  XXXX,    XXXX,   SLSH,
-                                    TAB, KC_SPC,XXXX,XXXX
+                                    TAB, GUI,   XXXX,XXXX
   ),
   [RAISE] = LAYOUT(
     KC_1, KC_2,   KC_3,    KC_4,    KC_5,            KC_6,    KC_7,  KC_8,    KC_9,   KC_0,
@@ -328,14 +333,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MISCL] = LAYOUT(
     QK_RBT,XXXX,  GU,    XXXX,     PWS,              UWRKSP, PGDN,  KUP,    PGUP,   DEL,
     XXXX,  GL,    GD,    GR,       NWS,              DWRKSP, CLEFT, KDOWN,  CRIGHT, XXXX,
-    XXXX,  XXXX,  XXXX,  XXXX,     XXXX,             MLT,    MGT,   SPSCR,  XXXX,   SLSH,
-                                   C_V,  GUI,   TAB, M_V
+    XXXX,  XXXX,  XXXX,  XXXX,     GUI,              MLT,    MGT,   SPSCR,  XXXX,   SLSH,
+                                   C_C,  C_V,   M_V, TAB
   ),
   [MISCR] = LAYOUT(
     QK_RBT,XXXX,  GU,    XXXX,     PREVW,            PREVTB, MLT,   KUP,   MGT,    DEL,
     TAB,   GL,    GD,    GR,       NEXTW,            NEXTTB, KLEFT, KDOWN, KRIGHT, XXXX,
     SFT,   XXXX,  XXXX,  XXXX,     XXXX,             XXXX,   XXXX,  XXXX,  XXXX,   SFT,
-                                   C_C,KC_SPC,  CDOT,COMM
+                                   C_C,  SPC,  CDOT,COMM
   ),
   [COMBA] = LAYOUT(
     CQ, CQ,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   XXXX,
@@ -347,38 +352,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXX, CG,   XXXX,   CL,       XXXX,              AMPR,  MCOM,  CXU,    MDOT,   MD,
     TAB,  CS,   CT,     XXXX,     XXXX,              MSCLN, CLEFT, CCZ,    CRIGHT, CAT,
     XXXX, CX,   CRET,   CSPC,     XXXX,              MCOM,  MDOT,  XXXX,   XXXX,   CXU,
-                                  ____, TAB,    CRET,CJ
+                                  TAB, GUI,     CRET,CJ
   ),
   [COMBE] = LAYOUT(
     CAF7, ____, CUP,    XXXX,     CCW,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
     CAF2, CLEFT,CDOWN,  CRIGHT,   CCR,               AU,   CU,    XXXX,   XXXX,  XXXX,
     PSCR, XXXX, XXXX,   XXXX,     XXXX,              XXXX, XXXX,  XXXX,   XXXX,  XXXX,
-                                  ____, KC_SPC, CCA, CCE
+                                  ____, SPC,    CCA, CCE
   ),
   [COMBT] = LAYOUT(
-    XXXX, XXXX, GSF6,   XXXX,   GCYB,              DQT,  EXLM,  PLUS,   ASTR,  PIPE,
-    XXXX, XXXX, XXXX,   XXXX,   XXXX,              TILD, EQL,   COLN,   SCLN,  AT,
+    XXXX, XXXX, GSF6,   GP3R,   XXXX,              DQT,  EXLM,  PLUS,   ASTR,  PIPE,
+    GUI,  XXXX, XXXX,   VOLD,   VOLU,              TILD, EQL,   COLN,   SCLN,  AT,
     XXXX, XXXX, XXXX,   XXXX,   XXXX,              CIRC, DOT,   COMM,   XXXX,  XXXX,
-                             KC_VOLD,KC_VOLU, MINS,UNDS
+                                TAB, GUI,    MINS,UNDS
   ),
   [SF6] = LAYOUT(
     XXXX, KC_Q,  XXXX,  XXXX,   KC_R,              KC_Y, LP,   MP,    HP,   XXXX,
     KC_B, SOCD_A,SOCD_S,SOCD_D, KC_F,              KC_G, LK,   MK,    HK,   KC_U,
     TAB,  KC_X,  KC_C,  XXXX,   XXXX,              KC_T, XXXX, KC_N,  KC_M, DQG,
-                                KC_B,SOCD_W,KC_H, KC_P
+                                KC_B,SOCD_W,  KC_H,KC_P
   ),
-  [VAL] = LAYOUT(
-    TAB, KC_Q,  SOCD_W,KC_E,   KC_R,              KC_F1,KC_F2,KC_F3, KC_4,  ESC,
-    KC_B,SOCD_A,SOCD_S,SOCD_D, KC_F,              KC_5, KC_6, KC_7,  KC_8,  XXXX,
-    KC_Z,KC_X,  KC_B,  KC_G,   KC_C,              KC_T, KC_V, GCTL,  XXXX,  DQG,
-                               KC_4,KC_SPC,KC_ENT,KC_H
+  [P3R] = LAYOUT(
+    TAB, KC_Q,  SOCD_W,KC_E,   KC_R,               XXXX, XXXX, XXXX,  XXXX,  ESC,
+    SFT, SOCD_A,SOCD_S,SOCD_D, KC_F,               XXXX, KC_L, KC_C,  KC_E,  KC_R,
+    KC_Z,KC_X,  KC_C,  KC_V,   KC_M,               GCTL, KC_T, KC_N,  XXXX,  DQG,
+                               GRCTL,SPC,      ENT,KC_H
   ),
-  [CYBER] = LAYOUT(
-    TAB, KC_Q,  SOCD_W,KC_E,   KC_R,              KC_1 ,KC_M, KC_J,  KC_K,  ESC,
-    SFT, SOCD_A,SOCD_S,SOCD_D, KC_F,              KC_3, KC_I, KC_O,  KC_P,  XXXX,
-    GCTL,KC_X,  GALT,  KC_V,   KC_T,              KC_N, KC_Z, GCTL,  XXXX,  DQG,
-                               KC_C,KC_SPC,KC_ENT,KC_V
-  ),
+  /* [CYBER] = LAYOUT( */
+  /*   TAB, KC_Q,  SOCD_W,KC_E,   KC_R,              KC_1 ,KC_M, KC_J,  KC_K,  ESC, */
+  /*   SFT, SOCD_A,SOCD_S,SOCD_D, KC_F,              KC_3, KC_I, KC_O,  KC_P,  XXXX, */
+  /*   GCTL,KC_X,  GALT,  KC_V,   KC_T,              KC_N, KC_Z, GCTL,  XXXX,  DQG, */
+  /*                              KC_C,KC_SPC,KC_ENT,KC_V */
+  /* ), */
 
 };
 
