@@ -16,8 +16,10 @@ extern keymap_config_t keymap_config;
 #define COMBN   6
 #define COMBE   7
 #define COMBT   8
-#define SF6     9
-#define P3R    10
+#define COMBO   9
+#define COMBS  10
+#define SF6    11
+#define P3R    12
 /* #define EFT    11 */
 /* #define DIV    12 */
 /* #define CYBER  13 */
@@ -69,6 +71,8 @@ extern keymap_config_t keymap_config;
 #define EC     LT(COMBE,KC_E)
 #define KC     LT(COMBE,KC_K)
 #define TC     LT(COMBT,KC_T)
+#define OC     LT(COMBO,KC_O)
+#define SC     LT(COMBS,KC_S)
 #define RSPC   LT(RAISE,KC_SPC)
 #define SPC    KC_SPC
 #define CSPC   LCTL(KC_SPC)
@@ -313,7 +317,7 @@ bool hk_down = false;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QGMLWY] = LAYOUT(
     Q_M, KC_G,    KC_M,    KC_L,    KC_W,            KC_Y,    KC_F,  KC_U,    KC_B,   DEL,
-    D_M, KC_S,    TC,      NC,      KC_R,            KC_I,    AC,    EC,      KC_O,   H_M,
+    D_M, SC,      TC,      NC,      KC_R,            KC_I,    AC,    EC,      OC,     H_M,
     Z_S, X_CT,    KC_C,    KC_V,    GUIT,            CF12,    KC_J,  KC_K,    P_AL,   S_S,
                                     GALT,RSPC,  LENT,BSPC
   ),
@@ -365,6 +369,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     GUI,  XXXX, XXXX,   VOLD,   VOLU,              TILD, EQL,   COLN,   SCLN,  AT,
     XXXX, XXXX, XXXX,   XXXX,   XXXX,              CIRC, DOT,   COMM,   XXXX,  XXXX,
                                 TAB, GUI,    MINS,UNDS
+  ),
+  [COMBO] = LAYOUT(
+    CAF7, ____, CUP,    XXXX,     CCW,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
+    CAF2, CLEFT,CDOWN,  CRIGHT,   CCR,               AU,   CU,    XXXX,   XXXX,  XXXX,
+    PSCR, XXXX, XXXX,   XXXX,     XXXX,              XXXX, XXXX,  XXXX,   XXXX,  XXXX,
+                                  ____, SPC,    CCA, CCE
+  ),
+  [COMBS] = LAYOUT(
+    XXXX, XXXX, XXXX,   XXXX,   XXXX,              DQT,  EXLM,  PLUS,   ASTR,  PIPE,
+    XXXX, XXXX, XXXX,   VOLD,   VOLU,              TILD, EQL,   COLN,   SCLN,  AT,
+    XXXX, XXXX, XXXX,   XXXX,   XXXX,              CIRC, DOT,   COMM,   XXXX,  XXXX,
+                                TAB, GUI,     MINS,UNDS
   ),
   [SF6] = LAYOUT(
     XXXX, KC_Q,  XXXX,  XXXX,   KC_R,              KC_Y, LP,   MP,    HP,   XXXX,
