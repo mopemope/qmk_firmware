@@ -370,13 +370,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXX, XXXX, XXXX,   XXXX,   XXXX,              CIRC, DOT,   COMM,   XXXX,  XXXX,
                                 TAB, GUI,    MINS,UNDS
   ),
-  [COMBO] = LAYOUT(
+  [COMBO] = LAYOUT( // TODO もう少し考える
     CAF7, ____, CUP,    XXXX,     CCW,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
     CAF2, CLEFT,CDOWN,  CRIGHT,   CCR,               AU,   CU,    XXXX,   XXXX,  XXXX,
     PSCR, XXXX, XXXX,   XXXX,     XXXX,              XXXX, XXXX,  XXXX,   XXXX,  XXXX,
                                   ____, SPC,    CCA, CCE
   ),
-  [COMBS] = LAYOUT(
+  [COMBS] = LAYOUT( // TODO もっと割り当てる
     XXXX, XXXX, XXXX,   XXXX,   XXXX,              DQT,  EXLM,  PLUS,   ASTR,  PIPE,
     XXXX, XXXX, XXXX,   VOLD,   VOLU,              TILD, EQL,   COLN,   SCLN,  AT,
     XXXX, XXXX, XXXX,   XXXX,   XXXX,              CIRC, DOT,   COMM,   XXXX,  XXXX,
