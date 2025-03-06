@@ -123,6 +123,7 @@ extern keymap_config_t keymap_config;
 #define MUP    LALT(KC_UP)
 #define MDOWN  LALT(KC_DOWN)
 #define MRIGHT LALT(KC_RIGHT)
+#define MRET   LALT(KC_ENT)
 #define MLT    LALT(KC_LT)
 #define MGT    LALT(KC_GT)
 #define GH     LGUI(KC_H)
@@ -348,7 +349,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [COMBA] = LAYOUT(
     CQ, CQ,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   CXCC,
-    MD, CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  XXXX,   CXO,    XXXX,
+    MD, CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  MRET,   CXO,    XXXX,
     CZ, CX,     XXXX,   XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
                                   TAB, ZHTG,    DOT, COMM
   ),
