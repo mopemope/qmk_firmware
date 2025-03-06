@@ -347,8 +347,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    C_C,  SPC,  CDOT,COMM
   ),
   [COMBA] = LAYOUT(
-    CQ, CQ,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   XXXX,
-    MD, CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  CXCC,   CXO,    XXXX,
+    CQ, CQ,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   CXCC,
+    MD, CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  XXXX,   CXO,    XXXX,
     CZ, CX,     XXXX,   XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
                                   TAB, ZHTG,    DOT, COMM
   ),
