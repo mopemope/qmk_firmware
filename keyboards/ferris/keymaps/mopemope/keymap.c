@@ -336,8 +336,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     XXXX, XXXX, DOT, COMM
   ),
   [MISCL] = LAYOUT(
-    QK_RBT,XXXX,  GU,    XXXX,     PWS,              UWRKSP, PGDN,  KUP,    PGUP,   DEL,
-    XXXX,  GL,    GD,    GR,       NWS,              DWRKSP, CLEFT, KDOWN,  CRIGHT, XXXX,
+    QK_RBT,XXXX,  GU,    XXXX,     PWS,              UWRKSP, PGDN,  CUP,    PGUP,   DEL,
+    XXXX,  GL,    GD,    GR,       NWS,              DWRKSP, CLEFT, CDOWN,  CRIGHT, XXXX,
     XXXX,  XXXX,  XXXX,  XXXX,     GUI,              MLT,    MGT,   SPSCR,  XXXX,   SLSH,
                                    C_C,  C_V,   M_V, TAB
   ),
@@ -351,7 +351,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CQ, CQ,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   CXCC,
     MD, CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  MRET,   CXO,    XXXX,
     CZ, CX,     XXXX,   XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
-                                  TAB, ZHTG,    DOT, COMM
+                                  TAB, ZHTG,    CCR, CCW
   ),
   [COMBN] = LAYOUT(
     XXXX, CG,   XXXX,   CL,       XXXX,              AMPR,  MCOM,  CXU,    MDOT,   MD,
