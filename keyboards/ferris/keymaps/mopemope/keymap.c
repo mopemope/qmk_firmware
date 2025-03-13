@@ -279,6 +279,8 @@ enum custom_keycodes {
   CXCB,
   CXCS,
   CXCC,
+  CCI,
+  CCH,
   CXCG,
   CXO,
   CXU,
@@ -348,10 +350,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    C_C,  SPC,  CDOT,COMM
   ),
   [COMBA] = LAYOUT(
-    CQ, CQ,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   CXCC,
-    MD, CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  MRET,   CXO,    XXXX,
-    CZ, CX,     XXXX,   XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
-                                  TAB, ZHTG,    DOT, COMM
+    CQ,  CG,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   CXCC,
+    MD,  CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  CCZ,    CXO,    XXXX,
+    CCH, CCI,    XXXX,   XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
+                                   TAB, ZHTG,    DOT, COMM
   ),
   [COMBN] = LAYOUT(
     XXXX, CG,   XXXX,   CL,       XXXX,              AMPR,  MCOM,  CXU,    MDOT,   MD,
@@ -616,6 +618,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CCE:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("c") "e");
+    }
+    break;
+  case CCI:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL("c") "i");
+    }
+    break;
+  case CCH:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL("c") "h");
     }
     break;
   case NWS:
