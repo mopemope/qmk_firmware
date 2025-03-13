@@ -351,8 +351,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [COMBA] = LAYOUT(
     CQ,  CG,     CMM,    CL,       APERC,             XXXX,  CXCF,  CXU,    CXCB,   CXCC,
-    MD,  CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  CCZ,    CXO,    XXXX,
-    CCH, CCI,    XXXX,   XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
+    MD,  CXCS,   CT,     CMN,      MX,                XXXX,  XXXX,  CCZ,    CXO,    CCH,
+    CZ,  CCI,    CCH,    XXXX,     XXXX,              XXXX,  XXXX,  CK,     XXXX,   XXXX,
                                    TAB, ZHTG,    DOT, COMM
   ),
   [COMBN] = LAYOUT(
