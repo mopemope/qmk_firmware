@@ -223,6 +223,8 @@ extern keymap_config_t keymap_config;
 #define APERC  LALT(JP_PERC)
 #define CPIPE  LCTL(JP_PIPE)
 #define CEXLM  LCTL(JP_EXLM)
+#define CEQ    LCTL(JP_EQL)
+#define CMIN   LCTL(JP_MINS)
 
 #define WH_D   KC_WH_D
 #define WH_U   KC_WH_U
@@ -287,8 +289,6 @@ enum custom_keycodes {
   CCN,
   CCP,
   CCZ,
-  CCR,
-  CCW,
   CCA,
   CCE,
   SOCD_W,
@@ -362,10 +362,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   TAB, GUI,     CRET,CJ
   ),
   [COMBE] = LAYOUT(
-    CAF7, ____, CUP,    XXXX,     CCW,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
-    CAF2, CLEFT,CDOWN,  CRIGHT,   CCR,               AU,   CU,    XXXX,   XXXX,  XXXX,
+    CAF7, ____, CUP,    XXXX,     XXXX,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
+    CAF2, CLEFT,CDOWN,  CRIGHT,   XXXX,               AU,   CU,    XXXX,   XXXX,  XXXX,
     PSCR, XXXX, XXXX,   XXXX,     XXXX,              XXXX, XXXX,  XXXX,   XXXX,  XXXX,
-                                  ____, SPC,    CCA, CCE
+                                  CMIN, CEQ,    CCA, CCE
   ),
   [COMBT] = LAYOUT(
     XXXX, XXXX, GSF6,   GP3R,   XXXX,              DQT,  EXLM,  PLUS,   ASTR,  PIPE,
@@ -374,8 +374,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 TAB, GUI,    MINS,UNDS
   ),
   [COMBO] = LAYOUT( // TODO もう少し考える
-    CAF7, ____, CUP,    XXXX,     CCW,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
-    CAF2, CLEFT,CDOWN,  CRIGHT,   CCR,               AU,   CU,    XXXX,   XXXX,  XXXX,
+    CAF7, ____, CUP,    XXXX,     XXXX,               DQG,  XXXX,  XXXX,   XXXX,  XXXX,
+    CAF2, CLEFT,CDOWN,  CRIGHT,   XXXX,               AU,   CU,    XXXX,   XXXX,  XXXX,
     PSCR, XXXX, XXXX,   XXXX,     XXXX,              XXXX, XXXX,  XXXX,   XXXX,  XXXX,
                                   ____, SPC,    CCA, CCE
   ),
@@ -598,16 +598,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case CCZ:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL("c") "z");
-    }
-    break;
-  case CCR:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "r");
-    }
-    break;
-  case CCW:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LCTL("c") "w");
     }
     break;
   case CCA:
