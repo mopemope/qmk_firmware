@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 
-#define DEBOUNCE 18
+#define DEBOUNCE 30
 #define NO_ACTION_ONESHOT
 #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 1
@@ -30,9 +30,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
-#define PREVENT_STUCK_MODIFIERS
-#define PERMISSIVE_HOLD
-#define TAPPING_FORCE_HOLD
+/* #define PREVENT_STUCK_MODIFIERS */
+/* #define PERMISSIVE_HOLD */
+/* #define TAPPING_FORCE_HOLD */
 
 #define USB_POLLING_INTERVAL_MS 1
 #define GPIO_INPUT_PIN_DELAY 0
