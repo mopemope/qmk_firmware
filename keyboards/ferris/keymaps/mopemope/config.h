@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 
-#define DEBOUNCE 30
+#define DEBOUNCE 50
 #define NO_ACTION_ONESHOT
 #define LAYER_STATE_16BIT
 #define TAP_CODE_DELAY 1
