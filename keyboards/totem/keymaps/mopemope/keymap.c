@@ -253,6 +253,7 @@ extern keymap_config_t keymap_config;
 #define SFTZ   SFT_T(JP_ZHTG)
 #define SFT    KC_LSFT
 #define C_V    LCTL(KC_V)
+#define C_C    LCTL(KC_C)
 #define M_V    LALT(KC_V)
 #define ALTZ   LALT(KC_Z)
 #define ALTX   LALT(KC_X)
@@ -337,7 +338,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXX,   XXXXX,  GU,     XXXXX,  PWS,         UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
           XXXXX,   GL,     GD,     GR,     NWS,         DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
     SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
-                           COPY,   PASTE,  GUI,         TAB,      M_V,    C_V                     \
+                           C_C,    C_V,    GUI,         TAB,      M_V,    C_V                     \
 ),
 
 [MISCR] =  LAYOUT( \
@@ -358,7 +359,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            _____,   CG,   _____,  CL,     _____,        AMPR,   MCOM,    CXU,     MDOT,   MD,    \
            TAB,     CS,   CT,     _____,  _____,        MSCLN,  CLEFT,   CCZ,     CRIGHT, CAT,   \
   QK_BOOT, _____,   CX,   CRET,   CSPC,   _____,        MCOM,   MDOT,    _____,  _____,   CXU, QK_BOOT,\
-                          _____,  _____,  _____,        CJ,     _____,   _____                  \
+                          _____,  _____,  _____,        CRET,   _____,   _____                  \
 ),
 
 [COMBE] =  LAYOUT(                                                                       \
