@@ -184,7 +184,7 @@ extern keymap_config_t keymap_config;
 #define GLD    DF(LD)
 #define GSN    DF(SN)
 #define GSF6   DF(SF6)
-#define GDS    DF(DS1)
+#define GDS    DF(DS1) // DEATH STRANDING
 #define DSS    LT(DS2,KC_SPC)
 
 #define SELA   LCTL(KC_A)
@@ -370,7 +370,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBT] =  LAYOUT( \
-           GDS,    GDEAD,  GSF6,   GP3R,   GEFT,       DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  _____,  GSF6,   GP3R,   _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                           KC_MUTE, KC_VOLD,KC_VOLU,    MINS,   UNDS,   SLSH                     \
@@ -397,25 +397,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                        KC_4,   GCTL,   KC_SPC,      KC_ENT, KC_H,   ESC                       \ */
 /* ), */
 
-[EFT1] = LAYOUT(                                                         \
-       TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
-       SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
-  ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
-                       GCTL,   GALT,   EFTS,        KC_ENT, KC_U,   KC_Z                       \
-),
-[EFT2] = LAYOUT(                                                         \
-       KC_U,   KC_1,   KC_2,   KC_3,   KC_4,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \
-       KC_Z,   KC_5,   KC_6,   KC_7,   KC_8,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \
-  ESC, KC_O,   KC_T,   KC_B,   KC_N,   DEL,         KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \
-                       _____,  _____,  _____,       KC_ENT, KC_U,   KC_Z                       \
-),
+/* [EFT1] = LAYOUT(                                                         \ */
+/*        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \ */
+/*        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \ */
+/*   ESC, KC_CAPS,KC_X,   KC_C,   KC_V,   KC_G,        KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \ */
+/*                        GCTL,   GALT,   EFTS,        KC_ENT, KC_U,   KC_Z                       \ */
+/* ), */
+/* [EFT2] = LAYOUT(                                                         \ */
+/*        KC_U,   KC_1,   KC_2,   KC_3,   KC_4,        KC_1,   KC_2,   KC_3 ,  KC_4,  KC_5,      \ */
+/*        KC_Z,   KC_5,   KC_6,   KC_7,   KC_8,        KC_6,   KC_7,   KC_8,   KC_9,  KC_0,       \ */
+/*   ESC, KC_O,   KC_T,   KC_B,   KC_N,   DEL,         KC_O,   KC_T,   KC_B,   KC_N,  DEL,  DQG,  \ */
+/*                        _____,  _____,  _____,       KC_ENT, KC_U,   KC_Z                       \ */
+/* ), */
 
-[DEAD] = LAYOUT(                                                         \
-       TAB,    KC_3,   SOCDW,  KC_4,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  ESC,       \
-       SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_T,   XXXXX,  XXXXX,  XXXXX, XXXXX,       \
-  ESC, GALT,   KC_Z,   KC_X,   KC_C,   KC_B,        KC_Z,   KC_X,   KC_C,   KC_V,  XXXXX,  DQG, \
-                       KC_Q,   GCTL,   KC_SPC,      KC_M,   KC_Y,   KC_J                       \
-),
+/* [DEAD] = LAYOUT(                                                         \ */
+/*        TAB,    KC_3,   SOCDW,  KC_4,   KC_R,        KC_1,   KC_2,   KC_3 ,  KC_4,  ESC,       \ */
+/*        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_T,   XXXXX,  XXXXX,  XXXXX, XXXXX,       \ */
+/*   ESC, GALT,   KC_Z,   KC_X,   KC_C,   KC_B,        KC_Z,   KC_X,   KC_C,   KC_V,  XXXXX,  DQG, \ */
+/*                        KC_Q,   GCTL,   KC_SPC,      KC_M,   KC_Y,   KC_J                       \ */
+/* ), */
 
 [P3R] = LAYOUT(                                                        \
        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        XXXXX,  XXXXX,  XXXXX,  XXXXX, ESC,       \
@@ -431,18 +431,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                        KC_Z,   KC_C,   KC_SPC,      KC_ENT, KC_V,   KC_Z               \ */
 /* ), */
 
-[DS1] = LAYOUT(                                                         \
-       TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,         KC_1,  KC_2,   KC_3 ,  KC_4,  XXXXX, \
-       SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,         KC_G,  XXXXX,  XXXXX,  XXXXX, XXXXX, \
-  ESC, GCTL,   KC_X,   KC_C,   KC_Z,   KC_T,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
-                       KC_V,   GALT,   DSS,          KC_ENT,KC_I,   KC_5               \
-),
-[DS2] = LAYOUT(                                                         \
-       XXXXX,  KC_1,   KC_2,   KC_3,   KC_4,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \
-       XXXXX,  KC_5,   KC_6,   KC_7,   KC_8,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \
-  ESC, XXXXX,  KC_I,   KC_G,   XXXXX,  XXXXX,        XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
-                       _____,  _____,  _____,        KC_ENT,KC_I,   KC_5               \
-),
+/* [DS1] = LAYOUT(                                                         \ */
+/*        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,         KC_1,  KC_2,   KC_3 ,  KC_4,  XXXXX, \ */
+/*        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,         KC_G,  XXXXX,  XXXXX,  XXXXX, XXXXX, \ */
+/*   ESC, GCTL,   KC_X,   KC_C,   KC_Z,   KC_T,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \ */
+/*                        KC_V,   GALT,   DSS,          KC_ENT,KC_I,   KC_5               \ */
+/* ), */
+/* [DS2] = LAYOUT(                                                         \ */
+/*        XXXXX,  KC_1,   KC_2,   KC_3,   KC_4,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \ */
+/*        XXXXX,  KC_5,   KC_6,   KC_7,   KC_8,         XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX, \ */
+/*   ESC, XXXXX,  KC_I,   KC_G,   XXXXX,  XXXXX,        XXXXX, XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \ */
+/*                        _____,  _____,  _____,        KC_ENT,KC_I,   KC_5               \ */
+/* ), */
 
 /* [DIV] = LAYOUT(                                                         \ */
 /*        ESC,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_G,   KC_Q,   KC_T ,  KC_Y,  ESC,       \ */
