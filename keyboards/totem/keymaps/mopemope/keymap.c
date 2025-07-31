@@ -224,6 +224,8 @@ extern keymap_config_t keymap_config;
 #define APERC  LALT(JP_PERC)
 #define CPIPE  LCTL(JP_PIPE)
 #define CEXLM  LCTL(JP_EXLM)
+#define CEQ    LCTL(JP_EQL)
+#define CMIN   LCTL(JP_MINS)
 
 #define WH_D   KC_WH_D
 #define WH_U   KC_WH_U
@@ -370,14 +372,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            CAF7,  _____,  CUP,    _____,  _____,        DQG,    _____,  _____, _____,  _____,  \
            CAF2,  CLEFT,  CDOWN,  CRIGHT, _____,        AU,     CU,     _____, _____,  _____,  \
   QK_BOOT, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
-                          _____,  _____,  KC_SPC,       CCA,    CCE,    _____                  \
+                          _____,  CMIN,   CEQ,          CCA,    CCE,    _____                  \
 ),
 
 [COMBT] =  LAYOUT( \
            _____,  _____,  GSF6,   GP3R,   _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
-                          KC_MUTE, KC_VOLD,KC_VOLU,    MINS,   UNDS,   SLSH                     \
+                           MUTE,   VOLD,   VOLU,       MINS,   UNDS,   SLSH                     \
 ),
 
 [COMBO] =  LAYOUT(                                                      \
@@ -389,16 +391,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [COMBS] =  LAYOUT( \
            _____,  _____,  _____,  _____,  _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
-           _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
+           _____,  _____,  _____,  VOLD,   VOLU,       TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            _____,  TAB,    GUI,        MINS,   UNDS,   SLSH                     \
 ),
 
 [SF6] = LAYOUT(                                                       \
-       XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   LP,     MP,     HP,    XXXXX,      \
-       XXXXX,  SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_G,   LK,     MK,     HK,    XXXXX,       \
-  TAB, KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T,  DQG,  \
-                       XXXXX,  KC_B,   SOCDW,       KC_H,   KC_P,   XXXXX                       \
+        XXXXX,  KC_Q,   XXXXX,  KC_E,   KC_R,        KC_Y,   LP,     MP,     HP,    XXXXX,      \
+        XXXXX,  SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_G,   LK,     MK,     HK,    XXXXX,       \
+  TAB,  KC_Z,   KC_X,   KC_C,   XXXXX,  XXXXX,       XXXXX,  XXXXX,  KC_N,   KC_M,  KC_T,  DQG,  \
+                        XXXXX,  KC_B,   SOCDW,       KC_H,   KC_P,   XXXXX                       \
 ),
 
 /* [VAL] = LAYOUT(                                                         \ */
