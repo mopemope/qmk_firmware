@@ -15,14 +15,16 @@ extern keymap_config_t keymap_config;
 #define COMBN   6
 #define COMBE   7
 #define COMBT   8
-#define SF6     9
-#define DS1    10
-#define DS2    11
-#define EFT1   12
-#define EFT2   13
+#define COMBO   9
+#define COMBS  10
+#define SF6    11
+//#define DS1    10
+//#define DS2    11
+//#define EFT1   12
+//#define EFT2   13
 //#define CYBER  13
-#define P3R    14
-#define DEAD   15
+#define P3R    12
+//#define DEAD   15
 // #define COD    14
 
 /* #define CYBER  22 */
@@ -71,6 +73,8 @@ extern keymap_config_t keymap_config;
 #define EC     LT(COMBE,KC_E)
 #define KC     LT(COMBE,KC_K)
 #define TC     LT(COMBT,KC_T)
+#define OC     LT(COMBO,KC_O)
+#define SC     LT(COMBS,KC_S)
 #define SPC    LT(RAISE,KC_SPC)
 #define CSPC   LCTL(KC_SPC)
 #define CRET   LCTL(KC_ENT)
@@ -315,7 +319,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [QGMLWY] = LAYOUT( \
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   DEL,      \
-         D_M,    KC_S,    TC,      NC,    KC_R,         KC_I,    AC,      EC,     KC_O,   H_M,        \
+         D_M,    SC,      TC,      NC,    KC_R,         KC_I,    AC,      EC,     OC,     H_M,        \
    TAB,  Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         CF12,    KC_J,    KC_K,   P_AL,   S_S,   GUI, \
                           TABC,    GALT,  SPC,          ENT,     BSPC,    GALT         \
 ),
@@ -324,7 +328,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            EXLM,    DQT,    HASH,  DLR,    PERC,        AMPR,    QUOT,  GRV,    PIPE,  YEN,    \
            ESC,     LPRN,   RPRN,  LCBR,   RCBR,        TILD,    DOT,   SLSH,   EQL,   AT,     \
     XXXXX, CIRC,    LBRC,   RBRC,  KC_LT,  KC_GT,       CIRC,    COMM,  XXXXX,  XXXXX, SLSH, XXXXX, \
-                            ESC,   TAB,    KC_SPC,      XXXXX,   XXXXX, XXXXX                  \
+                            ESC,   TAB,    GUI,         XXXXX,   XXXXX, XXXXX                  \
 ),
 
 [RAISE] = LAYOUT( \
@@ -338,14 +342,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXX,   XXXXX,  GU,     XXXXX,  PWS,         UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
           XXXXX,   GL,     GD,     GR,     NWS,         DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
     SFT,  XXXXX,   XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
-                           C_C,    C_V,    GUI,         TAB,      M_V,    C_V                     \
+                           GUI,    C_C,    C_V,         M_V,      TAB,    ESC                     \
 ),
 
 [MISCR] =  LAYOUT( \
            XXXXX,  XXXXX,  GU,    XXXXX,  PREVW,        PREVTB,  MLT,     KUP,    MGT,    DEL,    \
            TAB,    GL,     GD,    GR,     NEXTW,        NEXTTB,  KLEFT,   KDOWN,  KRIGHT, XXXXX,  \
-     SFT,  SFT,    XXXXX,  XXXXX, XXXXX,  XXXXX,        XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
-                           XXXXX, CXU,    KC_SPC,       CDOT,    DEL,     COMM                   \
+     SFT,  SFT,    XXXXX,  XXXXX, XXXXX,  GUI,          XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
+                           XXXXX, C_C,    KC_SPC,       CDOT,    DEL,     COMM                   \
 ),
 
 [COMBA] =  LAYOUT( \
@@ -363,8 +367,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBE] =  LAYOUT(                                                                       \
-           CAF7,  _____,  CUP,    _____,  CCW,          DQG,    _____,  _____, _____,  _____,  \
-           CAF2,  CLEFT,  CDOWN,  CRIGHT, CCR,          AU,     CU,     _____, _____,  _____,  \
+           CAF7,  _____,  CUP,    _____,  _____,        DQG,    _____,  _____, _____,  _____,  \
+           CAF2,  CLEFT,  CDOWN,  CRIGHT, _____,        AU,     CU,     _____, _____,  _____,  \
   QK_BOOT, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
                           _____,  _____,  KC_SPC,       CCA,    CCE,    _____                  \
 ),
@@ -374,6 +378,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                           KC_MUTE, KC_VOLD,KC_VOLU,    MINS,   UNDS,   SLSH                     \
+),
+
+[COMBO] =  LAYOUT(                                                      \
+           CAF7,  _____,  CUP,    _____,  CCW,          DQG,    _____,  _____, _____,  _____,  \
+           CAF2,  CLEFT,  CDOWN,  CRIGHT, CCR,          AU,     CU,     _____, _____,  _____,  \
+  QK_BOOT, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
+                          _____,  _____,  KC_SPC,       CCA,    CCE,    _____                  \
+),
+
+[COMBS] =  LAYOUT( \
+           _____,  _____,  _____,  _____,  _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
+  QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
+                           _____,  TAB,    GUI,        MINS,   UNDS,   SLSH                     \
 ),
 
 [SF6] = LAYOUT(                                                       \
