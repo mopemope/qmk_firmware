@@ -170,6 +170,7 @@ extern keymap_config_t keymap_config;
 #define ZHTG   JP_ZKHK
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
+#define CGUI   CTL_T(KC_GUI)
 
 #define DQG    DF(QGMLWY)
 #define GBL3   DF(BL3)
@@ -322,7 +323,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QGMLWY] = LAYOUT( \
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   DEL,      \
          D_M,    SC,      TC,      NC,    KC_R,         KC_I,    AC,      EC,     OC,     H_M,        \
-   GUI,  Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         CF12,    KC_J,    KC_K,   P_AL,   S_S,   GUI, \
+   CGUI, Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         CF12,    KC_J,    KC_K,   P_AL,   S_S,   GUI, \
                           TABC,    GALT,  SPC,          ENT,     BSPC,    GALT         \
 ),
 
