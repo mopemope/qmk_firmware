@@ -170,7 +170,7 @@ extern keymap_config_t keymap_config;
 #define ZHTG   JP_ZKHK
 #define C_S    SFT_T(KC_C)
 #define ESC    KC_ESC
-#define CGUI   CTL_T(KC_GUI)
+#define CGUI   CTL_T(KC_RGUI)
 
 #define DQG    DF(QGMLWY)
 #define GBL3   DF(BL3)
