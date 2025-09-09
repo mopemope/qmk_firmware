@@ -358,21 +358,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [COMBA] =  LAYOUT( \
            CQ,     CG,    CMM,    CL,      APERC,       _____,  CXCF,   CXU,   CXCB,   _____,  \
            MD,     CXCS,  CT,     CMN,     MX,          _____,  _____,  CXCC,  CXO,    CAT,    \
-  QK_BOOT, CZ,     CX,    _____,  _____,   _____,       _____,  _____,  CK,    _____,  _____,  QK_BOOT,\
+    _____, CZ,     CX,    _____,  _____,   _____,       _____,  _____,  CK,    _____,  _____,  QK_BOOT,\
                           ESC,    TAB,     ZHTG,        DOT,    _____,  COMM                  \
 ),
 
 [COMBN] =  LAYOUT( \
            _____,   CG,   _____,  CL,     _____,        AMPR,   MCOM,    CXU,     MDOT,   MD,    \
            TAB,     CS,   CT,     _____,  _____,        MSCLN,  CLEFT,   CCZ,     CRIGHT, CAT,   \
-  QK_BOOT, _____,   CX,   CRET,   CSPC,   _____,        MCOM,   MDOT,    _____,  _____,   CXU, QK_BOOT,\
+    _____, _____,   CX,   CRET,   CSPC,   _____,        MCOM,   MDOT,    _____,  _____,   CXU, QK_BOOT,\
                           _____,  _____,  _____,        CRET,   _____,   _____                  \
 ),
 
 [COMBE] =  LAYOUT(                                                                       \
            CAF7,  _____,  CUP,    _____,  _____,        DQG,    _____,  _____, _____,  _____,  \
            CAF2,  CLEFT,  CDOWN,  CRIGHT, _____,        AU,     CU,     _____, _____,  _____,  \
-  QK_BOOT, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
+    _____, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
                           _____,  CMIN,   CEQ,          CCA,    CCE,    _____                  \
 ),
 
@@ -386,7 +386,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [COMBO] =  LAYOUT(                                                      \
            CAF7,  _____,  CUP,    _____,  CCW,          DQG,    _____,  _____, _____,  _____,  \
            CAF2,  CLEFT,  CDOWN,  CRIGHT, CCR,          AU,     CU,     _____, _____,  _____,  \
-  QK_BOOT, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
+    _____, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
                           _____,  _____,  KC_SPC,       CCA,    CCE,    _____                  \
 ),
 
