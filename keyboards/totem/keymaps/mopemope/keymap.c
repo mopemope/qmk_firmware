@@ -226,7 +226,8 @@ extern keymap_config_t keymap_config;
 #define CPIPE  LCTL(JP_PIPE)
 #define CEXLM  LCTL(JP_EXLM)
 #define CEQ    LCTL(JP_EQL)
-#define CMIN   LCTL(JP_MINS)
+#define CPLUS  LCTL(JP_PLUS)
+#define CMINS  LCTL(JP_MINS)
 
 #define WH_D   KC_WH_D
 #define WH_U   KC_WH_U
@@ -373,7 +374,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            CAF7,  _____,  CUP,    _____,  _____,        DQG,    _____,  _____, _____,  _____,  \
            CAF2,  CLEFT,  CDOWN,  CRIGHT, _____,        AU,     CU,     _____, _____,  _____,  \
     _____, PSCR,  _____,  _____,  _____,  _____,        _____,  _____,  _____, _____,  _____,  QK_BOOT,\
-                          _____,  CMIN,   CEQ,          CCA,    CCE,    _____                  \
+                          _____,  CMINS,  CEQ,          CCA,    CCE,    _____                  \
 ),
 
 [COMBT] =  LAYOUT( \
@@ -391,7 +392,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBS] =  LAYOUT( \
-           _____,  _____,  _____,  _____,  _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  _____,  _____,  CPLUS,  CMINS,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  VOLD,   VOLU,       TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            _____,  TAB,    GUI,        MINS,   UNDS,   SLSH                     \
