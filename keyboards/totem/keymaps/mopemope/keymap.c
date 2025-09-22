@@ -324,7 +324,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QGMLWY] = LAYOUT( \
          Q_M,    KC_G,    KC_M,    KC_L,  KC_W,         KC_Y,    KC_F,    KC_U,   KC_B,   DEL,      \
          D_M,    SC,      TC,      NC,    KC_R,         KC_I,    AC,      EC,     OC,     H_M,        \
-   CGUI, Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         CF12,    KC_J,    KC_K,   P_AL,   S_S,   PLUS, \
+    GUI, Z_S,    X_CT,    KC_C,    KC_V,  GUIT,         CF12,    KC_J,    KC_K,   P_AL,   S_S,   GUI, \
                           TABC,    GALT,  SPC,          ENT,     BSPC,    GALT         \
 ),
 
