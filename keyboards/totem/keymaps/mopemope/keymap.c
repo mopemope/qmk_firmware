@@ -24,6 +24,7 @@ extern keymap_config_t keymap_config;
 //#define EFT2   13
 //#define CYBER  13
 #define P3R    12
+#define NCS    13
 //#define DEAD   15
 // #define COD    14
 
@@ -179,6 +180,7 @@ extern keymap_config_t keymap_config;
 #define GEFT   DF(EFT1)
 #define GDEAD  DF(DEAD)
 #define GP3R   DF(P3R)
+#define GNCS   DF(NCS)
 #define GR6S   DF(R6S)
 #define GB4B   DF(B4B)
 #define GBF    DF(BF)
@@ -378,7 +380,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBT] =  LAYOUT( \
-           _____,  _____,  GSF6,   _____,  _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  _____,  GSF6,   GNCS,   _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            MUTE,   VOLD,   VOLU,       MINS,   UNDS,   SLSH                     \
@@ -445,6 +447,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*   KC_H,KC_Z,   KC_X,   KC_C,   KC_V,   KC_M,        KC_LCTL,XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \ */
 /*                        KC_B,   KC_RCTL,KC_SPC,      KC_ENT, KC_T,   KC_N                       \ */
 /* ), */
+
+[NCS] = LAYOUT(                                                        \
+       TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,   KC_2,   KC_3,   KC_4,  ESC,       \
+       SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  TAB,       \
+  KC_T,KC_Z,   KC_X,   KC_C,   KC_V,   KC_M,        KC_N,   PLUS,   MINS,   KC_F3, KC_F4,  DQG, \
+                       KC_B,   KC_LCTL,KC_SPC,      KC_ENT, GALT,   KC_F5                       \
+),
 
 /* [CYBER] = LAYOUT(                                                         \ */
 /*        TAB,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,  KC_M,   KC_J ,  KC_K,  XXXXX, \ */
