@@ -450,9 +450,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [NCS] = LAYOUT(                                                        \
         ESC,    KC_Q,   SOCDW,  KC_E,   KC_R,        KC_1,   KC_2,   KC_3,   KC_4,  ESC,       \
-        SFT,    SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  TAB,       \
+        KC_SPC, SOCDA,  SOCDS,  SOCDD,  KC_F,        KC_5,   KC_6,   KC_7,   KC_8,  TAB,       \
 KC_LCTL,KC_Z,   KC_X,   KC_C,   KC_N,   KC_M,        PLUS,   MINS,   KC_F3,  KC_F4, KC_F5,  DQG, \
-                        KC_B,   KC_V,   KC_SPC,      TAB,    GALT,   KC_T                       \
+                        SFT,    KC_B,   KC_V,        TAB,    GALT,   KC_T                       \
 ),
 
 /* [CYBER] = LAYOUT(                                                         \ */
