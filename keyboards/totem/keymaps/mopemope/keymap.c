@@ -25,6 +25,7 @@ extern keymap_config_t keymap_config;
 //#define CYBER  13
 #define P3R    12
 #define NCS    13
+#define DIV    14
 //#define DEAD   15
 // #define COD    14
 
@@ -380,7 +381,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [COMBT] =  LAYOUT( \
-           _____,  _____,  GSF6,   GNCS,   _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
+           _____,  GDV2,   GSF6,   GNCS,   _____,      DQT,    EXLM,   PLUS,   ASTR,   PIPE,   \
            _____,  _____,  _____,  _____,  _____,      TILD,   EQL,    COLN,   SCLN,   AT,     \
   QK_BOOT, _____,  _____,  _____,  _____,  _____,      CIRC,   DOT,    COMM,   XXXXX,  XXXXX, QK_BOOT,  \
                            MUTE,   VOLD,   VOLU,       MINS,   UNDS,   SLSH                     \
@@ -475,12 +476,12 @@ KC_LCTL,KC_Z,   KC_X,   KC_C,   KC_N,   KC_M,        PLUS,   MINS,   KC_F3,  KC_
 /*                        _____,  _____,  _____,        KC_ENT,KC_I,   KC_5               \ */
 /* ), */
 
-/* [DIV] = LAYOUT(                                                         \ */
-/*        ESC,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_G,   KC_Q,   KC_T ,  KC_Y,  ESC,       \ */
-/*        SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_V,   KC_I,   KC_M,   KC_H,  KC_J,       \ */
-/*   KC_Z,TAB,    KC_X,   KC_C,   KC_I,   KC_G,        XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \ */
-/*                        KC_V,   GCTL,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \ */
-/* ), */
+[DIV] = LAYOUT(                                                         \
+       ESC,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_G,   KC_Q,   KC_T ,  KC_Y,  ESC,       \
+       SFT,    KC_A,   KC_S,   KC_D,   KC_F,        KC_V,   KC_I,   KC_M,   KC_H,  KC_J,       \
+  KC_Z,TAB,    KC_X,   KC_C,   KC_I,   KC_G,        XXXXX,  XXXXX,  XXXXX,  XXXXX, XXXXX,  DQG, \
+                       KC_V,   GCTL,   KC_SPC,      KC_ENT, KC_U,   KC_Z                       \
+),
 
 /* [COD] = LAYOUT(                                                         \ */
 /*        TAB,    KC_Q,   KC_W,   KC_E,   KC_R,        KC_1,   KC_2,   KC_3,   KC_4,   XXXXX, \ */
