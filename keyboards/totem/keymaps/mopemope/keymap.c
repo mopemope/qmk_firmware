@@ -196,8 +196,8 @@ extern keymap_config_t keymap_config;
 #define DSS    LT(DS2,KC_SPC)
 
 #define SELA   LCTL(KC_A)
-#define COPY   LCTL(KC_C)
-#define PASTE  LCTL(KC_V)
+//#define COPY   LCTL(KC_C)
+//#define PASTE  LCTL(KC_V)
 #define CZ     LCTL(KC_Z)
 #define CSL    LCTL(JP_SLSH)
 #define CMN    LALT(LCTL(KC_N))
@@ -307,7 +307,9 @@ enum custom_keycodes {
   HP,
   HK,
   NWS,
-  PWS
+  PWS,
+  COPY,
+  PASTE
 };
 
 bool w_down = false;
@@ -334,28 +336,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LOWER] = LAYOUT( \
            EXLM,    DQT,    HASH,  DLR,    PERC,        AMPR,    QUOT,  GRV,    PIPE,  YEN,    \
            ESC,     LPRN,   RPRN,  LCBR,   RCBR,        TILD,    DOT,   SLSH,   EQL,   AT,     \
-    XXXXX, CIRC,    LBRC,   RBRC,  KC_LT,  KC_GT,       CIRC,    COMM,  XXXXX,  XXXXX, SLSH, XXXXX, \
+     GUI,  CIRC,    LBRC,   RBRC,  KC_LT,  KC_GT,       CIRC,    COMM,  XXXXX,  XXXXX, SLSH, XXXXX, \
                             ESC,   TAB,    GUI,         XXXXX,   XXXXX, XXXXX                  \
 ),
 
 [RAISE] = LAYOUT( \
-           KC_1,    KC_2,   KC_3,   KC_4,   KC_5,       KC_6,     KC_7,    KC_8,   KC_9,   KC_0, \
-           TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,      KC_F5,    KC_F12,  KC_F7,  KC_F8,  AT,   \
-     UNDS, UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,     KC_F6,   KC_LT,  KC_GT,  MINS, MINS, \
-                            XXXXX,  XXXXX,  XXXXX,      CDOT,     COMM,    SLSH                 \
+           KC_1,    KC_2,   KC_3,   KC_4,   KC_5,       KC_6,    KC_7,    KC_8,   KC_9,   KC_0, \
+           TAB,     KC_F1,  KC_F2,  KC_F3,  KC_F4,      KC_F5,   KC_F12,  KC_F7,  KC_F8,  AT,   \
+     GUI,  UNDS ,   KC_F9,  KC_F10, KC_F11, XXXXX,      EXLM,    KC_F6,   KC_LT,  KC_GT,  MINS, GUI, \
+                            XXXXX,  XXXXX,  XXXXX,      CDOT,    COMM,    SLSH                 \
 ),
 
 [MISCL] = LAYOUT( \
           XXXXX,   XXXXX,  GU,     XXXXX,  PWS,         UWRKSP,   PGDN,   KUP,     PGUP,   DEL,   \
-          XXXXX,   GL,     GD,     GR,     NWS,         DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
-    SFT,  SFT,     XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
-                           GUI,    C_C,    C_V,         M_V,      TAB,    ESC                     \
+          TAB,     GL,     GD,     GR,     NWS,         DWRKSP,   CLEFT,  KDOWN,   CRIGHT, XXXXX, \
+     GUI, SFT,     XXXXX,  XXXXX,  XXXXX,  ENT,         MLT,      MGT,    SPSCR,   XXXXX,  SLSH, SFT, \
+                           GUI,    COPY,   PASTE,       M_V,      C_V,    ESC                     \
 ),
 
 [MISCR] =  LAYOUT( \
            XXXXX,  XXXXX,  GU,    XXXXX,  PREVW,        PREVTB,  MLT,     KUP,    MGT,    DEL,    \
            TAB,    GL,     GD,    GR,     NEXTW,        NEXTTB,  KLEFT,   KDOWN,  KRIGHT, XXXXX,  \
-     SFT,  SFT,    XXXXX,  XXXXX, XXXXX,  GUI,          XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
+     GUI,  SFT,    XXXXX,  XXXXX, XXXXX,  GUI,          XXXXX,   XXXXX,   XXXXX,  XXXXX,  XXXXX, SFT, \
                            XXXXX, C_C,    KC_SPC,       CDOT,    DEL,     COMM                   \
 ),
 
@@ -760,6 +762,49 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     }
     return false;
+  case COPY:
+    if (record->event.pressed) {
+      switch (detected_host_os()) {
+      case OS_MACOS:
+        register_code(KC_LGUI);
+        register_code(KC_C);
+      default:
+        register_code(KC_LCTL);
+        register_code(KC_C);
+      }
+    } else {
+      switch (detected_host_os()) {
+      case OS_MACOS:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_C);
+      default:
+        unregister_code(KC_LCTL);
+        unregister_code(KC_C);
+      }
+    }
+    return false;
+  case PASTE:
+    if (record->event.pressed) {
+      switch (detected_host_os()) {
+      case OS_MACOS:
+        register_code(KC_LGUI);
+        register_code(KC_V);
+      default:
+        register_code(KC_LCTL);
+        register_code(KC_V);
+      }
+    } else {
+      switch (detected_host_os()) {
+      case OS_MACOS:
+        unregister_code(KC_LGUI);
+        unregister_code(KC_V);
+      default:
+        unregister_code(KC_LCTL);
+        unregister_code(KC_V);
+      }
+    }
+    return false;
+
   }
   return true;
 }
